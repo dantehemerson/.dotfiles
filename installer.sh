@@ -12,7 +12,11 @@ echo "                 @dantehemerson                  "
 echo ""
 
 echo 'Updating repositories ...'
-sudo apt-get update -y && sudo apt-get upgrade
+sudo apt-get update -y
+sudo apt-get upgrade
+
+# dig
+sudo apt-get install dnsutils
 
 echo "Installing git ..."
 sudo apt-get install git -y
@@ -23,3 +27,8 @@ sudo apt-get install curl -y
 echo "Installing zip and unzip ..."
 sudo apt-get install zip -y
 sudo apt-get install unzip -y
+
+
+echo "Installing Ruby ..."
+sudo apt-get install ruby
+sudo apt-get install ruby-dev
