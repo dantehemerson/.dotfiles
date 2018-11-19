@@ -19,3 +19,7 @@ sudo apt-get install git -y
 
 echo "Installing curl ..."
 sudo apt-get install curl -y
+
+echo "Installing zip and unzip ..."
+sudo apt-get install zip -y
+sudo apt-get install unzip -y
