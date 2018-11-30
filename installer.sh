@@ -32,3 +32,8 @@ sudo apt-get install unzip -y
 echo "Installing Ruby ..."
 sudo apt-get install ruby
 sudo apt-get install ruby-dev
+
+echo "Installing LaTex, This will take a long time ..."
+sudo apt-get install texlive-full -y
+echo "Installing Texmaker, This will take a long time ..."
+sudo apt-get install texmaker -y
