@@ -15,6 +15,9 @@ let g:airline_solarized_bg='dark'
 autocmd VimEnter * NERDTree
 autocmd BufWinEnter * NERDTreeMirror                          
 
+" Togggle Tree with Ctrl+b
+nmap <C-b> :NERDTreeToggle<CR>
+
 set cursorline
 hi CursorLine term=none cterm=none ctermbg=black
 set number
