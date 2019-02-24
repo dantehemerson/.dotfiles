@@ -13,4 +13,15 @@ Add this line to `/etc/apt/sources.list`
 ```
 deb http://deb.debian.org/debian/ stretch main contrib non-free
 ```
-Then update dependencies and search in **Synaptic PM**: `broadcom` and install it.
+
+Then update dependencies.
+
+## Install wireless firmware
+
+Install [this firmware](./setup/):
+```
+sudo dpkg -i setup/firmware-brcm80211*.deb
+```
+or 
+
+Sarch in **Synaptic PM**: `firmware-brcm80211` and install it.
