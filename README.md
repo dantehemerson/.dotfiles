@@ -6,5 +6,5 @@ First of all we need add our user to sudoers file.
 su -
 ```
 ```
-echo "%<username<    ALL=(ALL:ALL) ALL" >> /etc/sudoers
+echo "%<username>    ALL=(ALL:ALL) ALL" >> /etc/sudoers
 ```
