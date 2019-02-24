@@ -13,7 +13,7 @@ echo ""
 
 echo 'Updating repositories ...'
 sudo apt-get update -y
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 
 # dig
 sudo apt-get install dnsutils
@@ -33,8 +33,8 @@ sudo apt-get install unzip -y
 
 
 echo "Installing Ruby ..."
-sudo apt-get install ruby
-sudo apt-get install ruby-dev
+sudo apt-get install ruby -y
+sudo apt-get install ruby-dev -y
 
 echo "Installing LaTex, This will take a long time ..."
 sudo apt-get install texlive-full -y
