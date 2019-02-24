@@ -21,6 +21,9 @@ sudo apt-get install dnsutils
 echo "Installing git ..."
 sudo apt-get install git -y
 
+echo "Installing xclip ..."
+sudo apt-get install xclip -y
+
 echo "Installing curl ..."
 sudo apt-get install curl -y
 
