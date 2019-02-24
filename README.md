@@ -8,3 +8,8 @@ su -
 ```
 echo "%<username>    ALL=(ALL:ALL) ALL" >> /etc/sudoers
 ```
+## Add non-free repositories
+Add this line to `/etc/apt/sources.list`
+```
+deb http://deb.debian.org/debian/ stretch main contrib non-free
+```
