@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Robo3t
+Icon=/usr/local/bin/robo3t/bin/robo3t.png
+Exec="/usr/local/bin/robo3t/bin/robo3t"
+Comment=Robo3t 
+Categories=Development;
+Terminal=false
+StartupNotify=true
