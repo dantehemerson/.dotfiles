@@ -14,3 +14,4 @@ alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙──�
 alias t="npm t" # Execute test in nodejs project
 alias codei="code-insiders"
 alias mongoplay="sudo service mongod start"
+alias cpssh="xclip -sel clip < ~/.ssh/id_rsa.pub"
