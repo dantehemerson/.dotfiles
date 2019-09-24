@@ -34,6 +34,10 @@ sudo apt-get install unzip -y
 echo "Installing vi and vim"
 sudo apt-get install vi -y
 
+
+echo "Installing UI..."
+./installers/ui.sh
+
 # echo "Installing Ruby ..."
 # sudo apt-get install ruby -y
 # sudo apt-get install ruby-dev -y
