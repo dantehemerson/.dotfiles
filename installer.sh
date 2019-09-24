@@ -31,10 +31,12 @@ echo "Installing zip and unzip ..."
 sudo apt-get install zip -y
 sudo apt-get install unzip -y
 
+echo "Installing vi and vim"
+sudo apt-get install vi -y
 
-echo "Installing Ruby ..."
-sudo apt-get install ruby -y
-sudo apt-get install ruby-dev -y
+# echo "Installing Ruby ..."
+# sudo apt-get install ruby -y
+# sudo apt-get install ruby-dev -y
 
 # echo "Installing LaTex, This will take a long time ..."
 # sudo apt-get install texlive-full -y
