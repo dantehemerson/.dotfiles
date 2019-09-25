@@ -1,0 +1,14 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Material Theme Palenight High Contrast",
+    "editor.fontFamily": "'Operator Mono Lig'",
+    "editor.fontWeight": "400",
+    "window.menuBarVisibility": "toggle",
+    "editor.fontLigatures": true,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "terminal.integrated.fontWeightBold": "normal",
+    "editor.minimap.enabled": false,
+    "editor.fontSize": 15,
+    "window.zoomLevel": -1,
+}
