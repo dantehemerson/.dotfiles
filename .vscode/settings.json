@@ -1,39 +1,36 @@
 {
-    "workbench.colorTheme": "Shades of Purple",
-    "editor.fontFamily": "'Operator Mono Lig','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontWeight": "400",
-    "editor.tabSize": 2,
-    "editor.wordWrap": "on",
-    "window.menuBarVisibility": "toggle",
-    "editor.minimap.maxColumn": 55,
-    "editor.fontLigatures": true,
-    "terminal.integrated.fontWeightBold": "normal",
-    "editor.minimap.enabled": false,
-    "workbench.statusBar.visible": true,
-    "workbench.activityBar.visible": true,
-    "workbench.sideBar.location": "left",
-    "window.zoomLevel": -1,
-    "workbench.iconTheme": "vscode-icons",
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "editor.fontSize": 15,
-    "[javascript]": {
-        "editor.formatOnSave": false
-    },
-    "explorer.confirmDelete": false,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "explorer.confirmDragAndDrop": false,
-    "vsicons.projectDetection.autoReload": true,
-    "sync.gist": "",
-    // These are all my auto-save configs
-    "editor.formatOnSave": true,
-    "[javascriptreact]": {
-        "editor.formatOnSave": false
-    },
-    // tell the ESLint plugin to run on save
-    "eslint.autoFixOnSave": true,
-    // Optional BUT IMPORTANT: If you have the prettier extension enabled for other languages like CSS and HTML, turn it off for JS since we are doing it through Eslint already
-    "prettier.disableLanguages": [
-        "javascript",
-        "javascriptreact"
-    ],
+  "workbench.colorTheme": "Shades of Purple",
+  "editor.fontFamily": "'Operator Mono Lig','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontWeight": "400",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "window.menuBarVisibility": "toggle",
+  "editor.minimap.maxColumn": 55,
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontWeightBold": "normal",
+  "editor.minimap.enabled": false,
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": true,
+  "workbench.sideBar.location": "left",
+  "window.zoomLevel": -1,
+  "workbench.iconTheme": "vscode-icons",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.fontSize": 18,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "explorer.confirmDelete": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.confirmDragAndDrop": false,
+  "vsicons.projectDetection.autoReload": true,
+  "sync.gist": "",
+  // These are all my auto-save configs
+  "editor.formatOnSave": true,
+  "[javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  // tell the ESLint plugin to run on save
+  "eslint.autoFixOnSave": true,
+  // Optional BUT IMPORTANT: If you have the prettier extension enabled for other languages like CSS and HTML, turn it off for JS since we are doing it through Eslint already
+  "prettier.disableLanguages": ["javascript", "javascriptreact"]
 }

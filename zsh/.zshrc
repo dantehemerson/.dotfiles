@@ -119,6 +119,17 @@ alias t="npm t" # Execute test in nodejs project
 
 alias codei="code-insiders"
 
+# Common npm & yarn aliases
+alias ns="npm start"
+alias nb="npm run build"
+alias nrs="npm run serve"
+alias nrd="npm run dev"
+alias nbs="npm run build && npm run serve"
+alias nt="npm t"
+alias ys="yarn start"
+alias yb="yarn build"
+alias yi="yarn install"
+
 # Copy default ssh
 alias cpssh="xclip -sel clip < ~/.ssh/id_rsa.pub"
 
