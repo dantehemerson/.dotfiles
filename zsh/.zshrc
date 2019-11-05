@@ -138,6 +138,7 @@ alias mongoplay="sudo service mongod start"
 
 # Move files to trash
 alias srm='safe-rm'
+alias killport='fuser -k $1/tcp'
 
 
 # start NVM
