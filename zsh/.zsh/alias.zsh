@@ -1,4 +1,3 @@
-alias up="cd ../"
 alias v="vim"
 alias g="git"
 alias ga="git add"
@@ -11,9 +10,6 @@ alias gr="git rebase"
 alias gp="git push"
 alias gu="git unstage"
 alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙────────────────────────────────────── ─ ─ "; lsblk -a; echo ""; echo "╓───── d i s k . u s a g e"; echo "╙────────────────────────────────────── ─ ─ "; df -h;'
-alias t="npm t" # Execute test in nodejs project
-
-alias codei="code-insiders"
 
 # Copy default ssh
 alias cpssh="xclip -sel clip < ~/.ssh/id_rsa.pub"

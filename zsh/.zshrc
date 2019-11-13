@@ -136,11 +136,11 @@ alias cpssh="xclip -sel clip < ~/.ssh/id_rsa.pub"
 # Start mongo service
 alias mongoplay="sudo service mongod start"
 
-# Move files to trash
+# Move files to trashcurl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+
 alias srm='safe-rm'
 alias killport='fuser -k $1/tcp'
 
-
-# start NVM
+# This loads nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
