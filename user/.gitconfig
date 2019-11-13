@@ -2,15 +2,6 @@
 	email = mail@dantecalderon.dev
 	name = Dante Calderon
 
-[ui]
-	colors = true
-
-[push]
-	default = matching
-
-[color]
-	ui = true
-
 [core]
   editor = vim
 
@@ -19,13 +10,7 @@
 	lpg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 	graphgpg = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%C(blue)%x20(%ce)%x20%C(cyan)[gpg:%GK%x20%G?]%C(reset)%n%x20%s%n"
 	graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%C(blue)%x20(%ce)%x20%C(cyan)%C(reset)%n%x20%s%n"
-	log0 = !"git log1"
-	dbranch = "!sh -c \"git branch -d $1 && git push origin :$1\""
-	ree = log --graph --decorate --pretty=oneline --abbrev-commit
 	count = rev-list HEAD --count
-	unstage = reset HEAD --
 	stats = shortlog -s -n --all
-	pbranch = "!sh -c \"git fetch origin $1:$1 && git checkout $1\""
-	count = rev-list --all --count
 
 
