@@ -37,3 +37,5 @@ sudo apt-get install vim -y
 ./installers/ui.sh
 ./installers/node_libraries.sh
 ./installers/gnome.sh
+
+./config_files.sh

@@ -34,3 +34,6 @@ alias yb="yarn build"
 alias yi="yarn install"
 
 alias srm='safe-rm'
+
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"

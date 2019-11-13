@@ -1,2 +1,3 @@
-#!/bin/bash
-mv ./user/.gitconfig ~/
+echo "CREATING .gitconfig FILE ---------------------------"
+cp ./user/.gitconfig ~/
+
