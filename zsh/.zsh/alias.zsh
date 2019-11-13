@@ -19,3 +19,18 @@ alias mongoplay="sudo service mongod start"
 
 # Move files to trash
 alias srm='safe-rm'
+
+alias chrome='google-chrome'
+
+# Common npm & yarn aliases
+alias ns="npm start"
+alias nb="npm run build"
+alias nrs="npm run serve"
+alias nrd="npm run dev"
+alias nbs="npm run build && npm run serve"
+alias nt="npm t"
+alias ys="yarn start"
+alias yb="yarn build"
+alias yi="yarn install"
+
+alias srm='safe-rm'

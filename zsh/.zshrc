@@ -5,7 +5,7 @@ for config (~/.zsh/*.zsh) source $config
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/dante/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -92,54 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# ALIASES
-alias up="cd ../"
-alias v="vim"
-alias g="git"
-alias ga="git add"
-alias gc="git commit -m"
-alias gs="git status"
-alias gd="git diff"
-alias gf="git fetch"
-alias gm="git merge"
-alias gr="git rebase"
-alias gp="git push"
-alias gu="git unstage"
-alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙────────────────────────────────────── ─ ─ "; lsblk -a; echo ""; echo "╓───── d i s k . u s a g e"; echo "╙────────────────────────────────────── ─ ─ "; df -h;'
-alias t="npm t" # Execute test in nodejs project
-
-alias codei="code-insiders"
-
-# Common npm & yarn aliases
-alias ns="npm start"
-alias nb="npm run build"
-alias nrs="npm run serve"
-alias nrd="npm run dev"
-alias nbs="npm run build && npm run serve"
-alias nt="npm t"
-alias ys="yarn start"
-alias yb="yarn build"
-alias yi="yarn install"
-
-# Copy default ssh
-alias cpssh="xclip -sel clip < ~/.ssh/id_rsa.pub"
-
-# Start mongo service
-alias mongoplay="sudo service mongod start"
-
 # Move files to trashcurl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
-
-alias srm='safe-rm'
-alias killport='fuser -k $1/tcp'
 
 # This loads nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
