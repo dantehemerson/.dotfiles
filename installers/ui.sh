@@ -8,4 +8,4 @@ sudo add-apt-repository -u ppa:snwh/ppa -y
 sudo apt install paper-icon-theme -y
 
 echo "Installing Arc Theme..."
-sudo apt-get install arc-theme
+sudo apt-get install arc-theme -y
