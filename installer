@@ -37,9 +37,14 @@ sudo apt-get install vim -y
 echo "Installing robo3t..."
 sudo snap install robo3t-snap
 
+echo "Installing teminator..."
+sudo apt-get install terminator -y
+
 ./installers/ui.sh
 ./installers/node_libraries.sh
 ./installers/gnome.sh
 ./installers/zsh.sh
 
 ./config_files.sh
+
+./installers/albert.sh
