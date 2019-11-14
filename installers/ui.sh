@@ -12,3 +12,6 @@ sudo apt-get install arc-theme -y
 
 echo "Installing Gnome SHELL..."
 sudo apt install gnome-shell-extensions -y
+
+echo "Install extension for chrome"
+sudo apt install chrome-gnome-shell -y
