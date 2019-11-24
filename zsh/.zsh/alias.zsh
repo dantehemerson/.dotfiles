@@ -22,6 +22,8 @@ alias srm='safe-rm'
 
 alias chrome='google-chrome'
 
+alias scripts="jq '.scripts' package.json"
+
 # Common npm & yarn aliases
 alias ns="npm start"
 alias nb="npm run build"
