@@ -31,6 +31,8 @@ echo "Installing zip and unzip ..."
 sudo apt-get install zip -y
 sudo apt-get install unzip -y
 
+sudo apt-get install tree
+
 echo "Installing vi and vim"
 sudo apt-get install vim -y
 
