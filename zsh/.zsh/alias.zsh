@@ -35,5 +35,7 @@ alias ys="yarn start"
 alias yb="yarn build"
 alias yi="yarn install"
 
+alias files="nautilus"
+
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
