@@ -12,5 +12,6 @@
 	graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%C(blue)%x20(%ce)%x20%C(cyan)%C(reset)%n%x20%s%n"
 	count = rev-list HEAD --count
 	stats = shortlog -s -n --all
+        local = config --local --list
 
 
