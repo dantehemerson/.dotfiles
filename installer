@@ -47,6 +47,7 @@ sudo apt-get install terminator -y
 echo "Installing tmux..."
 sudo apt-get install tmux -y
 
+./installers/os.sh
 ./installers/nvm.sh
 ./installers/ui.sh
 ./installers/node_libraries.sh

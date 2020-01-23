@@ -39,3 +39,6 @@ alias files="nautilus"
 
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
+
+# Execute velocity configuration 
+alias mouse="~/mouse.sh"
