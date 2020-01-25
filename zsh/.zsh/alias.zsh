@@ -43,3 +43,11 @@ alias vimrc="vim ~/.vimrc"
 # Execute velocity configuration 
 alias mouse="~/mouse.sh"
 alias code.="code ."
+
+# cd shorcuts
+alias cd..="cd .."
+alias cd...="cd ..."
+alias cd....="cd ...."
+alias cd.....="cd ....."
+alias cd......="cd ......"
+alias cd.......="cd ......."
