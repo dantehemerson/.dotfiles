@@ -31,15 +31,15 @@ echo "Installing zip and unzip ..."
 sudo apt-get install zip -y
 sudo apt-get install unzip -y
 
-sudo apt-get install tree
+sudo apt-get install tree -y
 
-sudo apt-get install jq
+sudo apt-get install jq -y
 
 echo "Installing vi and vim"
 sudo apt-get install vim -y
 
 echo "Installing robo3t..."
-sudo snap install robo3t-snap
+sudo snap install robo3t-snap -y
 
 echo "Installing teminator..."
 sudo apt-get install terminator -y
@@ -57,5 +57,3 @@ sudo apt-get install tmux -y
 ./config_files.sh
 
 ./installers/albert.sh
-
-
