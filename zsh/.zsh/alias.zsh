@@ -12,7 +12,7 @@ alias gu="git unstage"
 
 # Pull current branch
 alias gk="git pull"
-alias gkp="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
+alias gkb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
 
 # Push current branch
 alias gp="git push"
