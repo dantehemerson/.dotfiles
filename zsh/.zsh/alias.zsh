@@ -1,4 +1,5 @@
 alias v="vim"
+
 alias g="git"
 alias ga="git add"
 alias gc="git commit -m"
@@ -7,8 +8,16 @@ alias gd="git diff"
 alias gf="git fetch"
 alias gm="git merge"
 alias gr="git rebase"
-alias gp="git push"
 alias gu="git unstage"
+
+# Pull current branch
+alias gk="git pull"
+alias gkp="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
+
+# Push current branch
+alias gp="git push"
+alias gpb="git push origin \$(git rev-parse --abbrev-ref HEAD)"
+
 alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙────────────────────────────────────── ─ ─ "; lsblk -a; echo ""; echo "╓───── d i s k . u s a g e"; echo "╙────────────────────────────────────── ─ ─ "; df -h;'
 
 # Copy default ssh
