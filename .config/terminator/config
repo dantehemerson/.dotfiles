@@ -1,14 +1,29 @@
 [global_config]
   enabled_plugins = CustomCommandsMenu, InactivityWatch, TestPlugin, ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, MavenPluginURLHandler, LaunchpadBugURLHandler
-  title_font = Fira Code Medium 12
   title_use_system_font = False
+  title_font = Fira Code Medium 12
 [keybindings]
-  next_tab = <Primary>Tab
-  page_down = <Alt>j
-  page_up = <Alt>k
-  prev_tab = <Primary><Shift>Tab
+  go_up = <Alt>k
+  go_down = <Alt>j
+  go_left = <Alt>h
+  go_right = <Alt>l
   split_horiz = <Primary><Shift>d
   split_vert = <Primary>d
+  page_up = <Alt>k
+  page_down = <Alt>j
+  next_tab = <Primary>Tab
+  prev_tab = <Primary><Shift>Tab
+[profiles]
+  [[default]]
+    background_color = "#300a24"
+    background_darkness = 0.94
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = Fira Code Medium 10
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollback_infinite = True
+    use_system_font = False
 [layouts]
   [[default]]
     [[[child1]]]
@@ -18,12 +33,3 @@
       parent = ""
       type = Window
 [plugins]
-[profiles]
-  [[default]]
-    background_color = "#300a24"
-    cursor_color = "#aaaaaa"
-    font = Fira Code Medium 10
-    foreground_color = "#ffffff"
-    scrollback_infinite = True
-    show_titlebar = False
-    use_system_font = False
