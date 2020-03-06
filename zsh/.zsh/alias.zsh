@@ -10,9 +10,13 @@ alias gm="git merge"
 alias gr="git rebase"
 alias gu="git unstage"
 
-# Pull current branch
+# TODO: delete
 alias gk="git pull"
 alias gkb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
+
+## Migrate to
+alias gl="git pull"
+alias glb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
 
 # Push current branch
 alias gp="git push"
