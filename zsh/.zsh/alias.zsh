@@ -54,6 +54,9 @@ alias vimrc="vim ~/.vimrc"
 alias mouse="~/mouse.sh"
 alias code.="code ."
 
+# IP
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
 alias reload="exec ${SHELL} -l"
 
 # cd shorcuts
