@@ -57,3 +57,4 @@ sudo apt-get install tmux -y
 ./config_files.sh
 
 ./installers/albert.sh
+./installers/insomnia.sh
