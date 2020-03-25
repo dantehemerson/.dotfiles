@@ -10,10 +10,6 @@ alias gm="git merge"
 alias gr="git rebase"
 alias gu="git unstage"
 
-# TODO: delete
-alias gk="git pull"
-alias gkb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
-
 ## Migrate to
 alias gl="git pull"
 alias glb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
@@ -35,6 +31,7 @@ alias srm='safe-rm'
 
 alias chrome='google-chrome'
 
+# NodeJS
 alias scripts="jq '.scripts' package.json"
 
 # Common npm & yarn aliases
@@ -56,6 +53,8 @@ alias vimrc="vim ~/.vimrc"
 # Execute velocity configuration 
 alias mouse="~/mouse.sh"
 alias code.="code ."
+
+alias reload="exec ${SHELL} -l"
 
 # cd shorcuts
 alias cd..="cd .."
