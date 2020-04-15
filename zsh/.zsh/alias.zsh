@@ -46,6 +46,7 @@ alias yag"yarn global add "
 alias ys="yarn start"
 alias yb="yarn build"
 alias yi="yarn install"
+alias ts="ts-node "
 
 alias files="nautilus"
 
