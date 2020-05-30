@@ -50,11 +50,20 @@ sudo apt-get install tmux -y
 ./installers/os.sh
 ./installers/nvm.sh
 ./installers/ui.sh
+<<<<<<< HEAD
 ./installers/node_libraries.sh
+=======
+# ./installers/node_libraries.sh
+>>>>>>> Update configs for Ubuntu20
 ./installers/gnome.sh
 ./installers/zsh.sh
 
 ./config_files.sh
 
+<<<<<<< HEAD
 ./installers/albert.sh
 ./installers/insomnia.sh
+=======
+# ./installers/albert.sh
+# ./installers/insomnia.sh
+>>>>>>> Update configs for Ubuntu20
