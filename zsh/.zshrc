@@ -94,8 +94,14 @@ source $ZSH/oh-my-zsh.sh
 
 # Move files to trashcurl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
+## WSL
 # Sign commits
 export GPG_TTY=$(tty)
+
+# Run ssh agent
+eval $(ssh-agent -s)
+
+## end WSL
 
 # This loads nvm
 export NVM_DIR="$HOME/.nvm"
