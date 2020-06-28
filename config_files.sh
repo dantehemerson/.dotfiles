@@ -14,5 +14,5 @@ cp -rf ./zsh/.zsh ~/
 echo "SETUP .vimrc ---------------------------------------"
 cp -rf ./user/.vimrc ~/
 
-echo "MOUSE SCRIPT -------------------------"
-cp -rf ./setup/mouse.sh ~/
+#echo "MOUSE SCRIPT -------------------------"
+#cp -rf ./setup/mouse.sh ~/

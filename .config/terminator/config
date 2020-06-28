@@ -1,5 +1,6 @@
 [global_config]
   enabled_plugins = CustomCommandsMenu, InactivityWatch, TestPlugin, ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, MavenPluginURLHandler, LaunchpadBugURLHandler
+  suppress_multiple_term_dialog = True
   title_use_system_font = False
   title_font = Fira Code Medium 12
 [keybindings]
@@ -15,12 +16,12 @@
   prev_tab = <Primary><Shift>Tab
 [profiles]
   [[default]]
-    background_color = "#300a24"
-    background_darkness = 0.94
+    background_color = "#282828"
+    background_darkness = 1.0
     background_type = transparent
     cursor_color = "#aaaaaa"
     font = Operator Mono Lig weight=330 14
-    foreground_color = "#ffffff"
+    foreground_color = "#ebdbb2"
     show_titlebar = False
     scrollback_infinite = True
     use_system_font = False
