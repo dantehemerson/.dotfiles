@@ -77,6 +77,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Add date to the right
+RPROMPT="%*"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
