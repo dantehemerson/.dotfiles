@@ -47,6 +47,9 @@ sudo apt-get install terminator -y
 echo "Installing tmux..."
 sudo apt-get install tmux -y
 
+sudo apt-get install cargo -y
+
+
 ./installers/os.sh
 ./installers/nvm.sh
 ./installers/ui.sh
