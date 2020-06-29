@@ -14,6 +14,7 @@
   page_down = <Alt>j
   next_tab = <Primary>Tab
   prev_tab = <Primary><Shift>Tab
+  layout_launcher = <Primary><Alt>backslash
 [profiles]
   [[default]]
     background_color = "#282828"
