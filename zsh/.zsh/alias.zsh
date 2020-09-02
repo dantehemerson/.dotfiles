@@ -55,6 +55,9 @@ alias files="nautilus"
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 
+# List folders
+alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
+
 # Execute velocity configuration 
 alias mouse="~/mouse.sh"
 alias code.="code ."
