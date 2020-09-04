@@ -31,6 +31,8 @@ alias chrome='google-chrome'
 
 # NodeJS
 alias scripts="jq '.scripts' package.json"
+alias deps="jq '.dependencies' package.json"                                                                                          
+alias devs="jq '.devDependencies' package.json"
 
 # Common npm & yarn aliases
 alias ns="npm start"
