@@ -51,6 +51,9 @@ sudo apt-get install cargo -y
 
 sudo apt-get install fzf -y
 
+## Monitoring
+sudo snap install bashtop -y
+sudo apt-get install htop -y
 
 ./installers/os.sh
 ./installers/nvm.sh
