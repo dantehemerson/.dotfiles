@@ -51,6 +51,9 @@ sudo apt-get install cargo -y
 
 sudo apt-get install fzf -y
 
+## Improvement
+sudo apt install bat -y
+
 ## Monitoring
 sudo snap install bashtop -y
 sudo apt-get install htop -y
@@ -61,6 +64,7 @@ sudo apt-get install htop -y
 # ./installers/node_libraries.sh
 ./installers/gnome.sh
 ./installers/zsh.sh
+./installers/autojump.sh
 
 ./config_files.sh
 

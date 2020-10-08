@@ -78,6 +78,9 @@ alias vimrc="vim ~/.vimrc"
 # List folders
 alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
 
+# bat
+alias bat="batcat"
+
 # Execute velocity configuration 
 alias mouse="~/mouse.sh"
 alias code.="code ."
