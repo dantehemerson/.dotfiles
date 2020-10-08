@@ -66,6 +66,8 @@ sudo apt-get install htop -y
 ./installers/zsh.sh
 ./installers/autojump.sh
 
+./installers/beauty_tmux.sh
+
 ./config_files.sh
 
 # ./installers/albert.sh
