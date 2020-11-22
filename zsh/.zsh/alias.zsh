@@ -12,21 +12,6 @@ alias gu="git unstage"
 
 
 alias gaa="git add"
-alias gaaa="git add"
-alias gaaaa="git add"
-alias gaaaaa="git add"
-alias gaaaaaa="git add"
-alias gaaaaaaa="git add"
-alias gaaaaaaaa="git add"
-alias gaaaaaaaaa="git add"
-alias gaaaaaaaaaa="git add"
-alias gaaaaaaaaaaa="git add"
-alias gaaaaaaaaaaaa="git add"
-alias gaaaaaaaaaaaaa="git add"
-alias gaaaaaaaaaaaaaa="git add"
-alias gaaaaaaaaaaaaaaa="git add"
-alias gaaaaaaaaaaaaaaaa="git add"
-alias gaaaaaaaaaaaaaaaaa="git add"
 
 ## Pull
 alias gl="git pull"
@@ -77,6 +62,10 @@ alias vimrc="vim ~/.vimrc"
 
 # List folders
 alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
+
+
+# OS
+alias free="free -h"
 
 # bat
 alias bat="batcat"
