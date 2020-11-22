@@ -72,6 +72,7 @@ alias bat="batcat"
 
 # Execute velocity configuration 
 alias mouse="~/mouse.sh"
+alias code="codium"
 alias code.="code ."
 
 # IP
