@@ -2,8 +2,8 @@
 Version=1.0
 Type=Application
 Name=Android Studio
-Exec="/opt/android-studio/bin/studio.sh" %f
-Icon=/opt/android-studio/bin/studio.png
+Exec="/usr/local/android-studio/bin/studio.sh" %f
+Icon=/usr/local/android-studio/bin/studio.png
 Categories=Development;IDE;
 Terminal=false
 StartupNotify=true
