@@ -1,18 +1,33 @@
-echo "CREATING .gitconfig FILE ---------------------------"
+#!/bin/bash
+
+function info() {
+  echo "\n$1"
+}
+
+info "CREATING .gitconfig FILE ---------------------------"
 cp ./user/.gitconfig ~/
 
-echo "Creating config for albert"
-cp -rf ./.config/albert/albert.conf ~/.config/albert/
+info "Creating config for albert"
+cp -rf ./config/albert/albert.conf ~/.config/albert/
 
-echo "Creating config terminator"
-cp -rf ./.config/terminator/config ~/.config/terminator/
+info "Creating config terminator"
+cp -rf ./config/terminator/config ~/.config/terminator/
 
-echo "SETUP zsh config files -----------------------------"
+
+info "🔤 Adding fonts..."
+# Create fonts folder if not exists
+mkdir -p ~/.fonts
+
+# Add fonts
+mv ./fonts/* ~/.fonts
+
+
+info "SETUP zsh config files -----------------------------"
 cp ./zsh/.zshrc ~/
 cp -rf ./zsh/.zsh ~/
 
-echo "SETUP .vimrc ---------------------------------------"
+info "SETUP .vimrc ---------------------------------------"
 cp -rf ./user/.vimrc ~/
 
-#echo "MOUSE SCRIPT -------------------------"
+#info "MOUSE SCRIPT -------------------------"
 #cp -rf ./setup/mouse.sh ~/

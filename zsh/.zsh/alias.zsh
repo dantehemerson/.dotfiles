@@ -32,9 +32,11 @@ alias srm='safe-rm'
 
 alias chrome='google-chrome'
 
-# NodeJS
+## NodeJS
 alias scripts="jq '.scripts' package.json"
+# Show dependencies
 alias deps="jq '.dependencies' package.json"                                                                                          
+# Show dev dependencies
 alias devs="jq '.devDependencies' package.json"
 
 # Common npm & yarn aliases

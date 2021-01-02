@@ -97,14 +97,8 @@ RPROMPT="%*"
 
 # Move files to trashcurl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
-## WSL
 # Sign commits
 export GPG_TTY=$(tty)
-
-# Run ssh agent
-eval $(ssh-agent -s)
-
-## end WSL
 
 # This loads nvm
 export NVM_DIR="$HOME/.nvm"
@@ -112,5 +106,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+## Rust
 # Load cargo
 export PATH=/home/dantehemerson/.cargo/bin:$PATH
