@@ -4,7 +4,7 @@ function info() {
   echo "\n$1"
 }
 
-info "CREATING .gitconfig FILE ---------------------------"
+info "Adding .gitconfig file..."
 cp ./user/.gitconfig ~/
 
 info "Creating config for albert"
@@ -17,16 +17,23 @@ cp -rf ./config/terminator/config ~/.config/terminator/
 info "🔤 Adding fonts..."
 # Create fonts folder if not exists
 mkdir -p ~/.fonts
-
 # Add fonts
 mv ./fonts/* ~/.fonts
 
 
-info "SETUP zsh config files -----------------------------"
+info "🖼️ Adding wallpapers..."
+# Create fonts folder if not exists
+mkdir -p ~/Pictures/wallpapers
+# Add wallpapers
+mv ./wallpapers/* ~/Pictures/wallpapers
+
+
+info "⌨️ Adding zsh files..."
 cp ./zsh/.zshrc ~/
 cp -rf ./zsh/.zsh ~/
 
-info "SETUP .vimrc ---------------------------------------"
+
+info "✏️ Adding .vimrc file..."
 cp -rf ./user/.vimrc ~/
 
 #info "MOUSE SCRIPT -------------------------"
