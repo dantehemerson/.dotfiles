@@ -72,3 +72,6 @@ sudo apt-get install htop -y
 
 # ./installers/albert.sh
 # ./installers/insomnia.sh
+
+# Download wallpapers
+./installers/download-wallpapers.sh
