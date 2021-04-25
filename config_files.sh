@@ -20,14 +20,6 @@ mkdir -p ~/.fonts
 # Add fonts
 mv ./fonts/* ~/.fonts
 
-
-info "🖼️ Adding wallpapers..."
-# Create fonts folder if not exists
-mkdir -p ~/Pictures/wallpapers
-# Add wallpapers
-mv ./wallpapers/* ~/Pictures/wallpapers
-
-
 info "⌨️ Adding zsh files..."
 cp ./zsh/.zshrc ~/
 cp -rf ./zsh/.zsh ~/
