@@ -1,3 +1,4 @@
 *.log
 *.pyc
-*.tar.gz
+*.tar.gz*
+*.deb*
