@@ -15,7 +15,10 @@ sudo apt-get install breeze-cursor-theme -y
 # echo "Installing Arc Theme..."
 # sudo apt-get install arc-theme -y
 
-echo "🔷 Gnome SHELL"
+echo "🔷 GNOME"
+
+echo "🔹 Installing Gnome Tweaks..."
+sudo apt install gnome-tweak-tool -y
 
 echo "🔹 Installing Gnome SHELL..."
 sudo apt install gnome-shell-extensions -y

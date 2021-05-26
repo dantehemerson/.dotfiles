@@ -47,8 +47,6 @@ sudo apt-get install terminator -y
 echo "Installing tmux..."
 sudo apt-get install tmux -y
 
-sudo apt-get install cargo -y
-
 sudo apt-get install fzf -y
 
 ## Improvement
@@ -58,25 +56,24 @@ sudo apt install bat -y
 sudo snap install bashtop -y
 sudo apt-get install htop -y
 
+
 ./installers/ubuntu.sh
 ./installers/nvm.sh
-# ./installers/node_libraries.sh
-./installers/gnome.sh
-./installers/zsh.sh
+
 ./installers/autojump.sh
 
-./installers/beauty_tmux.sh
+# ./installers/beauty_tmux.sh
+./installers/albert.sh
 
-./config_files.sh
-
-# ./installers/albert.sh
 # ./installers/insomnia.sh
 
 # Download wallpapers
 ./installers/download-wallpapers.sh
 
-
-
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+./installers/zsh.sh
+
+./config_files.sh
