@@ -58,9 +58,8 @@ sudo apt install bat -y
 sudo snap install bashtop -y
 sudo apt-get install htop -y
 
-./installers/os.sh
+./installers/ubuntu.sh
 ./installers/nvm.sh
-./installers/ui.sh
 # ./installers/node_libraries.sh
 ./installers/gnome.sh
 ./installers/zsh.sh

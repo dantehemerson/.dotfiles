@@ -1,6 +1,9 @@
-echo "UI ------------------------------------"
+echo "🔷 OS"
 
-echo "Installing beautiful cursor theme..."
+echo "🔹 Installing screenfetch..."
+sudo apt-get install screenfetch -y
+
+echo "🔹 Installing beautiful cursor theme..."
 sudo apt-get install breeze-cursor-theme -y
 
 # echo "Installing paper icons theme..."
@@ -12,11 +15,14 @@ sudo apt-get install breeze-cursor-theme -y
 # echo "Installing Arc Theme..."
 # sudo apt-get install arc-theme -y
 
-echo "Installing Gnome SHELL..."
+echo "🔷 Gnome SHELL"
+
+echo "🔹 Installing Gnome SHELL..."
 sudo apt install gnome-shell-extensions -y
 
-echo "Install extension for chrome..."
+echo "🔹 Install Gnome SHELL Extension for chrome..."
 sudo apt install chrome-gnome-shell -y
+
 
 # echo "Install Flat Remix theme..."
 # sudo add-apt-repository ppa:daniruiz/flat-remix -y
