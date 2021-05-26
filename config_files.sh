@@ -16,9 +16,8 @@ cp -rf ./config/terminator/config ~/.config/terminator/
 
 info "🔤 Adding fonts..."
 # Create fonts folder if not exists
-mkdir -p ~/.fonts
-# Add fonts
-mv ./fonts/* ~/.fonts
+mkdir -p ~/.local/share/fonts
+mv ./fonts/* ~/.local/share/fonts
 
 info "⌨️ Adding zsh files..."
 cp ./zsh/.zshrc ~/
