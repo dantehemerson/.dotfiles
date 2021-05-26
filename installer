@@ -67,7 +67,9 @@ sudo apt-get install htop -y
 
 sudo ./installers/postman.sh
 
-# ./installers/insomnia.sh
+sudo snap install robo3t-snap -y
+
+./installers/docker-compose.sh
 
 # Download wallpapers
 ./installers/download-wallpapers.sh
