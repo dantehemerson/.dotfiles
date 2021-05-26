@@ -72,6 +72,10 @@ sudo snap install robo3t-snap -y
 sudo ./installers/docker.sh -y
 sudo ./installers/docker-compose.sh -y
 
+sudo ./installers/zoom.sh -y
+
+sudo ./installers/obs.sh -y
+
 # Download wallpapers
 ./installers/download-wallpapers.sh
 
