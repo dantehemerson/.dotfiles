@@ -69,7 +69,8 @@ sudo ./installers/postman.sh
 
 sudo snap install robo3t-snap -y
 
-./installers/docker-compose.sh
+sudo ./installers/docker.sh -y
+sudo ./installers/docker-compose.sh -y
 
 # Download wallpapers
 ./installers/download-wallpapers.sh
