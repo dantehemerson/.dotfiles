@@ -22,6 +22,10 @@ function clip() {
   xclip -selection clipboard < $1
 }
 
+# Copy file to clipboard, use: cf <path/to/file.text>
+function cf() {
+  xclip -sel clip < $1
+}
 
 function runsshagent() {
 	eval $(ssh-agent -s)
