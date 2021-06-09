@@ -1,7 +1,7 @@
 [global_config]
-  enabled_plugins = CustomCommandsMenu, InactivityWatch, TestPlugin, ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, MavenPluginURLHandler, LaunchpadBugURLHandler
+  enabled_plugins = MavenPluginURLHandler, TerminalShot, TestPlugin, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, CustomCommandsMenu, ActivityWatch, InactivityWatch, Logger, TerminatorThemes
   title_use_system_font = False
-  title_font = Fira Code Medium 12
+  title_font = Fira Code Medium 11
 [keybindings]
   go_up = <Alt>k
   go_down = <Alt>j
@@ -19,10 +19,11 @@
     background_color = "#282828"
     background_darkness = 0.94
     cursor_color = "#aaaaaa"
-    font = Operator Mono Lig weight=330 14
+    font = Operator Mono Lig weight=330 13
     foreground_color = "#ebdbb2"
     show_titlebar = False
     scrollback_infinite = True
+    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
     custom_command = zsh
     use_system_font = False
 [layouts]
