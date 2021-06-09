@@ -92,6 +92,11 @@ RPROMPT="%*"
 #   export EDITOR='mvim'
 # fi
 
+# Link scripts folder  
+export SCRIPTS=~/.local/bin/scripts
+mkdir -p "$SCRIPTS" &>/dev/null
+export PATH="$SCRIPTS:$PATH"
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
