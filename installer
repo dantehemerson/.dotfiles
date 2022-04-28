@@ -55,6 +55,7 @@ sudo apt install bat -y
 ## Monitoring
 sudo snap install bashtop -y
 sudo apt-get install htop -y
+sudo apt-get install dconf-editor
 
 
 ./installers/ubuntu.sh
