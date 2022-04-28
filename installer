@@ -67,7 +67,7 @@ sudo apt-get install htop -y
 
 sudo ./installers/postman.sh
 
-sudo snap install robo3t-snap -y
+sudo snap install robo3t-snap
 
 sudo ./installers/docker.sh -y
 sudo ./installers/docker-compose.sh -y
