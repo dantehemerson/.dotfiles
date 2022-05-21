@@ -38,6 +38,7 @@ alias scripts="jq '.scripts' package.json"
 alias deps="jq '.dependencies' package.json"                                                                                          
 # Show dev dependencies
 alias devs="jq '.devDependencies' package.json"
+alias version="jq '.version' package.json"
 
 # Common npm & yarn aliases
 alias ns="npm start"
