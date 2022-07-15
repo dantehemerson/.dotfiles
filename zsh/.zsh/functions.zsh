@@ -3,6 +3,11 @@ function kp() {
   fuser -k "$1"/tcp
 }
 
+# List processes listening on PORT $1
+function port() {
+  lsof "-i:$1"
+}
+
 # Determine size of a file or total size of a directory
 function fs() {
 	if du -b /dev/null > /dev/null 2>&1; then
