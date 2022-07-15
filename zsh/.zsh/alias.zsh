@@ -58,16 +58,16 @@ alias yb="yarn build"
 alias yi="yarn install"
 alias ts="ts-node"
 
-alias files="nautilus"
+alias files="nautilus &>/dev/null &"
 
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 
-# List folders
+# List files an folders in tree format
 alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
 
-
 # OS
+## Show disk data
 alias free="free -h"
 
 # bat
@@ -75,7 +75,8 @@ alias bat="batcat"
 
 # Execute velocity configuration 
 alias mouse="~/mouse.sh"
-alias code="codium"
+
+# Typos
 alias code.="code ."
 
 # IP

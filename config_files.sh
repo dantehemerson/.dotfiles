@@ -5,29 +5,25 @@ function info() {
 }
 
 info "Adding .gitconfig file..."
-cp ./user/.gitconfig ~/
+cp -n ./user/.gitconfig ~/
 
-info "Creating config for albert"
+info "Config for Albert"
 mkdir -p ~/.config/albert
-cp -rf ./config/albert/albert.conf ~/.config/albert/
+ln -sf "$PWD/config/albert/albert.conf" "$HOME/.config/albert/albert.conf"
 
-info "Creating config terminator"
+info "Terminator"
 mkdir -p ~/.config/terminator
-cp -rf ./config/terminator/config ~/.config/terminator/
-
+ln -sf "$PWD/config/terminator/config" "$HOME/.config/terminator/config"
 
 info "🔤 Adding fonts..."
 # Create fonts folder if not exists
 mkdir -p ~/.local/share/fonts
-cp -rf ./fonts/* ~/.local/share/fonts
+ln -sf "$PWD/fonts" "$HOME/.local/share/fonts"
 
 info "⌨️ Adding zsh files..."
-cp ./zsh/.zshrc ~/
-cp -rf ./zsh/.zsh ~/
+ln -sf "$PWD/zsh/.zshrc" "$HOME/.zshrc"
+ln -sf "$PWD/zsh/.zsh" "$HOME"
 
 
-info "✏️ Adding .vimrc file..."
-cp -rf ./user/.vimrc ~/
-
-#info "MOUSE SCRIPT -------------------------"
-#cp -rf ./setup/mouse.sh ~/
+info "Adding .vimrc file..."
+ln -sf "$PWD/user/.vimrc" "$HOME/.vimrc"
