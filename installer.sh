@@ -21,6 +21,9 @@ sudo apt-get install dnsutils
 echo "Installing git ..."
 sudo apt-get install git -y
 
+echo "Installing dconf-editor"
+sudo apt install dconf-editor
+
 echo "Installing xclip ..."
 sudo apt-get install xclip -y
 
