@@ -39,7 +39,7 @@ echo "Installing vi and vim"
 sudo apt-get install vim -y
 
 echo "Installing robo3t..."
-sudo snap install robo3t-snap -y
+sudo snap install robo3t-snap
 
 echo "Installing teminator..."
 sudo apt-get install terminator -y
@@ -53,7 +53,7 @@ sudo apt-get install fzf -y
 sudo apt install bat -y
 
 ## Monitoring
-sudo snap install bashtop -y
+sudo snap install bashtop
 sudo apt-get install htop -y
 
 
@@ -67,7 +67,7 @@ sudo apt-get install htop -y
 
 sudo ./installers/postman.sh
 
-sudo snap install robo3t-snap -y
+sudo snap install robo3t-snap
 
 sudo ./installers/docker.sh -y
 sudo ./installers/docker-compose.sh -y
