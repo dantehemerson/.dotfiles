@@ -75,6 +75,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# load configs again to overwrite some git aliases
+for config (~/.zsh/*.zsh) source $config
+
 # User configuration
 
 # Add date to the right

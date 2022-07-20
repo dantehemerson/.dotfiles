@@ -1,24 +1,13 @@
 alias v="vim"
 
-alias g="git"
-alias ga="git add"
 alias gc="git commit -m "
 alias gs="git status"
-alias gd="git diff"
-alias gf="git fetch"
 alias gm="git merge"
-alias gr="git rebase"
-alias gu="git unstage"
-
-
-alias gaa="git add"
 
 ## Pull
-alias gl="git pull"
 alias glb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
 
 # Push current branch
-alias gp="git push"
 alias gpb="git push origin \$(git rev-parse --abbrev-ref HEAD)"
 
 # Copy default ssh
@@ -35,7 +24,11 @@ alias chrome='google-chrome'
 ## NodeJS
 alias scripts="jq '.scripts' package.json"
 # Show dependencies
-alias deps="jq '.dependencies' package.json"                                                                                          
+alias deps="jq '.dependencies' package.json"                                                              
+
+# Show engines
+alias engines="jq '.engines' package.json"
+
 # Show dev dependencies
 alias devs="jq '.devDependencies' package.json"
 alias version="jq '.version' package.json"
