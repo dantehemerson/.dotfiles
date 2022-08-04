@@ -17,7 +17,7 @@ sudo apt-get install breeze-cursor-theme -y
 
 echo "🔷 GNOME"
 
-echo "🔹 Installing Gnome Tweaks..."
+echo "🔹 Installing Gnome Tweaks..." # Not Available in Ubuntu 22.04
 sudo apt install gnome-tweak-tool -y
 
 echo "🔹 Installing Gnome SHELL..."
