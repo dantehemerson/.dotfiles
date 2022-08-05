@@ -8,6 +8,12 @@ function port() {
   lsof "-i:$1"
 }
 
+
+# Exit keybase
+function ekb() {
+  keybase ctl app-exit
+}
+
 # Determine size of a file or total size of a directory
 function fs() {
 	if du -b /dev/null > /dev/null 2>&1; then
