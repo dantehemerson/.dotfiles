@@ -1,20 +1,23 @@
 [user]
-	email = mail@dantecalderon.dev
+	email = dantehemerson@gmail.com
 	name = Dante Calderon
 
 [core]
-	editor = vim
+	editor = vi
 
-[commit]
-  gpgsign = true
+# Activate if needed
+# [commit]
+#  gpgsign = true
 
 [alias]
 	log1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	lpg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	log2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 	graphgpg = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%C(blue)%x20(%ce)%x20%C(cyan)[gpg:%GK%x20%G?]%C(reset)%n%x20%s%n"
 	graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%C(blue)%x20(%ce)%x20%C(cyan)%C(reset)%n%x20%s%n"
 	count = rev-list HEAD --count
 	stats = shortlog -s -n --all
  	local = config --local --list
+  select = "!f() { git for-each-ref --sort=-committerdate refs/heads/ --format=\"%(refname:short)\" | fzf --height 50% --ansi --reverse --preview \"git log --color=always {} | head -200\" | sed \"s/^..//\" | xargs -r git checkout; }; f"
+
 
 

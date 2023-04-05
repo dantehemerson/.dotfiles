@@ -3,3 +3,4 @@
 *.tar.gz*
 *.deb*
 *.uuid
+.DS_Store

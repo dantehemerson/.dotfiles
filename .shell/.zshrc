@@ -126,3 +126,7 @@ eval "$(fnm env --use-on-cd)"
 # export PATH=/home/dantehemerson/.cargo/bin:$PATH
 
 
+
+
+PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+PROMPT+='%{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'
