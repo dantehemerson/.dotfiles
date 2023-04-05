@@ -5,7 +5,6 @@ alias v="vi"
 alias gc="git commit -m "
 alias gs="git status"
 alias gm="git merge"fdfd
-alias monos="AsdlKJ"
 
 # Pull current branch
 alias glb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
