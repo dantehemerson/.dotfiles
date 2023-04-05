@@ -1,5 +1,17 @@
 alias v="vi"
 
+# ========= Fast switching directories ===========
+alias dotfiles="cd ~/dotfiles"
+alias repos="cd ~/coding/repos"
+alias oss="cd ~/coding/oss"
+alias downloads="cd ~/Downloads"
+alias Downloads="cd ~/Downloads"
+
+# Files
+alias zshrc="vi ~/.zshrc"
+alias vimrc="vi ~/.vimrc"
+alias aliases="vi ~/dotfiles/.shell/.common/.aliases.sh"
+
 
 # =========== Git ===========
 alias gc="git commit -m "
@@ -40,9 +52,6 @@ elif [[ $(uname) == "Linux" ]]; then # Linux only aliases
   alias files="nautilus &>/dev/null &"
   alias chrome='google-chrome'
 fi
-
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
 
 # List files an folders in tree format
 alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
