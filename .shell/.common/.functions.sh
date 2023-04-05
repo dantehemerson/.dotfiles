@@ -8,7 +8,6 @@ function port() {
   lsof "-i:$1"
 }
 
-
 # Exit keybase
 function ekb() {
   keybase ctl app-exit
@@ -36,10 +35,6 @@ function clip() {
 # Copy file to clipboard, use: cf <path/to/file.text>
 function cf() {
   xclip -sel clip < $1
-}
-
-function runsshagent() {
-	eval $(ssh-agent -s)
 }
 
 function _reverse_search() {

@@ -1,6 +1,8 @@
 # load configs
-for config (~/.zsh/*.zsh) source $config
-
+# load configs again to overwrite some git aliases
+for file in ~/.shell/.common/.aliases.sh ~/.shell/.common/.functions.sh; do
+    [ -r "$file" ] && source "$file"
+done
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -75,13 +77,15 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# load configs again to overwrite some git aliases
-for config (~/.zsh/*.zsh) source $config
+# # load configs again to overwrite some git aliases
+# for file in .aliases.sh .functions.sh; do
+#     [ -r "$file" ] && source "$file"
+# done
 
 # User configuration
 
-# Add date to the right
-RPROMPT="%*"
+# # Add date to the right
+# RPROMPT="%*"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -106,13 +110,19 @@ export PATH="$SCRIPTS:$PATH"
 # Move files to trashcurl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
 # Sign commits
-export GPG_TTY=$(tty)
+# export GPG_TTY=$(tty)
 
-# This loads nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# NVM(Deprecated): Migrated to fnm
+# # This loads nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# FNM
+eval "$(fnm env --use-on-cd)"
 
 ## Rust
 # Load cargo
 # export PATH=/home/dantehemerson/.cargo/bin:$PATH
+
+

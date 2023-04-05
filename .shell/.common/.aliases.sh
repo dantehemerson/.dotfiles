@@ -1,17 +1,17 @@
-alias v="vim"
+alias v="vi"
 
+
+# =========== Git ===========
 alias gc="git commit -m "
 alias gs="git status"
-alias gm="git merge"
+alias gm="git merge"fdfd
+alias monos="AsdlKJ"
 
-## Pull
+# Pull current branch
 alias glb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
 
 # Push current branch
 alias gpb="git push origin \$(git rev-parse --abbrev-ref HEAD)"
-
-# Copy default ssh
-alias cpssh="xclip -sel clip < ~/.ssh/id_rsa.pub"
 
 # Start mongo service
 alias mongoplay="sudo service mongod start"
@@ -19,19 +19,13 @@ alias mongoplay="sudo service mongod start"
 # Move files to trash
 alias srm='safe-rm'
 
-alias chrome='google-chrome'
-
-## NodeJS
+# =========== Node.js ===========
 alias scripts="jq '.scripts' package.json"
-# Show dependencies
-alias deps="jq '.dependencies' package.json"                                                              
-
-# Show engines
+alias deps="jq '.dependencies' package.json" 
 alias engines="jq '.engines' package.json"
-
-# Show dev dependencies
 alias devs="jq '.devDependencies' package.json"
 alias version="jq '.version' package.json"
+alias 
 
 # Common npm & yarn aliases
 alias ns="npm start"
@@ -39,19 +33,14 @@ alias nb="npm run build"
 alias nrs="npm run serve"
 alias nrd="npm run dev"
 alias nbs="npm run build && npm run serve"
-alias nt="npm t"
-alias y="yarn"
-alias ya="yarn add"
-alias yad="yarn add -D"
-alias yr="yarn remove"
-alias yag"yarn global add"
-alias ys="yarn start"
-alias yd="yarn dev"
-alias yb="yarn build"
-alias yi="yarn install"
 alias ts="ts-node"
 
-alias files="nautilus &>/dev/null &"
+if [[ $(uname) == "Darwin" ]]; then # OS X only aliases
+  alias files="open ."
+elif [[ $(uname) == "Linux" ]]; then # Linux only aliases
+  alias files="nautilus &>/dev/null &"
+  alias chrome='google-chrome'
+fi
 
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
@@ -59,18 +48,11 @@ alias vimrc="vim ~/.vimrc"
 # List files an folders in tree format
 alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
 
-# OS
-## Show disk data
-alias free="free -h"
-
 # bat
 alias bat="batcat"
 
 # Execute velocity configuration 
 alias mouse="~/mouse.sh"
-
-# Typos
-alias code.="code ."
 
 # IP
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -84,3 +66,7 @@ alias cd....="cd ...."
 alias cd.....="cd ....."
 alias cd......="cd ......"
 alias cd.......="cd ......."
+
+
+# Typos
+alias code.="code ."
