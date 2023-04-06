@@ -1,8 +1,3 @@
-# load configs
-# load configs again to overwrite some git aliases
-for file in ~/.shell/.common/.aliases.sh ~/.shell/.common/.functions.sh; do
-    [ -r "$file" ] && source "$file"
-done
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -77,12 +72,12 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# # load configs again to overwrite some git aliases
-# for file in .aliases.sh .functions.sh; do
-#     [ -r "$file" ] && source "$file"
-# done
 
-# User configuration
+# == User configuration ==
+# load custom aliases and functions
+for file in .aliases.sh .functions.sh; do
+    [ -r ~/.shell/.common/$file ] && source ~/.shell/.common/$file >/dev/null 2>&1
+done
 
 # # Add date to the right
 # RPROMPT="%*"
@@ -124,8 +119,6 @@ eval "$(fnm env --use-on-cd)"
 ## Rust
 # Load cargo
 # export PATH=/home/dantehemerson/.cargo/bin:$PATH
-
-
 
 
 PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"

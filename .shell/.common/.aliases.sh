@@ -3,6 +3,7 @@ alias v="vi"
 # ========= Fast switching directories ===========
 alias dotfiles="cd ~/dotfiles"
 alias repos="cd ~/coding/repos"
+alias coding="cd ~/coding"
 alias oss="cd ~/coding/oss"
 alias downloads="cd ~/Downloads"
 alias Downloads="cd ~/Downloads"
@@ -16,7 +17,7 @@ alias aliases="vi ~/dotfiles/.shell/.common/.aliases.sh"
 # =========== Git ===========
 alias gc="git commit -m "
 alias gs="git status"
-alias gm="git merge"fdfd
+
 
 # Pull current branch
 alias glb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
