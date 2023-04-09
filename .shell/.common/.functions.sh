@@ -27,7 +27,7 @@ function fs() {
 	fi;
 }
 
-# Copy to clipboard, use: clip file.txt
+# Copy to clipboard, use: clip file.txt. TODO:Add mac support
 function clip() {
   xclip -selection clipboard < $1
 }

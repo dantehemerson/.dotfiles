@@ -4,10 +4,44 @@
 
 [core]
 	editor = vi
+#  pager  = delta
 
 # Activate if needed
 # [commit]
 #  gpgsign = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = line-numbers decorations
+    navigate = true
+    line-numbers = true
+    plus-style = syntax "#003800"
+    minus-style = syntax "#3f0001"
+    # side-by-side = true
+    hunk-header-style= "omit"
+    commit-decoration-style = bold yellow box ul
+    #file-decoration-style = none
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold "#ffffff"
+    file-decoration-style = ol "#2d2b2b" box
+    # file-decoration-style = none
+    hunk-header-decoration-style = cyan box ul
+
+[delta "line-numbers"]
+  line-numbers-left-style = cyan
+  line-numbers-right-style = cyan
+  line-numbers-minus-style = 124
+  line-numbers-plus-style = 28
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
 
 [alias]
 	log1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all

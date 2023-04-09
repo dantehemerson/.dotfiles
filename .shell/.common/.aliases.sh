@@ -11,12 +11,19 @@ alias Downloads="cd ~/Downloads"
 # Files
 alias zshrc="vi ~/.zshrc"
 alias vimrc="vi ~/.vimrc"
+alias gitconfig="vi ~/.gitconfig"
 alias aliases="vi ~/dotfiles/.shell/.common/.aliases.sh"
+alias functions="vi ~/dotfiles/.shell/.common/.functions.sh"
 
+
+# ========== Notes ===========
+alias vnotes="vi ~/.notes.md" 
+alias notes='bat ~/.notes.md --style="grid"'  # Show notes
 
 # =========== Git ===========
 alias gc="git commit -m "
 alias gs="git status"
+alias gd="git diff | delta"
 
 
 # Pull current branch
@@ -30,6 +37,12 @@ alias mongoplay="sudo service mongod start"
 
 # Move files to trash
 alias srm='safe-rm'
+
+
+
+# =========== Tmux ==============
+alias tma="tmux a"
+alias tmat="tmux a -t "
 
 # =========== Node.js ===========
 alias scripts="jq '.scripts' package.json"
@@ -58,7 +71,9 @@ fi
 alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
 
 # bat
-alias bat="batcat"
+if [[ $(uname) == "Linux" ]]; then # Linux only aliases
+  alias bat="batcat"
+fi
 
 # Execute velocity configuration 
 alias mouse="~/mouse.sh"
