@@ -1,5 +1,13 @@
-## === HOMEBREW =====
+## ============= HOMEBREW ===============
+
+# cat with highlight
 brew install bat
+
+# Render markdown on the CLI, with pizzazz!
+brew install glow
+
+
+## ============ CONFIGS =======================
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change

@@ -18,7 +18,7 @@ alias functions="vi ~/dotfiles/.shell/.common/.functions.sh"
 
 # ========== Notes ===========
 alias vnotes="vi ~/.notes.md" 
-alias notes='bat ~/.notes.md --style="grid"'  # Show notes
+alias notes='glow ~/.notes.md'  # Show notes
 
 # =========== Git ===========
 alias gc="git commit -m "
