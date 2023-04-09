@@ -43,6 +43,8 @@ alias srm='safe-rm'
 # =========== Tmux ==============
 alias tma="tmux a"
 alias tmat="tmux a -t "
+alias tml="tmux ls"
+alias tmks="tmux kill-session -a"
 
 # =========== Node.js ===========
 alias scripts="jq '.scripts' package.json"
