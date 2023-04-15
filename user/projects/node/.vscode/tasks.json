@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Node",
+      "type": "shell",
+      "command": "make",
+      "args": [
+        "-j4"
+      ],
+      "presentation": {
+        "reveal": "never",
+        "echo": true,
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
