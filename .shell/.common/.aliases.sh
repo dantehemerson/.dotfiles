@@ -73,14 +73,6 @@ fi
 # List files an folders in tree format
 alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
 
-# bat
-if [[ $(uname) == "Linux" ]]; then # Linux only aliases
-  alias bat="batcat"
-fi
-
-# Execute velocity configuration 
-alias mouse="~/mouse.sh"
-
 # IP
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
