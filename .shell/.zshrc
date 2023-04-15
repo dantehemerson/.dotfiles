@@ -72,7 +72,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-
+# Message
 # == User configuration ==
 # load custom aliases and functions
 for file in .aliases.sh .functions.sh; do

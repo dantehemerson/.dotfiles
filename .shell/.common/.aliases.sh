@@ -44,6 +44,7 @@ alias srm='safe-rm'
 alias tma="tmux a"
 alias tmat="tmux a -t "
 alias tml="tmux ls"
+alias tmls="tmux ls"
 alias tmks="tmux kill-session -a"
 
 # =========== Node.js ===========
@@ -92,6 +93,11 @@ alias cd....="cd ...."
 alias cd.....="cd ....."
 alias cd......="cd ......"
 alias cd.......="cd ......."
+
+# Enter to directory and list
+function cdl() {
+  cd $1 && l
+}
 
 
 # Typos

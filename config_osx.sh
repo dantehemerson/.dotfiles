@@ -6,6 +6,9 @@ brew install bat
 # Render markdown on the CLI, with pizzazz!
 brew install glow
 
+# Tmux
+brew install tmux
+
 
 ## ============ CONFIGS =======================
 
