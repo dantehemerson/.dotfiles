@@ -3,6 +3,42 @@ echo "📦 Installing apps..."
 ## -------------------------------------------
 
 
+## ============ XCODE ============
+
+# Install Xcode Command Line Tools
+xcode-select --install
+
+
+## =========== BREW ============
+
+# Install Homebrew if not installed
+
+echo "🍺 Checking Homebrew installation..."
+
+if [[ ! -x "$(command -v brew)" ]]; then
+  echo "🍺 Homebrew not installed, installing..."
+
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  if [[ $? -eq 0 ]]; then
+    echo "✅ 🍺 Homebrew installed successfully"
+  else
+    echo "🍺 Homebrew installation failed, exiting bootstrap"
+    exit 1
+  fi
+
+else
+  echo "✅ 🍺 Homebrew already installed, skipping..."
+fi
+
+# Brew: Check your system for potential problems
+brew doctor
+
+# Update Homebrew
+echo "🍺 Updating Homebrew..."
+brew update
+
+
 
 ## =========== UTILITIES ============
 
@@ -72,4 +108,3 @@ brew install llvm
 
 # To generate compile_commands.json
 brew install bear
-

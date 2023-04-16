@@ -54,7 +54,6 @@ alias deps="jq '.dependencies' package.json"
 alias engines="jq '.engines' package.json"
 alias devs="jq '.devDependencies' package.json"
 alias version="jq '.version' package.json"
-alias 
 
 # Common npm & yarn aliases
 alias ns="npm start"

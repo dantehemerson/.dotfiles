@@ -27,6 +27,9 @@ function link() {
 # ZSH
 link "$PWD/user/.zshrc" "$HOME/.zshrc"
 
+# Bash
+link "$PWD/user/.bashrc" "$HOME/.bashrc"
+
 # Git 
 link "$PWD/user/.gitconfig" "$HOME/.gitconfig"
 
@@ -35,3 +38,4 @@ link "$PWD/user/.vimrc" "$HOME/.vimrc"
 
 # Tmux
 link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"
+

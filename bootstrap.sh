@@ -19,8 +19,6 @@ if [[ "$IS_LINUX" == true ]]; then
   echo "Shell: $SHELL"
   echo "Missing"
 
-
-
 elif [[ "$IS_OSX" == true ]]; then
   echo "- Info -"
   echo "SO: OSX"
