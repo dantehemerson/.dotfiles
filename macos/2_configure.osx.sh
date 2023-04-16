@@ -4,9 +4,6 @@
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
-# Ask for the administrator password upfront
-sudo -v
-
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
@@ -107,28 +104,17 @@ defaults write com.apple.spotlight orderedItems -array \
   '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
 
 
+## ================ SCREENSAVER ===============
+
+# Save screenshots to ~/Pictures/Screenshots folder
+mkdir -p ~/Pictures/Screenshots
+defaults write com.apple.screencapture location ~/Pictures/Screenshots
 
 
-# ================ Terminal ==============
+## ================ USER FILES ===============
 
-
-
-
-## -------------------------------------------
-## ============= INSTALL APPS ================
-## -------------------------------------------
-
-## ============= HOMEBREW ===============
-
-# cat with highlight
-brew install bat
-
-# Render markdown on the CLI, with pizzazz!
-brew install glow
-
-# Tmux
-brew install tmux
-
+# Link user files(.zshrc, .gitconfig, .vimrc, .tmux.conf, etc.)
+bash $PWD/macos/2.1_link_user_files.osx.sh
 
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
