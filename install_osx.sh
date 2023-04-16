@@ -18,7 +18,7 @@ function link() {
     ln -sf "$1" "$2"
     echo "🔗 File $2 linked"
   else
-    echo "🔗 File $2 is already linked"
+    echo "ℹ️  File $2 is already linked"
   fi
 }
 
