@@ -13,7 +13,7 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Load custom aliases and functions
-for file in aliases.sh functions.sh bash/aliases.sh; do
+for file in aliases.sh functions.sh bash/aliases.sh bash/functions.sh; do
     [ -r ~/.dotfiles/shell/$file ] && source ~/.dotfiles/shell/$file >/dev/null 2>&1
 done
 
@@ -52,7 +52,7 @@ function save_history {
 }
 
 # # Show git branch in prompt(only when a git repo is present)
-function print_before_the_prompt () {
+function prompt () {
   local exit_code=$?
 
   dir=$PWD
@@ -69,8 +69,7 @@ function print_before_the_prompt () {
   # PS1="${status_color}➜ ${bldpur}${dir} ${bldgrn}$(vcprompt)${txtrst}$ "
 
   # without status
-  PS1="${bldpur}${dir} ${bldgrn}$(vcprompt)${txtrst}$ "
+  PS1="\u@\h:${bldgrn}${dir} ${bldpur}$(vcprompt)${txtrst}$ "
 }
 
-PROMPT_COMMAND=print_before_the_prompt
-PROMPT_COMMAND="save_history; $PROMPT_COMMAND"
+PROMPT_COMMAND="save_history; prompt;"

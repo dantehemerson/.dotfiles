@@ -75,7 +75,7 @@ source $ZSH/oh-my-zsh.sh
 # Message
 # == User configuration ==
 # load custom aliases and functions
-for file in aliases.sh functions.sh; do
+for file in aliases.sh functions.sh zsh/functions.sh; do
     [ -r ~/.dotfiles/shell/$file ] && source ~/.dotfiles/shell/$file >/dev/null 2>&1
 done
 
