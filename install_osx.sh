@@ -25,11 +25,13 @@ function link() {
 ## =========== LINK FILES ===========
 
 # ZSH
-link "$PWD/.shell" "$HOME/.shell"
-link "$PWD/.shell/.zshrc" "$HOME/.zshrc"
+link "$PWD/user/.zshrc" "$HOME/.zshrc"
 
-# Git Config
+# Git 
 link "$PWD/user/.gitconfig" "$HOME/.gitconfig"
 
-# Vimrc
+# Vim
 link "$PWD/user/.vimrc" "$HOME/.vimrc"
+
+# Tmux
+link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"

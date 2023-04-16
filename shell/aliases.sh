@@ -1,7 +1,7 @@
 alias v="vi"
 
 # ========= Fast switching directories ===========
-alias dotfiles="cd ~/dotfiles"
+alias dotfiles="cd ~/.dotfiles"
 alias repos="cd ~/coding/repos"
 alias coding="cd ~/coding"
 alias oss="cd ~/coding/oss"
@@ -12,8 +12,9 @@ alias Downloads="cd ~/Downloads"
 alias zshrc="vi ~/.zshrc"
 alias vimrc="vi ~/.vimrc"
 alias gitconfig="vi ~/.gitconfig"
-alias aliases="vi ~/dotfiles/.shell/.common/.aliases.sh"
-alias functions="vi ~/dotfiles/.shell/.common/.functions.sh"
+alias tmuxconf="vi ~/.tmux.conf"
+alias aliases="vi ~/.dotfiles/shell/aliases.sh"
+alias functions="vi ~/.dotfiles/shell/functions.sh"
 
 
 # ========== Notes ===========
