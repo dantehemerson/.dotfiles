@@ -91,6 +91,19 @@ brew install colima
 
 
 
+## ============ BASH =============
+
+# Update to latest version
+brew install bash
+
+# Bash completion
+brew install bash-completion
+
+# To show git branch on terminal
+brew install vcprompt
+
+
+
 ## =========== C++ ============
 
 # Ninja is a small build system with a focus on speed 

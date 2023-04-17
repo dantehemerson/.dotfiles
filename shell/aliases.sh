@@ -10,6 +10,7 @@ alias Downloads="cd ~/Downloads"
 
 # Files
 alias zshrc="vi ~/.zshrc"
+alias bashrc="vi ~/.bashrc"
 alias vimrc="vi ~/.vimrc"
 alias gitconfig="vi ~/.gitconfig"
 alias tmuxconf="vi ~/.tmux.conf"
@@ -22,6 +23,7 @@ alias vnotes="vi ~/.notes.md"
 alias notes='glow ~/.notes.md'  # Show notes
 
 # =========== Git ===========
+alias gaa="git add ."
 alias gc="git commit -m "
 alias gs="git status"
 alias gd="git diff | delta"
@@ -46,7 +48,7 @@ alias tma="tmux a"
 alias tmat="tmux a -t "
 alias tml="tmux ls"
 alias tmls="tmux ls"
-alias tmks="tmux kill-session -a"
+alias tmks="tmux kill-session -t "
 
 # =========== Node.js ===========
 alias scripts="jq '.scripts' package.json"

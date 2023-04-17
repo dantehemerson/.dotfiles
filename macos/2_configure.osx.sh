@@ -104,6 +104,8 @@ defaults write com.apple.spotlight orderedItems -array \
   '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
 
 
+
+
 ## ================ SCREENSAVER ===============
 
 # Save screenshots to ~/Pictures/Screenshots folder
@@ -115,6 +117,25 @@ defaults write com.apple.screencapture location ~/Pictures/Screenshots
 
 # Link user files(.zshrc, .gitconfig, .vimrc, .tmux.conf, etc.)
 bash $PWD/macos/2.1_link_user_files.osx.sh
+
+
+
+
+## ================ TERMINAL ===============
+
+# Set hombrew bash  as default shell
+
+# Check if it is already on etc/shells
+
+if grep -Fxq "/opt/homebrew/bin/bash" /etc/shells; then
+    echo "Hombrew Bash is already on /etc/shells"
+else
+  echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
+  echo "Hombrew Bash is not on /etc/shells, adding it now"
+  echo "Hombrew Bash is now on /etc/shells!"
+fi
+
+
 
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."

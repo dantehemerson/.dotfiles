@@ -29,6 +29,7 @@ link "$PWD/user/.zshrc" "$HOME/.zshrc"
 
 # Bash
 link "$PWD/user/.bashrc" "$HOME/.bashrc"
+link "$PWD/user/.bash_profile" "$HOME/.bash_profile"
 
 # Git 
 link "$PWD/user/.gitconfig" "$HOME/.gitconfig"
