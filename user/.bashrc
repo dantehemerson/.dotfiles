@@ -7,9 +7,22 @@ shopt -s autocd
 # Append to the history file, don't overwrite it
 shopt -s histappend
 
+
+# show potential good files when trying to cd in a non existant dir
+shopt -s cdspell
+
+# Ignore case on auto-completion
+# Note: bind used instead of sticking these in .inputrc
+if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
+
+
+
 # Increase history size
 export HISTSIZE=5000
 export HISTFILESIZE=10000
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+export HISTCONTROL=ignoreboth
 
 
 export CLICOLOR=1
@@ -24,12 +37,6 @@ done
 # Bash completion
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
-
-# Supports history search using up and down arrows
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-bind '"\eOA": history-search-backward'
-bind '"\eOB": history-search-forward'
 
 # Colors for prompt
 txtred='\e[0;31m' # Red

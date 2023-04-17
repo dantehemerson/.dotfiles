@@ -36,3 +36,9 @@ function clip() {
 function cf() {
   xclip -sel clip < $1
 }
+
+
+# Tells you a joke
+function joke() {
+	curl -s https://v2.jokeapi.dev/joke/Any | jq '{setup, delivery, joke} | del(.[] | nulls)'
+}

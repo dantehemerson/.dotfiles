@@ -31,6 +31,9 @@ link "$PWD/user/.zshrc" "$HOME/.zshrc"
 link "$PWD/user/.bashrc" "$HOME/.bashrc"
 link "$PWD/user/.bash_profile" "$HOME/.bash_profile"
 
+# Inputrc
+link "$PWD/user/.inputrc" "$HOME/.inputrc"
+
 # Git 
 link "$PWD/user/.gitconfig" "$HOME/.gitconfig"
 

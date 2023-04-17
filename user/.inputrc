@@ -1,0 +1,84 @@
+# ====== COMPLETION =======
+
+# Make Tab autocomplete regardless of filename case
+set completion-ignore-case on
+
+# display all possible matches for an ambiguous pattern at first tab
+set show-all-if-ambiguous on
+
+
+# Make Tab cycle between possible completions
+# Cycle forward: Tab
+# Cycle backward: Shift-Tab
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+
+set menu-complete-display-prefix on
+set print-completion-horizontally off
+
+
+set colored-completion-prefix on
+set colored-stats on
+
+set show-all-if-unmodified on
+
+# Use the text that has already been typed as the prefix for searching through
+# commands (i.e. more intelligent Up/Down behavior)
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+
+# Show all autocomplete results at once
+set page-completions off
+
+set visible-stats on
+
+
+# Be more intelligent when autocompleting by also looking at the text after
+# the cursor. For example, when the current line is "cd ~/src/mozil", and
+# the cursor is on the "z", pressing Tab will not autocomplete it to "cd
+# ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
+# Readline used by Bash 4.)
+set skip-completed-text on
+
+# Bind GNU Readline kill-whole-line function to Ctrl-I
+# Deletes the whole line
+# https://tiswww.cwru.edu/php/chet/readline/rluserman.html#Bindable-Readline-Commands
+C-h: kill-whole-line
+
+
+# https://github.com/cgdb/cgdb/issues/189
+set enable-bracketed-paste off
+
+
+# ====== EDITING WITH VIM =======
+
+# Use vi editing mode
+set editing-mode vi
+
+# Avoid binding ^J, ^M,  ^C, ^?, ^S, ^Q, etc.
+$if mode=vi
+    set keymap vi-command
+    "gg": beginning-of-history
+    "G": end-of-history
+    "k": history-search-backward
+    "j": history-search-forward
+    "?": reverse-search-history
+    "/": forward-search-history
+
+    set keymap vi-insert
+    "\C-l": clear-screen
+    "\C-w": backward-kill-word
+    "\C-a": beginning-of-line
+    "\C-e": end-of-line
+$endif
+
+
+
+$if Bash
+  # In bash only, enable "magic space" so that typing space
+  # will show completions. i.e. !!_ (where _ is space)
+  # will expand !! for you.
+  Space: magic-space
+$endif
+
+
