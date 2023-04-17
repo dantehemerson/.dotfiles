@@ -10,3 +10,5 @@ alias md='mkdir -p'
 alias rd=rmdir
 
 
+# Fix issue with homebrew bash
+alias bash=/opt/homebrew/bin/bash

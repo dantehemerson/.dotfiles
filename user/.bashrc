@@ -37,8 +37,12 @@ bldgrn='\e[1;32m' # Bold Green
 bldpur='\e[1;35m' # Bold Purple
 bldcya='\e[1;36m' # Bold Cyan
 bldblue='\e[1;34m' # Bold Blue
+bldsky='\e[1;38;5;117m' # Bold Sky Blue
+blddblue='\e[1;38;5;33m' # Bold Dark Blue
+blddsky='\e[1;38;5;45m' # Bold Dark Sky Blue
 
 txtrst='\e[0m'    # Text Reset
+bld='\e[1m'       # Bold
 
 # GIT
 
@@ -46,7 +50,7 @@ txtrst='\e[0m'    # Text Reset
 # Save history without affecting the exist status
 # to be captured in the prompt
 function save_history {
-  exit_status=$?
+  local exit_status=$?
   history -a; history -c; history -r
   return $exit_status
 }
@@ -59,17 +63,19 @@ function prompt () {
   home=$HOME
   dir=${dir/"$HOME"/"~"}
 
-  # if [ $exit_code -ne 0 ]; then
-  #   status_color=$bldred
-  # else
-  #   status_color=$bldgrn
-  # fi
+  if [ $exit_code -ne 0 ]; then
+    status_color=$bldred
+  else
+    status_color=$blddblue
+  fi
   
-  # with status (uncomment the lines above)
-  # PS1="${status_color}➜ ${bldpur}${dir} ${bldgrn}$(vcprompt)${txtrst}$ "
-
-  # without status
-  PS1="\u@\h:${bldgrn}${dir} ${bldpur}$(vcprompt)${txtrst}$ "
+  # Avoid displaying exit status in VSCode terminal, since it as it's own status indicator.
+  # Variable IS_VSCODE passed in the terminal profile configuration of VSCode.
+  if [ "$IS_VSCODE" = "1" ]; then
+    PS1="${bldgrn}${dir} ${bldpur}$(vcprompt -f '[%b]')${txtrst}$ "
+  else
+    PS1="${status_color}• ${bldgrn}${dir} ${bldpur}$(vcprompt -f '[%b]')${txtrst}$ "
+  fi 
 }
 
 PROMPT_COMMAND="save_history; prompt;"
