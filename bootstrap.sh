@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 if [[ "$(uname)" == "Linux" ]]; then
   IS_LINUX=true

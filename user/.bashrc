@@ -1,3 +1,6 @@
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
+
 # autocd - automatically cd into directories when they are the only argument to a command
 shopt -s autocd
 

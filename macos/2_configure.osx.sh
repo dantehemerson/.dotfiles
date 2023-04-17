@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -134,8 +134,5 @@ else
   echo "Hombrew Bash is not on /etc/shells, adding it now"
   echo "Hombrew Bash is now on /etc/shells!"
 fi
-
-
-
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
