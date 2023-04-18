@@ -91,9 +91,9 @@ function prompt () {
   # Avoid displaying exit status in VSCode terminal, since it as it's own status indicator.
   # Variable IS_VSCODE passed in the terminal profile configuration of VSCode.
   if [ "$IS_VSCODE" = "1" ]; then
-    PS1="${bldgrn}${dir} ${bldpur}$(vcprompt -f '[%b]')${txtrst}$ "
+    PS1="${bldgrn}${dir}${bldpur}$(vcprompt -f ' [%b]')${txtrst}$ "
   else
-    PS1="${status_color}• ${bldgrn}${dir} ${bldpur}$(vcprompt -f '[%b]')${txtrst}$ "
+    PS1="${status_color}• ${bldgrn}${dir}${bldpur}$(vcprompt -f ' [%b]')${txtrst}$ "
   fi 
 }
 
