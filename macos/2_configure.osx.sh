@@ -4,12 +4,6 @@
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-
-
-
 ## ============= GENERAL UI/UX ===============
 
 # Disable the sound effects on boot
@@ -123,14 +117,22 @@ bash $PWD/macos/2.1_link_user_files.osx.sh
 
 ## ================ TERMINAL ===============
 
-# Set hombrew bash  as default shell
+## Set hombrew bash  as default shell
+
+if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
+  BASH_PATH="/opt/homebrew/bin/bash"
+else # Intel
+  BASH_PATH="/usr/local/bin/bash"
+fi
 
 # Check if it is already on etc/shells
 
-if grep -Fxq "/opt/homebrew/bin/bash" /etc/shells; then
+echo "Adding Hombrew Bash to /etc/shells"
+echo "BASH_PATH: $BASH_PATH"
+if grep -Fxq $BASH_PATH /etc/shells; then
     echo "Hombrew Bash is already on /etc/shells"
 else
-  echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
+  echo $BASH_PATH | sudo tee -a /etc/shells
   echo "Hombrew Bash is not on /etc/shells, adding it now"
   echo "Hombrew Bash is now on /etc/shells!"
 fi

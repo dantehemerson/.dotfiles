@@ -11,4 +11,8 @@ alias rd=rmdir
 
 
 # Fix issue with homebrew bash
-alias bash=/opt/homebrew/bin/bash
+if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
+  alias bash=/opt/homebrew/bin/bash
+else # Intel
+  alias bash=/usr/local/bin/bash
+fi

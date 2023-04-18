@@ -1,5 +1,14 @@
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/sbin:$PATH"
+# Load hombrew bin
+if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
+  export PATH="/opt/homebrew/bin:$PATH"
+  export PATH="/opt/homebrew/sbin:$PATH"
+else
+  export PATH="/usr/local/bin:$PATH"
+  export PATH="/usr/local/sbin:$PATH"
+fi
+
+# Load .inputrc if it exists
+[ -f ~/.inputrc ] && bind -f ~/.inputrc
 
 # autocd - automatically cd into directories when they are the only argument to a command
 shopt -s autocd
@@ -10,12 +19,6 @@ shopt -s histappend
 
 # show potential good files when trying to cd in a non existant dir
 shopt -s cdspell
-
-# Ignore case on auto-completion
-# Note: bind used instead of sticking these in .inputrc
-if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
-
-
 
 # Increase history size
 export HISTSIZE=5000
@@ -35,7 +38,13 @@ done
 
 
 # Bash completion
-[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
+  [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+else # Intel
+  [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+fi
+
 
 
 # Colors for prompt

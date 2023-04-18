@@ -4,3 +4,4 @@
 *.deb*
 *.uuid
 .DS_Store
+.env.sh
