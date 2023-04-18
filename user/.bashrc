@@ -98,3 +98,7 @@ function prompt () {
 }
 
 PROMPT_COMMAND="save_history; prompt;"
+
+
+# FNM: Node version manager
+eval "$(fnm env --use-on-cd)"
