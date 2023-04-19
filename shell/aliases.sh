@@ -23,7 +23,7 @@ alias vnotes="vi ~/.notes.md"
 alias notes='glow ~/.notes.md'  # Show notes
 
 # =========== Git ===========
-alias gaa="git add ."
+alias gaa="git add --all"
 alias gc="git commit -m "
 alias gs="git status"
 alias gd="git diff | delta"
