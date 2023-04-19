@@ -35,6 +35,9 @@ set showmode        "Show current mode down the bottom
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
+set mouse=a
+
+
 
 " ================ Turn Off Swap Files ==============
 set noswapfile

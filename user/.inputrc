@@ -41,8 +41,9 @@ set skip-completed-text on
 # Bind GNU Readline kill-whole-line function to Ctrl-I
 # Deletes the whole line
 # https://tiswww.cwru.edu/php/chet/readline/rluserman.html#Bindable-Readline-Commands
-C-h: kill-whole-line
-
+# Not used because using vi mode
+#"C-u": kill-line
+#"C-h": kill-whole-line
 
 # https://github.com/cgdb/cgdb/issues/189
 set enable-bracketed-paste off
@@ -68,6 +69,8 @@ $if mode=vi
     "\C-w": backward-kill-word
     "\C-a": beginning-of-line
     "\C-e": end-of-line
+    "\C-u": kill-line
+    "\C-h": kill-whole-line
 $endif
 
 

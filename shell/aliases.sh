@@ -96,3 +96,24 @@ function cdl() {
 
 # Typos
 alias code.="code ."
+
+
+
+## ============ GITHUB CLI ============
+alias gha="cat ~/.dotfiles/shell/aliases.sh | grep -E 'gh|promote|pr|repo' | bat $1 -l=sh --style=plain,grid --wrap=never"
+
+# Promote
+alias promote2stage="gh workflow run promote.yml --ref develop  -f env='develop to stage'"
+alias promote2preprod="gh workflow run promote.yml --ref stage  -f env='stage to preprod'"
+alias promote2prod="gh workflow run promote.yml --ref preprod  -f env='preprod to prod'"
+
+# PRs 
+alias prview="gh pr view --web"
+alias prcreate="gh pr create --web"
+alias prapprove="gh pr review --approve "
+
+# Actions(Workflows)
+alias actions="gh workflow view --web"
+
+# Repo
+alias repo="gh repo view --web"
