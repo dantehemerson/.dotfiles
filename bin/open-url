@@ -11,7 +11,7 @@ OPEN_PROG="$(which xdg-open || which open)"
 # 	2. Grep for URL patterns.
 # 	3. Search & select one or more URLs via `fzf` fuzzy finder.
 # 	4. Open selected URL(s).
-URLS="$(tmux capture-pane -J -p | grep -oE "https?://[^[:space:]'\")]+" | tac | fzf-tmux --reverse --height=20 --multi || true)"
+URLS="$(tmux capture-pane -J -p | grep -oE "https?://[^[:space:]'\")]+" | tail -r | fzf-tmux --reverse --height=20 --multi || true)"
 
 
 

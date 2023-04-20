@@ -14,6 +14,7 @@ alias bashrc="vi ~/.bashrc"
 alias vimrc="vi ~/.vimrc"
 alias gitconfig="vi ~/.gitconfig"
 alias tmuxconf="vi ~/.tmux.conf"
+alias inputrc="vi ~/.inputrc"
 alias aliases="vi ~/.dotfiles/shell/aliases.sh"
 alias functions="vi ~/.dotfiles/shell/functions.sh"
 
