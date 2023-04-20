@@ -42,3 +42,12 @@ function cf() {
 function joke() {
 	curl -s https://v2.jokeapi.dev/joke/Any | jq '{setup, delivery, joke} | del(.[] | nulls)'
 }
+
+
+  # random git-commit message
+function randcommit(){
+  gitRan=$(curl -L -s http://whatthecommit.com/ |grep -A 1 "\"c" |tail -1 |sed 's/<p>//');
+  commitTemp="$1:$gitRan";
+  commitLowercase=`echo "$commitTemp" | awk '{ print tolower($0) }'`;
+  git add . && git commit -m "$commitLowercase";
+}
