@@ -10,8 +10,19 @@ if [[ "$(uname)" == "Darwin" ]]; then
   plutil -convert xml1 ~/.dotfiles/macos/preferences/com.apple.Terminal.plist
 
   # Remove not important keys
-  plutil -remove 'NSWindow Frame TTWindow' ./macos/preferences/com.apple.Terminal.plist
+  keys_to_remove=(
+    'NSWindow Frame TTWindow'
+    'NSWindow Frame NSNavPanelAutosaveName'
+    'NSWindow Frame NSFontPanel'
+    'NSWindow Frame New Command Panel'
+    'NSWindow Frame TTWindow Basic'
+    'NSWindow Frame TTWindow Grass'
+    'NSWindow Frame TTWindow Homebrew'
+  )
 
+  for key in "${keys_to_remove[@]}"; do
+    plutil -remove "$key" ~/.dotfiles/macos/preferences/com.apple.Terminal.plist
+  done
 
 fi
 
