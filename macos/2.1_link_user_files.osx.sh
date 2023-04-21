@@ -56,6 +56,8 @@ link "$PWD/user/.vimrc" "$HOME/.vimrc"
 # Tmux
 link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"
 
+# Terminal.app
+link "$PWD/macos/preferences/com.apple.Terminal.plist" "$HOME/Library/Preferences/com.apple.Terminal.plist"
 
 
 ## ============ CUSTOM OPTIONS ============
