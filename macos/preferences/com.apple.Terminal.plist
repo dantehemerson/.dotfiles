@@ -30,10 +30,6 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSWindow Frame NSColorPanel</key>
-	<string>880 207 255 186 0 0 2560 1415 </string>
-	<key>NSWindow Frame TTAppPreferences</key>
-	<string>1239 322 667 554 0 0 2560 1415 </string>
 	<key>ProfileCurrentVersion</key>
 	<real>2.0699999999999998</real>
 	<key>SecureKeyboardEntry</key>
@@ -115,10 +111,14 @@
 			<true/>
 			<key>WindowTitle</key>
 			<string>Nocturne Wolf Terminal</string>
+			<key>columnCount</key>
+			<integer>150</integer>
 			<key>deleteSendsBackspace</key>
 			<false/>
 			<key>name</key>
 			<string>Basic</string>
+			<key>rowCount</key>
+			<integer>80</integer>
 			<key>type</key>
 			<string>Window Settings</string>
 		</dict>

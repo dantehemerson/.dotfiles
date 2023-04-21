@@ -14,10 +14,12 @@ if [[ "$(uname)" == "Darwin" ]]; then
     'NSWindow Frame TTWindow'
     'NSWindow Frame NSNavPanelAutosaveName'
     'NSWindow Frame NSFontPanel'
+    'NSWindow Frame NSColorPanel'
     'NSWindow Frame New Command Panel'
     'NSWindow Frame TTWindow Basic'
     'NSWindow Frame TTWindow Grass'
     'NSWindow Frame TTWindow Homebrew'
+    'NSWindow Frame TTAppPreferences'
   )
 
   for key in "${keys_to_remove[@]}"; do
