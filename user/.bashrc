@@ -63,8 +63,11 @@ blddsky='\e[1;38;5;45m' # Bold Dark Sky Blue
 txtrst='\e[0m'    # Text Reset
 bld='\e[1m'       # Bold
 
-# GIT
 
+# FNM: Node version manager
+eval "$(fnm env --use-on-cd)"
+
+#  ============= PROMPT ===========
 
 # Save history without affecting the exist status
 # to be captured in the prompt
@@ -94,16 +97,63 @@ function prompt () {
     branch=$(vcprompt -f ' [%r]')
   fi
 
+  # Updates current dir and proxy icon in Terminal title ——
+  if [ -n "$TMUX" ]; then
+    tmux set-option set-titles-string "#{s|$HOME|~|:pane_current_path}  ◄  #{window_index} #{window_name}  —  Terminal"
+  fi
+
   # Variable IS_VSCODE passed in the terminal profile configuration of VSCode.
   if [ "$IS_VSCODE" = "1" ]; then
     PS1="\[${bldgrn}\]${dir}\[${bldpur}\]\$branch\[${txtrst}\]\$ "
   else
-    PS1="\[${status_color}\]• \[${bldgrn}\]${dir}\[${bldpur}\]\$branch\[${txtrst}\]\$ "
+    PS1="\[${status_color}\]⏺ \[${bldgrn}\]${dir}\[${bldpur}\]\$branch\[${txtrst}\]\$ "
   fi 
 }
 
 PROMPT_COMMAND="save_history; prompt;"
 
 
-# FNM: Node version manager
-eval "$(fnm env --use-on-cd)"
+# Show current directory in Terminal title(no tmux)
+# Disabled(makes conflict in tmux)
+# if [ -z "$TMUX" ]; then
+#   echo 'Putting right'
+#   update_terminal_cwd() {
+#     local exit_code=$?
+
+#     if [ -n "$TMUX" ]; then
+#       echo "tmux"
+#       return $exit_code
+#     fi
+#     echo "sin tmux"
+
+#     # Identify the directory using a "file:" scheme URL, including
+#     # the host name to disambiguate local vs. remote paths.
+
+#     # Percent-encode the pathname.
+#     local url_path=''
+
+#     {
+#         # Use LC_CTYPE=C to process text byte-by-byte and
+#         # LC_COLLATE=C to compare byte-for-byte. Ensure that
+#         # LC_ALL and LANG are not set so they don't interfere.
+#         local i ch hexch LC_CTYPE=C LC_COLLATE=C LC_ALL= LANG=
+#         for ((i = 0; i < ${#PWD}; ++i)); do
+#       ch="${PWD:i:1}"
+#       if [[ "$ch" =~ [/._~A-Za-z0-9-] ]]; then
+#           url_path+="$ch"
+#       else
+#           printf -v hexch "%02X" "'$ch"
+#           # printf treats values greater than 127 as
+#           # negative and pads with "FF", so truncate.
+#           url_path+="%${hexch: -2:2}"
+#       fi
+#         done
+#     }
+
+#     printf '\e]7;%s\a' "file://$HOSTNAME$url_path"
+
+#     return $exit_code
+#   }
+
+#   PROMPT_COMMAND="update_terminal_cwd${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+# fi
