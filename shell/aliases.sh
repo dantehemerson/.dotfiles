@@ -19,6 +19,10 @@ alias aliases="vi ~/.dotfiles/shell/aliases.sh"
 alias functions="vi ~/.dotfiles/shell/functions.sh"
 
 
+alias dback="~/.dotfiles/utils/dotfiles_backup.sh"
+alias dimp="~/.dotfiles/utils/dotfiles_import.sh"
+
+
 # ========== Notes ===========
 alias vnotes="vi ~/.notes.md" 
 alias notes='glow ~/.notes.md'  # Show notes
