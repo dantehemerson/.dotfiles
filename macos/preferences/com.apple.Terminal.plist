@@ -128,7 +128,7 @@
 			<key>ShowShellCommandInTitle</key>
 			<true/>
 			<key>WindowTitle</key>
-			<string>Nocturne Wolf Terminal import</string>
+			<string>Nocturne Wolf Terminal import test</string>
 			<key>deleteSendsBackspace</key>
 			<false/>
 			<key>name</key>

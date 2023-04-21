@@ -9,7 +9,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   # Terminal preferences
   cp ~/.dotfiles/macos/preferences/com.apple.Terminal.plist ~/Library/Preferences/
   plutil -convert binary1 ~/Library/Preferences/com.apple.Terminal.plist
-  killall Terminal
+  # killall Terminal
 fi
 
 echo "============== IMPORTING DOTFILES COMPLETE =============="
