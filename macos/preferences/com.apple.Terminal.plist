@@ -40,10 +40,8 @@
 	<string>471 667 499 128 0 0 2560 1415 </string>
 	<key>NSWindow Frame TTAppPreferences</key>
 	<string>1239 322 667 554 0 0 2560 1415 </string>
-	<key>NSWindow Frame TTWindow</key>
-	<string>449 295 1200 875 0 0 2560 1415 </string>
 	<key>NSWindow Frame TTWindow Basic</key>
-	<string>900 498 1396 815 0 0 2560 1415 </string>
+	<string>690 24 1704 1175 0 0 2560 1415 </string>
 	<key>NSWindow Frame TTWindow Grass</key>
 	<string>455 811 570 371 0 0 2560 1415 </string>
 	<key>NSWindow Frame TTWindow Homebrew</key>
