@@ -67,6 +67,14 @@ bld='\e[1m'       # Bold
 # FNM: Node version manager
 eval "$(fnm env --use-on-cd)"
 
+fnm_node_path="$(which node)"
+
+# This fixes issue installing Postman Bridge interceptor since node not found
+if [ -z "$fnm_node_path" ]; then
+  rm -rf /usr/local/bin/node
+  ln -s $fnm_node_path /usr/local/bin/node
+fi
+
 #  ============= PROMPT ===========
 
 # Save history without affecting the exist status
