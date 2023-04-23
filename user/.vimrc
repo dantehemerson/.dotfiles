@@ -50,7 +50,7 @@ set nowb
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 
-" set title
+"set title
 "set title
 "set t_ts=\^[]6;
 "set t_fs=^G
