@@ -17,7 +17,7 @@ alias tmuxconf="vi ~/.tmux.conf"
 alias inputrc="vi ~/.inputrc"
 alias aliases="vi ~/.dotfiles/shell/aliases.sh"
 alias functions="vi ~/.dotfiles/shell/functions.sh"
-
+alias readme="bat README.md"
 
 alias dback="~/.dotfiles/utils/dotfiles_backup.sh"
 alias dimp="~/.dotfiles/utils/dotfiles_import.sh"

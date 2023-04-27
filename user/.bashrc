@@ -67,12 +67,9 @@ bld='\e[1m'       # Bold
 # FNM: Node version manager
 eval "$(fnm env --use-on-cd)"
 
-fnm_node_path="$(which node)"
-
 # This fixes issue installing Postman Bridge interceptor since node not found
-if [ -z "$fnm_node_path" ]; then
-  rm -rf /usr/local/bin/node
-  ln -s $fnm_node_path /usr/local/bin/node
+if [ -z "$FNM_MULTISHELL_PATH" ]; then
+  export PATH="$FNM_MULTISHELL_PATH/bin:$PATH"
 fi
 
 #  ============= PROMPT ===========
@@ -104,6 +101,11 @@ function prompt () {
     # Show revision if not on a branch
     branch=$(vcprompt -f ' [%r]')
   fi
+
+  if [ -n "$branch" ]; then
+    dir=$(basename "$dir")
+  fi
+
 
   # Updates current dir and proxy icon in Terminal title ——
   if [ -n "$TMUX" ]; then
