@@ -23,6 +23,11 @@ alias dback="~/.dotfiles/utils/dotfiles_backup.sh"
 alias dimp="~/.dotfiles/utils/dotfiles_import.sh"
 
 
+# =========== SSH ================
+alias ssh1="ssh dantehemerson@192.168.0.117 -v -p 2222"
+
+
+
 # ========== Notes ===========
 alias vnotes="vi ~/.notes.md" 
 alias notes='glow ~/.notes.md'  # Show notes
@@ -80,8 +85,9 @@ fi
 # List files an folders in tree format
 alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
 
-# IP
+# =========== NETWORK ======================
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep '^192'"
 
 alias reload="exec ${SHELL} -l"
 

@@ -47,6 +47,7 @@
 	stats = shortlog -s -n --all
  	local = config --local --list
   select = "!f() { git for-each-ref --sort=-committerdate refs/heads/ --format=\"%(refname:short)\" | fzf --height 50% --ansi --reverse --preview \"git log --color=always {} | head -200\" | sed \"s/^..//\" | xargs -r git checkout; }; f"
+  rmcached = "rm -rf --cached ."
 
 [oh-my-zsh]
 	hide-status = 1

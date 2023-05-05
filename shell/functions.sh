@@ -49,11 +49,18 @@ function randcommit(){
   gitRan=$(curl -L -s http://whatthecommit.com/ |grep -A 1 "\"c" |tail -1 |sed 's/<p>//');
   commitTemp="$gitRan";
   commitLowercase=`echo "$commitTemp" | awk '{ print tolower($0) }'`;
-  git add . && git commit -m "$commitLowercase";
+  git add --all && git commit -m "$commitLowercase";
+  gpb;
 }
 
 function colors() {
  for i in {0..255} ; do
    printf "\x1b[38;5;%smcolour%s                                 \n                                        | \x1b[7m\n" "${i}" "${i}"
  done
+}
+
+# Runs and delete the compiled file
+function exec_cpp() {
+  file_name=$(date +%s)
+  g++ -std=c++17 -lstdc++ -o "$filename" "$1" && "$filename" && rm "$filename"
 }

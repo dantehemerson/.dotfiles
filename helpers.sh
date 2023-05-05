@@ -11,6 +11,7 @@ parser_definition() {
   option  OPTION  -o --option on:"default"  -- "takes one optional argument"
   disp    :usage  -h --help
   disp    VERSION    --version
+  disp    SOLUTION -s  --solution
 }
 
 eval "$(./deps/getoptions parser_definition) exit 1" # argument parsing
