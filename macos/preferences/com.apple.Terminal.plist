@@ -69,17 +69,19 @@
 		<key>Basic</key>
 		<dict>
 			<key>BackgroundBlur</key>
-			<real>0.8242043484462781</real>
+			<real>0.5201203421260534</real>
 			<key>BackgroundColor</key>
 			<data>
 			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
 			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRy
 			b290gAGjCwwTVSRudWxs0w0ODxAREldOU1doaXRlXE5TQ29sb3JT
-			cGFjZVYkY2xhc3NFMC4wOAAQA4AC0hQVFhdaJGNsYXNzbmFtZVgk
-			Y2xhc3Nlc1dOU0NvbG9yohYYWE5TT2JqZWN0CBEaJCkyN0lMUVNX
-			XWRseYCGiIqPmqOrrgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAA
-			AAAAAAC3
+			cGFjZVYkY2xhc3NNMC4xMDEwNDY2MDU2ABADgALSFBUWF1okY2xh
+			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiFhhYTlNPYmplY3QIERok
+			KTI3SUxRU1ddZGx5gI6Qkpeiq7O2AAAAAAAAAQEAAAAAAAAAGQAA
+			AAAAAAAAAAAAAAAAAL8=
 			</data>
+			<key>CommandString</key>
+			<string>tmux</string>
 			<key>EscapeNonASCIICharacters</key>
 			<true/>
 			<key>Font</key>
@@ -99,6 +101,8 @@
 			<real>1.004032258064516</real>
 			<key>ProfileCurrentVersion</key>
 			<real>2.0699999999999998</real>
+			<key>RunCommandAsShell</key>
+			<false/>
 			<key>ShowActiveProcessInTitle</key>
 			<false/>
 			<key>ShowCommandKeyInTitle</key>

@@ -53,6 +53,8 @@ brew install glow
 # JSON parser and more
 brew install jq
 
+# Adaptive brightness for external displays
+brew install --cask lunar
 
 
 ## =========== GIT ============
