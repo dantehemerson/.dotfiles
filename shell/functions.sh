@@ -64,3 +64,7 @@ function exec_cpp() {
   file_name=$(date +%s)
   g++ -std=c++17 -lstdc++ -o "$filename" "$1" && "$filename" && rm "$filename"
 }
+
+
+# Generate nest module and service
+

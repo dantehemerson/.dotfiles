@@ -120,7 +120,8 @@ function prompt () {
   fi 
 }
 
-PROMPT_COMMAND="save_history; prompt;"
+#PROMPT_COMMAND="save_history; prompt;"
+PROMPT_COMMAND="prompt;"
 
 
 # Show current directory in Terminal title(no tmux)
@@ -167,3 +168,10 @@ PROMPT_COMMAND="save_history; prompt;"
 
 #   PROMPT_COMMAND="update_terminal_cwd${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 # fi
+
+
+
+_cd_completion() {
+    mapfile -t COMPREPLY < <(ls -d * | grep "${COMP_WORDS[COMP_CWORD]}")
+}
+# complete -F _cd_completion cd

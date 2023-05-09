@@ -18,7 +18,7 @@ set menu-complete-display-prefix on
 set colored-completion-prefix on
 set colored-stats on
 
-set show-all-if-unmodified on
+#set show-all-if-unmodified on
 
 # Use the text that has already been typed as the prefix for searching through
 # commands (i.e. more intelligent Up/Down behavior)
@@ -26,7 +26,7 @@ set show-all-if-unmodified on
 "\e[A": history-search-backward
 
 # Show all autocomplete results at once
-set page-completions off
+set page-completions on
 
 set visible-stats on
 
@@ -53,6 +53,7 @@ set enable-bracketed-paste off
 
 # Use vi editing mode
 set editing-mode vi
+set keymap vi
 
 # Avoid binding ^J, ^M,  ^C, ^?, ^S, ^Q, etc.
 $if mode=vi
