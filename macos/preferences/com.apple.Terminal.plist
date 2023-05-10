@@ -63,7 +63,7 @@
 		<integer>10</integer>
 	</array>
 	<key>TTAppPreferences Selected Tab</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>Window Settings</key>
 	<dict>
 		<key>Basic</key>
@@ -80,6 +80,8 @@
 			KTI3SUxRU1ddZGx5gI6Qkpeiq7O2AAAAAAAAAQEAAAAAAAAAGQAA
 			AAAAAAAAAAAAAAAAAL8=
 			</data>
+			<key>Bell</key>
+			<false/>
 			<key>CommandString</key>
 			<string>tmux</string>
 			<key>EscapeNonASCIICharacters</key>
