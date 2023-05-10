@@ -129,7 +129,7 @@ defaults write com.apple.spotlight orderedItems -array \
   '{"enabled" = 1;"name" = "MENU_CONVERSION";}' \
   '{"enabled" = 1;"name" = "MENU_EXPRESSION";}' \
   '{"enabled" = 1;"name" = "MENU_WEBSEARCH";}' \
-  '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
+  '{"enabled" = 1;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
 
 
 ## ================ SCREENSAVER ===============

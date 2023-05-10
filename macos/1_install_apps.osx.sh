@@ -50,11 +50,19 @@ brew install bat
 # Render markdown on the CLI, with pizzazz!
 brew install glow
 
+# Display directories as trees (with optional color/HTML output)
+brew install tree
+
 # JSON parser and more
 brew install jq
 
-# Adaptive brightness for external displays
-brew install --cask lunar
+# (not used) Adaptive brightness for external displays
+# brew install --cask lunar
+
+
+# Web browser focusing on privacy
+brew install --cask brave-browser
+
 
 
 ## =========== GIT ============
