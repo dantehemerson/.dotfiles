@@ -30,6 +30,8 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame TTWindow Basic</key>
+	<string>1381 77 1067 1220 0 0 2560 1415 </string>
 	<key>ProfileCurrentVersion</key>
 	<real>2.0699999999999998</real>
 	<key>SecureKeyboardEntry</key>
