@@ -38,6 +38,7 @@ set hidden
 set mouse=a
 
 
+set paste
 
 " ================ Turn Off Swap Files ==============
 set noswapfile
