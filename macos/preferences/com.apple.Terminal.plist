@@ -63,7 +63,7 @@
 		<integer>10</integer>
 	</array>
 	<key>TTAppPreferences Selected Tab</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>Window Settings</key>
 	<dict>
 		<key>Basic</key>
@@ -83,7 +83,7 @@
 			<key>Bell</key>
 			<false/>
 			<key>CommandString</key>
-			<string>tmux</string>
+			<string></string>
 			<key>EscapeNonASCIICharacters</key>
 			<true/>
 			<key>Font</key>
@@ -104,7 +104,7 @@
 			<key>ProfileCurrentVersion</key>
 			<real>2.0699999999999998</real>
 			<key>RunCommandAsShell</key>
-			<false/>
+			<true/>
 			<key>ShowActiveProcessInTitle</key>
 			<false/>
 			<key>ShowCommandKeyInTitle</key>
