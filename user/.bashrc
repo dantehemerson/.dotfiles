@@ -118,6 +118,8 @@ function prompt () {
   else
     PS1="\[${status_color}\]⏺ \[${bldgrn}\]${dir}\[${bldpur}\]\$branch\[${txtrst}\]\$ "
   fi 
+
+  return $exit_code
 }
 
 #PROMPT_COMMAND="save_history; prompt;"
