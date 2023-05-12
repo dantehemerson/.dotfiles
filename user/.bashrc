@@ -91,12 +91,12 @@ function __save_repo_path_if_found() {
 	REPO_PATH=$(git rev-parse --show-toplevel 2>/dev/null) || true
 }
 
-function __repo_cd() {
+function __save_repo_path_on_cd() {
 	\cd "$@" || return $?
-	 __save_repo_path_if_found
+	__save_repo_path_if_found
 }
 
-alias cd="__repo_cd"
+alias cd="__save_repo_path_on_cd"
 
 __save_repo_path_if_found
 
@@ -127,7 +127,7 @@ function prompt () {
 		parent_dir="$(dirname "$REPO_PATH")/"
 
 		# Only get path from workdir
-		dir=${workdir/"$parent_dir"/"(G)"}
+		dir=${workdir/"$parent_dir"/""}
 	else
 		dir=${workdir/"$HOME"/"~"}
   fi
