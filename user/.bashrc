@@ -82,41 +82,67 @@ function save_history {
   return $exit_status
 }
 
-# # Show git branch in prompt(only when a git repo is present)
+
+
+# =============== SAVE GIT DIRECTORY =========
+
+REPO_PATH=""
+function __save_repo_path_if_found() {
+	REPO_PATH=$(git rev-parse --show-toplevel 2>/dev/null) || true
+}
+
+function __repo_cd() {
+	\cd "$@" || return $?
+	 __save_repo_path_if_found
+}
+
+alias cd="__repo_cd"
+
+__save_repo_path_if_found
+
+
+# Show git branch in prompt(only when a git repo is present)
 function prompt () {
   local exit_code=$?
 
-  dir=$PWD
-  home=$HOME
-  dir=${dir/"$HOME"/"~"}
-
+	# Get status color
   if [ $exit_code -ne 0 ]; then
     status_color=$bldred
   else
     status_color=$blddblue
   fi
 
+	# Get branch
   branch=$(vcprompt -f ' [%b]')
   if [[ "$branch" == ' [(unknown)]' ]]; then
     # Show revision if not on a branch
     branch=$(vcprompt -f ' [%r]')
   fi
 
+
+	workdir=$PWD
+
+	# Get dir
   if [ -n "$branch" ]; then
-    dir=$(basename "$dir")
+		parent_dir="$(dirname "$REPO_PATH")/"
+
+		# Only get path from workdir
+		dir=${workdir/"$parent_dir"/"(G)"}
+	else
+		dir=${workdir/"$HOME"/"~"}
   fi
 
-
+	
   # Updates current dir and proxy icon in Terminal title ——
   if [ -n "$TMUX" ]; then
     tmux set-option set-titles-string "#{s|$HOME|~|:pane_current_path}  ◄  #{window_index} #{window_name}  —  Terminal"
   fi
 
+  PS1="\[${bldgrn}\]${dir}\[${bldpur}\]\$branch\[${txtrst}\]\$ "
+
   # Variable IS_VSCODE passed in the terminal profile configuration of VSCode.
-  if [ "$IS_VSCODE" = "1" ]; then
-    PS1="\[${bldgrn}\]${dir}\[${bldpur}\]\$branch\[${txtrst}\]\$ "
-  else
-    PS1="\[${status_color}\]⏺ \[${bldgrn}\]${dir}\[${bldpur}\]\$branch\[${txtrst}\]\$ "
+  if ! [ "$IS_VSCODE" = "1" ]; then
+    PS1="\[${status_color}\]⏺ $PS1"
   fi 
 
   return $exit_code
