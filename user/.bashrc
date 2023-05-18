@@ -7,6 +7,10 @@ else
   export PATH="/usr/local/sbin:$PATH"
 fi
 
+
+# Load .shellrc_custom if exists
+[ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
+
 # Load .inputrc if it exists
 [ -f ~/.inputrc ] && bind -f ~/.inputrc
 
@@ -203,3 +207,8 @@ _cd_completion() {
     mapfile -t COMPREPLY < <(ls -d * | grep "${COMP_WORDS[COMP_CWORD]}")
 }
 # complete -F _cd_completion cd
+
+
+# Optional export if go/bin exists
+if [ -d "$HOME/go/bin" ] ; then
+  export PATH=$PATH:$HOME/go/bin
