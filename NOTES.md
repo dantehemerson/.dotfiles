@@ -7,7 +7,7 @@ sudo systemctl stop smbd
 #### Mount storage
 
 ```
-sudo mkdir /mnt/msi_storage
+sudo mkdir -p /mnt/msi_storage
 sudo mount /dev/sdb1 /mnt/msi_storage
 ```
 
