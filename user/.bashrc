@@ -68,7 +68,7 @@ txtrst='\e[0m'    # Text Reset
 bld='\e[1m'       # Bold
 
 # ============ NODE VERSION MANAGER ===========
-if  [[ -d ~/.local/share/fnm/fnm ]]; then
+if  [[ -f ~/.local/share/fnm/fnm ]]; then
   export PATH="$HOME/.local/share/fnm:$PATH"
 fi
 
