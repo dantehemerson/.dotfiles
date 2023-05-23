@@ -212,12 +212,8 @@ _cd_completion() {
 # Optional export if go/bin exists
 if [ -d "$HOME/go/bin" ] ; then
   export PATH=$PATH:$HOME/go/bin
-<<<<<<< HEAD
 fi
-||||||| 0364474
-=======
 
 # fnm
-export PATH="/home/xserver/.local/share/fnm:$PATH"
-eval "`fnm env`"
->>>>>>> 7f0c76c3668e7b27dcf7fa3ba005d8dbd99ff669
+# export PATH="/home/xserver/.local/share/fnm:$PATH"
+# eval "`fnm env`"
