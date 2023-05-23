@@ -117,10 +117,10 @@ function prompt () {
   fi
 
 	# Get branch
-  branch=$(vcprompt -f ' [%b]')
+  #branch=$(vcprompt -f ' [%b]')
   if [[ "$branch" == ' [(unknown)]' ]]; then
     # Show revision if not on a branch
-    branch=$(vcprompt -f ' [%r]')
+  #  branch=$(vcprompt -f ' [%r]')
   fi
 
 
@@ -212,3 +212,7 @@ _cd_completion() {
 # Optional export if go/bin exists
 if [ -d "$HOME/go/bin" ] ; then
   export PATH=$PATH:$HOME/go/bin
+
+# fnm
+export PATH="/home/xserver/.local/share/fnm:$PATH"
+eval "`fnm env`"
