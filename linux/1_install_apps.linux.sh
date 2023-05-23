@@ -28,6 +28,8 @@ sudo apt-get install curl -y
 ## ============= GIT ====================
 sudo apt-get install git -y
 
+
+
 ## ================ UTILITIES =======================
 echo "🔹 Installing screenfetch..."
 sudo apt-get install screenfetch -y
@@ -78,6 +80,11 @@ else
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+
+
+## ============ PYTHON 2( for utils/bin/vcprompt ) ===================
+
+sudo apt-get install python2 -y
 
 
 
