@@ -159,64 +159,7 @@ function prompt () {
 #PROMPT_COMMAND="save_history; prompt;"
 PROMPT_COMMAND="prompt;"
 
-
-# Show current directory in Terminal title(no tmux)
-# Disabled(makes conflict in tmux)
-# if [ -z "$TMUX" ]; then
-#   echo 'Putting right'
-#   update_terminal_cwd() {
-#     local exit_code=$?
-
-#     if [ -n "$TMUX" ]; then
-#       echo "tmux"
-#       return $exit_code
-#     fi
-#     echo "sin tmux"
-
-#     # Identify the directory using a "file:" scheme URL, including
-#     # the host name to disambiguate local vs. remote paths.
-
-#     # Percent-encode the pathname.
-#     local url_path=''
-
-#     {
-#         # Use LC_CTYPE=C to process text byte-by-byte and
-#         # LC_COLLATE=C to compare byte-for-byte. Ensure that
-#         # LC_ALL and LANG are not set so they don't interfere.
-#         local i ch hexch LC_CTYPE=C LC_COLLATE=C LC_ALL= LANG=
-#         for ((i = 0; i < ${#PWD}; ++i)); do
-#       ch="${PWD:i:1}"
-#       if [[ "$ch" =~ [/._~A-Za-z0-9-] ]]; then
-#           url_path+="$ch"
-#       else
-#           printf -v hexch "%02X" "'$ch"
-#           # printf treats values greater than 127 as
-#           # negative and pads with "FF", so truncate.
-#           url_path+="%${hexch: -2:2}"
-#       fi
-#         done
-#     }
-
-#     printf '\e]7;%s\a' "file://$HOSTNAME$url_path"
-
-#     return $exit_code
-#   }
-
-#   PROMPT_COMMAND="update_terminal_cwd${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
-# fi
-
-
-
-_cd_completion() {
-    mapfile -t COMPREPLY < <(ls -d * | grep "${COMP_WORDS[COMP_CWORD]}")
-}
-# complete -F _cd_completion cd
-
-
 # Optional export if go/bin exists
 if [ -d "$HOME/go/bin" ] ; then
   export PATH=$PATH:$HOME/go/bin
 fi
-
-# fnm
-
