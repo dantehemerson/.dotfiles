@@ -56,6 +56,10 @@ echo "Installing teminator..."
 sudo apt-get install terminator -y
 
 
+# Disk Usage/Free Utility
+sudo apt install duf
+
+
 ## =============== TMUX ================================
 
 echo "Installing tmux..."
