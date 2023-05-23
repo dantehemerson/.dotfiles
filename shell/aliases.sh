@@ -24,7 +24,7 @@ alias dimp="~/.dotfiles/utils/dotfiles_import.sh"
 
 
 # =========== SSH ================
-alias ssh1="ssh dantehemerson@192.168.0.117 -v -p 2222"
+alias ssh1="ssh xserver@192.168.0.117 -v -p 22"
 
 
 

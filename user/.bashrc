@@ -212,3 +212,4 @@ _cd_completion() {
 # Optional export if go/bin exists
 if [ -d "$HOME/go/bin" ] ; then
   export PATH=$PATH:$HOME/go/bin
+fi
