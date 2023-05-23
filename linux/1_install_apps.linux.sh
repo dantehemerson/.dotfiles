@@ -71,10 +71,22 @@ echo "Installing vi and vim"
 sudo apt-get install vim -y
 
 # Install vim-plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if [ -f ~/.vim/autoload/plug.vim ]; then
+    echo "vim-plug already installed"
+else
+    echo "Installing vim-plug"
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 
-# FNM
-curl -fsSL https://fnm.vercel.app/install | bash
 
+## ============= SSH ===============
+
+# ssh server
+sudo apt-get install openssh-server -y
+
+
+
+## ============== NODE VERSION MANAGER ===============
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
