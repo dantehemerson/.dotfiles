@@ -67,6 +67,10 @@ blddsky='\e[1;38;5;45m' # Bold Dark Sky Blue
 txtrst='\e[0m'    # Text Reset
 bld='\e[1m'       # Bold
 
+# ============ NODE VERSION MANAGER ===========
+if  [[ -d ~/.local/share/fnm/fnm ]]; then
+  export PATH="$HOME/.local/share/fnm:$PATH"
+fi
 
 # FNM: Node version manager
 eval "$(fnm env --use-on-cd)"
@@ -215,5 +219,4 @@ if [ -d "$HOME/go/bin" ] ; then
 fi
 
 # fnm
-# export PATH="/home/xserver/.local/share/fnm:$PATH"
-# eval "`fnm env`"
+
