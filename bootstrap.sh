@@ -26,7 +26,7 @@ if [[ "$IS_LINUX" == true ]]; then
   echo "- Info -"
   echo "SO: Linux"
   echo "Shell: $SHELL"
-  echo "Missing"
+  ./linux/1_install_apps.linux.sh
 
 elif [[ "$IS_OSX" == true ]]; then
   echo "- Info -"

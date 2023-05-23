@@ -1,8 +1,5 @@
 echo "🔷 OS"
 
-echo "🔹 Installing screenfetch..."
-sudo apt-get install screenfetch -y
-
 echo "🔹 Installing beautiful cursor theme..."
 sudo apt-get install breeze-cursor-theme -y
 

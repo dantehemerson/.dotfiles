@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source ~/.dotfiles/utils/utils.sh
 
 ## =========== LINK FILES ===========
@@ -9,9 +11,6 @@ link "$PWD/user/.zshrc" "$HOME/.zshrc"
 link "$PWD/user/.bashrc" "$HOME/.bashrc"
 link "$PWD/user/.bash_profile" "$HOME/.bash_profile"
 
-# Inputrc
-link "$PWD/user/.inputrc" "$HOME/.inputrc"
-
 # Git 
 link "$PWD/user/.gitconfig" "$HOME/.gitconfig" $__DOT_GIT__LINKING_MODE
 
@@ -20,6 +19,10 @@ link "$PWD/user/.vimrc" "$HOME/.vimrc"
 
 # Tmux
 link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"
+
+# Terminator Terminal
+mkdir -p ~/.config/terminator
+link "$PWD/linux/config/terminator/config" "$HOME/.config/terminator/config"
 
 
 ## ============ CUSTOM OPTIONS ============
@@ -45,3 +48,4 @@ for ((i=0; i<${#custom_options[@]}; i+=2)); do
     eval $value
   fi
 done
+

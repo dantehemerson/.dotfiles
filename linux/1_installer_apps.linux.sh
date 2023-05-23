@@ -11,9 +11,20 @@ echo "              ❤ Dante's dotfiles ❤              "
 echo "                 @dantehemerson                  "
 echo ""
 
+## ============ UPDATE SYSTEM =========================
 echo 'Updating repositories ...'
+
 sudo apt-get update -y
 sudo apt-get upgrade -y
+
+## ============== ESSENTIALS =========================
+sudo apt install build-essential -y
+
+sudo apt install net-tools -y
+
+## ================ UTILITIES =======================
+echo "🔹 Installing screenfetch..."
+sudo apt-get install screenfetch -y
 
 echo "Installing dnsutils..."
 sudo apt-get install dnsutils
@@ -60,32 +71,23 @@ sudo snap install bashtop
 sudo apt-get install htop -y
 
 
-./installers/ubuntu.sh
-./installers/nvm.sh
-
-./installers/autojump.sh
+# ./installers/ubuntu.sh
+# ./installers/autojump.sh
 
 # ./installers/beauty_tmux.sh
-./installers/albert.sh
+# ./installers/albert.sh
 
-sudo ./installers/postman.sh
+# sudo ./installers/postman.sh
 
-sudo snap install robo3t-snap
-
-sudo ./installers/docker.sh -y
-sudo ./installers/docker-compose.sh -y
-
-sudo ./installers/zoom.sh -y
-
-sudo ./installers/obs.sh -y
+# do ./installers/obs.sh -y
 
 # Download wallpapers
-./installers/download-wallpapers.sh
+# ./installers/download-wallpapers.sh
 
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-./installers/zsh.sh
+# ./installers/zsh.sh
 
-./config_files.sh
+# ./config_files.sh
