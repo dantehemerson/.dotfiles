@@ -55,8 +55,21 @@ sudo apt-get install jq -y
 echo "Installing teminator..."
 sudo apt-get install terminator -y
 
+
+## =============== TMUX ================================
+
 echo "Installing tmux..."
 sudo apt-get install tmux -y
+
+# Install tmux plugin manager
+if [ -f ~/.tmux/plugins/tpm ]; then
+    echo "tmux plugin manager already installed"
+else
+    echo "Installing tmux plugin manager"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
+
 
 sudo apt-get install fzf -y
 
