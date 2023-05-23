@@ -126,10 +126,10 @@ function prompt () {
 
 	# --------- Get branch --------
   if [[ $(uname) == "Linux" ]]; then
-    branch=$(./utils/bin/vcprompt -f ' [%b]')
+    branch=$(~/.dotfiles/utils/bin/vcprompt -f ' [%b]')
     if [[ "$branch" == ' [(unknown)]' ]]; then
       # Show revision if not on a branch
-      branch=$(./utils/bin/vcprompt -f ' [%r]')
+      branch=$(~/.dotfiles/utils/bin/vcprompt -f ' [%r]')
     fi
   else
     branch=$(vcprompt -f ' [%b]')
