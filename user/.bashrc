@@ -50,6 +50,8 @@ else # Intel
 fi
 
 
+export MY_LOCAL_IP="$(localip)"
+
 
 # Colors for prompt
 txtred='\e[0;31m' # Red
