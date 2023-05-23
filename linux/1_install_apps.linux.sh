@@ -96,4 +96,11 @@ sudo apt-get install openssh-server -y
 
 
 ## ============== NODE VERSION MANAGER ===============
-curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+
+# Check if fnm is installed ~/.local/share/fnm/fnm
+if [ -f ~/.local/share/fnm/fnm ]; then
+    echo "fnm already installed"
+else
+    echo "Installing fnm"
+    curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+fi
