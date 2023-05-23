@@ -22,6 +22,12 @@ sudo apt install build-essential -y
 
 sudo apt install net-tools -y
 
+sudo apt-get install curl -y
+
+
+## ============= GIT ====================
+sudo apt-get install git -y
+
 ## ================ UTILITIES =======================
 echo "🔹 Installing screenfetch..."
 sudo apt-get install screenfetch -y
@@ -29,17 +35,12 @@ sudo apt-get install screenfetch -y
 echo "Installing dnsutils..."
 sudo apt-get install dnsutils
 
-echo "Installing git ..."
-sudo apt-get install git -y
-
 echo "Installing dconf-editor"
 sudo apt install dconf-editor
 
 echo "Installing xclip ..."
 sudo apt-get install xclip -y
 
-echo "Installing curl ..."
-sudo apt-get install curl -y
 
 echo "Installing zip and unzip ..."
 sudo apt-get install zip -y
@@ -48,12 +49,6 @@ sudo apt-get install unzip -y
 sudo apt-get install tree -y
 
 sudo apt-get install jq -y
-
-echo "Installing vi and vim"
-sudo apt-get install vim -y
-
-echo "Installing robo3t..."
-sudo snap install robo3t-snap
 
 echo "Installing teminator..."
 sudo apt-get install terminator -y
@@ -70,24 +65,11 @@ sudo apt install bat -y
 sudo snap install bashtop
 sudo apt-get install htop -y
 
+# VIM
 
-# ./installers/ubuntu.sh
-# ./installers/autojump.sh
-
-# ./installers/beauty_tmux.sh
-# ./installers/albert.sh
-
-# sudo ./installers/postman.sh
-
-# do ./installers/obs.sh -y
-
-# Download wallpapers
-# ./installers/download-wallpapers.sh
+echo "Installing vi and vim"
+sudo apt-get install vim -y
 
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# ./installers/zsh.sh
-
-# ./config_files.sh

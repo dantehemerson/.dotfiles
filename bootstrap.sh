@@ -27,6 +27,7 @@ if [[ "$IS_LINUX" == true ]]; then
   echo "SO: Linux"
   echo "Shell: $SHELL"
   ./linux/1_install_apps.linux.sh
+  ./linux/2_link_user_files.linux.sh
 
 elif [[ "$IS_OSX" == true ]]; then
   echo "- Info -"
