@@ -120,12 +120,19 @@ function prompt () {
     status_color=$blddblue
   fi
 
+  # If linux use the $PWD/utils/bin/vcprompt
+  if [[ $(uname) == "Linux" ]]; then
+    vcprompt=./utils/bin/vcprompt
+  else
+    # use the default prompt
+  fi
+
 	# Get branch
-  #branch=$(vcprompt -f ' [%b]')
-  #if [[ "$branch" == ' [(unknown)]' ]]; then
+  branch=$(vcprompt -f ' [%b]')
+  if [[ "$branch" == ' [(unknown)]' ]]; then
     # Show revision if not on a branch
-  #  branch=$(vcprompt -f ' [%r]')
-  #fi
+   branch=$(vcprompt -f ' [%r]')
+  fi
 
 
 	workdir=$PWD
