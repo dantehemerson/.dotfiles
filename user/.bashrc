@@ -109,6 +109,7 @@ alias cd="__save_repo_path_on_cd"
 __save_repo_path_if_found
 
 
+
 # Show git branch in prompt(only when a git repo is present)
 function prompt () {
   local exit_code=$?
@@ -120,18 +121,20 @@ function prompt () {
     status_color=$blddblue
   fi
 
-  # If linux use the $PWD/utils/bin/vcprompt
-  if [[ $(uname) == "Linux" ]]; then
-    vcprompt=./utils/bin/vcprompt
-  else
-    # use the default prompt
-  fi
 
-	# Get branch
-  branch=$(vcprompt -f ' [%b]')
-  if [[ "$branch" == ' [(unknown)]' ]]; then
-    # Show revision if not on a branch
-   branch=$(vcprompt -f ' [%r]')
+	# --------- Get branch --------
+  if [[ $(uname) == "Linux" ]]; then
+    branch=$(./utils/bin/vcprompt -f ' [%b]')
+    if [[ "$branch" == ' [(unknown)]' ]]; then
+      # Show revision if not on a branch
+      branch=$(./utils/bin/vcprompt -f ' [%r]')
+    fi
+  else
+    branch=$(vcprompt -f ' [%b]')
+    if [[ "$branch" == ' [(unknown)]' ]]; then
+      # Show revision if not on a branch
+      branch=$(vcprompt -f ' [%r]')
+    fi
   fi
 
 
