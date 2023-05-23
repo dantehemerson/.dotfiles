@@ -121,11 +121,12 @@ function prompt () {
   fi
 
   # If linux use the $PWD/utils/bin/vcprompt
-  if [[ $(uname) == "Linux" ]]; then
-    vcprompt=./utils/bin/vcprompt
-  else
-    # use the default prompt
+  if [[ "$(uname)" == "Linux" ]]; then	
+		echo "using new bash"
+    vcprompt="~/.dotfiles/utils/bin/vcprompt"
   fi
+
+	echo "ESTO ES $(vcprompt -f ' [%b]')"
 
 	# Get branch
   branch=$(vcprompt -f ' [%b]')
