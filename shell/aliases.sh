@@ -52,6 +52,9 @@ alias mongoplay="sudo service mongod start"
 alias srm='safe-rm'
 
 
+# ============ DISKS ===============
+alias mountmsi="sudo mkdir -p /mnt/msi_storage && sudo mount /dev/sdb1 /mnt/msi_storage"
+
 
 # =========== Tmux ==============
 alias tma="tmux a"
