@@ -118,10 +118,10 @@ function prompt () {
 
 	# Get branch
   #branch=$(vcprompt -f ' [%b]')
-  if [[ "$branch" == ' [(unknown)]' ]]; then
+  #if [[ "$branch" == ' [(unknown)]' ]]; then
     # Show revision if not on a branch
   #  branch=$(vcprompt -f ' [%r]')
-  fi
+  #fi
 
 
 	workdir=$PWD

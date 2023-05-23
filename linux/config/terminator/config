@@ -16,7 +16,8 @@
   [[default]]
     background_color = "#15152b"
     background_darkness = 0.94
-    font = Operator Mono Lig weight=330 18
+    cursor_color = "#FFFFFF"
+    font = Fira Code Medium 18
     foreground_color = "#FFFFFF"
     show_titlebar = False
     scrollback_infinite = True
