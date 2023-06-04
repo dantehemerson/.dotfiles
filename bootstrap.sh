@@ -1,14 +1,10 @@
 #!/bin/bash
 
+source ~/.dotfiles/utils/utils.sh
+
 # Load .env to customize the installation
 if [ -f .env.sh ]; then
   source .env.sh
-fi
-
-if [[ "$(uname)" == "Linux" ]]; then
-  IS_LINUX=true
-elif [[ "$(uname)" == "Darwin" ]]; then
-  IS_OSX=true
 fi
 
 echo "==============================================="
@@ -42,5 +38,4 @@ elif [[ "$IS_OSX" == true ]]; then
 
   ./macos/1_install_apps.osx.sh
   ./macos/2_configure.osx.sh
-
 fi

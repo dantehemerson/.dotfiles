@@ -34,8 +34,16 @@ function move_to_trash() {
     filename=$(basename "$1")
     new_filename="$filename-$(date +%s)"
 
-    mv -f "$1" ~/.Trash/"$new_filename"
-    echo "$filename moved to trash, you can restore it from there if needed"
+    if [[ "$IS_OSX" == true ]]; then
+      # On OSX, use the `trash` command
+      mv -f "$1" ~/.Trash/"$new_filename"
+      echo "$filename moved to trash, you can restore it from there if needed"
+    else if [[ "$IS_LINUX" == true ]]; then
+      # On Linux, move to temp folder
+      mv -f "$1" /tmp/"$new_filename"
+
+      echo "$filename moved to trash, you can restore it from there if needed"
+    fi
   fi
 }
 
