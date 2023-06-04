@@ -172,6 +172,11 @@ function prompt () {
 PROMPT_COMMAND="prompt;"
 
 # Optional export if go/bin exists
-if [ -d "$HOME/go/bin" ] ; then
-  export PATH=$PATH:$HOME/go/bin
+if [ -d "$home/go/bin" ] ; then
+  export path=$path:$home/go/bin
 fi
+
+if [ -d "$home/.local/bin" ] ; then
+  export path=$path:$home/.local/bin
+fi
+

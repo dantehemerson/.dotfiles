@@ -112,6 +112,13 @@ sudo apt-get install openssh-server -y
 
 
 
+## =========== DOCKER ==============
+
+# docker gui
+curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+
+
+
 ## ============== NODE VERSION MANAGER ===============
 
 # Check if fnm is installed ~/.local/share/fnm/fnm
