@@ -64,6 +64,9 @@ brew install jq
 brew install --cask brave-browser
 
 
+# Mouse fix
+brew install --cask mouse-fix
+
 
 ## =========== GIT ============
 
