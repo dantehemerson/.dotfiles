@@ -29,6 +29,12 @@ sudo apt-get install curl -y
 sudo apt-get install git -y
 
 
+# diff syntax highligh
+wget https://github.com/dandavison/delta/releases/download/0.16.5/git-delta_0.16.5_amd64.deb -O delta.deb
+
+sudo dpkg -i delta.deb
+
+
 
 ## ================ UTILITIES =======================
 echo "🔹 Installing screenfetch..."
