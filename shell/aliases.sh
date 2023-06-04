@@ -136,3 +136,4 @@ alias repo="gh repo view --web"
 ## =============== DOCKER ===================
 # alias docker="docker"
 
+alias lzd="lazydocker"
