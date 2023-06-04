@@ -20,6 +20,12 @@
 # printf '%s\n' "$@" # output rest arguments
 
 
+if [[ "$(uname)" == "Linux" ]]; then
+  export IS_LINUX=true
+elif [[ "$(uname)" == "Darwin" ]]; then
+  export IS_OSX=true
+fi
+
 # Move a file or folder to trash.
 # Used to moved files that already exists before create the symlink,
 # just in case we need to restore them.

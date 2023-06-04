@@ -1,3 +1,6 @@
+source ~/.dotfiles/utils/utils.sh
+
+
 alias v="vi"
 
 # ========= Fast switching directories ===========
@@ -7,6 +10,15 @@ alias coding="cd ~/coding"
 alias oss="cd ~/coding/oss"
 alias downloads="cd ~/Downloads"
 alias Downloads="cd ~/Downloads"
+
+
+
+# Bat 
+
+# if linux set alias bat="batcat"
+if [[ "$IS_LINUX" == "true" ]]; then
+  alias bat="batcat"
+fi
 
 # Files
 alias zshrc="vi ~/.zshrc"
