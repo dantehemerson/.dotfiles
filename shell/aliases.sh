@@ -104,6 +104,10 @@ alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep '^192'"
 
+# Which apps are running on which ports
+alias ports='sudo lsof -iTCP -sTCP:LISTEN -n -P'
+
+
 alias reload="exec ${SHELL} -l"
 
 # cd shorcuts
