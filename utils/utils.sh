@@ -45,6 +45,7 @@ function move_to_trash() {
       echo "$filename moved to trash, you can restore it from there if needed"
     fi
   fi
+ fi	
 }
 
 function link() {
