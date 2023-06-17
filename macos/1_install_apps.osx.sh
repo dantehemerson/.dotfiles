@@ -67,6 +67,9 @@ brew install --cask brave-browser
 # Mouse fix
 brew install --cask mouse-fix
 
+# Clipboard manager with advanced features
+brew install --cask copyq
+
 
 ## =========== GIT ============
 

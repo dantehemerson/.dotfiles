@@ -180,3 +180,19 @@ if [ -d "$HOME/.local/bin" ] ; then
   export PATH=$PATH:$HOME/.local/bin
 fi
 
+
+if [ -d "$HOME/.gvm/scripts" ]; then
+	source /Users/d/.gvm/scripts/gvm
+fi
+
+
+if [ -d "$HOME/.goenv" ]; then
+	export GOENV_ROOT="$HOME/.goenv"
+	export PATH="$GOENV_ROOT/bin:$PATH"
+
+	eval "$(goenv init -)"
+
+	export PATH="$GOROOT/bin:$PATH"
+	export PATH="$PATH:$GOPATH/bin"
+fi
+
