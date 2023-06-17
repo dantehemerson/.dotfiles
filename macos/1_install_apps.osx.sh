@@ -71,15 +71,23 @@ brew install --cask mouse-fix
 brew install --cask copyq
 
 
+
+## =========== AUDIO INPUT/OUTPUT ============
+
+# A command-line utility to switch the audio source on Mac OS X
+brew install switchaudio-osx
+
+
+
 ## =========== GIT ============
 
-# Git: Update to latest version 
+# Git: Update to latest version
 brew install git
 
 # Delta is a viewer for git and diff output
 brew install git-delta
 
-# Github CLI 
+# Github CLI
 brew install gh
 
 
@@ -100,7 +108,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Node Version Manager
 brew install fnm
 
- 
+
 
 ## =========== DOCKER ============
 
@@ -128,7 +136,7 @@ brew install vcprompt
 
 ## =========== C++ ============
 
-# Ninja is a small build system with a focus on speed 
+# Ninja is a small build system with a focus on speed
 brew install ninja
 
 
