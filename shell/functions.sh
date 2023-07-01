@@ -1,7 +1,30 @@
+source ~/.dotfiles/utils/utils.sh
+
 # Kill port, eg. kp 8000 kills port 8000
+
+if [[ "$IS_LINUX" == true ]]; then
+
+# Kill port on linux
 function kp() {
   fuser -k "$1"/tcp
 }
+
+elif [[ "$IS_OSX" == true ]]; then
+
+# Kill port on macos
+function kp() {
+  local port="$1"
+  local pid=$(lsof -i :"$port" -t)
+
+  if [[ -z $pid ]]; then
+      echo "No process found running on port $port."
+  else
+      kill "$pid"
+      echo "😵 Port $port killed."
+  fi
+}
+
+fi
 
 # List processes listening on PORT $1
 function port() {
