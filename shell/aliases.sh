@@ -12,7 +12,6 @@ alias downloads="cd ~/Downloads"
 alias Downloads="cd ~/Downloads"
 
 
-
 # Bat 
 
 # if linux set alias bat="batcat"
@@ -153,3 +152,7 @@ alias repo="gh repo view --web"
 # alias docker="docker"
 
 alias lzd="lazydocker"
+
+
+## ======= CLI APPS =======
+alias t='todo.sh'

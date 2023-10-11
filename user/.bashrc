@@ -24,12 +24,17 @@ shopt -s histappend
 # show potential good files when trying to cd in a non existant dir
 shopt -s cdspell
 
-# Increase history size
-export HISTSIZE=5000
+# Increase history to 100x the default (500)
+export HISTSIZE=50000
 export HISTFILESIZE=10000
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-export HISTCONTROL=ignoreboth
+# export HISTCONTROL=ignoreboth
+
+# 'ignorespace': don't save command lines which begin with a space to history
+# 'erasedups' (alternative 'ignoredups'): don't save duplicates to history
+# 'autoshare': automatically share history between multiple running shells
+export HISTCONTROL=ignorespace:erasedups:autoshare
 
 
 export CLICOLOR=1
@@ -196,3 +201,5 @@ if [ -d "$HOME/.goenv" ]; then
 	export PATH="$PATH:$GOPATH/bin"
 fi
 
+
+eval "$(thefuck --alias)"

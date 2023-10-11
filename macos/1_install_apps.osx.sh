@@ -102,6 +102,15 @@ rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
+## ============ CLI APPS ==============
+
+# A simple and extensible shell script for managing your todo.txt file.
+brew install todo-txt
+
+# Magnificent app which corrects your previous console command.
+brew install thefuck
+
+
 
 ## =========== NODE ============
 
