@@ -69,3 +69,18 @@ function link() {
     return
   fi
 }
+
+function _command_exists() {
+	#_about 'checks for existence of a command'
+	#_param '1: command to check'
+	#_param '2: (optional) log message to include when command not found'
+	#_example '$ _command_exists ls && echo exists'
+	#_group 'lib'
+	local msg="${2:-Command '$1' does not exist}"
+	if type -t "$1" > /dev/null; then
+		return 0
+	else
+		_log_debug "$msg"
+		return 1
+	fi
+}

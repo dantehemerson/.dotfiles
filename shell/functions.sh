@@ -91,3 +91,15 @@ function exec_cpp() {
 
 # Generate nest module and service
 
+# === NETWORK ===
+function ips() {
+	# 'display all ip addresses for this host'
+
+	if _command_exists ifconfig; then
+		ifconfig | awk '/inet /{ gsub(/addr:/, ""); print $2 }'
+	elif _command_exists ip; then
+		ip addr | grep -oP 'inet \K[\d.]+'
+	else
+		echo "You don't have ifconfig or ip command installed!"
+	fi
+}
