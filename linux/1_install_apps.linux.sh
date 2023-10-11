@@ -29,6 +29,12 @@ sudo apt-get install curl -y
 sudo apt-get install git -y
 
 
+# diff syntax highligh
+wget https://github.com/dandavison/delta/releases/download/0.16.5/git-delta_0.16.5_amd64.deb -O delta.deb
+
+sudo dpkg -i delta.deb
+
+
 
 ## ================ UTILITIES =======================
 echo "🔹 Installing screenfetch..."
@@ -109,6 +115,13 @@ sudo apt-get install python2 -y
 
 # ssh server
 sudo apt-get install openssh-server -y
+
+
+
+## =========== DOCKER ==============
+
+# docker gui
+curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 
 
 

@@ -1,7 +1,30 @@
+source ~/.dotfiles/utils/utils.sh
+
 # Kill port, eg. kp 8000 kills port 8000
+
+if [[ "$IS_LINUX" == true ]]; then
+
+# Kill port on linux
 function kp() {
   fuser -k "$1"/tcp
 }
+
+elif [[ "$IS_OSX" == true ]]; then
+
+# Kill port on macos
+function kp() {
+  local port="$1"
+  local pid=$(lsof -i :"$port" -t)
+
+  if [[ -z $pid ]]; then
+      echo "No process found running on port $port."
+  else
+      kill "$pid"
+      echo "😵 Port $port killed."
+  fi
+}
+
+fi
 
 # List processes listening on PORT $1
 function port() {
@@ -68,4 +91,118 @@ function exec_cpp() {
 
 
 # Generate nest module and service
+
+# === NETWORK ===
+function ips() {
+	# 'display all ip addresses for this host'
+
+	if _command_exists ifconfig; then
+		ifconfig | awk '/inet /{ gsub(/addr:/, ""); print $2 }'
+	elif _command_exists ip; then
+		ip addr | grep -oP 'inet \K[\d.]+'
+	else
+		echo "You don't have ifconfig or ip command installed!"
+	fi
+}
+
+
+# === DISK ===
+function usage() {
+	#about 'disk usage per directory, in Mac OS X and Linux'
+	#param '1: directory name'
+	#group 'base'
+	case $OSTYPE in
+		*'darwin'*)
+			du -hd 1 "$@"
+			;;
+		*'linux'*)
+			du -h --max-depth=1 "$@"
+			;;
+	esac
+}
+
+
+# get a quick overview for your git repo
+function giti() {
+	#about 'overview for your git repo'
+	#group 'git'
+
+	if [ -n "$(git symbolic-ref HEAD 2> /dev/null)" ]; then
+		# print informations
+		echo "git repo overview"
+		echo "-----------------"
+		echo
+
+		# print all remotes and thier details
+		for remote in $(git remote show); do
+			echo "${remote}":
+			git remote show "${remote}"
+			echo
+		done
+
+		# print status of working repo
+		echo "status:"
+		if [ -n "$(git status -s 2> /dev/null)" ]; then
+			git status -s
+		else
+			echo "working directory is clean"
+		fi
+
+		# print at least 5 last log entries
+		echo
+		echo "log:"
+		git log -5 --oneline
+		echo
+
+	else
+		echo "you're currently not in a git repository"
+
+	fi
+}
+
+
+function git_stats {
+	#about 'display stats per author'
+	#group 'git'
+
+	# awesome work from https://github.com/esc/git-stats
+	# including some modifications
+
+	if [ -n "$(git symbolic-ref HEAD 2> /dev/null)" ]; then
+		echo "Number of commits per author:"
+		git --no-pager shortlog -sn --all
+		AUTHORS=$(git shortlog -sn --all | cut -f2 | cut -f1 -d' ')
+		LOGOPTS=""
+		if [ "$1" == '-w' ]; then
+			LOGOPTS="${LOGOPTS} -w"
+			shift
+		fi
+		if [ "$1" == '-M' ]; then
+			LOGOPTS="${LOGOPTS} -M"
+			shift
+		fi
+		if [ "$1" == '-C' ]; then
+			LOGOPTS="${LOGOPTS} -C --find-copies-harder"
+			shift
+		fi
+		for a in ${AUTHORS}; do
+			echo '-------------------'
+			echo "Statistics for: ${a}"
+			echo -n "Number of files changed: "
+			# shellcheck disable=SC2086
+			git log ${LOGOPTS} --all --numstat --format="%n" --author="${a}" | cut -f3 | sort -iu | wc -l
+			echo -n "Number of lines added: "
+			# shellcheck disable=SC2086
+			git log ${LOGOPTS} --all --numstat --format="%n" --author="${a}" | cut -f1 | awk '{s+=$1} END {print s}'
+			echo -n "Number of lines deleted: "
+			# shellcheck disable=SC2086
+			git log ${LOGOPTS} --all --numstat --format="%n" --author="${a}" | cut -f2 | awk '{s+=$1} END {print s}'
+			echo -n "Number of merges: "
+			# shellcheck disable=SC2086
+			git log ${LOGOPTS} --all --merges --author="${a}" | grep -c '^commit'
+		done
+	else
+		echo "you're currently not in a git repository"
+	fi
+}
 

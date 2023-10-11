@@ -1,3 +1,6 @@
+source ~/.dotfiles/utils/utils.sh
+
+
 alias v="vi"
 
 # ========= Fast switching directories ===========
@@ -7,6 +10,14 @@ alias coding="cd ~/coding"
 alias oss="cd ~/coding/oss"
 alias downloads="cd ~/Downloads"
 alias Downloads="cd ~/Downloads"
+
+
+# Bat 
+
+# if linux set alias bat="batcat"
+if [[ "$IS_LINUX" == "true" ]]; then
+  alias bat="batcat"
+fi
 
 # Files
 alias zshrc="vi ~/.zshrc"
@@ -92,6 +103,10 @@ alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep '^192'"
 
+# Which apps are running on which ports
+alias ports="sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -vE 'rapportd|ControlCe|LogiMgrDa'"
+
+
 alias reload="exec ${SHELL} -l"
 
 # cd shorcuts
@@ -132,7 +147,15 @@ alias actions="gh workflow view --web"
 # Repo
 alias repo="gh repo view --web"
 
-
 # termbin
 alias tb="nc termbin.com 9999"
 
+
+## =============== DOCKER ===================
+# alias docker="docker"
+
+alias lzd="lazydocker"
+
+
+## ======= CLI APPS =======
+alias t='todo.sh'

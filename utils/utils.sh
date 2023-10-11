@@ -20,6 +20,12 @@
 # printf '%s\n' "$@" # output rest arguments
 
 
+if [[ "$(uname)" == "Linux" ]]; then
+  export IS_LINUX=true
+elif [[ "$(uname)" == "Darwin" ]]; then
+  export IS_OSX=true
+fi
+
 # Move a file or folder to trash.
 # Used to moved files that already exists before create the symlink,
 # just in case we need to restore them.
@@ -28,9 +34,18 @@ function move_to_trash() {
     filename=$(basename "$1")
     new_filename="$filename-$(date +%s)"
 
-    mv -f "$1" ~/.Trash/"$new_filename"
-    echo "$filename moved to trash, you can restore it from there if needed"
+    if [[ "$IS_OSX" == true ]]; then
+      # On OSX, use the `trash` command
+      mv -f "$1" ~/.Trash/"$new_filename"
+      echo "$filename moved to trash, you can restore it from there if needed"
+    else if [[ "$IS_LINUX" == true ]]; then
+      # On Linux, move to temp folder
+      mv -f "$1" /tmp/"$new_filename"
+
+      echo "$filename moved to trash, you can restore it from there if needed"
+    fi
   fi
+ fi	
 }
 
 function link() {
@@ -53,4 +68,19 @@ function link() {
     fi
     return
   fi
+}
+
+function _command_exists() {
+	#_about 'checks for existence of a command'
+	#_param '1: command to check'
+	#_param '2: (optional) log message to include when command not found'
+	#_example '$ _command_exists ls && echo exists'
+	#_group 'lib'
+	local msg="${2:-Command '$1' does not exist}"
+	if type -t "$1" > /dev/null; then
+		return 0
+	else
+		_log_debug "$msg"
+		return 1
+	fi
 }
