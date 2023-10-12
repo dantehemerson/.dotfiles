@@ -147,6 +147,9 @@ alias actions="gh workflow view --web"
 # Repo
 alias repo="gh repo view --web"
 
+# termbin
+alias tb="nc termbin.com 9999"
+
 
 ## =============== DOCKER ===================
 # alias docker="docker"
