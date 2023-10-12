@@ -69,10 +69,11 @@ function joke() {
 
   # random git-commit message
 function randcommit(){
-  gitRan=$(curl -L -s http://whatthecommit.com/ |grep -A 1 "\"c" |tail -1 |sed 's/<p>//');
-  commitTemp="$gitRan";
-  commitLowercase=`echo "$commitTemp" | awk '{ print tolower($0) }'`;
-  git add --all && git commit -m "$commitLowercase";
+  # gitRan=$(curl -L -s http://whatthecommit.com/ |grep -A 1 "\"c" |tail -1 |sed 's/<p>//');
+ # commitTemp="$gitRan";
+ #  commitLowercase=`echo "$commitTemp" | awk '{ print tolower($0) }'`;
+  # git add --all && git commit -m "$commitLowercase";
+  git add --all && git commit -m "Update";
   gpb;
 }
 
