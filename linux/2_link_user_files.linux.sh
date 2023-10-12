@@ -11,7 +11,7 @@ link "$PWD/user/.zshrc" "$HOME/.zshrc"
 link "$PWD/user/.bashrc" "$HOME/.bashrc"
 link "$PWD/user/.bash_profile" "$HOME/.bash_profile"
 
-# Git 
+# Git
 link "$PWD/user/.gitconfig" "$HOME/.gitconfig" $__DOT_GIT__LINKING_MODE
 
 # Vim
@@ -23,6 +23,9 @@ link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"
 # Terminator Terminal
 mkdir -p ~/.config/terminator
 link "$PWD/linux/config/terminator/config" "$HOME/.config/terminator/config"
+
+# Todo.sh Config
+link "$PWD/user/.todo.cfg" "$HOME/.todo.cfg"
 
 
 ## ============ CUSTOM OPTIONS ============
