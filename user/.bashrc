@@ -7,6 +7,8 @@ else
   export PATH="/usr/local/sbin:$PATH"
 fi
 
+# Load variables script
+source ~/.dotfiles/shell/variables.sh
 
 # Load .shellrc_custom if exists
 [ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
@@ -157,7 +159,7 @@ function prompt () {
 		dir=${workdir/"$HOME"/"~"}
   fi
 
-	
+
   # Updates current dir and proxy icon in Terminal title ——
   if [ -n "$TMUX" ]; then
     tmux set-option set-titles-string "#{s|$HOME|~|:pane_current_path}  ◄  #{window_index} #{window_name}  —  Terminal"
@@ -168,7 +170,7 @@ function prompt () {
   # Variable IS_VSCODE passed in the terminal profile configuration of VSCode.
   if ! [ "$IS_VSCODE" = "1" ]; then
     PS1="\[${status_color}\]⏺ $PS1"
-  fi 
+  fi
 
   return $exit_code
 }
