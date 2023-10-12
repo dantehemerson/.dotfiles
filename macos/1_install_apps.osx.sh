@@ -59,11 +59,6 @@ brew install jq
 # (not used) Adaptive brightness for external displays
 # brew install --cask lunar
 
-
-# Web browser focusing on privacy
-brew install --cask brave-browser
-
-
 # Mouse fix
 brew install --cask mouse-fix
 
@@ -110,6 +105,8 @@ brew install todo-txt
 # Magnificent app which corrects your previous console command.
 brew install thefuck
 
+# A better way to navigate directories
+brew install broot
 
 
 ## =========== NODE ============
