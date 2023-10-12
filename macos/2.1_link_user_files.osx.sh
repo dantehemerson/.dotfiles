@@ -12,7 +12,7 @@ link "$PWD/user/.bash_profile" "$HOME/.bash_profile"
 # Inputrc
 link "$PWD/user/.inputrc" "$HOME/.inputrc"
 
-# Git 
+# Git
 link "$PWD/user/.gitconfig" "$HOME/.gitconfig" $__DOT_GIT__LINKING_MODE
 
 # Vim
@@ -20,6 +20,9 @@ link "$PWD/user/.vimrc" "$HOME/.vimrc"
 
 # Tmux
 link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"
+
+# Todo.sh Config
+link "$PWD/user/.todo.cfg" "$HOME/.todo.cfg"
 
 
 ## ============ CUSTOM OPTIONS ============

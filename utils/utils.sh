@@ -45,7 +45,7 @@ function move_to_trash() {
       echo "$filename moved to trash, you can restore it from there if needed"
     fi
   fi
- fi	
+ fi
 }
 
 function link() {
@@ -57,7 +57,7 @@ function link() {
   elif [ "$3" = "skip" ]; then # SKIP
     # noop
     return
-  else # LINK by default
+  else # symbolic link by default
     # Only link if file is not already linked
     if [ ! -L "$2" ] && [ ! -d "$2" ]; then
       move_to_trash "$2"
