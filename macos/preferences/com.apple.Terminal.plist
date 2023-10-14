@@ -30,8 +30,8 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSWindow Frame TTWindow Basic</key>
-	<string>1381 77 1067 1220 0 0 2560 1415 </string>
+	<key>NSWindowTabbingShoudShowTabBarKey-TTWindow-TTWindowController-TTWindowController-VT-FS</key>
+	<true/>
 	<key>ProfileCurrentVersion</key>
 	<real>2.0699999999999998</real>
 	<key>SecureKeyboardEntry</key>
@@ -86,6 +86,8 @@
 			<false/>
 			<key>CommandString</key>
 			<string></string>
+			<key>CursorBlink</key>
+			<true/>
 			<key>EscapeNonASCIICharacters</key>
 			<true/>
 			<key>Font</key>
@@ -122,7 +124,7 @@
 			<key>ShowShellCommandInTitle</key>
 			<false/>
 			<key>WindowTitle</key>
-			<string>Nocturne Wolf Terminal</string>
+			<string>Terminal</string>
 			<key>columnCount</key>
 			<integer>150</integer>
 			<key>deleteSendsBackspace</key>
@@ -133,6 +135,8 @@
 			<integer>80</integer>
 			<key>type</key>
 			<string>Window Settings</string>
+			<key>useOptionAsMetaKey</key>
+			<false/>
 		</dict>
 		<key>Grass</key>
 		<dict>
