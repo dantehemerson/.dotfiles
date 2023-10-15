@@ -19,7 +19,7 @@ function MethodNotAllowed(request) {
 
 const redirects = [
   [
-    "https://dantecalderon.com/lab/clicker-with-hammer",
+    "https://dantecalderon.com/apps/clicker-with-hammer",
     "https://click-with-hammer.netlify.app",
   ],
 ];

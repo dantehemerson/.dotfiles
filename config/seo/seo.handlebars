@@ -1,0 +1,68 @@
+<!--
+Handlebars version: 4.7.8
+Generate in: https://handlebarsjs.com/playground.html
+Preparation Script:
+```
+Handlebars.registerHelper('loud', function (aString) {
+    return aString.toUpperCase()
+})
+```
+
+SEO Information for my website:
+{
+  url: "https://dantecalderon.com/apps/clicker-with-hammer",
+  title: "Click with hammer",
+  description: "An interactive game, just click on the enemies and level up your score.",
+  image: "./assets/share-cards/screenshot.png",
+  tags: [
+    "Game",
+    "Clicker",
+    "Fun",
+    "Online game",
+    "Free game",
+  ]
+}
+-->
+
+<title>{{title}}</title>
+<meta charset="utf-8" />
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+{{#if google.siteVerification}}
+<meta
+  name="google-site-verification"
+  content="{{google.siteVerification}}"
+/>
+{{/if}}
+<meta name="keywords" content="{{#each tags}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"/>
+<meta name="title" content="{{title}}" />
+<meta
+  name="description"
+  content="{{description}}"
+/>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{url}}" />
+<meta property="og:title" content="{{title}}" />
+<meta
+  property="og:description"
+  content="{{description}}"
+/>
+<meta
+  property="og:image"
+  content="{{image}}"
+/>
+<meta property="twitter:card" content="summary_large_image" />
+<meta
+  property="twitter:url"
+  content="{{url}}"
+/>
+<meta
+  property="twitter:image"
+  content="{{image}}"
+/>
+<meta property="twitter:title" content="{{title}}" />
+<meta
+  property="twitter:description"
+  content="{{description}}"
+/>
