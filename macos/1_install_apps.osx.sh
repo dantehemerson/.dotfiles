@@ -118,13 +118,9 @@ brew install fnm
 
 ## =========== DOCKER ============
 
-# Docker and docker-compose
-brew install docker
-brew install docker-compose
-
-# Colima helps me to manage docker easly
-brew install colima
-
+# Fast, light, powerful way to run containers.
+# ! No need to install docker, compose.
+brew install orbstack
 
 
 ## ============ BASH =============

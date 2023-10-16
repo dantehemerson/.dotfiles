@@ -31,3 +31,13 @@ Library/WebKit/
 Library/Preferences/
 
 ```
+
+## Useful commands
+
+```
+
+# Upgrade packages interactively
+ncu --interactive --format group
+
+
+```
