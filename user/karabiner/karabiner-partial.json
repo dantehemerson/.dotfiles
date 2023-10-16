@@ -6,10 +6,9 @@
     "show_profile_name_in_menu_bar": false,
     "unsafe_ui": false
   },
-
   "rules": [
     {
-      "description": "Change right_command+hjkl to arrow keys",
+      "description": "Change right_command+hjkl to arrow keys 2",
       "manipulators": [
         {
           "conditions": [

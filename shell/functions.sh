@@ -206,3 +206,34 @@ function git_stats {
 	fi
 }
 
+
+# Update karabiner config
+function karabinerUpdate() {
+	SOURCE="$HOME/.dotfiles/user/karabiner/karabiner-partial.json"
+	DESTINATION="$HOME/.config/karabiner/karabiner.json"
+
+	# Create temp file, to avoid issue in Karabiner while writting directly to destination
+	TEMP_FILE="$HOME/.config/karabiner/karabiner_temp.json"
+	touch "$TEMP_FILE"
+
+	jq --slurpfile source "$SOURCE" '
+	.profiles[0].complex_modifications.rules = $source[0].rules |
+	.profiles[0].fn_function_keys = $source[0].fn_function_keys |
+	.global = $source[0].global
+
+	' "$DESTINATION" > $TEMP_FILE
+
+	move_to_trash "$DESTINATION"
+	mv "$TEMP_FILE" "$DESTINATION"
+}
+
+function karabinerBackup() {
+	SOURCE="$HOME/.config/karabiner/karabiner.json"
+	DESTINATION="$HOME/.dotfiles/user/karabiner/karabiner-partial.json"
+
+	jq --slurpfile source "$SOURCE" '
+		.rules = $source[0].profiles[0].complex_modifications.rules |
+		.fn_function_keys = $source[0].profiles[0].fn_function_keys |
+		.global = $source[0].global
+	' "$DESTINATION" > $DESTINATION
+}
