@@ -8,7 +8,7 @@
   },
   "rules": [
     {
-      "description": "Change right_command+hjkl to arrow keys 2",
+      "description": "Change right_command+hjkl to arrow keys",
       "manipulators": [
         {
           "conditions": [
