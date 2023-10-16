@@ -65,6 +65,9 @@ brew install --cask mouse-fix
 # Clipboard manager with advanced features
 brew install --cask copyq
 
+# Keyboard customizer
+brew install --cask karabiner-elements
+
 
 
 ## =========== AUDIO INPUT/OUTPUT ============
