@@ -34,11 +34,18 @@ else
 fi
 
 # Brew: Check your system for potential problems
+echo "Checking brew status..."
 brew doctor
 
 # Update Homebrew
 echo "🍺 Updating Homebrew..."
 brew update
+
+
+## ======== Mac App Store  CLI =========
+
+# A simple command line interface for the Mac App Store. Designed for scripting and automation.
+brew install mas
 
 
 
@@ -56,11 +63,14 @@ brew install tree
 # JSON parser and more
 brew install jq
 
+# An interactive process viewer
+brew install htop
+
 # (not used) Adaptive brightness for external displays
 # brew install --cask lunar
 
 # Mouse fix
-brew install --cask mouse-fix
+brew install --cask mac-mouse-fix
 
 # Clipboard manager with advanced features
 brew install --cask copyq
@@ -101,9 +111,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
 ## ============ CLI APPS ==============
-
-# A simple and extensible shell script for managing your todo.txt file.
-brew install todo-txt
 
 # Magnificent app which corrects your previous console command.
 brew install thefuck
