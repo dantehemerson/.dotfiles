@@ -12,7 +12,7 @@ alias downloads="cd ~/Downloads"
 alias Downloads="cd ~/Downloads"
 
 
-# Bat 
+# Bat
 
 # if linux set alias bat="batcat"
 if [[ "$IS_LINUX" == "true" ]]; then
@@ -35,12 +35,12 @@ alias dimp="~/.dotfiles/utils/dotfiles_import.sh"
 
 
 # =========== SSH ================
-alias ssh1="ssh xserver@192.168.0.117 -v -p 22"
+alias ssh1="ssh xserver@192.168.1.117 -v -p 22"
 
 
 
 # ========== Notes ===========
-alias vnotes="vi ~/.notes.md" 
+alias vnotes="vi ~/.notes.md"
 alias notes='glow ~/.notes.md'  # Show notes
 
 # =========== Git ===========
@@ -76,7 +76,7 @@ alias tmks="tmux kill-session -t "
 
 # =========== Node.js ===========
 alias scripts="jq '.scripts' package.json"
-alias deps="jq '.dependencies' package.json" 
+alias deps="jq '.dependencies' package.json"
 alias engines="jq '.engines' package.json"
 alias devs="jq '.devDependencies' package.json"
 alias version="jq '.version' package.json"
@@ -136,7 +136,7 @@ alias promote2stage="gh workflow run promote.yml --ref develop  -f env='develop 
 alias promote2preprod="gh workflow run promote.yml --ref stage  -f env='stage to preprod'"
 alias promote2prod="gh workflow run promote.yml --ref preprod  -f env='preprod to prod'"
 
-# PRs 
+# PRs
 alias prview="gh pr view --web"
 alias prcreate="gh pr create --web"
 alias prapprove="gh pr review --approve "
