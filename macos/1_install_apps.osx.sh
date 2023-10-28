@@ -66,6 +66,9 @@ brew install jq
 # An interactive process viewer
 brew install htop
 
+# A smarter cd command.
+brew install zoxide
+
 # (not used) Adaptive brightness for external displays
 # brew install --cask lunar
 

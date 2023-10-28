@@ -63,7 +63,20 @@ function cf() {
 
 # Tells you a joke
 function joke() {
-	curl -s https://v2.jokeapi.dev/joke/Any | jq '{setup, delivery, joke} | del(.[] | nulls)'
+	randomNumber=$(( ( RANDOM % 2 )  + 1 ))
+
+	echo -e "------------------------- JOKE OF THE DAY --------------------------\n\n"
+
+	case $randomNumber in
+		1)
+			curl -s https://v2.jokeapi.dev/joke/Any | jq '{setup, delivery, joke} | del(.[] | nulls)  + {from: "https://v2.joke.api.dev"}'
+			;;
+		2)
+			curl -s -H "Accept: application/json" https://icanhazdadjoke.com/ | jq '{ joke } | del(.[] | nulls)  + {from: "https://icanhazdadjoke.com/"}'
+			;;
+	esac
+
+	echo -e "\033[0m\n\n--------------------------------------------------------------------\n\n\n\n\n"
 }
 
 
@@ -236,4 +249,54 @@ function karabinerBackup() {
 		.fn_function_keys = $source[0].profiles[0].fn_function_keys |
 		.global = $source[0].global
 	' "$DESTINATION" > $DESTINATION
+}
+
+
+
+function gitignore-reload() {
+	# 'Empties the git cache, and readds all files not blacklisted by .gitignore'
+
+	# The .gitignore file should not be reloaded if there are uncommited changes.
+	# Firstly, require a clean work tree. The function require_clean_work_tree()
+	# was stolen with love from https://www.spinics.net/lists/git/msg142043.html
+
+	# Begin require_clean_work_tree()
+
+	# Update the index
+	git update-index -q --ignore-submodules --refresh
+	err=0
+
+	# Disallow unstaged changes in the working tree
+	if ! git diff-files --quiet --ignore-submodules --; then
+		echo >&2 "ERROR: Cannot reload .gitignore: Your index contains unstaged changes."
+		git diff-index --cached --name-status -r --ignore-submodules HEAD -- >&2
+		err=1
+	fi
+
+	# Disallow uncommited changes in the index
+	if ! git diff-index --cached --quiet HEAD --ignore-submodules; then
+		echo >&2 "ERROR: Cannot reload .gitignore: Your index contains uncommited changes."
+		git diff-index --cached --name-status -r --ignore-submodules HEAD -- >&2
+		err=1
+	fi
+
+	# Prompt user to commit or stash changes and exit
+	if [[ "${err}" == 1 ]]; then
+		echo >&2 "Please commit or stash them."
+	fi
+
+	# End require_clean_work_tree()
+
+	# If we're here, then there are no uncommited or unstaged changes dangling around.
+	# Proceed to reload .gitignore
+	if [[ "${err}" == 0 ]]; then
+		# Remove all cached files
+		git rm -r --cached .
+
+		# Re-add everything. The changed .gitignore will be picked up here and will exclude the files
+		# now blacklisted by .gitignore
+		echo >&2 "Running git add ."
+		git add .
+		echo >&2 "Files readded. Commit your new changes now."
+	fi
 }

@@ -5,3 +5,4 @@
 *.uuid
 .DS_Store
 .env.sh
+variables.private.sh

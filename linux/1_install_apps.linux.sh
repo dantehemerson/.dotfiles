@@ -62,6 +62,10 @@ echo "Installing teminator..."
 sudo apt-get install terminator -y
 
 
+# A smarter cd command
+sudo apt install zoxide -y
+
+
 # Disk Usage/Free Utility
 sudo apt install duf
 

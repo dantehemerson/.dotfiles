@@ -20,10 +20,12 @@
 	<string>1, 0</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/Documents</string>
+	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{800, 448}</string>
 	<key>NSSplitView Subview Frames NSColorPanelSplitView</key>
 	<array>
-		<string>0.000000, 0.000000, 255.000000, 326.000000, NO, NO</string>
-		<string>0.000000, 327.000000, 255.000000, 43.000000, NO, NO</string>
+		<string>0.000000, 0.000000, 255.000000, 357.000000, NO, NO</string>
+		<string>0.000000, 358.000000, 255.000000, 43.000000, NO, NO</string>
 	</array>
 	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
 	<dict>
@@ -71,16 +73,16 @@
 		<key>Basic</key>
 		<dict>
 			<key>BackgroundBlur</key>
-			<real>0.5201203421260534</real>
+			<real>1</real>
 			<key>BackgroundColor</key>
 			<data>
 			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
 			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRy
 			b290gAGjCwwTVSRudWxs0w0ODxAREldOU1doaXRlXE5TQ29sb3JT
-			cGFjZVYkY2xhc3NNMC4xMDEwNDY2MDU2ABADgALSFBUWF1okY2xh
-			c3NuYW1lWCRjbGFzc2VzV05TQ29sb3KiFhhYTlNPYmplY3QIERok
-			KTI3SUxRU1ddZGx5gI6Qkpeiq7O2AAAAAAAAAQEAAAAAAAAAGQAA
-			AAAAAAAAAAAAAAAAAL8=
+			cGFjZVYkY2xhc3NOMC4wMzA1OTg5NTgzMwAQA4AC0hQVFhdaJGNs
+			YXNzbmFtZVgkY2xhc3Nlc1dOU0NvbG9yohYYWE5TT2JqZWN0CBEa
+			JCkyN0lMUVNXXWRseYCPkZOYo6y0twAAAAAAAAEBAAAAAAAAABkA
+			AAAAAAAAAAAAAAAAAADA
 			</data>
 			<key>Bell</key>
 			<false/>
@@ -95,14 +97,16 @@
 			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
 			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRy
 			b290gAGkCwwVFlUkbnVsbNQNDg8QERITFFZOU1NpemVYTlNmRmxh
-			Z3NWTlNOYW1lViRjbGFzcyNAKAAAAAAAABAQgAKAA18QGVNGTW9u
-			b0xpZ2F0dXJpemVkLVJlZ3VsYXLSFxgZGlokY2xhc3NuYW1lWCRj
-			bGFzc2VzVk5TRm9udKIZG1hOU09iamVjdAgRGiQpMjdJTFFTWF5n
-			bnd+hY6QkpSwtcDJ0NMAAAAAAAABAQAAAAAAAAAcAAAAAAAAAAAA
-			AAAAAAAA3A==
+			Z3NWTlNOYW1lViRjbGFzcyNAKAAAAAAAABAQgAKAA18QGFNGTW9u
+			b0xpZ2F0dXJpemVkLU1lZGl1bdIXGBkaWiRjbGFzc25hbWVYJGNs
+			YXNzZXNWTlNGb250ohkbWE5TT2JqZWN0CBEaJCkyN0lMUVNYXmdu
+			d36FjpCSlK+0v8jP0gAAAAAAAAEBAAAAAAAAABwAAAAAAAAAAAAA
+			AAAAAADb
 			</data>
 			<key>FontAntialias</key>
 			<true/>
+			<key>FontHeightSpacing</key>
+			<real>1</real>
 			<key>FontWidthSpacing</key>
 			<real>1.004032258064516</real>
 			<key>ProfileCurrentVersion</key>
@@ -110,7 +114,7 @@
 			<key>RunCommandAsShell</key>
 			<true/>
 			<key>ShowActiveProcessInTitle</key>
-			<false/>
+			<true/>
 			<key>ShowCommandKeyInTitle</key>
 			<false/>
 			<key>ShowDimensionsInTitle</key>
@@ -122,6 +126,16 @@
 			<key>ShowRepresentedURLPathInTitle</key>
 			<true/>
 			<key>ShowShellCommandInTitle</key>
+			<true/>
+			<key>ShowTTYNameInTabTitle</key>
+			<false/>
+			<key>ShowTTYNameInTitle</key>
+			<false/>
+			<key>ShowWindowSettingsNameInTitle</key>
+			<false/>
+			<key>TerminalType</key>
+			<string>xterm-256color</string>
+			<key>UseBrightBold</key>
 			<false/>
 			<key>WindowTitle</key>
 			<string>Terminal</string>

@@ -34,7 +34,7 @@ export HISTFILESIZE=10000
 # 'ignorespace': don't save command lines which begin with a space to history
 # 'erasedups' (alternative 'ignoredups'): don't save duplicates to history
 # 'autoshare': automatically share history between multiple running shells
-export HISTCONTROL=ignorespace:erasedups:autoshare
+# export HISTCONTROL=ignorespace:erasedups:autoshare
 
 
 export CLICOLOR=1
@@ -63,9 +63,6 @@ if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
 else # Intel
   [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
-
-
-
 
 
 
@@ -184,8 +181,7 @@ function prompt () {
   return $exit_code
 }
 
-#PROMPT_COMMAND="save_history; prompt;"
-PROMPT_COMMAND="prompt;"
+PROMPT_COMMAND="prompt; history -a; history -c; history -r"
 
 # Optional export if go/bin exists
 if [ -d "$HOME/go/bin" ] ; then
@@ -216,4 +212,8 @@ fi
 # Only eval if thefuck command exist:
 if command -v thefuck >/dev/null 2>&1; then
   eval "$(thefuck --alias)"
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+	eval "$(zoxide init bash)"
 fi
