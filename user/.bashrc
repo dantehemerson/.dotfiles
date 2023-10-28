@@ -213,4 +213,7 @@ if [ -d "$HOME/.goenv" ]; then
 fi
 
 
-eval "$(thefuck --alias)"
+# Only eval if thefuck command exist:
+if command -v thefuck >/dev/null 2>&1; then
+  eval "$(thefuck --alias)"
+fi
