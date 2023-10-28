@@ -13,8 +13,6 @@ source ~/.dotfiles/shell/variables.sh
 # Load .shellrc_custom if exists
 [ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
 
-# Load .inputrc if it exists
-[ -f ~/.inputrc ] && bind -f ~/.inputrc
 
 # autocd - automatically cd into directories when they are the only argument to a command
 shopt -s autocd
@@ -48,6 +46,16 @@ for file in aliases.sh functions.sh bash/aliases.sh bash/functions.sh; do
 done
 
 
+
+# Execute commands only available if line editing is on. https://superuser.com/a/1361068/983887
+if [[ "$(set -o | grep 'emacs\|\bvi\b' | cut -f2 | tr '\n' ':')" != 'off:off:' ]]; then
+  # Load .inputrc if it exists
+  [ -f ~/.inputrc ] && bind -f ~/.inputrc
+
+  export MY_LOCAL_IP="$(localip)"
+fi
+
+
 # Bash completion
 
 if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
@@ -57,7 +65,8 @@ else # Intel
 fi
 
 
-export MY_LOCAL_IP="$(localip)"
+
+
 
 
 # Colors for prompt
