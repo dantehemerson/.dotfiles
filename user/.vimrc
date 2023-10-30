@@ -11,10 +11,14 @@ highlight Comment ctermfg=green
 syntax on
 
 set number
+"set relativenumber
 set expandtab
 set softtabstop=2
 set tabstop=2
 set shiftwidth=2
+
+"Favourites -> desert industry koehler
+colorscheme industry
 
 
 " =================== Indentation ======================

@@ -23,7 +23,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
   )
 
   for key in "${keys_to_remove[@]}"; do
+		echo "Removing $key"
     plutil -remove "$key" ~/.dotfiles/macos/preferences/com.apple.Terminal.plist
+		echo "Key $key removed!"
   done
 
 fi

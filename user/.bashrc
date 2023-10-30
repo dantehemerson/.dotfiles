@@ -13,8 +13,6 @@ source ~/.dotfiles/shell/variables.sh
 # Load .shellrc_custom if exists
 [ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
 
-# Load .inputrc if it exists
-[ -f ~/.inputrc ] && bind -f ~/.inputrc
 
 # autocd - automatically cd into directories when they are the only argument to a command
 shopt -s autocd
@@ -36,7 +34,7 @@ export HISTFILESIZE=10000
 # 'ignorespace': don't save command lines which begin with a space to history
 # 'erasedups' (alternative 'ignoredups'): don't save duplicates to history
 # 'autoshare': automatically share history between multiple running shells
-export HISTCONTROL=ignorespace:erasedups:autoshare
+# export HISTCONTROL=ignorespace:erasedups:autoshare
 
 
 export CLICOLOR=1
@@ -48,6 +46,16 @@ for file in aliases.sh functions.sh bash/aliases.sh bash/functions.sh; do
 done
 
 
+
+# Execute commands only available if line editing is on. https://superuser.com/a/1361068/983887
+if [[ "$(set -o | grep 'emacs\|\bvi\b' | cut -f2 | tr '\n' ':')" != 'off:off:' ]]; then
+  # Load .inputrc if it exists
+  [ -f ~/.inputrc ] && bind -f ~/.inputrc
+
+  export MY_LOCAL_IP="$(localip)"
+fi
+
+
 # Bash completion
 
 if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
@@ -56,8 +64,6 @@ else # Intel
   [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
 
-
-export MY_LOCAL_IP="$(localip)"
 
 
 # Colors for prompt
@@ -175,8 +181,7 @@ function prompt () {
   return $exit_code
 }
 
-#PROMPT_COMMAND="save_history; prompt;"
-PROMPT_COMMAND="prompt;"
+PROMPT_COMMAND="prompt; history -a; history -c; history -r"
 
 # Optional export if go/bin exists
 if [ -d "$HOME/go/bin" ] ; then
@@ -204,4 +209,11 @@ if [ -d "$HOME/.goenv" ]; then
 fi
 
 
-eval "$(thefuck --alias)"
+# Only eval if thefuck command exist:
+if command -v thefuck >/dev/null 2>&1; then
+  eval "$(thefuck --alias)"
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+	eval "$(zoxide init bash)"
+fi
