@@ -121,6 +121,13 @@ function __save_repo_path_on_cd() {
 
 alias cd="__save_repo_path_on_cd"
 
+# Save path on zoxide as well
+function __save_repo_path_on_z() {
+	\z "$@" || return $?
+	__save_repo_path_if_found
+}
+
+
 __save_repo_path_if_found
 
 
@@ -217,3 +224,7 @@ fi
 if command -v zoxide >/dev/null 2>&1; then
 	eval "$(zoxide init bash)"
 fi
+
+# Put it after zoxide init
+alias z="__save_repo_path_on_z"
+
