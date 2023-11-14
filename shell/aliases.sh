@@ -11,6 +11,8 @@ alias oss="cd ~/coding/oss"
 alias downloads="cd ~/Downloads"
 alias Downloads="cd ~/Downloads"
 
+alias numbers='open -a "Numbers" '
+
 
 # Bat
 
