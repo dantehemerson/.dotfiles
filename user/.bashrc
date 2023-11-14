@@ -222,7 +222,7 @@ fi
 alias z="__save_repo_path_on_z"
 
 
-if [ -d "$HOME/.cargo" ]; then
+if [ -f "$HOME/.cargo/env" ]; then
 	. "$HOME/.cargo/env"
 fi
 
