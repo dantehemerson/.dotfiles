@@ -199,12 +199,6 @@ if [ -d "$HOME/.local/bin" ] ; then
   export PATH=$PATH:$HOME/.local/bin
 fi
 
-
-if [ -d "$HOME/.gvm/scripts" ]; then
-	source /Users/d/.gvm/scripts/gvm
-fi
-
-
 if [ -d "$HOME/.goenv" ]; then
 	export GOENV_ROOT="$HOME/.goenv"
 	export PATH="$GOENV_ROOT/bin:$PATH"
@@ -214,7 +208,6 @@ if [ -d "$HOME/.goenv" ]; then
 	export PATH="$GOROOT/bin:$PATH"
 	export PATH="$PATH:$GOPATH/bin"
 fi
-
 
 # Only eval if thefuck command exist:
 if command -v thefuck >/dev/null 2>&1; then
@@ -228,3 +221,15 @@ fi
 # Put it after zoxide init
 alias z="__save_repo_path_on_z"
 
+
+if [ -d "$HOME/.cargo" ]; then
+	. "$HOME/.cargo/env"
+fi
+
+# pnpm
+export PNPM_HOME="/Users/d/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

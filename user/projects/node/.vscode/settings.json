@@ -9,6 +9,5 @@
   "clangd.arguments": [
     "--header-insertion=never",
     "--header-insertion-decorators=0",
-    "-Ideps/v8"
-  ]
+  ],
 }
