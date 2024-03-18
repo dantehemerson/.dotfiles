@@ -36,6 +36,11 @@ function ekb() {
   keybase ctl app-exit
 }
 
+
+function display_size() {
+	echo "Virtual Size: $(system_profiler SPDisplaysDataType | awk '/Resolution/{print $2, $3, $4}')"
+}
+
 # Determine size of a file or total size of a directory
 function fs() {
 	if du -b /dev/null > /dev/null 2>&1; then
