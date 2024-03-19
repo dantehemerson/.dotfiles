@@ -24,8 +24,8 @@
 	<string>{800, 448}</string>
 	<key>NSSplitView Subview Frames NSColorPanelSplitView</key>
 	<array>
-		<string>0.000000, 0.000000, 255.000000, 357.000000, NO, NO</string>
-		<string>0.000000, 358.000000, 255.000000, 43.000000, NO, NO</string>
+		<string>0.000000, 0.000000, 255.000000, 326.000000, NO, NO</string>
+		<string>0.000000, 327.000000, 255.000000, 43.000000, NO, NO</string>
 	</array>
 	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
 	<dict>
@@ -79,10 +79,10 @@
 			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
 			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRy
 			b290gAGjCwwTVSRudWxs0w0ODxAREldOU1doaXRlXE5TQ29sb3JT
-			cGFjZVYkY2xhc3NOMC4wMzA1OTg5NTgzMwAQA4AC0hQVFhdaJGNs
-			YXNzbmFtZVgkY2xhc3Nlc1dOU0NvbG9yohYYWE5TT2JqZWN0CBEa
-			JCkyN0lMUVNXXWRseYCPkZOYo6y0twAAAAAAAAEBAAAAAAAAABkA
-			AAAAAAAAAAAAAAAAAADA
+			cGFjZVYkY2xhc3NFMC4wOQAQA4AC0hQVFhdaJGNsYXNzbmFtZVgk
+			Y2xhc3Nlc1dOU0NvbG9yohYYWE5TT2JqZWN0CBEaJCkyN0lMUVNX
+			XWRseYCGiIqPmqOrrgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAA
+			AAAAAAC3
 			</data>
 			<key>Bell</key>
 			<false/>
@@ -105,7 +105,7 @@
 			<key>FontAntialias</key>
 			<true/>
 			<key>FontHeightSpacing</key>
-			<real>1.1064860026041674</real>
+			<real>1.004</real>
 			<key>FontWidthSpacing</key>
 			<real>1</real>
 			<key>ProfileCurrentVersion</key>
