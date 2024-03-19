@@ -17,7 +17,7 @@
 	<key>NSColorPickerPreferredRGBEntryMode</key>
 	<integer>2</integer>
 	<key>NSFontPanelAttributes</key>
-	<string>1, 0</string>
+	<string>1, 2</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -97,18 +97,17 @@
 			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
 			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRy
 			b290gAGkCwwVFlUkbnVsbNQNDg8QERITFFZOU1NpemVYTlNmRmxh
-			Z3NWTlNOYW1lViRjbGFzcyNAKAAAAAAAABAQgAKAA18QGFNGTW9u
-			b0xpZ2F0dXJpemVkLU1lZGl1bdIXGBkaWiRjbGFzc25hbWVYJGNs
-			YXNzZXNWTlNGb250ohkbWE5TT2JqZWN0CBEaJCkyN0lMUVNYXmdu
-			d36FjpCSlK+0v8jP0gAAAAAAAAEBAAAAAAAAABwAAAAAAAAAAAAA
-			AAAAAADb
+			Z3NWTlNOYW1lViRjbGFzcyNAKAAAAAAAABAQgAKAA1dDb3VyaWVy
+			0hcYGRpaJGNsYXNzbmFtZVgkY2xhc3Nlc1ZOU0ZvbnSiGRtYTlNP
+			YmplY3QIERokKTI3SUxRU1heZ253foWOkJKUnKGstby/AAAAAAAA
+			AQEAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAMg=
 			</data>
 			<key>FontAntialias</key>
 			<true/>
 			<key>FontHeightSpacing</key>
-			<real>1</real>
+			<real>1.1064860026041674</real>
 			<key>FontWidthSpacing</key>
-			<real>1.004032258064516</real>
+			<real>1</real>
 			<key>ProfileCurrentVersion</key>
 			<real>2.0699999999999998</real>
 			<key>RunCommandAsShell</key>
@@ -317,10 +316,11 @@
 			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
 			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRy
 			b290gAGkCwwVFlUkbnVsbNQNDg8QERITFFZOU1NpemVYTlNmRmxh
-			Z3NWTlNOYW1lViRjbGFzcyNAJgAAAAAAABAQgAKAA15TRk1vbm8t
-			UmVndWxhctIXGBkaWiRjbGFzc25hbWVYJGNsYXNzZXNWTlNGb250
-			ohkbWE5TT2JqZWN0CBEaJCkyN0lMUVNYXmdud36FjpCSlKOos7zD
-			xgAAAAAAAAEBAAAAAAAAABwAAAAAAAAAAAAAAAAAAADP
+			Z3NWTlNOYW1lViRjbGFzcyNAJgAAAAAAABAQgAKAA18QF05vdG9T
+			YW5zVGFnYWxvZy1SZWd1bGFy0hcYGRpaJGNsYXNzbmFtZVgkY2xh
+			c3Nlc1ZOU0ZvbnSiGRtYTlNPYmplY3QIERokKTI3SUxRU1heZ253
+			foWOkJKUrrO+x87RAAAAAAAAAQEAAAAAAAAAHAAAAAAAAAAAAAAA
+			AAAAANo=
 			</data>
 			<key>FontAntialias</key>
 			<true/>
