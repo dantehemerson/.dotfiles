@@ -33,18 +33,13 @@ alias functions="vi ~/.dotfiles/shell/functions.sh"
 alias readme="bat README.md"
 alias branch="git branch | grep -v "^\*" | fzf --height=20% --reverse --info=inline | xargs git checkout"
 
-alias dback="~/.dotfiles/utils/dotfiles_backup.sh"
-alias dimp="~/.dotfiles/utils/dotfiles_import.sh"
+alias dotfiles_backup="~/.dotfiles/utils/dotfiles_backup.sh"
+alias dotfiles_import="~/.dotfiles/utils/dotfiles_import.sh"
 
 
 # =========== SSH ================
 alias ssh1="ssh xserver@192.168.3.4 -v"
 
-
-
-# ========== Notes ===========
-alias vnotes="vi ~/.notes.md"
-alias notes='glow ~/.notes.md'  # Show notes
 
 # =========== Git ===========
 alias gaa="git add --all"
