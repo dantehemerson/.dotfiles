@@ -17,7 +17,7 @@
 	<key>NSColorPickerPreferredRGBEntryMode</key>
 	<integer>2</integer>
 	<key>NSFontPanelAttributes</key>
-	<string>1, 2</string>
+	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -97,10 +97,10 @@
 			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
 			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRy
 			b290gAGkCwwVFlUkbnVsbNQNDg8QERITFFZOU1NpemVYTlNmRmxh
-			Z3NWTlNOYW1lViRjbGFzcyNAKAAAAAAAABAQgAKAA1dDb3VyaWVy
-			0hcYGRpaJGNsYXNzbmFtZVgkY2xhc3Nlc1ZOU0ZvbnSiGRtYTlNP
-			YmplY3QIERokKTI3SUxRU1heZ253foWOkJKUnKGstby/AAAAAAAA
-			AQEAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAMg=
+			Z3NWTlNOYW1lViRjbGFzcyNAKAAAAAAAABAQgAKAA15TRk1vbm8t
+			UmVndWxhctIXGBkaWiRjbGFzc25hbWVYJGNsYXNzZXNWTlNGb250
+			ohkbWE5TT2JqZWN0CBEaJCkyN0lMUVNYXmdud36FjpCSlKOos7zD
+			xgAAAAAAAAEBAAAAAAAAABwAAAAAAAAAAAAAAAAAAADP
 			</data>
 			<key>FontAntialias</key>
 			<true/>
