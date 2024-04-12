@@ -159,6 +159,8 @@ alias tb="nc termbin.com 9999"
 
 alias lzd="lazydocker"
 
+alias "docker-compose"="docker compose"
+
 
 ## ======= CLI APPS =======
 alias t='todo.sh'
