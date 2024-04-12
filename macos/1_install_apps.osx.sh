@@ -54,9 +54,6 @@ brew install mas
 # cat with highlight
 brew install bat
 
-# Render markdown on the CLI, with pizzazz!
-brew install glow
-
 # Display directories as trees (with optional color/HTML output)
 brew install tree
 

@@ -17,15 +17,15 @@
 	<key>NSColorPickerPreferredRGBEntryMode</key>
 	<integer>2</integer>
 	<key>NSFontPanelAttributes</key>
-	<string>1, 0</string>
+	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{800, 448}</string>
 	<key>NSSplitView Subview Frames NSColorPanelSplitView</key>
 	<array>
-		<string>0.000000, 0.000000, 255.000000, 357.000000, NO, NO</string>
-		<string>0.000000, 358.000000, 255.000000, 43.000000, NO, NO</string>
+		<string>0.000000, 0.000000, 255.000000, 326.000000, NO, NO</string>
+		<string>0.000000, 327.000000, 255.000000, 43.000000, NO, NO</string>
 	</array>
 	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
 	<dict>
@@ -79,10 +79,10 @@
 			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
 			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRy
 			b290gAGjCwwTVSRudWxs0w0ODxAREldOU1doaXRlXE5TQ29sb3JT
-			cGFjZVYkY2xhc3NOMC4wMzA1OTg5NTgzMwAQA4AC0hQVFhdaJGNs
-			YXNzbmFtZVgkY2xhc3Nlc1dOU0NvbG9yohYYWE5TT2JqZWN0CBEa
-			JCkyN0lMUVNXXWRseYCPkZOYo6y0twAAAAAAAAEBAAAAAAAAABkA
-			AAAAAAAAAAAAAAAAAADA
+			cGFjZVYkY2xhc3NFMC4wOQAQA4AC0hQVFhdaJGNsYXNzbmFtZVgk
+			Y2xhc3Nlc1dOU0NvbG9yohYYWE5TT2JqZWN0CBEaJCkyN0lMUVNX
+			XWRseYCGiIqPmqOrrgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAA
+			AAAAAAC3
 			</data>
 			<key>Bell</key>
 			<false/>
@@ -97,18 +97,17 @@
 			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
 			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRy
 			b290gAGkCwwVFlUkbnVsbNQNDg8QERITFFZOU1NpemVYTlNmRmxh
-			Z3NWTlNOYW1lViRjbGFzcyNAKAAAAAAAABAQgAKAA18QGFNGTW9u
-			b0xpZ2F0dXJpemVkLU1lZGl1bdIXGBkaWiRjbGFzc25hbWVYJGNs
-			YXNzZXNWTlNGb250ohkbWE5TT2JqZWN0CBEaJCkyN0lMUVNYXmdu
-			d36FjpCSlK+0v8jP0gAAAAAAAAEBAAAAAAAAABwAAAAAAAAAAAAA
-			AAAAAADb
+			Z3NWTlNOYW1lViRjbGFzcyNAKAAAAAAAABAQgAKAA15TRk1vbm8t
+			UmVndWxhctIXGBkaWiRjbGFzc25hbWVYJGNsYXNzZXNWTlNGb250
+			ohkbWE5TT2JqZWN0CBEaJCkyN0lMUVNYXmdud36FjpCSlKOos7zD
+			xgAAAAAAAAEBAAAAAAAAABwAAAAAAAAAAAAAAAAAAADP
 			</data>
 			<key>FontAntialias</key>
 			<true/>
 			<key>FontHeightSpacing</key>
-			<real>1</real>
+			<real>1.004</real>
 			<key>FontWidthSpacing</key>
-			<real>1.004032258064516</real>
+			<real>1</real>
 			<key>ProfileCurrentVersion</key>
 			<real>2.0699999999999998</real>
 			<key>RunCommandAsShell</key>
@@ -317,10 +316,11 @@
 			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
 			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRy
 			b290gAGkCwwVFlUkbnVsbNQNDg8QERITFFZOU1NpemVYTlNmRmxh
-			Z3NWTlNOYW1lViRjbGFzcyNAJgAAAAAAABAQgAKAA15TRk1vbm8t
-			UmVndWxhctIXGBkaWiRjbGFzc25hbWVYJGNsYXNzZXNWTlNGb250
-			ohkbWE5TT2JqZWN0CBEaJCkyN0lMUVNYXmdud36FjpCSlKOos7zD
-			xgAAAAAAAAEBAAAAAAAAABwAAAAAAAAAAAAAAAAAAADP
+			Z3NWTlNOYW1lViRjbGFzcyNAJgAAAAAAABAQgAKAA18QF05vdG9T
+			YW5zVGFnYWxvZy1SZWd1bGFy0hcYGRpaJGNsYXNzbmFtZVgkY2xh
+			c3Nlc1ZOU0ZvbnSiGRtYTlNPYmplY3QIERokKTI3SUxRU1heZ253
+			foWOkJKUrrO+x87RAAAAAAAAAQEAAAAAAAAAHAAAAAAAAAAAAAAA
+			AAAAANo=
 			</data>
 			<key>FontAntialias</key>
 			<true/>
