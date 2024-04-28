@@ -209,6 +209,10 @@ if [ -d "$HOME/.goenv" ]; then
 	export PATH="$PATH:$GOPATH/bin"
 fi
 
+if [ -d "$HOME/development/flutter/bin" ]; then
+	export PATH="$PATH:$HOME/development/flutter/bin"
+fi
+
 # Only eval if thefuck command exist:
 if command -v thefuck >/dev/null 2>&1; then
   eval "$(thefuck --alias)"
@@ -233,3 +237,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+

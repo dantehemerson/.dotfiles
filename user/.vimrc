@@ -18,8 +18,9 @@ set tabstop=2
 set shiftwidth=2
 
 "Favourites -> desert industry koehler
-colorscheme industry
+"colorscheme industry
 
+"highlight Normal ctermfg=grey ctermbg=black
 
 " =================== Indentation ======================
 set smartindent
