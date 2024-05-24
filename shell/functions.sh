@@ -31,6 +31,12 @@ function port() {
   lsof "-i:$1"
 }
 
+
+# Print plist in json format
+function printPlist() {
+  plutil -convert json -o - $1 | jq
+}
+
 # Exit keybase
 function ekb() {
   keybase ctl app-exit
