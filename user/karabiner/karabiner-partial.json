@@ -13,15 +13,21 @@
         {
           "conditions": [
             {
-              "bundle_identifiers": ["^com.apple.Terminal$"],
+              "bundle_identifiers": [
+                "^com.apple.Terminal$"
+              ],
               "type": "frontmost_application_if"
             }
           ],
           "from": {
             "key_code": "grave_accent_and_tilde",
             "modifiers": {
-              "mandatory": ["right_command"],
-              "optional": ["any"]
+              "mandatory": [
+                "right_command"
+              ],
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -35,8 +41,12 @@
           "from": {
             "key_code": "n",
             "modifiers": {
-              "mandatory": ["fn"],
-              "optional": ["any"]
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -50,8 +60,12 @@
           "from": {
             "key_code": "h",
             "modifiers": {
-              "mandatory": ["right_command"],
-              "optional": ["any"]
+              "mandatory": [
+                "right_command"
+              ],
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -65,8 +79,12 @@
           "from": {
             "key_code": "j",
             "modifiers": {
-              "mandatory": ["right_command"],
-              "optional": ["any"]
+              "mandatory": [
+                "right_command"
+              ],
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -80,8 +98,12 @@
           "from": {
             "key_code": "k",
             "modifiers": {
-              "mandatory": ["right_command"],
-              "optional": ["any"]
+              "mandatory": [
+                "right_command"
+              ],
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -95,8 +117,12 @@
           "from": {
             "key_code": "l",
             "modifiers": {
-              "mandatory": ["right_command"],
-              "optional": ["any"]
+              "mandatory": [
+                "right_command"
+              ],
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -115,7 +141,9 @@
           "from": {
             "key_code": "o",
             "modifiers": {
-              "mandatory": ["right_command"]
+              "mandatory": [
+                "right_command"
+              ]
             }
           },
           "to": [
@@ -129,7 +157,9 @@
           "from": {
             "key_code": "p",
             "modifiers": {
-              "mandatory": ["right_command"]
+              "mandatory": [
+                "right_command"
+              ]
             }
           },
           "to": [
@@ -143,7 +173,9 @@
           "from": {
             "key_code": "a",
             "modifiers": {
-              "mandatory": ["right_command"]
+              "mandatory": [
+                "right_command"
+              ]
             }
           },
           "to": [
@@ -157,7 +189,9 @@
           "from": {
             "key_code": "s",
             "modifiers": {
-              "mandatory": ["right_command"]
+              "mandatory": [
+                "right_command"
+              ]
             }
           },
           "to": [
@@ -171,7 +205,9 @@
           "from": {
             "key_code": "n",
             "modifiers": {
-              "mandatory": ["right_command"]
+              "mandatory": [
+                "right_command"
+              ]
             }
           },
           "to": [
@@ -185,7 +221,9 @@
           "from": {
             "key_code": "e",
             "modifiers": {
-              "mandatory": ["right_command"]
+              "mandatory": [
+                "right_command"
+              ]
             }
           },
           "to": [
@@ -199,7 +237,9 @@
           "from": {
             "key_code": "f",
             "modifiers": {
-              "mandatory": ["right_command"]
+              "mandatory": [
+                "right_command"
+              ]
             }
           },
           "to": [
@@ -213,7 +253,9 @@
           "from": {
             "key_code": "z",
             "modifiers": {
-              "mandatory": ["right_command"]
+              "mandatory": [
+                "right_command"
+              ]
             }
           },
           "to": [
@@ -227,7 +269,9 @@
           "from": {
             "key_code": "r",
             "modifiers": {
-              "mandatory": ["right_command"]
+              "mandatory": [
+                "right_command"
+              ]
             }
           },
           "to": [
@@ -241,7 +285,9 @@
           "from": {
             "key_code": "b",
             "modifiers": {
-              "mandatory": ["right_command"]
+              "mandatory": [
+                "right_command"
+              ]
             }
           },
           "to": [
@@ -255,7 +301,9 @@
           "from": {
             "key_code": "v",
             "modifiers": {
-              "mandatory": ["right_command"]
+              "mandatory": [
+                "right_command"
+              ]
             }
           },
           "to": [
@@ -273,7 +321,9 @@
         {
           "conditions": [
             {
-              "bundle_identifiers": ["^com.apple.Preview$"],
+              "bundle_identifiers": [
+                "^com.apple.Preview$"
+              ],
               "type": "frontmost_application_if"
             }
           ],
@@ -290,7 +340,9 @@
         {
           "conditions": [
             {
-              "bundle_identifiers": ["^com.apple.Preview$"],
+              "bundle_identifiers": [
+                "^com.apple.Preview$"
+              ],
               "type": "frontmost_application_if"
             }
           ],
@@ -303,6 +355,35 @@
             }
           ],
           "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Disable space to record in QuickTime Player",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "vk_none"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com.apple.QuickTimePlayerX$"
+              ]
+            }
+          ]
         }
       ]
     }

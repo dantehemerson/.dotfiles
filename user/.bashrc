@@ -34,7 +34,7 @@ export HISTFILESIZE=10000
 # 'ignorespace': don't save command lines which begin with a space to history
 # 'erasedups' (alternative 'ignoredups'): don't save duplicates to history
 # 'autoshare': automatically share history between multiple running shells
-# export HISTCONTROL=ignorespace:erasedups:autoshare
+export HISTCONTROL=ignorespace:erasedups:autoshare
 
 
 export CLICOLOR=1
