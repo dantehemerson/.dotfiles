@@ -1,4 +1,8 @@
 {
+  "title": "Dante's Calderon personal karabiner config",
+  "maintainers": [
+    "dantehemerson"
+  ],
   "rules": [
     {
       "description": "Change right_command+hjkl to arrow keys",
@@ -348,35 +352,6 @@
             }
           ],
           "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "Disable space to record in QuickTime Player",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "spacebar",
-            "modifiers": {
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "vk_none"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [
-                "^com.apple.QuickTimePlayerX$"
-              ]
-            }
-          ]
         }
       ]
     }
