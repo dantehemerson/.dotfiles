@@ -31,7 +31,9 @@ alias inputrc="vi ~/.inputrc"
 alias aliases="vi ~/.dotfiles/shell/aliases.sh"
 alias functions="vi ~/.dotfiles/shell/functions.sh"
 alias readme="bat README.md"
-alias branch="git branch | grep -v "^\*" | fzf --height=20% --reverse --info=inline | xargs git checkout"
+
+# Interactive git branch switcher. Order by last commit date(most recent branches).
+alias branch="git branch -v --sort=-refname --sort=-committerdate | fzf --height=20% --reverse | sed 's/^..//' | awk '{ print \$1 }' | xargs git checkout"
 
 alias dotfiles_backup="~/.dotfiles/utils/dotfiles_backup.sh"
 alias dotfiles_import="~/.dotfiles/utils/dotfiles_import.sh"

@@ -4,33 +4,9 @@
 
 [core]
 	editor = vi
-    # pager  = delta
 
 [interactive]
     diffFilter = delta --color-only
-
-[delta]
-    features = line-numbers decorations
-    navigate = true
-    line-numbers = true
-    plus-style = syntax "#003800"
-    minus-style = syntax "#3f0001"
-    # side-by-side = true
-    hunk-header-style= "omit"
-    commit-decoration-style = bold yellow box ul
-    #file-decoration-style = none
-[delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold "#ffffff"
-    file-decoration-style = ol "#2d2b2b" box
-    # file-decoration-style = none
-    hunk-header-decoration-style = cyan box ul
-
-[delta "line-numbers"]
-  line-numbers-left-style = cyan
-  line-numbers-right-style = cyan
-  line-numbers-minus-style = 124
-  line-numbers-plus-style = 28
 
 [merge]
     conflictstyle = diff3
@@ -40,14 +16,17 @@
 
 [alias]
 	log1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	log2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 	graphgpg = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%C(blue)%x20(%ce)%x20%C(cyan)[gpg:%GK%x20%G?]%C(reset)%n%x20%s%n"
 	graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%C(blue)%x20(%ce)%x20%C(cyan)%C(reset)%n%x20%s%n"
 	count = rev-list HEAD --count
 	stats = shortlog -s -n --all
  	local = config --local --list
-  select = "!f() { git for-each-ref --sort=-committerdate refs/heads/ --format=\"%(refname:short)\" | fzf --height 50% --ansi --reverse --preview \"git log --color=always {} | head -200\" | sed \"s/^..//\" | xargs -r git checkout; }; f"
-  rmcached = "rm -rf --cached ."
+    global = config --global --list
+
+    # Interactive git branch switcher. Order by last commit date(most recent branches).
+    select = "!f() { git branch -v --sort=-refname --sort=-committerdate | fzf --height=20% --reverse | sed 's/^..//' | awk '{ print $1 }' | xargs git checkout; }; f"
+
+    rmcached = "rm -rf --cached ."
 
 [oh-my-zsh]
 	hide-status = 1
