@@ -8,7 +8,8 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="apple"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -95,7 +96,7 @@ done
 #   export EDITOR='mvim'
 # fi
 
-# Link scripts folder  
+# Link scripts folder
 export SCRIPTS=~/.local/bin/scripts
 mkdir -p "$SCRIPTS" &>/dev/null
 export PATH="$SCRIPTS:$PATH"
@@ -122,5 +123,5 @@ eval "$(fnm env --use-on-cd)"
 # export PATH=/home/dantehemerson/.cargo/bin:$PATH
 
 
-PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
-PROMPT+='%{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'
+# PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+# PROMPT+='%{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'

@@ -109,6 +109,25 @@ brew install tmux
 rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# Shell
+
+# BASH:
+# Update to latest version
+brew install bash
+
+# Bash completion
+brew install bash-completion
+
+# To show git branch on terminal
+brew install vcprompt
+
+# ZSH:
+# zsh is installed by default on MacOS(in /bin/zsh), but it's normally an older version.
+# Install zsh by brew to get the latest version. (in /opt/homebrew/bin/zsh (silicon))
+brew install zsh
+
+# Install Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ## ============ CLI APPS ==============
 
@@ -133,16 +152,6 @@ brew install fnm
 brew install orbstack
 
 
-## ============ BASH =============
-
-# Update to latest version
-brew install bash
-
-# Bash completion
-brew install bash-completion
-
-# To show git branch on terminal
-brew install vcprompt
 
 
 

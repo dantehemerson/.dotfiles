@@ -17,7 +17,7 @@
 # eval "$(./deps/getoptions parser_definition) exit 1" # argument parsing
 
 # echo "FLAG: $FLAG, PARAM: $PARAM, OPTION: $OPTION"
-# printf '%s\n' "$@" # output rest arguments
+# printf '%s\n' "$@" # output rest argument
 
 
 if [[ "$(uname)" == "Linux" ]]; then
@@ -28,7 +28,7 @@ fi
 
 # Move a file or folder to trash.
 # Used to moved files that already exists before create the symlink,
-# just in case we need to restore them.
+# just in case you need to restore them.
 function move_to_trash() {
   if [ -e "$1" ]; then
     filename=$(basename "$1")
@@ -48,6 +48,11 @@ function move_to_trash() {
  fi
 }
 
+# Link/Copy a file to another location.
+# It has 3 modes:
+# - symbolic link(default): create a symbolic link to the file. It's usefult to keep file synced with git.
+# - copy: created a copy of the file to the specified location.
+# - skip: skip the file (do nothing)
 function link() {
   if [ "$3" = "copy" ]; then # COPY
     move_to_trash "$2"

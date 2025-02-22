@@ -21,9 +21,6 @@ link "$PWD/user/.vimrc" "$HOME/.vimrc"
 # Tmux
 link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"
 
-# Todo.sh Config
-link "$PWD/user/.todo.cfg" "$HOME/.todo.cfg"
-
 
 ## ============ CUSTOM OPTIONS ============
 custom_options=(

@@ -24,12 +24,8 @@ link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"
 mkdir -p ~/.config/terminator
 link "$PWD/linux/config/terminator/config" "$HOME/.config/terminator/config"
 
-# Todo.sh Config
-link "$PWD/user/.todo.cfg" "$HOME/.todo.cfg"
-
-
-## ============ CUSTOM OPTIONS ============
-custom_options=(
+## ============ CUSTOM GIT OPTIONS ============
+custom_git_options=(
   "V_$__DOT_GIT__USER__EMAIL"
   "git config --global user.email \"$__DOT_GIT__USER__EMAIL\""
 
@@ -41,9 +37,9 @@ custom_options=(
 )
 
 # Apply custom options
-for ((i=0; i<${#custom_options[@]}; i+=2)); do
-  key=${custom_options[i]}
-  value=${custom_options[i+1]}
+for ((i=0; i<${#custom_ocustom_git_optionsptions[@]}; i+=2)); do
+  key=${custom_git_options[i]}
+  value=${custom_git_options[i+1]}
 
   # check if key is not empty(different of "V_")
   if [ "$key" != "V_" ]; then

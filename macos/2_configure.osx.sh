@@ -148,8 +148,6 @@ defaults write com.apple.screencapture location ~/Pictures/Screenshots
 bash $PWD/macos/2.1_link_user_files.osx.sh
 
 
-
-
 ## ================ TERMINAL ===============
 
 ## Set hombrew bash  as default shell

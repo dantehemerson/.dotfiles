@@ -158,7 +158,6 @@ alias "docker-compose"="docker compose"
 
 
 ## ======= CLI APPS =======
-alias t='todo.sh'
 alias nvm="fnm"
 alias ncu2="npm-check -u"
 
