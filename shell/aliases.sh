@@ -47,8 +47,6 @@ alias ssh1="ssh xserver@192.168.3.4 -v"
 alias gaa="git add --all"
 alias gc="git commit -m "
 alias gs="git status"
-alias gd="git diff | delta"
-
 
 # Pull current branch
 alias glb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"

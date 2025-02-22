@@ -5,9 +5,6 @@
 [core]
 	editor = vi
 
-[interactive]
-    diffFilter = delta --color-only
-
 [merge]
     conflictstyle = diff3
 

@@ -92,9 +92,6 @@ brew install switchaudio-osx
 # Git: Update to latest version
 brew install git
 
-# Delta is a viewer for git and diff output
-brew install git-delta
-
 # Github CLI
 brew install gh
 
