@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.dotfiles/utils/utils.sh
+
 ## -------------------------------------------
 echo "📦 Installing apps..."
 ## -------------------------------------------
@@ -79,14 +81,6 @@ brew install --cask copyq
 brew install --cask karabiner-elements
 
 
-
-## =========== AUDIO INPUT/OUTPUT ============
-
-# A command-line utility to switch the audio source on Mac OS X
-brew install switchaudio-osx
-
-
-
 ## =========== GIT ============
 
 # Git: Update to latest version
@@ -149,23 +143,23 @@ brew install fnm
 brew install orbstack
 
 
+## === C++ Development (Optional by flag defined in .env.sh) ===
+if [[ "$__DOT__INSTALL_CPP" == true ]]; then
+  # Ninja is a small build system with a focus on speed
+  brew install ninja
+
+  # Install tools required by clangd Extension for C/C++
+  # See: https://clangd.llvm.org/installation
+
+  # Install language server
+  brew install llvm
+
+  # To generate compile_commands.json
+  brew install bear
+else
+  echo "🚫 Skipping C++ Development tools installation..."
+fi # __DOT__INSTALL_CPP
 
 
-
-## =========== C++ ============
-
-# Ninja is a small build system with a focus on speed
-brew install ninja
-
-
-
-## =========== VSCODE ============
-
-# --- Install tools required by clangd Extension for C/C++ ---
-# See: https://clangd.llvm.org/installation
-
-# Install language server
-brew install llvm
-
-# To generate compile_commands.json
-brew install bear
+# Done. Final message
+echo "🎉 All apps installed successfully!"

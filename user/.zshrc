@@ -115,6 +115,10 @@ export PATH="$SCRIPTS:$PATH"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Custom Configuration Shell
+# Load .shellrc_custom if exists
+[ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
+
 # FNM
 eval "$(fnm env --use-on-cd)"
 
