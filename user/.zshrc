@@ -1,5 +1,11 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Load hombrew bin
+if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+else
+  export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -120,7 +126,7 @@ export PATH="$SCRIPTS:$PATH"
 [ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
 
 # FNM
-eval "$(fnm env --use-on-cd)"
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 ## Rust
 # Load cargo
