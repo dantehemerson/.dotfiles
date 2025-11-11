@@ -125,3 +125,24 @@ eval "$(fnm env --use-on-cd)"
 
 # PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 # PROMPT+='%{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'
+
+zstyle ':completion:*' ignored-patterns 'RANDOM'
+
+# Created by `pipx` on 2025-08-12 01:48:23
+export PATH="$PATH:/Users/d/.local/bin"
+
+export BLUEUTIL_USE_SYSTEM_PROFILER=1
+
+function re_pair() {
+  id=`blueutil --paired | grep "trackpad" | grep -Eo '[a-z0-9]{2}(-[a-z0-9]{2}){5}'`
+  name=`blueutil --paired | grep "trackpad" | grep -Eo 'name: "\S+"'`
+  echo "unpairing with BT device $id, $name"
+  blueutil --unpair "$id"
+  echo "unpaired, waiting a few seconds for trackpad to go to pairable state"
+  sleep 3
+  echo "pairing with BT device $id, $name"
+  blueutil --pair "$id" "0000"
+  echo "paired"
+  blueutil --connect "$id"
+  echo "connected"
+}

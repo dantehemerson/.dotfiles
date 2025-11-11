@@ -1,5 +1,7 @@
 source ~/.dotfiles/utils/utils.sh
 
+alias code="cursor"
+
 
 alias v="vi"
 
@@ -12,6 +14,14 @@ alias downloads="cd ~/Downloads"
 alias Downloads="cd ~/Downloads"
 
 alias numbers='open -a "Numbers" '
+
+# ===== Alias to download music with shira ====
+alias mdl='shiradl -c "./music.youtube.com_cookies.txt" -i 141'
+alias mdln='shiradl -c "./music.youtube.com_cookies.txt"'
+
+# ====== Counters ==============
+alias count_deep_files='find . -type f \( -iname "*.mp3" -o -iname "*.wav" -o -iname "*.m4a" -o -iname "*.flac" \) | wc -l'
+
 
 
 # Bat
@@ -154,7 +164,7 @@ alias tb="nc termbin.com 9999"
 
 alias lzd="lazydocker"
 
-alias "docker-compose"="docker compose"
+alias "compose"="docker compose"
 
 
 ## ======= CLI APPS =======
