@@ -7,9 +7,6 @@ else
   export PATH="/usr/local/sbin:$PATH"
 fi
 
-# Load variables script
-source ~/.dotfiles/shell/variables.sh
-
 # Load .shellrc_custom if exists
 [ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
 

@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Load .env to customize the installation
+if [ -f .env.sh ]; then
+  source .env.sh
+fi
+
 # VERSION="0.1"
 
 # parser_definition() {
