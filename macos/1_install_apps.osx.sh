@@ -74,11 +74,14 @@ brew install zoxide
 # Mouse fix
 brew install --cask mac-mouse-fix
 
-# Clipboard manager with advanced features
-brew install --cask copyq
-
 # Keyboard customizer
 brew install --cask karabiner-elements
+
+# LogiOptions+ for Mx Ergo trackball settings
+brew install --cask logi-options+
+
+# BetterDisplay to control brigtness of external monitors
+brew install --cask betterdisplay
 
 
 ## =========== GIT ============

@@ -128,6 +128,11 @@ export PATH="$SCRIPTS:$PATH"
 # FNM
 eval "$(fnm env --use-on-cd --shell zsh)"
 
+# Load direnv if installed
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
+
 ## Rust
 # Load cargo
 # export PATH=/home/dantehemerson/.cargo/bin:$PATH

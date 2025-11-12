@@ -97,7 +97,7 @@ function randcommit(){
  # commitTemp="$gitRan";
  #  commitLowercase=`echo "$commitTemp" | awk '{ print tolower($0) }'`;
   # git add --all && git commit -m "$commitLowercase";
-  git add --all && git commit -m "Update";
+  git add --all && git commit -m "feat: [DIGI-0] Update";
   gpb;
 }
 
