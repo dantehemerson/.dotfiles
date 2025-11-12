@@ -83,6 +83,8 @@ brew install --cask logi-options+
 # BetterDisplay to control brigtness of external monitors
 brew install --cask betterdisplay
 
+# DBeaver Community Edition - Universal Database Manager
+brew install --cask dbeaver-community
 
 ## =========== GIT ============
 
