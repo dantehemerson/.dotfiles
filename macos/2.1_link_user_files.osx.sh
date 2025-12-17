@@ -5,6 +5,9 @@ source ~/.dotfiles/utils/utils.sh
 # ZSH
 link "$PWD/user/.zshrc" "$HOME/.zshrc"
 
+  # Zim
+  link "$PWD/user/.zimrc" "$HOME/.zimrc"
+
 # Bash
 link "$PWD/user/.bashrc" "$HOME/.bashrc"
 link "$PWD/user/.bash_profile" "$HOME/.bash_profile"

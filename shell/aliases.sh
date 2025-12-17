@@ -116,7 +116,8 @@ alias localip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo
 alias ports="sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -vE 'rapportd|ControlCe|LogiMgrDa'"
 
 
-alias reload="exec ${SHELL} -l"
+# BASH -> alias reload="exec ${SHELL} -l"
+alias reload="source ~/.zshrc"
 
 # cd shorcuts
 alias cd..="cd .."
