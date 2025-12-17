@@ -93,8 +93,15 @@ brew install gh
 
 ## ============ TERMINAL ============
 
+# Terminal emulator.
+brew install --cask ghostty
+
 # Tmux
 brew install tmux
+
+
+# NeoVim
+brew install neovim
 
 # Tmux plugin manager
 rm -rf ~/.tmux/plugins/tpm
@@ -102,15 +109,15 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Shell
 
-# BASH:
-# Update to latest version
-brew install bash
+# BASH(Deprecated):
+  # Update to latest version
+  # brew install bash
 
-# Bash completion
-brew install bash-completion
+  # Bash completion
+  # brew install bash-completion
 
-# To show git branch on terminal
-brew install vcprompt
+  # To show git branch on terminal
+  # brew install vcprompt
 
 # ZSH:
 # zsh is installed by default on MacOS(in /bin/zsh), but it's normally an older version.
