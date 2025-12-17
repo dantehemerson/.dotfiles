@@ -156,3 +156,16 @@ function re_pair() {
   blueutil --connect "$id"
   echo "connected"
 }
+
+# Added by Antigravity
+export PATH="/Users/d/.antigravity/antigravity/bin:$PATH"
+
+# bun completions
+[ -s "/Users/d/.bun/_bun" ] && source "/Users/d/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
+
+

@@ -62,3 +62,6 @@ set clipboard=unnamed
 "set t_fs=^G
 "set titlestring=%{bufname('%')==''?'':'file://'.hostname().expand('%:p:gs/\ /%20/')}
 "set titlelen=0
+
+nnoremap <leader>h :nohlsearch<CR>
+

@@ -50,7 +50,7 @@ alias dotfiles_import="~/.dotfiles/utils/dotfiles_import.sh"
 
 
 # =========== SSH ================
-alias ssh1="ssh xserver@192.168.3.4 -v"
+alias ssh1="ssh x@192.168.3.4 -v"
 
 
 # =========== Git ===========
@@ -76,8 +76,8 @@ alias mountmsi="sudo mkdir -p /mnt/msi_storage && sudo mount /dev/sdb1 /mnt/msi_
 
 
 # =========== Tmux ==============
-alias tma="tmux a"
-alias tmat="tmux a -t "
+alias tma="tmux attach"
+alias tmat="tmux attach -t"
 alias tml="tmux ls"
 alias tmls="tmux ls"
 alias tmks="tmux kill-session -t "
@@ -88,6 +88,7 @@ alias deps="jq '.dependencies' package.json"
 alias engines="jq '.engines' package.json"
 alias devs="jq '.devDependencies' package.json"
 alias version="jq '.version' package.json"
+alias node_modules_sizes="du -sm node_modules/* | sort -nr | awk '{printf \"%-10s %s\n\", $1 \"MB\", $2}'"
 
 # Common npm & yarn aliases
 alias ns="npm start"
@@ -147,6 +148,7 @@ alias promote2prod="gh workflow run promote.yml --ref preprod  -f env='preprod t
 # PRs
 alias prview="gh pr view --web"
 alias prcreate="gh pr create --web"
+
 alias prapprove="gh pr review --approve "
 
 # Actions(Workflows)

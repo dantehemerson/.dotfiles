@@ -1,0 +1,1 @@
+export HUMOR_API_KEY=2ea5a84cbbda48018482654d531fb8b3
