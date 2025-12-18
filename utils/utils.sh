@@ -70,6 +70,11 @@ function link() {
   else # symbolic link by default
     # Only link if file is not already linked
     if [ ! -L "$2" ] && [ ! -d "$2" ]; then
+      # Create parent directories recursively if they don't exist
+      dir_path=$(dirname "$2")
+      if [ ! -d "$dir_path" ]; then
+        mkdir -p "$dir_path"
+      fi
       move_to_trash "$2"
       ln -sf "$1" "$2"
       echo "🔗 File $2 linked to $1"

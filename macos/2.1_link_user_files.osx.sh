@@ -12,6 +12,9 @@ link "$PWD/user/.zshrc" "$HOME/.zshrc"
 link "$PWD/user/.bashrc" "$HOME/.bashrc"
 link "$PWD/user/.bash_profile" "$HOME/.bash_profile"
 
+# Ghostty
+link "$PWD/user/.ghostty_config" "$HOME/.config/ghostty/config"
+
 # Inputrc
 link "$PWD/user/.inputrc" "$HOME/.inputrc"
 
