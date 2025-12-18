@@ -129,8 +129,10 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Install zsh by brew to get the latest version. (in /opt/homebrew/bin/zsh (silicon))
 brew install zsh
 
-# Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+# Install Oh My Zsh (TODO: Deprecated)
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+
+brew install --formula zimfw
 
 ## ============ CLI APPS ==============
 
