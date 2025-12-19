@@ -68,8 +68,9 @@ function link() {
     # noop
     return
   else # symbolic link by default
+    current_target=$(readlink "$2" 2>/dev/null)
     # Only link if file is not already linked
-    if [ ! -L "$2" ] && [ ! -d "$2" ]; then
+    if { [ ! -L "$2" ] && [ ! -d "$2" ]; } || [ "$current_target" != "$1" ]; then
       # Create parent directories recursively if they don't exist
       dir_path=$(dirname "$2")
       if [ ! -d "$dir_path" ]; then

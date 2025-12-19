@@ -24,6 +24,9 @@ link "$PWD/user/.gitconfig" "$HOME/.gitconfig" $__DOT_GIT__LINKING_MODE
 # Vim
 link "$PWD/user/.vimrc" "$HOME/.vimrc"
 
+# Neovim
+link "$PWD/user/nvim_init.lua" "$HOME/.config/nvim/init.lua"
+
 # Tmux
 link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"
 

@@ -29,7 +29,8 @@ keybind = global:super+enter=ignore
 
 shell-integration = zsh
 
-theme = django reborn again
+# theme = django reborn again
+theme = 0x96f
 
 
 # # the config file consists of simple key-value pairs,

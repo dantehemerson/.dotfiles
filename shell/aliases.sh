@@ -31,7 +31,7 @@ if [[ "$IS_LINUX" == "true" ]]; then
   alias bat="batcat"
 fi
 
-# Files
+# Config files aliases
 alias zshrc="vi ~/.zshrc"
 alias bashrc="vi ~/.bashrc"
 alias vimrc="vi ~/.vimrc"
@@ -40,6 +40,10 @@ alias tmuxconf="vi ~/.tmux.conf"
 alias inputrc="vi ~/.inputrc"
 alias aliases="vi ~/.dotfiles/shell/aliases.sh"
 alias functions="vi ~/.dotfiles/shell/functions.sh"
+alias ghostty_config="vi ~/.config/ghostty/config"
+alias zimrc="vi ~/.zimrc"
+
+
 alias readme="bat README.md"
 
 # Interactive git branch switcher. Order by last commit date(most recent branches).
@@ -57,6 +61,7 @@ alias ssh1="ssh x@192.168.3.4 -v"
 alias gaa="git add --all"
 alias gc="git commit -m "
 alias gs="git status"
+alias gd="git diff"
 
 # Pull current branch
 alias glb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
