@@ -5,6 +5,7 @@ alias code="cursor"
 
 alias v="vi"
 
+
 # ========= Fast switching directories ===========
 alias dotfiles="cd ~/.dotfiles"
 alias repos="cd ~/coding/repos"
