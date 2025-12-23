@@ -2,9 +2,8 @@ source ~/.dotfiles/utils/utils.sh
 
 alias code="cursor"
 
-
-alias v="vi"
-
+alias v="nvim"
+alias vim="nvim"
 
 # ========= Fast switching directories ===========
 alias dotfiles="cd ~/.dotfiles"
