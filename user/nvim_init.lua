@@ -4,6 +4,12 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 
+
+-- Make Nvim look terminal like
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
+--vim.cmd.colorscheme("industry:")
+
 vim.api.nvim_create_autocmd("InsertEnter", {
   callback = function()
     vim.opt.relativenumber = false

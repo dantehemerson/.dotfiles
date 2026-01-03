@@ -270,5 +270,3 @@ export PATH="/Users/d/.antigravity/antigravity/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
-
-

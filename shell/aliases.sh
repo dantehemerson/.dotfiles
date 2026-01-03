@@ -42,6 +42,7 @@ alias aliases="vi ~/.dotfiles/shell/aliases.sh"
 alias functions="vi ~/.dotfiles/shell/functions.sh"
 alias ghostty_config="vi ~/.config/ghostty/config"
 alias zimrc="vi ~/.zimrc"
+alias nvimvonfig="vim ~/.config/nvim/init.lua"
 
 
 alias readme="bat README.md"
