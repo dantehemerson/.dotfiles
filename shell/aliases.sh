@@ -1,6 +1,6 @@
 source ~/.dotfiles/utils/utils.sh
 
-alias code="cursor"
+alias code="code"
 
 alias v="nvim"
 alias vim="nvim"
