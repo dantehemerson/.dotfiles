@@ -62,5 +62,5 @@ zmodule zsh-users/zsh-autosuggestions
 
 
 # Theme
-zmodule gitster
+zmodule dantehemerson/dasher
 
