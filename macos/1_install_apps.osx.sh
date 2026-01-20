@@ -6,12 +6,10 @@ source ~/.dotfiles/utils/utils.sh
 echo "📦 Installing apps..."
 ## -------------------------------------------
 
-
 ## ============ XCODE ============
 
 # Install Xcode Command Line Tools
 xcode-select --install
-
 
 ## =========== BREW ============
 
@@ -43,13 +41,10 @@ brew doctor
 echo "🍺 Updating Homebrew..."
 brew update
 
-
 ## ======== Mac App Store  CLI =========
 
 # A simple command line interface for the Mac App Store. Designed for scripting and automation.
 brew install mas
-
-
 
 ## =========== UTILITIES ============
 
@@ -104,7 +99,6 @@ brew install --cask ghostty
 # Tmux
 brew install tmux
 
-
 # NeoVim
 brew install neovim
 
@@ -112,25 +106,23 @@ brew install neovim
 rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-
 # Ripgrep
 brew install ripgrep
 
 # fd - Fast directory listing
 brew install fd
 
-
 # Shell
 
 # BASH(Deprecated):
-  # Update to latest version
-  # brew install bash
+# Update to latest version
+# brew install bash
 
-  # Bash completion
-  # brew install bash-completion
+# Bash completion
+# brew install bash-completion
 
-  # To show git branch on terminal
-  # brew install vcprompt
+# To show git branch on terminal
+# brew install vcprompt
 
 # ZSH:
 # zsh is installed by default on MacOS(in /bin/zsh), but it's normally an older version.
@@ -150,20 +142,16 @@ brew install thefuck
 # A better way to navigate directories
 brew install broot
 
-
 ## =========== NODE ============
 
 # Node Version Manager
 brew install fnm
-
-
 
 ## =========== DOCKER ============
 
 # Fast, light, powerful way to run containers.
 # ! No need to install docker, compose.
 brew install orbstack
-
 
 ## === C++ Development (Optional by flag defined in .env.sh) ===
 if [[ "$__DOT__INSTALL_CPP" == true ]]; then
@@ -181,7 +169,6 @@ if [[ "$__DOT__INSTALL_CPP" == true ]]; then
 else
   echo "🚫 Skipping C++ Development tools installation..."
 fi # __DOT__INSTALL_CPP
-
 
 # Done. Final message
 echo "🎉 All apps installed successfully!"
