@@ -123,7 +123,7 @@ alias ports="sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -vE 'rapportd|ControlCe|L
 
 
 # BASH -> alias reload="exec ${SHELL} -l"
-alias reload="source ~/.zshrc"
+alias reload="exec zsh"
 
 # cd shorcuts
 alias cd..="cd .."
