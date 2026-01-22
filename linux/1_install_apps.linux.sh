@@ -62,6 +62,8 @@ sudo apt install zoxide -y
 # Disk Usage/Free Utility
 sudo apt install duf
 
+# File manager
+bash -c "$(curl -sLo- https://superfile.dev/install.sh)"
 
 ## =============== TMUX ================================
 

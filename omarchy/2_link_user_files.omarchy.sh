@@ -14,3 +14,4 @@ link "$PWD/omarchy/.bashrc" "$HOME/.bashrc"
 ## Hypr
 
 link ~/.dotfiles/omarchy/.config/hypr/input.conf "$HOME/.config/hypr/input.conf"
+link ~/.dotfiles/omarchy/.config/hypr/bindings.conf "$HOME/.config/hypr/bindings.conf"
