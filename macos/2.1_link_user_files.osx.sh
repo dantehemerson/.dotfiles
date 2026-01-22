@@ -5,8 +5,8 @@ source ~/.dotfiles/utils/utils.sh
 # ZSH
 link "$PWD/user/.zshrc" "$HOME/.zshrc"
 
-  # Zim
-  link "$PWD/user/.zimrc" "$HOME/.zimrc"
+# Zim
+link "$PWD/user/.zimrc" "$HOME/.zimrc"
 
 # Bash
 link "$PWD/user/.bashrc" "$HOME/.bashrc"
@@ -30,6 +30,8 @@ link "$PWD/user/nvim_init.lua" "$HOME/.config/nvim/init.lua"
 # Tmux
 link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"
 
+# Zed
+link "$PWD/user/zed/settings.json" "$HOME/.config/zed/settings.json"
 
 ## ============ CUSTOM OPTIONS ============
 custom_options=(
@@ -44,9 +46,9 @@ custom_options=(
 )
 
 # Apply custom options
-for ((i=0; i<${#custom_options[@]}; i+=2)); do
+for ((i = 0; i < ${#custom_options[@]}; i += 2)); do
   key=${custom_options[i]}
-  value=${custom_options[i+1]}
+  value=${custom_options[i + 1]}
 
   # check if key is not empty(different of "V_")
   if [ "$key" != "V_" ]; then
@@ -54,3 +56,4 @@ for ((i=0; i<${#custom_options[@]}; i+=2)); do
     eval $value
   fi
 done
+
