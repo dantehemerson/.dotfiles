@@ -2,8 +2,8 @@ source ~/.dotfiles/utils/utils.sh
 
 alias code="cursor"
 
-alias v="nvim"
-alias vim="nvim"
+alias vi="vim"
+# alias vim="nvim"
 
 # ========= Fast switching directories ===========
 alias dotfiles="cd ~/.dotfiles"
@@ -122,8 +122,8 @@ alias localip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo
 alias ports="sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -vE 'rapportd|ControlCe|LogiMgrDa'"
 
 
-# BASH -> alias reload="exec ${SHELL} -l"
-alias reload="exec zsh"
+alias reload="exec ${SHELL} -l"
+# alias reload="exec zsh"
 
 # cd shorcuts
 alias cd..="cd .."

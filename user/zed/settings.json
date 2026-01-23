@@ -26,7 +26,7 @@
   "buffer_line_height": {
     "custom": 1.45,
   },
-  "buffer_font_family": "SF Mono",
+  "buffer_font_family": "Liga Comic Mono",
   "which_key": {
     "enabled": true,
   },
@@ -47,6 +47,6 @@
   "theme": {
     "mode": "dark",
     "light": "Everforest Light Soft (blur)",
-    "dark": "Cobalt2",
+    "dark": "Ayu Mirage",
   },
 }

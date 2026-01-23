@@ -8,6 +8,9 @@ link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"
 # Bash
 link "$PWD/omarchy/.bashrc" "$HOME/.bashrc"
 
+# Vimrc
+link "$PWD/user/.vimrc" "$HOME/.vimrc"
+
 ## Hypr
 
 link ~/.dotfiles/omarchy/.config/hypr/input.conf "$HOME/.config/hypr/input.conf"
