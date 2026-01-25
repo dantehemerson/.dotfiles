@@ -27,6 +27,8 @@
 # macos-non-native-fullscreen = false
 keybind = global:super+enter=ignore
 
+macos-option-as-alt = left
+
 window-theme = system
 window-decoration = auto
 macos-titlebar-style = native

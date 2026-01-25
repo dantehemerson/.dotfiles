@@ -23,7 +23,10 @@ fi
 
 # echo "FLAG: $FLAG, PARAM: $PARAM, OPTION: $OPTION"
 # printf '%s\n' "$@" # output rest argument
+#
 
+# Dotfiles folder
+export DOTFILES_DIR="$HOME/.dotfiles"
 
 if [[ "$(uname)" == "Linux" ]]; then
   export IS_LINUX=true
