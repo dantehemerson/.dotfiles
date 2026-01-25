@@ -311,3 +311,18 @@ function gitignore-reload() {
 		echo >&2 "Files readded. Commit your new changes now."
 	fi
 }
+
+nvim-fix() {
+  echo "⚠️  This will delete Neovim runtime data:"
+  echo "   ~/.local/share/nvim"
+  echo "   ~/.cache/nvim"
+  echo "   ~/.local/state/nvim"
+  echo
+  read -p "Continue? [y/N] " confirm
+  if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    rm -rf ~/.local/share/nvim ~/.cache/nvim ~/.local/state/nvim
+    echo "✅ Neovim cache cleared. Restart nvim."
+  else
+    echo "❌ Aborted."
+  fi
+}

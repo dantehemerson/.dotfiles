@@ -59,6 +59,7 @@ alias ssh1="ssh x@192.168.3.4 -v"
 
 
 # =========== Git ===========
+alias lg="lazygit"
 alias gaa="git add --all"
 alias gc="git commit -m "
 alias gs="git status"
