@@ -64,6 +64,7 @@ alias gc="git commit -m "
 alias gs="git status"
 alias gd="git diff"
 
+alias gl="git log"
 # Pull current branch
 alias glb="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
 

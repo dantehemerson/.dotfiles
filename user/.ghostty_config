@@ -41,7 +41,13 @@ bold-color = bright
 
 # # the config file consists of simple key-value pairs,
 # # separated by equals signs.
-font-family = Monaco
+# font-family = Monaco
+
+# font-family = Fira Code
+font-family = Maple Mono
+font-family = Fantasque Sans Mono
+# font-family = Operator Mono Lig
+
 font-size = 12
 # window-padding-x = 2
 #
@@ -51,7 +57,6 @@ cursor-style-blink = true
 # # spacing around the equals sign does not matter.
 # # all of these are identical:
 # key=value
-# key= value
 # key =value
 # key = value
 #
