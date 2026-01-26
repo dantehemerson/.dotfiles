@@ -10,13 +10,11 @@ fi
 # Load .shellrc_custom if exists
 [ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
 
-
 # autocd - automatically cd into directories when they are the only argument to a command
 shopt -s autocd
 
 # Append to the history file, don't overwrite it
 shopt -s histappend
-
 
 # show potential good files when trying to cd in a non existant dir
 shopt -s cdspell
@@ -33,16 +31,13 @@ export HISTFILESIZE=10000
 # 'autoshare': automatically share history between multiple running shells
 export HISTCONTROL=ignorespace:erasedups:autoshare
 
-
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Load custom aliases and functions
 for file in aliases.sh functions.sh bash/aliases.sh bash/functions.sh; do
-    [ -r ~/.dotfiles/shell/$file ] && source ~/.dotfiles/shell/$file >/dev/null 2>&1
+  [ -r ~/.dotfiles/shell/$file ] && source ~/.dotfiles/shell/$file >/dev/null 2>&1
 done
-
-
 
 # Execute commands only available if line editing is on. https://superuser.com/a/1361068/983887
 if [[ "$(set -o | grep 'emacs\|\bvi\b' | cut -f2 | tr '\n' ':')" != 'off:off:' ]]; then
@@ -52,7 +47,6 @@ if [[ "$(set -o | grep 'emacs\|\bvi\b' | cut -f2 | tr '\n' ':')" != 'off:off:' ]
   export MY_LOCAL_IP="$(localip)"
 fi
 
-
 # Bash completion
 
 if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
@@ -61,32 +55,13 @@ else # Intel
   [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
 
-
-
-# Colors for prompt
-txtred='\e[0;31m' # Red
-txtgrn='\e[0;32m' # Green
-
-bldred='\e[1;31m' # Bold Red
-bldgrn='\e[1;32m' # Bold Green
-bldpur='\e[1;35m' # Bold Purple
-bldcya='\e[1;36m' # Bold Cyan
-bldblue='\e[1;34m' # Bold Blue
-bldsky='\e[1;38;5;117m' # Bold Sky Blue
-blddblue='\e[1;38;5;33m' # Bold Dark Blue
-blddsky='\e[1;38;5;45m' # Bold Dark Sky Blue
-
-txtrst='\e[0m'    # Text Reset
-bld='\e[1m'       # Bold
-
 # ============ NODE VERSION MANAGER ===========
-if  [[ -f ~/.local/share/fnm/fnm ]]; then
+if [[ -f ~/.local/share/fnm/fnm ]]; then
   export PATH="$HOME/.local/share/fnm:$PATH"
 
   # fnm: node version manager
   eval "$(fnm env --use-on-cd)"
 fi
-
 
 # This fixes issue installing Postman Bridge interceptor since node not found
 if [ -z "$FNM_MULTISHELL_PATH" ]; then
@@ -99,116 +74,68 @@ fi
 # to be captured in the prompt
 function save_history {
   local exit_status=$?
-  history -a; history -c; history -r
+  history -a
+  history -c
+  history -r
   return $exit_status
 }
-
-
 
 # =============== SAVE GIT DIRECTORY =========
 
 REPO_PATH=""
 function __save_repo_path_if_found() {
-	REPO_PATH=$(git rev-parse --show-toplevel 2>/dev/null) || true
+  REPO_PATH=$(git rev-parse --show-toplevel 2>/dev/null) || true
 }
 
 function __save_repo_path_on_cd() {
-	\cd "$@" || return $?
-	__save_repo_path_if_found
+  \cd "$@" || return $?
+  __save_repo_path_if_found
 }
 
 alias cd="__save_repo_path_on_cd"
 
 # Save path on zoxide as well
 function __save_repo_path_on_z() {
-	\z "$@" || return $?
-	__save_repo_path_if_found
+  \z "$@" || return $?
+  __save_repo_path_if_found
 }
-
 
 __save_repo_path_if_found
 
-
-
-# Show git branch in prompt(only when a git repo is present)
-function prompt () {
-  local exit_code=$?
-
-	# Get status color
-  if [ $exit_code -ne 0 ]; then
-    status_color=$bldred
-  else
-    status_color=$blddblue
+prompt_hook() {
+  # tmux window title
+  if [[ -n "$TMUX" ]]; then
+    tmux set-option -w set-titles-string \
+      "#{s|$HOME|~|:pane_current_path} - [ #{window_index} #{window_name} ] - Terminator"
   fi
 
-
-	# --------- Get branch --------
-  if [[ $(uname) == "Linux" ]]; then
-    branch=$(~/.dotfiles/utils/bin/vcprompt -f ' [%b]')
-    if [[ "$branch" == ' [(unknown)]' ]]; then
-      # Show revision if not on a branch
-      branch=$(~/.dotfiles/utils/bin/vcprompt -f ' [%r]')
-    fi
-  else
-    branch=$(vcprompt -f ' [%b]')
-    if [[ "$branch" == ' [(unknown)]' ]]; then
-      # Show revision if not on a branch
-      branch=$(vcprompt -f ' [%r]')
-    fi
-  fi
-
-
-	workdir=$PWD
-
-	# Get dir
-  if [ -n "$branch" ]; then
-		parent_dir="$(dirname "$REPO_PATH")/"
-
-		# Only get path from workdir
-		dir=${workdir/"$parent_dir"/""}
-	else
-		dir=${workdir/"$HOME"/"~"}
-  fi
-
-
-  # Updates current dir and proxy icon in Terminal title ——
-  if [ -n "$TMUX" ]; then
-    tmux set-option set-titles-string "#{s|$HOME|~|:pane_current_path}  ◄  #{window_index} #{window_name}  —  Terminal"
-  fi
-
-  PS1="\[${bldgrn}\]${dir}\[${bldpur}\]\$branch\[${txtrst}\]❯ "
-
-  # Variable IS_VSCODE passed in the terminal profile configuration of VSCode.
-  if ! [ "$IS_VSCODE" = "1" ]; then
-    PS1="\[${status_color}\]⏺ $PS1"
-  fi
-
-  return $exit_code
+  # history sync
+  history -a
+  history -c
+  history -r
 }
 
-# PROMPT_COMMAND="prompt; history -a; history -c; history -r"
-
 # Optional export if go/bin exists
-if [ -d "$HOME/go/bin" ] ; then
+if [ -d "$HOME/go/bin" ]; then
   export PATH=$PATH:$HOME/go/bin
 fi
 
-if [ -d "$HOME/.local/bin" ] ; then
+if [ -d "$HOME/.local/bin" ]; then
   export PATH=$PATH:$HOME/.local/bin
 fi
 
 if [ -d "$HOME/.goenv" ]; then
-	export GOENV_ROOT="$HOME/.goenv"
-	export PATH="$GOENV_ROOT/bin:$PATH"
+  export GOENV_ROOT="$HOME/.goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
 
-	eval "$(goenv init -)"
+  eval "$(goenv init -)"
 
-	export PATH="$GOROOT/bin:$PATH"
-	export PATH="$PATH:$GOPATH/bin"
+  export PATH="$GOROOT/bin:$PATH"
+  export PATH="$PATH:$GOPATH/bin"
 fi
 
 if [ -d "$HOME/development/flutter/bin" ]; then
-	export PATH="$PATH:$HOME/development/flutter/bin"
+  export PATH="$PATH:$HOME/development/flutter/bin"
 fi
 
 # Only eval if thefuck command exist:
@@ -217,23 +144,24 @@ if command -v thefuck >/dev/null 2>&1; then
 fi
 
 if command -v zoxide >/dev/null 2>&1; then
-	eval "$(zoxide init bash)"
+  eval "$(zoxide init bash)"
 fi
 
 # Put it after zoxide init
 alias z="__save_repo_path_on_z"
 
-
 if [ -f "$HOME/.cargo/env" ]; then
-	. "$HOME/.cargo/env"
+  . "$HOME/.cargo/env"
 fi
 
 # pnpm
 export PNPM_HOME="/Users/d/Library/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
+eval "$(starship init bash)"
 
+PROMPT_COMMAND="prompt_hook${PROMPT_COMMAND:+; $PROMPT_COMMAND}"

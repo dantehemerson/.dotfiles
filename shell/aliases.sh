@@ -22,8 +22,6 @@ alias mdln='shiradl -c "./music.youtube.com_cookies.txt"'
 # ====== Counters ==============
 alias count_deep_files='find . -type f \( -iname "*.mp3" -o -iname "*.wav" -o -iname "*.m4a" -o -iname "*.flac" \) | wc -l'
 
-
-
 # Bat
 
 # if linux set alias bat="batcat"
@@ -44,7 +42,6 @@ alias ghostty_config="vi ~/.config/ghostty/config"
 alias zimrc="vi ~/.zimrc"
 alias nvimvonfig="vim ~/.config/nvim/init.lua"
 
-
 alias readme="bat README.md"
 
 # Interactive git branch switcher. Order by last commit date(most recent branches).
@@ -53,10 +50,8 @@ alias branch="git branch -v --sort=-refname --sort=-committerdate | fzf --height
 alias dotfiles_backup="~/.dotfiles/utils/dotfiles_backup.sh"
 alias dotfiles_import="~/.dotfiles/utils/dotfiles_import.sh"
 
-
 # =========== SSH ================
 alias ssh1="ssh x@192.168.3.4 -v"
-
 
 # =========== Git ===========
 alias lg="lazygit"
@@ -78,10 +73,8 @@ alias mongoplay="sudo service mongod start"
 # Move files to trash
 alias srm='safe-rm'
 
-
 # ============ DISKS ===============
 alias mountmsi="sudo mkdir -p /mnt/msi_storage && sudo mount /dev/sdb1 /mnt/msi_storage"
-
 
 # =========== Tmux ==============
 alias tma="tmux attach"
@@ -118,15 +111,9 @@ alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
 
 # =========== NETWORK ======================
 # alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip='ip -4 addr show scope global \
-  | awk '\''{print $2}'\'' \
-  | cut -d/ -f1 \
-  | grep '\''^192\.168\.'\'' \
-  | paste -sd " | " -'
 
 # Which apps are running on which ports
 alias ports="sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -vE 'rapportd|ControlCe|LogiMgrDa'"
-
 
 alias reload="exec ${SHELL} -l"
 # alias reload="exec zsh"
@@ -144,11 +131,8 @@ function cdl() {
   cd $1 && l
 }
 
-
 # Typos
 alias code.="code ."
-
-
 
 ## ============ GITHUB CLI ============
 alias gha="cat ~/.dotfiles/shell/aliases.sh | grep -E 'gh|promote|pr|repo' | bat $1 -l=sh --style=plain,grid --wrap=never"
@@ -173,7 +157,6 @@ alias repo="gh repo view --web"
 # termbin
 alias tb="nc termbin.com 9999"
 
-
 ## =============== DOCKER ===================
 # alias docker="docker"
 
@@ -181,8 +164,6 @@ alias lzd="lazydocker"
 
 alias "compose"="docker compose"
 
-
 ## ======= CLI APPS =======
 alias nvm="fnm"
 alias ncu2="npm-check -u"
-
