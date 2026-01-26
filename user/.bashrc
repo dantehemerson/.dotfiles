@@ -82,10 +82,11 @@ bld='\e[1m'       # Bold
 # ============ NODE VERSION MANAGER ===========
 if  [[ -f ~/.local/share/fnm/fnm ]]; then
   export PATH="$HOME/.local/share/fnm:$PATH"
+
+  # fnm: node version manager
+  eval "$(fnm env --use-on-cd)"
 fi
 
-# FNM: Node version manager
-eval "$(fnm env --use-on-cd)"
 
 # This fixes issue installing Postman Bridge interceptor since node not found
 if [ -z "$FNM_MULTISHELL_PATH" ]; then
@@ -175,7 +176,7 @@ function prompt () {
     tmux set-option set-titles-string "#{s|$HOME|~|:pane_current_path}  ◄  #{window_index} #{window_name}  —  Terminal"
   fi
 
-  PS1="\[${bldgrn}\]${dir}\[${bldpur}\]\$branch\[${txtrst}\]\$ "
+  PS1="\[${bldgrn}\]${dir}\[${bldpur}\]\$branch\[${txtrst}\]❯ "
 
   # Variable IS_VSCODE passed in the terminal profile configuration of VSCode.
   if ! [ "$IS_VSCODE" = "1" ]; then
@@ -185,7 +186,7 @@ function prompt () {
   return $exit_code
 }
 
-PROMPT_COMMAND="prompt; history -a; history -c; history -r"
+# PROMPT_COMMAND="prompt; history -a; history -c; history -r"
 
 # Optional export if go/bin exists
 if [ -d "$HOME/go/bin" ] ; then

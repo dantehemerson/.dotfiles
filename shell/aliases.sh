@@ -117,8 +117,12 @@ fi
 alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
 
 # =========== NETWORK ======================
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep '^192' | awk 'BEGIN {ORS=\" | \"} {print}' | sed 's/ | $//'"
+# alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip='ip -4 addr show scope global \
+  | awk '\''{print $2}'\'' \
+  | cut -d/ -f1 \
+  | grep '\''^192\.168\.'\'' \
+  | paste -sd " | " -'
 
 # Which apps are running on which ports
 alias ports="sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -vE 'rapportd|ControlCe|LogiMgrDa'"

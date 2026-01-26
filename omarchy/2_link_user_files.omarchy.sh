@@ -1,15 +1,12 @@
 source ~/.dotfiles/utils/utils.sh
 
-## =========== link files ===========
+## =========== LINK CROSS-PLATFORM FILES ===========
+source ~/.dotfiles/common/link_files.sh
 
-# Tmux
-link "$PWD/user/.tmux.conf" "$HOME/.tmux.conf"
+## =========== LINK OMARCHY FILES ===========
 
 # Bash
 link "$PWD/omarchy/.bashrc" "$HOME/.bashrc"
-
-# Vimrc
-link "$PWD/user/.vimrc" "$HOME/.vimrc"
 
 ## Hypr
 

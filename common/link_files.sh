@@ -12,6 +12,10 @@ link "$DOTFILES_DIR/user/.zimrc" "$HOME/.zimrc"
 link "$DOTFILES_DIR/user/.bashrc" "$HOME/.bashrc"
 link "$DOTFILES_DIR/user/.bash_profile" "$HOME/.bash_profile"
 
+
+# Starship: Shell Prompt
+link "$DOTFILES_DIR/user/.config/starship.toml" "$HOME/.config/starship.toml"
+
 # Ghostty
 link "$DOTFILES_DIR/user/.ghostty_config" "$HOME/.config/ghostty/config"
 
