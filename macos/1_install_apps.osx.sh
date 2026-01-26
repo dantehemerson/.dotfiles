@@ -134,6 +134,9 @@ brew install zsh
 
 brew install --formula zimfw
 
+# Shell Promot
+brew install starship
+
 ## ============ CLI APPS ==============
 
 # Magnificent app which corrects your previous console command.

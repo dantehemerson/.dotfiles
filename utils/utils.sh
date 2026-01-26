@@ -23,7 +23,10 @@ fi
 
 # echo "FLAG: $FLAG, PARAM: $PARAM, OPTION: $OPTION"
 # printf '%s\n' "$@" # output rest argument
+#
 
+# Dotfiles folder
+export DOTFILES_DIR="$HOME/.dotfiles"
 
 if [[ "$(uname)" == "Linux" ]]; then
   export IS_LINUX=true
@@ -100,3 +103,27 @@ function _command_exists() {
 		return 1
 	fi
 }
+
+# Given a filename, returns packages in an array
+# Skips empty lines and lines starting with # (comments)
+# ## Usage:
+# * Declare an array
+#   packages=()
+# * Load packages from a file
+#   load_packages "$HOME/.dotfiles/linux/packages/common.packages" packages
+load_packages() {
+    local file="$1"
+    local -n out_array=$2
+
+    if [[ ! -f "$file" ]]; then
+        echo "File not found: $file" >&2
+        return 1
+    fi
+
+    out_array=()
+
+    while IFS= read -r line; do
+        [[ -n "$line" && "$line" != \#* ]] && out_array+=("$line")
+    done < "$file"
+}
+

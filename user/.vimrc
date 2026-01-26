@@ -11,11 +11,20 @@ highlight Comment ctermfg=green
 syntax on
 
 set number
-"set relativenumber
 set expandtab
 set softtabstop=2
 set tabstop=2
 set shiftwidth=2
+
+
+" Relative numbers only in normal mode
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave *
+        \ if &buftype == '' | set relativenumber | endif
+  autocmd BufLeave,FocusLost,InsertEnter *
+        \ if &buftype == '' | set norelativenumber | endif
+augroup END
 
 "Favourites -> desert industry koehler
 "colorscheme industry
