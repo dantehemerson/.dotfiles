@@ -1,0 +1,39 @@
+name: Test dotfiles (Arch Linux)
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  test-arch:
+    runs-on: ubuntu-latest
+
+    container:
+      image: archlinux:latest
+
+    steps:
+      - name: Bootstrap Arch container
+        run: |
+          pacman -Sy --noconfirm \
+            base \
+            base-devel \
+            git \
+            curl \
+            sudo
+
+      - name: Run curl installer (CI)
+        env:
+          CI: true
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/master/install.sh \
+            | bash -s -- --ci
+
+      - name: Smoke test
+        run: |
+          command -v git
+          command -v zsh || true
+          command -v nvim || true
+          bash -lc 'echo shell ok'
