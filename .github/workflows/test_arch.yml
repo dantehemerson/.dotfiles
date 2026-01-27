@@ -3,10 +3,10 @@ name: Test dotfiles (Arch Linux)
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 jobs:
   test-arch:
     runs-on: ubuntu-latest
