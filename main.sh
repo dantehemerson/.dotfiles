@@ -47,8 +47,8 @@ if [[ "$CURRENT_DISTRO" == "arch" ]]; then
 
 elif [[ "$CURRENT_DISTRO" == "macos" ]]; then
 
-  # ./macos/1_install_apps.osx.sh
-  # ./macos/2_configure.osx.sh
+  ./macos/1_install_apps.osx.sh
+  ./macos/2_configure.osx.sh
 fi
 
 # Install starship
