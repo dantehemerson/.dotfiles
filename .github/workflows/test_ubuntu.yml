@@ -1,0 +1,58 @@
+name: Test dotfiles (Ubuntu)
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test-ubuntu:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ubuntu:latest
+
+    steps:
+      - name: Bootstrap Ubuntu container
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            sudo \
+            git \
+            curl \
+            ca-certificates \
+            build-essential \
+            bash \
+            zsh \
+            locales
+
+          # Optional but often needed by dotfiles
+          sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+          locale-gen
+
+      - name: Create non-root user
+        run: |
+          useradd -m -s /bin/bash ci
+          echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+      - name: Run curl installer (CI)
+        env:
+          CI: true
+        run: |
+          su - ci -c "
+            curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/refs/heads/master/install.sh \
+              | bash -s -- --ci
+          "
+
+      - name: Smoke test
+        run: |
+          command -v git
+          command -v zsh || true
+          command -v nvim || true
+          command -v spf || true
+
+          # basic shell sanity
+          su - ci -c 'bash -lc "echo shell ok"'
