@@ -48,24 +48,6 @@ brew install mas
 
 ## =========== UTILITIES ============
 
-# cat with highlight
-brew install bat
-
-# Display directories as trees (with optional color/HTML output)
-brew install tree
-
-# JSON parser and more
-brew install jq
-
-# An interactive process viewer
-brew install htop
-
-# A smarter cd command.
-brew install zoxide
-
-# (not used) Adaptive brightness for external displays
-# brew install --cask lunar
-
 # Mouse fix
 brew install --cask mac-mouse-fix
 
@@ -83,67 +65,16 @@ brew install --cask dbeaver-community
 
 ## =========== GIT ============
 
-# Git: Update to latest version
-brew install git
-
 # Github CLI
 brew install gh
-
-brew install lazygit
 
 ## ============ TERMINAL ============
 
 # Terminal emulator.
 brew install --cask ghostty
 
-# Tmux
-brew install tmux
-
-# NeoVim
-brew install neovim
-
-# Tmux plugin manager
-rm -rf ~/.tmux/plugins/tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Ripgrep
-brew install ripgrep
-
-# fd - Fast directory listing
-brew install fd
-
 # Shell
-
-# BASH(Deprecated):
-# Update to latest version
-# brew install bash
-
-# Bash completion
-# brew install bash-completion
-
-# To show git branch on terminal
-# brew install vcprompt
-
-# ZSH:
-# zsh is installed by default on MacOS(in /bin/zsh), but it's normally an older version.
-# Install zsh by brew to get the latest version. (in /opt/homebrew/bin/zsh (silicon))
-brew install zsh
-
-# Install Oh My Zsh (TODO: Deprecated)
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
-
 brew install --formula zimfw
-
-# Shell Promot
-brew install starship
-
-## ============ CLI APPS ==============
-
-# Magnificent app which corrects your previous console command.
-brew install thefuck
-
-# A better way to navigate directories
-brew install broot
 
 ## =========== NODE ============
 

@@ -1,0 +1,1 @@
+./setup/install/pacman.sh
