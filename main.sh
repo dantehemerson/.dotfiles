@@ -50,5 +50,5 @@ elif [[ "$CURRENT_DISTRO" == "macos" ]]; then
   ./macos/2_configure.osx.sh
 else
   echo "❌ Unsupported distro: '$CURRENT_DISTRO'" >&2
-  return 1
+  exit 1
 fi
