@@ -24,16 +24,27 @@ jobs:
             curl \
             sudo
 
+
+      - name: Create non-root user
+        run: |
+          useradd -m -G wheel -s /bin/bash ci
+          echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
       - name: Run curl installer (CI)
         env:
           CI: true
         run: |
-          curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/refs/heads/master/install.sh \
-            | bash -s -- --ci
+          su - ci -c '
+            curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/refs/heads/master/install.sh \
+              | bash -s -- --ci
 
       - name: Smoke test
         run: |
           command -v git
           command -v zsh || true
           command -v nvim || true
+
+          # yay must be tested as non-root
+          su - ci -c 'command -v yay'
+
           bash -lc 'echo shell ok'
