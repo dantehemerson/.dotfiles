@@ -19,5 +19,7 @@ else
   git -C "$DOTFILES_DIR" pull --ff-only
 fi
 
+cd "$DOTFILES_DIR"
+
 echo "→ Running main installer..."
-exec bash "$DOTFILES_DIR/main.sh"
+exec bash ./main.sh
