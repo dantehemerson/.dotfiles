@@ -52,6 +52,7 @@ jobs:
           command -v git
           command -v zsh || true
           command -v nvim || true
+          command -v spf || true
 
           # basic shell sanity
           su - ci -c 'bash -lc "echo shell ok"'
