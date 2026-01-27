@@ -38,22 +38,11 @@ jobs:
           useradd -m -s /bin/bash ci
           echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-      - name: Run curl installer (CI)
-        env:
-          CI: true
-        run: |
-          su - ci -c "
-            curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/refs/heads/master/install.sh \
-              | bash -s -- --ci
-          "
+      - uses: ./.github/actions/dotfiles-install
+        with:
+          run_as: 'ci'
 
-      - name: Smoke test
-        run: |
-          command -v git
-          command -v zsh || true
-          command -v nvim || true
-          command -v spf || true
-
-          # basic shell sanity
-          su - ci -c 'bash -lc "echo shell ok"'
+      - uses: ./.github/actions/dotfiles-test
+        with:
+          run_as: 'ci'
 

@@ -13,19 +13,6 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Run curl installer (CI)
-        env:
-          CI: true
-        run: |
-          curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/refs/heads/master/install.sh \
-            | bash -s -- --ci
+      - uses: ./.github/actions/dotfiles-install
 
-      - name: Smoke test
-        run: |
-          command -v git
-          command -v zsh || true
-          command -v nvim || true
-          command -v spf || true
-
-          # basic shell sanity
-          bash -lc "echo shell ok"
+      - uses: ./.github/actions/dotfiles-test

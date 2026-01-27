@@ -1,0 +1,29 @@
+name: 'Dotfiles Test'
+description: 'Run smoke tests for dotfiles'
+inputs:
+  run_as:
+    description: 'User to run commands as (e.g., "ci" for containerized workflows)'
+    required: false
+    default: ''
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Smoke test
+      env:
+        RUN_AS: ${{ inputs.run_as }}
+      shell: bash
+      run: |
+        if [ -n "$RUN_AS" ]; then
+          su - $RUN_AS -c 'bash -lc "command -v git"'
+          su - $RUN_AS -c 'bash -lc "command -v zsh || true"'
+          su - $RUN_AS -c 'bash -lc "command -v nvim || true"'
+          su - $RUN_AS -c 'bash -lc "command -v spf || true"'
+          su - $RUN_AS -c 'bash -lc "echo shell ok"'
+        else
+          command -v git
+          command -v zsh || true
+          command -v nvim || true
+          command -v spf || true
+          bash -lc "echo shell ok"
+        fi
