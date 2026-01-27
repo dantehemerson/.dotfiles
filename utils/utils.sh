@@ -34,6 +34,198 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   export IS_OSX=true
 fi
 
+# System detection variables for conditional package loading
+export CURRENT_OS=""
+export CURRENT_ARCH=""
+export CURRENT_PM=""
+export CURRENT_DISTRO=""
+
+# Detect current operating system
+detect_os() {
+  if [[ "$(uname)" == "Linux" ]]; then
+    export CURRENT_OS="linux"
+  elif [[ "$(uname)" == "Darwin" ]]; then
+    export CURRENT_OS="macos"
+  elif [[ "$(uname)" == "MINGW"* ]] || [[ "$(uname)" == "CYGWIN"* ]]; then
+    export CURRENT_OS="windows"
+  else
+    export CURRENT_OS="unknown"
+  fi
+}
+
+# Detect current architecture
+detect_arch() {
+  local arch=$(uname -m)
+  case "$arch" in
+    x86_64)
+      export CURRENT_ARCH="x86_64"
+      ;;
+    arm64|aarch64)
+      export CURRENT_ARCH="arm64"
+      ;;
+    *)
+      export CURRENT_ARCH="unknown"
+      ;;
+  esac
+}
+
+# Detect current package manager
+detect_pm() {
+  if command -v brew >/dev/null 2>&1; then
+    export CURRENT_PM="brew"
+  elif command -v apt >/dev/null 2>&1; then
+    export CURRENT_PM="apt"
+  elif command -v pacman >/dev/null 2>&1; then
+    export CURRENT_PM="pacman"
+  elif command -v dnf >/dev/null 2>&1; then
+    export CURRENT_PM="dnf"
+  elif command -v yum >/dev/null 2>&1; then
+    export CURRENT_PM="yum"
+  else
+    export CURRENT_PM="unknown"
+  fi
+}
+
+# Detect current distribution
+detect_distro() {
+  if [[ -f /etc/os-release ]]; then
+    . /etc/os-release
+    case "$ID" in
+      ubuntu)
+        export CURRENT_DISTRO="ubuntu"
+        ;;
+      debian)
+        export CURRENT_DISTRO="debian"
+        ;;
+      arch)
+        export CURRENT_DISTRO="arch"
+        ;;
+      fedora)
+        export CURRENT_DISTRO="fedora"
+        ;;
+      rhel|centos)
+        export CURRENT_DISTRO="rhel"
+        ;;
+      *)
+        export CURRENT_DISTRO="unknown"
+        ;;
+    esac
+  else
+    export CURRENT_DISTRO="unknown"
+  fi
+}
+
+# Initialize system detection
+detect_os
+detect_arch
+detect_pm
+detect_distro
+
+# Parse package line to extract package name and conditions
+# Returns: package_name and conditions_string
+parse_package_line() {
+  local line="$1"
+  local package_name="$line"
+  local conditions=""
+  
+  # Check if line contains opening bracket
+  case "$line" in
+    *"["*)
+      # Extract package name (everything before [)
+      package_name=$(echo "$line" | cut -d'[' -f1)
+      # Extract conditions (everything after [ and before ])
+      conditions=$(echo "$line" | cut -d'[' -f2 | cut -d']' -f1)
+      ;;
+  esac
+  
+  echo "$package_name|$conditions"
+}
+
+# Evaluate inclusive conditions (all must match)
+# Returns 0 if conditions are satisfied, 1 otherwise
+evaluate_inclusive_conditions() {
+  local conditions="$1"
+  local first_condition
+  
+  # Get first condition to check
+  first_condition=$(echo "$conditions" | cut -d',' -f1 | xargs)
+  
+  case "$first_condition" in
+    os.*)
+      local target_os=$(echo "$first_condition" | cut -d'.' -f2)
+      [ "$CURRENT_OS" = "$target_os" ]
+      ;;
+    arch.*)
+      local target_arch=$(echo "$first_condition" | cut -d'.' -f2)
+      [ "$CURRENT_ARCH" = "$target_arch" ]
+      ;;
+    pm.*)
+      local target_pm=$(echo "$first_condition" | cut -d'.' -f2)
+      [ "$CURRENT_PM" = "$target_pm" ]
+      ;;
+    distro.*)
+      local target_distro=$(echo "$first_condition" | cut -d'.' -f2)
+      [ "$CURRENT_DISTRO" = "$target_distro" ]
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+# Evaluate exclusive conditions (none must match)
+# Returns 0 if no conditions are matched, 1 if any condition matches
+evaluate_exclusive_conditions() {
+  local conditions="$1"
+  local first_condition
+  
+  # Get first condition to check
+  first_condition=$(echo "$conditions" | cut -d',' -f1 | xargs)
+  
+  case "$first_condition" in
+    ~os.*)
+      local exclude_os=$(echo "$first_condition" | cut -d'.' -f2)
+      [ "$CURRENT_OS" != "$exclude_os" ]
+      ;;
+    ~arch.*)
+      local exclude_arch=$(echo "$first_condition" | cut -d'.' -f2)
+      [ "$CURRENT_ARCH" != "$exclude_arch" ]
+      ;;
+    ~pm.*)
+      local exclude_pm=$(echo "$first_condition" | cut -d'.' -f2)
+      [ "$CURRENT_PM" != "$exclude_pm" ]
+      ;;
+    ~distro.*)
+      local exclude_distro=$(echo "$first_condition" | cut -d'.' -f2)
+      [ "$CURRENT_DISTRO" != "$exclude_distro" ]
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+# Check if a package should be installed based on its conditions
+# Returns 0 if package should be installed, 1 otherwise
+should_install_package() {
+  local conditions="$1"
+  
+  # No conditions means always install
+  if [ -z "$conditions" ]; then
+    return 0
+  fi
+  
+  # Check if conditions contain negation (exclusive logic)
+  case "$conditions" in
+    ~*)
+      evaluate_exclusive_conditions "$conditions"
+      ;;
+    *)
+      evaluate_inclusive_conditions "$conditions"
+      ;;
+  esac
+}
+
 # Move a file or folder to trash.
 # Used to moved files that already exists before create the symlink,
 # just in case you need to restore them.
@@ -106,6 +298,7 @@ function _command_exists() {
 
 # Given a filename, returns packages in an array
 # Skips empty lines and lines starting with # (comments)
+# Evaluates conditional syntax and filters packages accordingly
 # ## Usage:
 # * Declare an array
 #   packages=()
@@ -113,17 +306,41 @@ function _command_exists() {
 #   load_packages "$HOME/.dotfiles/linux/packages/common.packages" packages
 load_packages() {
     local file="$1"
-    local -n out_array=$2
+    local array_name="$2"
 
-    if [[ ! -f "$file" ]]; then
+    if [ ! -f "$file" ]; then
         echo "File not found: $file" >&2
         return 1
     fi
 
-    out_array=()
+    # Clear the target array
+    eval "$array_name=\"\""
 
     while IFS= read -r line; do
-        [[ -n "$line" && "$line" != \#* ]] && out_array+=("$line")
+        # Skip empty lines and comments
+        [ -z "$line" ] && continue
+        case "$line" in \#*) continue ;; esac
+        
+        # Process the line (no comma-separated alternatives for now)
+        local alternative=$(echo "$line" | xargs) # trim whitespace
+        
+        # Parse package name and conditions
+        local parse_result
+        parse_result=$(parse_package_line "$alternative")
+        local package_name="${parse_result%|*}"
+        local conditions="${parse_result#*|}"
+        
+        # Check if this package alternative should be installed
+        if should_install_package "$conditions"; then
+            # Add to the array (space-separated string for sh compatibility)
+            local current_value
+            eval "current_value=\"\$$array_name\""
+            if [ -z "$current_value" ]; then
+                eval "$array_name=\"$package_name\""
+            else
+                eval "$array_name=\"$current_value $package_name\""
+            fi
+        fi
     done < "$file"
 }
 
@@ -134,7 +351,7 @@ brew_safe_cask() {
     return 0
   fi
 
-H  # Not installed → install
+  # Not installed → install
   if ! brew list --cask "$cask" &>/dev/null; then
     echo "Installing $cask..."
     brew install --cask "$cask" || true
