@@ -16,12 +16,12 @@ jq
 yq
 neovim
 tree
-superfile[~distro:debian]
+superfile[~distro.debian]
 bat
 lazygit
 ripgrep
-fd[~distro:debian,~distro:ubuntu]
-rust-fd-find[distro:debian,distro:ubuntu]
+fd[~distro.debian,~distro.ubuntu]
+rust-fd-find[distro.debian,distro.ubuntu]
 bash
 bash-completion
 zsh
