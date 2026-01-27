@@ -1,4 +1,4 @@
-name: Test dotfiles (Arch Linux)
+name: Test dotfiles (Debian)
 
 on:
   push:
@@ -7,26 +7,35 @@ on:
   pull_request:
     branches:
       - master
+
 jobs:
-  test-arch:
+  test-debian:
     runs-on: ubuntu-latest
 
     container:
-      image: archlinux:latest
+      image: debian:stable-slim
 
     steps:
-      - name: Bootstrap Arch container
+      - name: Bootstrap Debian container
         run: |
-          pacman -Sy --noconfirm \
-            base \
-            base-devel \
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            sudo \
             git \
             curl \
-            sudo
+            ca-certificates \
+            build-essential \
+            bash \
+            zsh \
+            locales
+
+          # Optional but often needed by dotfiles
+          sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+          locale-gen
 
       - name: Create non-root user
         run: |
-          useradd -m -G wheel -s /bin/bash ci
+          useradd -m -s /bin/bash ci
           echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
       - name: Run curl installer (CI)
@@ -44,8 +53,6 @@ jobs:
           command -v zsh || true
           command -v nvim || true
 
-          # yay must be tested as non-root
-          su - ci -c 'command -v yay'
-
-          bash -lc 'echo shell ok'
+          # basic shell sanity
+          su - ci -c 'bash -lc "echo shell ok"'
 

@@ -42,9 +42,8 @@ echo "DISTRO: $CURRENT_DISTRO"
 
 if [[ "$CURRENT_DISTRO" == "arch" ]]; then
   ~/.dotfiles/install/arch.sh
-  # ./linux/1_install_apps.linux.sh
-  # ./linux/2_link_user_files.linux.sh
-
+elif [[ "$CURRENT_DISTRO" == "debian" ]]; then
+  ~/.dotfiles/install/debian.sh
 elif [[ "$CURRENT_DISTRO" == "macos" ]]; then
 
   ./macos/1_install_apps.osx.sh

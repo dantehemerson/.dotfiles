@@ -14,6 +14,16 @@ This dotfiles includes configuration for:
 ## Installation
 
 
+### Arch Linux
+
+```
+```
+sudo pacman -Sy --noconfirm git curl sudo base-devel \
+  && curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/master/install.sh | bash
+```
+```
+
+
 ### Configuring custom options
 
 You can configure custom options for your environment by creating a file called `.env.sh` in the root of the project. This file is ignored by git and will not be commited.
