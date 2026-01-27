@@ -313,8 +313,9 @@ load_packages() {
         return 1
     fi
 
-    # Clear the target array
-    eval "$array_name=\"\""
+    # Build space-separated package list
+    local package_list=""
+    local first_package=true
 
     while IFS= read -r line; do
         # Skip empty lines and comments
@@ -332,16 +333,17 @@ load_packages() {
         
         # Check if this package alternative should be installed
         if should_install_package "$conditions"; then
-            # Add to the array (space-separated string for sh compatibility)
-            local current_value
-            eval "current_value=\"\$$array_name\""
-            if [ -z "$current_value" ]; then
-                eval "$array_name=\"$package_name\""
+            if [ "$first_package" = true ]; then
+                package_list="$package_name"
+                first_package=false
             else
-                eval "$array_name=\"$current_value $package_name\""
+                package_list="$package_list $package_name"
             fi
         fi
     done < "$file"
+    
+    # Set the variable as a space-separated string
+    eval "$array_name=\"$package_list\""
 }
 
 brew_safe_cask() {
