@@ -16,6 +16,8 @@ jobs:
       image: ubuntu:latest
 
     steps:
+      - uses: actions/checkout@v4
+
       - name: Bootstrap Ubuntu container
         run: |
           apt-get update

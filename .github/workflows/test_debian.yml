@@ -16,6 +16,8 @@ jobs:
       image: debian:stable-slim
 
     steps:
+      - uses: actions/checkout@v4
+
       - name: Bootstrap Debian container
         run: |
           apt-get update
