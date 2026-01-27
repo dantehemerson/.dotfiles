@@ -47,9 +47,7 @@ elif [[ "$CURRENT_DISTRO" == "debian" ]]; then
 elif [[ "$CURRENT_DISTRO" == "ubuntu" ]]; then
   ~/.dotfiles/install/ubuntu.sh
 elif [[ "$CURRENT_DISTRO" == "macos" ]]; then
-
-  ./macos/1_install_apps.osx.sh
-  ./macos/2_configure.osx.sh
+  ~/.dotfiles/install/macos.sh
 else
   echo "❌ Unsupported distro: '$CURRENT_DISTRO'" >&2
   exit 1

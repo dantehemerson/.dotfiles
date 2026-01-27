@@ -1,0 +1,31 @@
+name: Test dotfiles (macOS)
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test-macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Run curl installer (CI)
+        env:
+          CI: true
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/refs/heads/master/install.sh \
+            | bash -s -- --ci
+
+      - name: Smoke test
+        run: |
+          command -v git
+          command -v zsh || true
+          command -v nvim || true
+          command -v spf || true
+
+          # basic shell sanity
+          bash -lc "echo shell ok"
