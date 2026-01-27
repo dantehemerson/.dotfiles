@@ -1,2 +1,2 @@
 ./setup/install/pacman.sh
-./setup/isntallers/yay.sh
+./setup/installers/yay.sh
