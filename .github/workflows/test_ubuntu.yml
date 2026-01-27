@@ -40,10 +40,12 @@ jobs:
           useradd -m -s /bin/bash ci
           echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-      - uses: ./.github/actions/dotfiles-install
+      - name: Install dotfiles
+        uses: ./.github/actions/dotfiles-install
         with:
           run_as: 'ci'
 
-      - uses: ./.github/actions/dotfiles-test
+      - name: Test dotfiles
+        uses: ./.github/actions/dotfiles-test
         with:
           run_as: 'ci'
