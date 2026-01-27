@@ -16,7 +16,7 @@ jq
 yq
 neovim
 tree
-superfile
+superfile[~distro:debian]
 bat
 lazygit
 ripgrep
