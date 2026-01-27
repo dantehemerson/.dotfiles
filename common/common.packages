@@ -9,9 +9,8 @@ btop
 curl
 duf
 fastfetch
-unzip
+unzip[~os.macos]
 starship
-yay
 yq
 neovim
 tree

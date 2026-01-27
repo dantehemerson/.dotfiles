@@ -127,3 +127,22 @@ load_packages() {
     done < "$file"
 }
 
+brew_safe_cask() {
+  local cask="$1"
+
+  if [[ -z "$cask" ]]; then
+    return 0
+  fi
+
+H  # Not installed → install
+  if ! brew list --cask "$cask" &>/dev/null; then
+    echo "Installing $cask..."
+    brew install --cask "$cask" || true
+    return 0
+  fi
+
+  # Installed → try upgrade, but never fail
+  echo "$cask already installed, checking for upgrade..."
+  brew upgrade --cask "$cask" &>/dev/null || true
+}
+
