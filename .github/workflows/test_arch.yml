@@ -28,7 +28,7 @@ jobs:
         env:
           CI: true
         run: |
-          curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/master/install.sh \
+          curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/refs/heads/master/install.sh \
             | bash -s -- --ci
 
       - name: Smoke test
