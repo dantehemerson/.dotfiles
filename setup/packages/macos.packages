@@ -1,4 +1,6 @@
 # Docker
 orbstack
---formula zimfw
 
+--formula zimfw
+--cask mac-mouse-fix
+--cask raycast
