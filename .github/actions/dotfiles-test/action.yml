@@ -21,4 +21,4 @@ runs:
         fi
         
         # Run the test suite
-        ~/.dotfiles/test/post_install.test.sh $TEST_ARGS
+        ${GITHUB_WORKSPACE}/test/post_install.test.sh $TEST_ARGS
