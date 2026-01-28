@@ -10,13 +10,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/../lib/test_helpers.sh"
 source "$SCRIPT_DIR/../lib/platform_detection.sh"
 
-# Load test state
-load_test_state
-
 # Run common command tests
 run_common_command_tests() {
-    print_section "Common Command Tests"
-    
     # Core commands
     assert_command_exists "git"
     assert_command_exists "wget"
@@ -42,8 +37,6 @@ run_common_command_tests() {
 
 # Run common symlink tests
 run_common_symlink_tests() {
-    print_section "Common Symlink Tests"
-    
     # Shell configuration files
     assert_file_is_symlink "$HOME/.zshrc"
     assert_file_is_symlink "$HOME/.zimrc"
@@ -69,8 +62,6 @@ run_common_symlink_tests() {
 
 # Run common directory tests
 run_common_directory_tests() {
-    print_section "Common Directory Tests"
-    
     # Check if important directories exist
     assert_directory_exists "$HOME/.config"
     assert_directory_exists "$HOME/.config/nvim"
@@ -86,15 +77,6 @@ run_all_common_tests() {
 
 # Run tests when called directly
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    # Initialize test state
-    init_test_state
-    
     # Run tests
     run_all_common_tests
-    
-    # Print summary only when not part of main test suite
-    if [ -z "$DOTFILES_TEST_SUITE" ]; then
-        print_summary
-        cleanup_test_state
-    fi
 fi

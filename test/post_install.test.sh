@@ -31,16 +31,7 @@ main() {
     # Set environment variable to indicate we're running the test suite
     export DOTFILES_TEST_SUITE=1
     
-    # Initialize test state
-    init_test_state
-    
-    # Print header
-    echo -e "${BLUE}=============================================="
-    echo "Dotfiles Post-Installation Test Suite"
-    echo "==============================================${NC}"
-    
-    # Print platform information
-    print_section "Platform Information"
+    # Get platform information
     get_platform_info
     
     # Always run common tests
@@ -66,12 +57,6 @@ main() {
     if [ -d "$DOTFILES_DIR/omarchy" ] && [ -L "$HOME/.bashrc" ] && [[ "$(readlink "$HOME/.bashrc")" == *"omarchy"* ]] && [ -d "$HOME/.config/hypr" ]; then
         "$SCRIPT_DIR/tests/omarchy_tests.sh"
     fi
-    
-    # Print test summary
-    print_summary
-    
-    # Clean up test state
-    force_cleanup_test_state
     
     # Unset environment variable
     unset DOTFILES_TEST_SUITE
