@@ -23,6 +23,7 @@ assert_command_exists "lazygit"
 assert_command_exists "rg" # ripgrep
 assert_command_exists "bash"
 assert_command_exists "zsh"
+assert_command_exists "fd"
 
 assert_file_is_symlink "$HOME/.zshrc"
 assert_file_is_symlink "$HOME/.zimrc"
@@ -38,6 +39,5 @@ assert_file_is_symlink "$HOME/.config/ghostty/config"
 
 assert_directory_exists "$HOME/.config/nvim/lua/plugins"
 assert_directory_exists "$HOME/.config/nvim/lua/config"
-assert_directory_exists "$HOME/.config"
 assert_directory_exists "$HOME/.config/nvim"
 assert_directory_exists "$HOME/.config/zed"
