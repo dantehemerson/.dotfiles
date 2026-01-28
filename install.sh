@@ -2,6 +2,9 @@
 set -euo pipefail
 
 DOTFILES_DIR="$HOME/.dotfiles"
+
+echo "THE DOTFIELD RIRRRRRRRR=============\n"
+echo "$DOTFILES_DIR"
 REPO_URL="https://github.com/dantehemerson/dotfiles.git"
 
 # Ensure dependencies
