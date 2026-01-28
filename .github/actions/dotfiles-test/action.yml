@@ -22,6 +22,10 @@ runs:
         echo "---------------------------"
         ls -la $GITHUB_WORKSPACE
 
+        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
+        ls -la ~/
+
         # Build command arguments
         TEST_ARGS=""
         if [ -n "$RUN_AS" ]; then
