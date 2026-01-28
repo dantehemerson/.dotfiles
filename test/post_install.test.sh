@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Dotfiles Post-Installation Test Suite
 # This script tests that all commands are available and all files are properly symlinked after dotfiles installation
 
