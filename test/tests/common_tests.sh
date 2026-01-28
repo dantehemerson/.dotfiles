@@ -26,7 +26,7 @@ assert_command_exists "zsh"
 assert_command_exists "fd"
 assert_command_exists "unzip"
 
-assert_file_exists "$HOME/.zim/zimfw.zsh"
+zsh -ic 'command -v zimfw >/dev/null' 2>/dev/null
 
 assert_file_is_symlink "$HOME/.zshrc"
 assert_file_is_symlink "$HOME/.zimrc"
