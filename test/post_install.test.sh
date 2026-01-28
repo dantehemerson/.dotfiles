@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euxo pipefail
 
 # Dotfiles Post-Installation Test Suite
 # This script tests that all commands are available and all files are properly symlinked after dotfiles installation
@@ -62,4 +62,3 @@ main() {
 main "$@"
 
 echo "✅ All test passed!!!"
-

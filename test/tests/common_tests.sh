@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euxo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -39,4 +39,3 @@ assert_directory_exists "$HOME/.config/nvim/lua/config"
 assert_directory_exists "$HOME/.config"
 assert_directory_exists "$HOME/.config/nvim"
 assert_directory_exists "$HOME/.config/zed"
-

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euxo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -21,15 +21,15 @@ assert_file_is_symlink "$HOME/.inputrc"
 assert_file_is_symlink "$HOME/.config/ghostty/config"
 
 if command -v brew >/dev/null 2>&1; then
-    brew doctor >/dev/null 2>&1
-    brew update >/dev/null 2>&1
+  brew doctor >/dev/null 2>&1
+  brew update >/dev/null 2>&1
 fi
 
 bash_path=""
 if [ "$(uname -m)" = "arm64" ]; then
-    bash_path="/opt/homebrew/bin/bash"
+  bash_path="/opt/homebrew/bin/bash"
 else
-    bash_path="/usr/local/bin/bash"
+  bash_path="/usr/local/bin/bash"
 fi
 
 grep -Fxq "$bash_path" /etc/shells
@@ -37,3 +37,4 @@ grep -Fxq "$bash_path" /etc/shells
 
 assert_directory_exists "$HOME/Pictures/Screenshots"
 assert_directory_exists "$HOME/.config/ghostty"
+

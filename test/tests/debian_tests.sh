@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euxo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -16,3 +16,4 @@ apt list --installed >/dev/null 2>&1
 
 assert_directory_exists "/etc/apt"
 assert_directory_exists "/var/cache/apt"
+
