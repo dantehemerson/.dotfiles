@@ -5,6 +5,5 @@ orbstack
 --cask mac-mouse-fix
 --cask raycast
 --cask karabiner-elements
---cask logi-options+
 --cask betterdisplay
 --cask dbeaver-community
