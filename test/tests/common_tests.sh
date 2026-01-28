@@ -21,7 +21,6 @@ assert_command_exists "nvim"
 assert_command_exists "rg"
 assert_command_exists "bat"
 assert_command_exists "lazygit"
-assert_command_exists "non-existent-program"
 
 assert_file_is_symlink "$HOME/.zshrc"
 assert_file_is_symlink "$HOME/.zimrc"
