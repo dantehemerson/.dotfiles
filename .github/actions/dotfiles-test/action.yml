@@ -14,6 +14,10 @@ runs:
         RUN_AS: ${{ inputs.run_as }}
       shell: bash
       run: |
+
+        echo $HOME
+        echo $GITHUB_WORKSPACE
+
         # Build command arguments
         TEST_ARGS=""
         if [ -n "$RUN_AS" ]; then
