@@ -174,6 +174,48 @@ expected_packages="git macos-only brew-only exclude-apt"
 assert_equals "$expected_packages" "$packages" "Load packages for macOS + brew system"
 cleanup_test_file "$test_file10"
 
+# Test 11: Packages with installation flags
+echo "Test 11: Packages with installation flags (e.g., --cask)"
+CURRENT_OS="macos"
+CURRENT_ARCH="x86_64"
+CURRENT_PM="brew"
+CURRENT_DISTRO="unknown"
+
+test_file11="/tmp/test_packages11.txt"
+create_test_file "$test_file11" "git
+orbstack
+--cask ghostty[os.macos]
+--cask obsidian[os.macos]
+--formula some-tool[pm.brew]
+"
+
+packages=""
+load_packages "$test_file11" packages
+expected_packages="git orbstack --cask ghostty --cask obsidian --formula some-tool"
+assert_equals "$expected_packages" "$packages" "Load packages with installation flags preserved"
+cleanup_test_file "$test_file11"
+
+# Test 12: Mixed packages with flags and different conditions
+echo "Test 12: Mixed packages with flags and multiple condition types"
+CURRENT_OS="linux"
+CURRENT_ARCH="x86_64"
+CURRENT_PM="apt"
+CURRENT_DISTRO="ubuntu"
+
+test_file12="/tmp/test_packages12.txt"
+create_test_file "$test_file12" "git
+wget
+--cask macos-app[os.macos]
+linux-tool[os.linux]
+--cask another-app[os.macos,pm.brew]
+"
+
+packages=""
+load_packages "$test_file12" packages
+expected_packages="git wget linux-tool"
+assert_equals "$expected_packages" "$packages" "Load mixed packages with flags and conditions"
+cleanup_test_file "$test_file12"
+
 # Restore original system values
 CURRENT_OS="$backup_os"
 CURRENT_ARCH="$backup_arch"
