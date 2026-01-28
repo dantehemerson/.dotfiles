@@ -11,8 +11,8 @@ assert_command_exists "pacman"
 assert_command_exists "fd"
 assert_command_exists "yay"
 
-pacman -Sy
-pacman -Q pacman
+pacman -Q pacman >/dev/null 2>&1 \
+  || fail "pacman DB broken"
 
 if command -v yay >/dev/null 2>&1; then
   yay -Sy >/dev/null 2>&1
