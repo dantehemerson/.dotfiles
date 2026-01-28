@@ -4,7 +4,7 @@
 # This file contains helper functions and assertions for testing
 
 # Source the main utils for platform detection
-source ~/.dotfiles/utils/utils.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../../utils/utils.sh"
 
 
 

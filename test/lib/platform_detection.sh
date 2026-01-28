@@ -4,7 +4,7 @@
 # This file contains utilities for detecting the current platform
 
 # Source the main utils for platform detection
-source ~/.dotfiles/utils/utils.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../../utils/utils.sh"
 
 # Get current platform information
 get_platform_info() {

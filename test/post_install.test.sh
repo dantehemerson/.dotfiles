@@ -48,13 +48,12 @@ main() {
         "$SCRIPT_DIR/tests/macos_tests.sh"
     else
         echo "❌ Unsupported distro: '$CURRENT_DISTRO'" >&2
-        force_cleanup_test_state
         unset DOTFILES_TEST_SUITE
         exit 1
     fi
     
     # Run omarchy tests if applicable
-    if [ -d "$DOTFILES_DIR/omarchy" ] && [ -L "$HOME/.bashrc" ] && [[ "$(readlink "$HOME/.bashrc")" == *"omarchy"* ]] && [ -d "$HOME/.config/hypr" ]; then
+    if [ -d "$SCRIPT_DIR/../omarchy" ] && [ -L "$HOME/.bashrc" ] && [[ "$(readlink "$HOME/.bashrc")" == *"omarchy"* ]] && [ -d "$HOME/.config/hypr" ]; then
         "$SCRIPT_DIR/tests/omarchy_tests.sh"
     fi
     
