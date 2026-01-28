@@ -13,10 +13,4 @@ assert_command_exists "yay"
 
 pacman -Q pacman >/dev/null 2>&1 || fail "pacman DB broken"
 
-if command -v yay >/dev/null 2>&1; then
-  yay -Sy >/dev/null 2>&1
-fi
-
-assert_directory_exists "/etc/pacman.d"
-assert_directory_exists "/var/cache/pacman"
 
