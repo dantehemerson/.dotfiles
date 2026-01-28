@@ -14,18 +14,6 @@ runs:
         RUN_AS: ${{ inputs.run_as }}
       shell: bash
       run: |
-
-        echo $HOME
-        echo $GITHUB_WORKSPACE
-
-        ls -la $HOME
-        echo "---------------------------"
-        ls -la $GITHUB_WORKSPACE
-
-        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-
-        ls -la ~/
-
         # Build command arguments
         TEST_ARGS=""
         if [ -n "$RUN_AS" ]; then
@@ -33,4 +21,12 @@ runs:
         fi
         
         # Run the test suite
-        ${GITHUB_WORKSPACE}/test/post_install.test.sh $TEST_ARGS
+        if [ -n "$RUN_AS" ]; then
+          # Run as the specified user to match the installation environment
+          # We pass GITHUB_WORKSPACE so the user can find the scripts in the repo
+          su - $RUN_AS -c "GITHUB_WORKSPACE=${GITHUB_WORKSPACE} bash ${GITHUB_WORKSPACE}/test/post_install.test.sh ${TEST_ARGS}"
+        else
+          # Default execution
+          ${GITHUB_WORKSPACE}/test/post_install.test.sh $TEST_ARGS
+        fi
+
