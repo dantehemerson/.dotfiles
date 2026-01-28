@@ -31,10 +31,11 @@ btop
 
 "
 
-packages=""
+packages=()
 load_packages "$test_file1" packages
 expected_packages="git wget curl btop"
-assert_equals "$expected_packages" "$packages" "Load basic packages without conditions"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load basic packages without conditions"
 cleanup_test_file "$test_file1"
 
 # Test 2: Packages with OS conditions
@@ -46,10 +47,11 @@ wget[os.macos]
 docker[os.windows]
 "
 
-packages=""
+packages=()
 load_packages "$test_file2" packages
 expected_packages="git curl"
-assert_equals "$expected_packages" "$packages" "Load packages with OS conditions (Linux only)"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load packages with OS conditions (Linux only)"
 cleanup_test_file "$test_file2"
 
 # Test 3: Packages with exclusion conditions
@@ -61,10 +63,11 @@ wget[~pm.apt]
 docker[~pm.pacman]
 "
 
-packages=""
+packages=()
 load_packages "$test_file3" packages
 expected_packages="git curl docker"
-assert_equals "$expected_packages" "$packages" "Load packages with exclusion conditions"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load packages with exclusion conditions"
 cleanup_test_file "$test_file3"
 
 # Test 4: Packages with architecture conditions
@@ -76,10 +79,11 @@ package2[arch.arm64]
 package3[arch.all]
 "
 
-packages=""
+packages=()
 load_packages "$test_file4" packages
 expected_packages="git package1"
-assert_equals "$expected_packages" "$packages" "Load packages with architecture conditions"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load packages with architecture conditions"
 cleanup_test_file "$test_file4"
 
 # Test 5: Packages with package manager conditions
@@ -91,10 +95,11 @@ brew-package[pm.brew]
 pacman-package[pm.pacman]
 "
 
-packages=""
+packages=()
 load_packages "$test_file5" packages
 expected_packages="git apt-package"
-assert_equals "$expected_packages" "$packages" "Load packages with package manager conditions"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load packages with package manager conditions"
 cleanup_test_file "$test_file5"
 
 # Test 6: Packages with distribution conditions
@@ -106,10 +111,11 @@ arch-package[distro.arch]
 ubuntu-package[distro.ubuntu]
 "
 
-packages=""
+packages=()
 load_packages "$test_file6" packages
 expected_packages="git debian-package"
-assert_equals "$expected_packages" "$packages" "Load packages with distribution conditions"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load packages with distribution conditions"
 cleanup_test_file "$test_file6"
 
 # Test 7: Empty file
@@ -117,10 +123,11 @@ echo "Test 7: Empty file"
 test_file7="/tmp/test_packages7.txt"
 create_test_file "$test_file7" ""
 
-packages=""
+packages=()
 load_packages "$test_file7" packages
 expected_packages=""
-assert_equals "$expected_packages" "$packages" "Load packages from empty file"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load packages from empty file"
 cleanup_test_file "$test_file7"
 
 # Test 8: File with only comments
@@ -131,10 +138,11 @@ create_test_file "$test_file8" "# Comment 1
 
 # Comment 3"
 
-packages=""
+packages=()
 load_packages "$test_file8" packages
 expected_packages=""
-assert_equals "$expected_packages" "$packages" "Load packages from file with only comments"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load packages from file with only comments"
 cleanup_test_file "$test_file8"
 
 # Test 9: Complex scenario with multiple condition types
@@ -147,10 +155,11 @@ exclude-brew[~pm.brew]
 arm64-only[arch.arm64]
 "
 
-packages=""
+packages=()
 load_packages "$test_file9" packages
 expected_packages="git linux-specific exclude-brew"
-assert_equals "$expected_packages" "$packages" "Load packages with complex conditions"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load packages with complex conditions"
 cleanup_test_file "$test_file9"
 
 # Test 10: Different system configuration
@@ -168,10 +177,11 @@ brew-only[pm.brew]
 exclude-apt[~pm.apt]
 "
 
-packages=""
+packages=()
 load_packages "$test_file10" packages
 expected_packages="git macos-only brew-only exclude-apt"
-assert_equals "$expected_packages" "$packages" "Load packages for macOS + brew system"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load packages for macOS + brew system"
 cleanup_test_file "$test_file10"
 
 # Test 11: Packages with installation flags
@@ -189,10 +199,11 @@ orbstack
 --formula some-tool[pm.brew]
 "
 
-packages=""
+packages=()
 load_packages "$test_file11" packages
 expected_packages="git orbstack --cask ghostty --cask obsidian --formula some-tool"
-assert_equals "$expected_packages" "$packages" "Load packages with installation flags preserved"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load packages with installation flags preserved"
 cleanup_test_file "$test_file11"
 
 # Test 12: Mixed packages with flags and different conditions
@@ -210,10 +221,11 @@ linux-tool[os.linux]
 --cask another-app[os.macos,pm.brew]
 "
 
-packages=""
+packages=()
 load_packages "$test_file12" packages
 expected_packages="git wget linux-tool"
-assert_equals "$expected_packages" "$packages" "Load mixed packages with flags and conditions"
+actual_packages="${packages[*]}"
+assert_equals "$expected_packages" "$actual_packages" "Load mixed packages with flags and conditions"
 cleanup_test_file "$test_file12"
 
 # Restore original system values

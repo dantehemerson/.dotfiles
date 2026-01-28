@@ -313,8 +313,8 @@ load_packages() {
         return 1
     fi
 
-    # Build space-separated package list
-    local package_list=""
+    # Build string with newlines as separators
+    local package_lines=""
     local first_package=true
 
     while IFS= read -r line; do
@@ -334,16 +334,24 @@ load_packages() {
         # Check if this package alternative should be installed
         if should_install_package "$conditions"; then
             if [ "$first_package" = true ]; then
-                package_list="$package_name"
+                package_lines="$package_name"
                 first_package=false
             else
-                package_list="$package_list $package_name"
+                package_lines="$package_lines
+$package_name"
             fi
         fi
     done < "$file"
     
-    # Set the variable as a space-separated string
-    eval "$array_name=\"$package_list\""
+    # Read each line into array element
+    eval "
+    $array_name=()
+    while IFS= read -r pkg; do
+        $array_name+=(\"\$pkg\")
+    done << EOF
+$package_lines
+EOF
+"
 }
 
 brew_safe_cask() {
