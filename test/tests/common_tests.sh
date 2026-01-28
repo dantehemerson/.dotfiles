@@ -23,9 +23,10 @@ assert_command_exists "lazygit"
 assert_command_exists "rg" # ripgrep
 assert_command_exists "bash"
 assert_command_exists "zsh"
-assert_command_exists "zimfw"
 assert_command_exists "fd"
 assert_command_exists "unzip"
+
+assert_file_exists "$HOME/.zim/zimfw.zsh"
 
 assert_file_is_symlink "$HOME/.zshrc"
 assert_file_is_symlink "$HOME/.zimrc"
