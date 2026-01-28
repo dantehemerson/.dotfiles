@@ -18,6 +18,10 @@ runs:
         echo $HOME
         echo $GITHUB_WORKSPACE
 
+        ls -la $HOME
+        echo "---------------------------"
+        ls -la $GITHUB_WORKSPACE
+
         # Build command arguments
         TEST_ARGS=""
         if [ -n "$RUN_AS" ]; then
