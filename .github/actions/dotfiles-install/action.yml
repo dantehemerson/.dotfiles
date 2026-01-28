@@ -11,7 +11,6 @@ runs:
   steps:
     - name: Run curl installer (CI)
       env:
-        CI: true
         RUN_AS: ${{ inputs.run_as }}
       shell: bash
       run: |
