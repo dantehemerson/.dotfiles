@@ -70,9 +70,6 @@ brew install gh
 
 ## ============ TERMINAL ============
 
-# Terminal emulator.
-brew install --cask ghostty
-
 # Shell
 brew install --formula zimfw
 

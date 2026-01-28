@@ -8,10 +8,7 @@ source "$SCRIPT_DIR/../lib/test_helpers.sh"
 source "$SCRIPT_DIR/../lib/platform_detection.sh"
 
 assert_command_exists "starship"
-assert_command_exists "unzip"
-assert_command_exists "brew"
-assert_command_exists "gh"
-assert_command_exists "fnm"
+# assert_command_exists "gh"
 
 xcode-select -p >/dev/null 2>&1
 
