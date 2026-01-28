@@ -9,21 +9,16 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Smoke test
+    - name: Post-installation tests
       env:
         RUN_AS: ${{ inputs.run_as }}
       shell: bash
       run: |
+        # Build command arguments
+        TEST_ARGS=""
         if [ -n "$RUN_AS" ]; then
-          su - $RUN_AS -c 'bash -lc "command -v git"'
-          su - $RUN_AS -c 'bash -lc "command -v zsh || true"'
-          su - $RUN_AS -c 'bash -lc "command -v nvim || true"'
-          su - $RUN_AS -c 'bash -lc "command -v spf || true"'
-          su - $RUN_AS -c 'bash -lc "echo shell ok"'
-        else
-          command -v git
-          command -v zsh || true
-          command -v nvim || true
-          command -v spf || true
-          bash -lc "echo shell ok"
+          TEST_ARGS="$TEST_ARGS --run-as $RUN_AS"
         fi
+        
+        # Run the test suite
+        ~/.dotfiles/test/post_install.test.sh $TEST_ARGS
