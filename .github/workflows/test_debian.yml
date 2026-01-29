@@ -1,0 +1,52 @@
+name: Test dotfiles (Debian)
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test-debian:
+    runs-on: ubuntu-latest
+
+    container:
+      image: debian:stable-slim
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bootstrap Debian container
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            sudo \
+            git \
+            curl \
+            ca-certificates \
+            build-essential \
+            bash \
+            zsh \
+            locales
+
+          # Optional but often needed by dotfiles
+          sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+          locale-gen
+
+      - name: Create non-root user
+        run: |
+          useradd -m -s /bin/bash ci
+          echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+      - name: Install dotfiles
+        uses: ./.github/actions/dotfiles-install
+        with:
+          run_as: 'ci'
+
+      - name: Test dotfiles
+        uses: ./.github/actions/dotfiles-test
+        with:
+          run_as: 'ci'
+

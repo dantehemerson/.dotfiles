@@ -1,0 +1,9 @@
+# Docker
+orbstack
+
+--formula zimfw
+--cask mac-mouse-fix
+--cask raycast
+--cask karabiner-elements
+--cask betterdisplay
+--cask dbeaver-community

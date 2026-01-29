@@ -1,0 +1,32 @@
+name: 'Dotfiles Test'
+description: 'Run smoke tests for dotfiles'
+inputs:
+  run_as:
+    description: 'User to run commands as (e.g., "ci" for containerized workflows)'
+    required: false
+    default: ''
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Post-installation tests
+      env:
+        RUN_AS: ${{ inputs.run_as }}
+      shell: bash
+      run: |
+        # Build command arguments
+        TEST_ARGS=""
+        if [ -n "$RUN_AS" ]; then
+          TEST_ARGS="$TEST_ARGS --run-as $RUN_AS"
+        fi
+        
+        # Run the test suite
+        if [ -n "$RUN_AS" ]; then
+          # Run as the specified user to match the installation environment
+          # We pass GITHUB_WORKSPACE so the user can find the scripts in the repo
+          su - $RUN_AS -c "GITHUB_WORKSPACE=${GITHUB_WORKSPACE} bash ${GITHUB_WORKSPACE}/test/post_install.test.sh ${TEST_ARGS}"
+        else
+          # Default execution
+          ${GITHUB_WORKSPACE}/test/post_install.test.sh $TEST_ARGS
+        fi
+

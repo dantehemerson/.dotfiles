@@ -6,14 +6,29 @@
 git
 wget
 btop
+htop
 curl
 duf
 fastfetch
-unzip
+unzip[~os.macos]
 starship
-yay
+jq
 yq
 neovim
 tree
-superfile
+superfile[~distro.debian]
+bat
+lazygit
+ripgrep
+
+fd[~distro.debian,~distro.ubuntu]
+rust-fd-find[distro.debian,distro.ubuntu]
+
+bash
+bash-completion
+zsh
+
+ghostty[~os.macos]
+--cask ghostty[os.macos]
+
 

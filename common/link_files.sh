@@ -1,5 +1,7 @@
 source ~/.dotfiles/utils/utils.sh
 
+echo "=> Linking common files"
+
 ## =========== LINK CROSS-PLATFORM FILES ===========
 
 # ZSH
@@ -11,7 +13,6 @@ link "$DOTFILES_DIR/user/.zimrc" "$HOME/.zimrc"
 # Bash
 link "$DOTFILES_DIR/user/.bashrc" "$HOME/.bashrc"
 link "$DOTFILES_DIR/user/.bash_profile" "$HOME/.bash_profile"
-
 
 # Starship: Shell Prompt
 link "$DOTFILES_DIR/user/.config/starship.toml" "$HOME/.config/starship.toml"
@@ -60,3 +61,5 @@ for ((i = 0; i < ${#custom_options[@]}; i += 2)); do
     eval $value
   fi
 done
+
+echo "=> Linked common files."

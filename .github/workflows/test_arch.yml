@@ -1,0 +1,46 @@
+name: Test dotfiles (Arch Linux)
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  test-arch:
+    runs-on: ubuntu-latest
+
+    container:
+      image: archlinux:latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bootstrap Arch container
+        run: |
+          pacman -Sy --noconfirm \
+            base \
+            base-devel \
+            git \
+            curl \
+            sudo
+
+      - name: Create non-root user
+        run: |
+          useradd -m -G wheel -s /bin/bash ci
+          echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+      - name: Install dotfiles
+        uses: ./.github/actions/dotfiles-install
+        with:
+          run_as: 'ci'
+
+      - name: Test dotfiles
+        uses: ./.github/actions/dotfiles-test
+        with:
+          run_as: 'ci'
+
+      - name: Smoke Tests (Arch-specific)
+        run: su - ci -c 'command -v yay'
+

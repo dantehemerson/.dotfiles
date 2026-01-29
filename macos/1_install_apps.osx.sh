@@ -11,139 +11,13 @@ echo "📦 Installing apps..."
 # Install Xcode Command Line Tools
 xcode-select --install
 
-## =========== BREW ============
-
-# Install Homebrew if not installed
-
-echo "🍺 Checking Homebrew installation..."
-
-if [[ ! -x "$(command -v brew)" ]]; then
-  echo "🍺 Homebrew not installed, installing..."
-
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-  if [[ $? -eq 0 ]]; then
-    echo "✅ 🍺 Homebrew installed successfully"
-  else
-    echo "🍺 Homebrew installation failed, exiting bootstrap"
-    exit 1
-  fi
-
-else
-  echo "✅ 🍺 Homebrew already installed, skipping..."
-fi
-
-# Brew: Check your system for potential problems
-echo "Checking brew status..."
-brew doctor
-
-# Update Homebrew
-echo "🍺 Updating Homebrew..."
-brew update
-
-## ======== Mac App Store  CLI =========
-
-# A simple command line interface for the Mac App Store. Designed for scripting and automation.
-brew install mas
-
-## =========== UTILITIES ============
-
-# cat with highlight
-brew install bat
-
-# Display directories as trees (with optional color/HTML output)
-brew install tree
-
-# JSON parser and more
-brew install jq
-
-# An interactive process viewer
-brew install htop
-
-# A smarter cd command.
-brew install zoxide
-
-# (not used) Adaptive brightness for external displays
-# brew install --cask lunar
-
-# Mouse fix
-brew install --cask mac-mouse-fix
-
-# Keyboard customizer
-brew install --cask karabiner-elements
-
-# LogiOptions+ for Mx Ergo trackball settings
-brew install --cask logi-options+
-
-# BetterDisplay to control brigtness of external monitors
-brew install --cask betterdisplay
-
-# DBeaver Community Edition - Universal Database Manager
-brew install --cask dbeaver-community
-
-## =========== GIT ============
-
-# Git: Update to latest version
-brew install git
-
 # Github CLI
 brew install gh
 
-brew install lazygit
-
 ## ============ TERMINAL ============
 
-# Terminal emulator.
-brew install --cask ghostty
-
-# Tmux
-brew install tmux
-
-# NeoVim
-brew install neovim
-
-# Tmux plugin manager
-rm -rf ~/.tmux/plugins/tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Ripgrep
-brew install ripgrep
-
-# fd - Fast directory listing
-brew install fd
-
 # Shell
-
-# BASH(Deprecated):
-# Update to latest version
-# brew install bash
-
-# Bash completion
-# brew install bash-completion
-
-# To show git branch on terminal
-# brew install vcprompt
-
-# ZSH:
-# zsh is installed by default on MacOS(in /bin/zsh), but it's normally an older version.
-# Install zsh by brew to get the latest version. (in /opt/homebrew/bin/zsh (silicon))
-brew install zsh
-
-# Install Oh My Zsh (TODO: Deprecated)
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
-
 brew install --formula zimfw
-
-# Shell Promot
-brew install starship
-
-## ============ CLI APPS ==============
-
-# Magnificent app which corrects your previous console command.
-brew install thefuck
-
-# A better way to navigate directories
-brew install broot
 
 ## =========== NODE ============
 
@@ -151,10 +25,6 @@ brew install broot
 brew install fnm
 
 ## =========== DOCKER ============
-
-# Fast, light, powerful way to run containers.
-# ! No need to install docker, compose.
-brew install orbstack
 
 ## === C++ Development (Optional by flag defined in .env.sh) ===
 if [[ "$__DOT__INSTALL_CPP" == true ]]; then
