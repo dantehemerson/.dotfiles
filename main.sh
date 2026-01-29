@@ -11,20 +11,6 @@ echo "==============================================="
 echo "=============== D's DOTFILES =================="
 echo "==============================================="
 
-# Function to handle curl installations like starship
-install_from_curl() {
-  local url="$1"
-  local name="$2"
-
-  echo "Installing $name from curl..."
-  if curl -sS "$url" | sh; then
-    echo "✓ $name installed successfully"
-  else
-    echo "✗ Failed to install $name"
-    return 1
-  fi
-}
-
 # Ask for the administrator password upfront
 sudo -v
 
