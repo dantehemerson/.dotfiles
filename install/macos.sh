@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 xcode-select --install
 
 ~/.dotfiles/setup/installers/brew.sh

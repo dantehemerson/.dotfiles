@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 source ~/.dotfiles/utils/utils.sh
 
 echo "Using shell $SHELL"

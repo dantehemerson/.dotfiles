@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 source ~/.dotfiles/utils/utils.sh
 
 sudo apt-get update

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [[ ! -x "$(command -v brew)" ]]; then
   echo "🍺 Homebrew not installed, installing..."
 

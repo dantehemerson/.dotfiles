@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Load .env to customize the installation
 if [ -f .env.sh ]; then
