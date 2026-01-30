@@ -1,4 +1,4 @@
-" Uncomment to use Plug package manager
+qq" Uncomment to use Plug package manager
 "call plug#begin('~/.vim/plugged')
 "call plug#end()
 
