@@ -1,19 +1,15 @@
 #!/bin/bash
 
+echo "==>  Configuring MacOs"
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
 ## ============= GENERAL UI/UX ===============
 
-# Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
-
 # Always show scrollbars when scrolling
 defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
-
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
@@ -124,3 +120,5 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # Save screenshots to ~/Pictures/Screenshots folder
 mkdir -p ~/Pictures/Screenshots
 defaults write com.apple.screencapture location ~/Pictures/Screenshots
+
+echo "✅  MacOs configured successfully!!!"
