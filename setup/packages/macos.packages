@@ -1,9 +1,10 @@
+# Apps that require sudo password
+--cask karabiner-elements
+
 # Docker
 orbstack
-
 --formula zimfw
 --cask mac-mouse-fix
 --cask raycast
---cask karabiner-elements
 --cask betterdisplay
 --cask dbeaver-community
