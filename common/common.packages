@@ -20,6 +20,7 @@ superfile[~distro.debian]
 bat
 lazygit
 ripgrep
+tmux
 
 fd[~distro.debian,~distro.ubuntu]
 rust-fd-find[distro.debian,distro.ubuntu]

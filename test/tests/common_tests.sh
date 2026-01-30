@@ -21,6 +21,7 @@ assert_command_exists "tree"
 assert_command_exists "bat"
 assert_command_exists "lazygit"
 assert_command_exists "rg" # ripgrep
+assert_command_exists "tmux"
 assert_command_exists "bash"
 assert_command_exists "zsh"
 assert_command_exists "fd"
