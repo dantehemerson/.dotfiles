@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 ~/.dotfiles/setup/install/apt.sh
 bash -c "$(curl -sLo- https://superfile.dev/install.sh)"
