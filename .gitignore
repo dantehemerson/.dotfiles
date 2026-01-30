@@ -5,3 +5,8 @@
 *.uuid
 .DS_Store
 .env.sh
+user/.config/nvim/LICENSE
+user/.config/nvim/README.md
+user/.config/nvim/lazy-lock.json
+user/.config/nvim/log.txt
+user/.config/nvim/lazyvim.json
