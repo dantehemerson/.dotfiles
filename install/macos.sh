@@ -13,8 +13,7 @@ fi
 brew update
 
 ~/.dotfiles/setup/install/brew.sh
-
 ~/.dotfiles/setup/installers/tpm.sh
-
 ~/.dotfiles/common/link_files.sh
 ~/.dotfiles/setup/linkers/macos.link.sh
+~/.dotfiles/setup/scripts/configure_macos.sh
