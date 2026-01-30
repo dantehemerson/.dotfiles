@@ -17,6 +17,12 @@ After installed, you will need to run the script again:
 curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/master/install.sh | bash
 ```
 
+> [!IMPORTANT]
+> You will need to be prompted by password twice, before running installer and before intalling `karabiner-elements`.
+> This is because they require su privileges to install.
+> After that you can relax and let the script run.
+
+
 ### Arch Linux
 
 ```
