@@ -237,7 +237,7 @@ export PATH="$SCRIPTS:$PATH"
 # Load .shellrc_custom if exists
 [ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
 
-# FNM
+# TODO: Run this only if fnm exits FNM
 eval "$(fnm env --use-on-cd --shell zsh)"
 
 # Load direnv if installed
