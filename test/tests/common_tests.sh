@@ -28,6 +28,8 @@ assert_command_exists "unzip"
 
 zsh -ic 'command -v zimfw >/dev/null' 2>/dev/null
 
+assert_directory_exists "$HOME/.tmux/plugins/tpm"
+
 assert_file_is_symlink "$HOME/.zshrc"
 assert_file_is_symlink "$HOME/.zimrc"
 assert_file_is_symlink "$HOME/.bashrc"
