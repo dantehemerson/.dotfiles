@@ -7,3 +7,5 @@
 ~/.dotfiles/setup/installers/tpm.sh
 
 ~/.dotfiles/common/link_files.sh
+
+~/.dotfiles/setup/installers/ssh-key-generator/ssh-key-generator.sh
