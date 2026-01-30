@@ -32,4 +32,4 @@ zsh
 ghostty[~os.macos]
 --cask ghostty[os.macos]
 
-
+openssh[distro.arch]
