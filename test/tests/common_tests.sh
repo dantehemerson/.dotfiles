@@ -44,3 +44,13 @@ assert_file_is_symlink "$HOME/.config/ghostty/config"
 assert_file_is_symlink "$HOME/.config/nvim"
 
 assert_directory_exists "$HOME/.config/zed"
+
+# SSH Key tests (directory existence implied by file checks)
+assert_file_exists "$HOME/.ssh/id_ed25519_gh"
+assert_file_exists "$HOME/.ssh/id_ed25519_gh.pub"
+assert_file_permissions "$HOME/.ssh/id_ed25519_gh" "600"
+assert_file_permissions "$HOME/.ssh/id_ed25519_gh.pub" "644"
+# SSH config (if it exists, check permissions)
+if [ -f "$HOME/.ssh/config" ]; then
+  assert_file_permissions "$HOME/.ssh/config" "600"
+fi

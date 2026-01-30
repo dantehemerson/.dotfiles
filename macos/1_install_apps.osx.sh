@@ -14,11 +14,6 @@ xcode-select --install
 # Github CLI
 brew install gh
 
-## ============ TERMINAL ============
-
-# Shell
-brew install --formula zimfw
-
 ## =========== NODE ============
 
 # Node Version Manager
