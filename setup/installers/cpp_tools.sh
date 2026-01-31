@@ -1,20 +1,4 @@
-#!/bin/bash
-
-source ~/.dotfiles/utils/utils.sh
-
-## -------------------------------------------
-echo "📦 Installing apps..."
-## -------------------------------------------
-
-# Github CLI
-brew install gh
-
-## =========== NODE ============
-
-# Node Version Manager
-brew install fnm
-
-## =========== DOCKER ============
+# TODO:
 
 ## === C++ Development (Optional by flag defined in .env.sh) ===
 if [[ "$__DOT__INSTALL_CPP" == true ]]; then
