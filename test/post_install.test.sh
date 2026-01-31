@@ -1,7 +1,5 @@
 #!/bin/bash
 
-tree ~ -I ".dotfiles"
-
 set -euxo pipefail
 
 # Dotfiles Post-Installation Test Suite
@@ -10,9 +8,10 @@ set -euxo pipefail
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/utils.sh"
+
 # Source test helpers
 source "$SCRIPT_DIR/lib/test_helpers.sh"
-source "$SCRIPT_DIR/lib/platform_detection.sh"
 
 # Main function to run all tests
 main() {
@@ -35,19 +34,12 @@ main() {
   # Set environment variable to indicate we're running the test suite
   export DOTFILES_TEST_SUITE=1
 
-  # Get platform information
-  get_platform_info
-
   # Always run common tests
   "$SCRIPT_DIR/tests/common_tests.sh"
 
   # Run platform-specific tests using the same format as installation scripts
   if [[ "$CURRENT_DISTRO" == "arch" ]]; then
     "$SCRIPT_DIR/tests/arch_tests.sh"
-  elif [[ "$CURRENT_DISTRO" == "debian" ]]; then
-    "$SCRIPT_DIR/tests/debian_tests.sh"
-  elif [[ "$CURRENT_DISTRO" == "ubuntu" ]]; then
-    "$SCRIPT_DIR/tests/ubuntu_tests.sh"
   elif [[ "$CURRENT_OS" == "macos" ]]; then
     "$SCRIPT_DIR/tests/macos_tests.sh"
   else
