@@ -118,7 +118,7 @@ detect_distro() {
 
 # Detect current flavor/distribution variant
 detect_flavor() {
-  if [ -n "$OMARCHY_PATH" ]; then
+  if [ -n "${OMARCHY_PATH:-}" ]; then
     export CURRENT_FLAVOR="omarchy"
   else
     export CURRENT_FLAVOR="unknown"
