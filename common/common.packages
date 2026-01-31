@@ -28,6 +28,8 @@ rust-fd-find[distro.debian,distro.ubuntu]
 bash
 bash-completion
 zsh
+gh[~distro.arch]
+github-cli[distro.arch]
 
 ghostty[~os.macos]
 --cask ghostty[os.macos]

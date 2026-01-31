@@ -6,11 +6,6 @@ source ~/.dotfiles/utils/utils.sh
 echo "📦 Installing apps..."
 ## -------------------------------------------
 
-## ============ XCODE ============
-
-# Install Xcode Command Line Tools
-xcode-select --install
-
 # Github CLI
 brew install gh
 
@@ -39,4 +34,4 @@ else
 fi # __DOT__INSTALL_CPP
 
 # Done. Final message
-echo "🎉 All apps installed successfully!"
+ejecho "🎉 All apps installed successfully!"
