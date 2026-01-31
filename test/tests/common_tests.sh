@@ -29,7 +29,7 @@ assert_command_exists "unzip"
 assert_command_exists "gh"
 
 zsh -ic 'command -v zimfw >/dev/null' 2>/dev/null
-zsh -ic 'command -v atuin >/dev/null' 2>/dev/null
+zsh -ic 'command -v atuin --help >/dev/null' 2>/dev/null
 
 assert_directory_exists "$HOME/.tmux/plugins/tpm"
 
