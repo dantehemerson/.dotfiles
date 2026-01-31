@@ -27,6 +27,7 @@ assert_command_exists "zsh"
 assert_command_exists "fd"
 assert_command_exists "unzip"
 assert_command_exists "gh"
+assert_command_exists "atuin"
 
 zsh -ic 'command -v zimfw >/dev/null' 2>/dev/null
 

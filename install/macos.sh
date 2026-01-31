@@ -13,7 +13,7 @@ fi
 brew update
 
 ~/.dotfiles/setup/install/brew.sh
-~/.dotfiles/setup/installers/tpm.sh
+~/.dotfiles/setup/installers/common.installers.sh
 ~/.dotfiles/common/link_files.sh
 ~/.dotfiles/setup/linkers/macos.link.sh
 ~/.dotfiles/setup/installers/ssh-key-generator/ssh-key-generator.sh

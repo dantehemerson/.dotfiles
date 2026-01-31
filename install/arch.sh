@@ -4,7 +4,7 @@
 ~/.dotfiles/setup/installers/yay.sh
 ~/.dotfiles/setup/install/yay.sh
 
-~/.dotfiles/setup/installers/tpm.sh
+~/.dotfiles/setup/installers/common.installers.sh
 
 ~/.dotfiles/common/link_files.sh
 
