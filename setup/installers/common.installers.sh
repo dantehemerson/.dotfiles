@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Atuin
+# Atuint
 echo -e "==> Installing atuin..."
-curl --proto '=https' --tlsv1.2 -LsSf htts://setup.atuin.sh | sh
+bash <(curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh)
 echo -e "==> Atuin Installed correctly!"
 
 # Tmux Plugin Manager
