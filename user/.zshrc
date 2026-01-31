@@ -273,3 +273,7 @@ export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
 
 # opencode
 export PATH=/Users/d/.opencode/bin:$PATH
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"

@@ -165,3 +165,8 @@ esac
 eval "$(starship init bash)"
 
 PROMPT_COMMAND="prompt_hook${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+
+. "$HOME/.atuin/bin/env"
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"
