@@ -14,8 +14,6 @@ runs:
         RUN_AS: ${{ inputs.run_as }}
       shell: bash
       run: |
-        tree ~ -I ".dotfiles"
-
         # Build command arguments
         TEST_ARGS=""
         if [ -n "$RUN_AS" ]; then

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+tree ~ -I ".dotfiles"
+
 set -euxo pipefail
 
 # Dotfiles Post-Installation Test Suite
