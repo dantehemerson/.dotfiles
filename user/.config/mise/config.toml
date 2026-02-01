@@ -1,0 +1,4 @@
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
+status.show_tools = true
+node.gpg_verify = false

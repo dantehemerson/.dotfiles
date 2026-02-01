@@ -28,6 +28,7 @@ assert_command_exists "fd"
 assert_command_exists "unzip"
 assert_command_exists "gh"
 assert_command_exists "atuin"
+assert_command_exists "mise"
 
 zsh -ic 'command -v zimfw >/dev/null' 2>/dev/null
 
@@ -44,6 +45,7 @@ assert_file_is_symlink "$HOME/.tmux.conf"
 assert_file_is_symlink "$HOME/.config/zed/settings.json"
 assert_file_is_symlink "$HOME/.config/ghostty/config"
 assert_file_is_symlink "$HOME/.config/nvim"
+assert_file_is_symlink "$HOME/.config/mise/config.toml"
 
 assert_directory_exists "$HOME/.config/zed"
 
