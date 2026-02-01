@@ -137,16 +137,10 @@ done
 #   export EDITOR='mvim'
 # fi
 
-# TODO: Why this? Link scripts folder
-export SCRIPTS=~/.local/bin/scripts
-mkdir -p "$SCRIPTS" &>/dev/null
-export PATH="$SCRIPTS:$PATH"
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # Custom Configuration Shell
-# Load .shellrc_custom if exists
 [ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
 
 # Load direnv if installed
@@ -154,17 +148,12 @@ if command -v direnv >/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 fi
 
-## Rust
-# Load cargo
-# export PATH=/home/dantehemerson/.cargo/bin:$PATH
 
 
 # PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 # PROMPT+='%{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'
 
 zstyle ':completion:*' ignored-patterns 'RANDOM'
-
-export BLUEUTIL_USE_SYSTEM_PROFILER=1
 
 # Added by Antigravity
 export PATH="/Users/d/.antigravity/antigravity/bin:$PATH"
