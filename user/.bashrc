@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything (leave this at the top of this file)
 [[ $- != *i* ]] && return
 
+# Global environment variables
+source ~/.dotfiles/shell/envs.sh
+
 # Load hombrew bin
 if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
   export PATH="/opt/homebrew/bin:$PATH"
