@@ -41,3 +41,6 @@ else
   echo "❌ Unsupported distro: '$CURRENT_DISTRO'" >&2
   exit 1
 fi
+
+# Run common post-install tasks
+~/.dotfiles/setup/scripts/post_install_tasks.sh

@@ -58,3 +58,10 @@ assert_file_permissions "$HOME/.ssh/id_ed25519_gh.pub" "644"
 if [ -f "$HOME/.ssh/config" ]; then
   assert_file_permissions "$HOME/.ssh/config" "600"
 fi
+
+# Test that dotfiles repo remote is using SSH (not HTTPS)
+CURRENT_REMOTE_URL=$(git -C "$HOME/.dotfiles" remote get-url origin 2>/dev/null || true)
+if [[ "$CURRENT_REMOTE_URL" == https://* ]]; then
+  echo "❌ Dotfiles remote is using HTTPS instead of SSH: $CURRENT_REMOTE_URL"
+  exit 1
+fi

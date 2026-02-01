@@ -4,6 +4,7 @@ alias code="code"
 
 alias vi="vim"
 # alias vim="nvim"
+alias n="nvim"
 
 # ========= Fast switching directories ===========
 alias dotfiles="cd ~/.dotfiles"
