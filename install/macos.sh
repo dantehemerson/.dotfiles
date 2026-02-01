@@ -17,4 +17,5 @@ brew update
 ~/.dotfiles/common/link_files.sh
 ~/.dotfiles/setup/linkers/macos.link.sh
 ~/.dotfiles/setup/installers/ssh-key-generator/ssh-key-generator.sh
+~/.dotfiles/setup/scripts/add-homebrew-bash-to-shells.sh
 ~/.dotfiles/setup/scripts/configure_macos.sh
