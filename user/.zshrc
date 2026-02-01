@@ -108,9 +108,9 @@ fi
 source ${ZIM_HOME}/init.zsh
 # }}} End configuration added by Zim Framework install
 
-# ------------------------------------------------------------------------------------
+# --------------------------------------------------------------
 # START
-# ------------------------------------------------------------------------------------
+# --------------------------------------------------------------
 
 # Load hombrew bin
 if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
@@ -143,22 +143,13 @@ done
 # Custom Configuration Shell
 [ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
 
-# Load direnv if installed
-if command -v direnv >/dev/null 2>&1; then
-  eval "$(direnv hook zsh)"
-fi
-
-
-
-# PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
-# PROMPT+='%{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)'
-
 zstyle ':completion:*' ignored-patterns 'RANDOM'
 
 # Added by Antigravity
 export PATH="/Users/d/.antigravity/antigravity/bin:$PATH"
 
-# bun completions
+# COMPLETIONS:
+# bun
 [ -s "/Users/d/.bun/_bun" ] && source "/Users/d/.bun/_bun"
 
 # bun

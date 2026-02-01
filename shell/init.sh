@@ -22,6 +22,14 @@ if command -v zoxide &>/dev/null; then
   fi
 fi
 
+if command -v direnv >/dev/null 2>&1; then
+  if [ -n "$ZSH_VERSION" ]; then
+    eval "$(direnv hook zsh)"
+  elif [ -n "$BASH_VERSION" ]; then
+    eval "$(direnv hook bash)"
+  fi
+fi
+
 if command -v fzf &>/dev/null; then
   if [[ -f /usr/share/fzf/completion.bash ]]; then
     source /usr/share/fzf/completion.bash
