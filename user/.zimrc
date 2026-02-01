@@ -60,7 +60,3 @@ zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
 # }}} End configuration added by Zim Framework install
 
-
-# Theme
-# zmodule dantehemerson/dasher
-

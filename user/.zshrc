@@ -113,11 +113,11 @@ source ${ZIM_HOME}/init.zsh
 # --------------------------------------------------------------
 
 # Load hombrew bin
-if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-else
-  export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-fi
+# if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
+#   export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+# else
+#   export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+# fi
 
 
 export PATH="$PATH:$HOME/.local/bin"
@@ -127,18 +127,12 @@ for file in envs.sh init.sh aliases.sh functions.sh zsh/functions.sh; do
     [ -r ~/.dotfiles/shell/$file ] && source ~/.dotfiles/shell/$file >/dev/null 2>&1
 done
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 # Custom Configuration Shell
 [ -f ~/.shellrc_custom ] && source ~/.shellrc_custom
@@ -150,11 +144,8 @@ export PATH="/Users/d/.antigravity/antigravity/bin:$PATH"
 
 # COMPLETIONS:
 # bun
-[ -s "/Users/d/.bun/_bun" ] && source "/Users/d/.bun/_bun"
+# [ -s "/Users/d/.bun/_bun" ] && source "/Users/d/.bun/_bun"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
 
 # opencode
