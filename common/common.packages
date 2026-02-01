@@ -36,3 +36,4 @@ ghostty[~os.macos]
 
 openssh[distro.arch]
 fnm
+mise
