@@ -37,3 +37,6 @@ ghostty[~os.macos]
 openssh[distro.arch]
 fnm
 mise
+
+opencode[distro.arch]
+anomalyco/tap/opencode[os.macos]
