@@ -25,7 +25,8 @@ fd[~distro.debian,~distro.ubuntu]
 rust-fd-find[distro.debian,distro.ubuntu]
 
 bash
-bash-completion
+bash-completion[~os.macos]
+bash-completion@2[os.macos]
 zsh
 gh[~distro.arch]
 github-cli[distro.arch]

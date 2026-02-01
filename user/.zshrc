@@ -112,14 +112,6 @@ source ${ZIM_HOME}/init.zsh
 # START
 # --------------------------------------------------------------
 
-# Load hombrew bin
-# if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
-#   export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-# else
-#   export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-# fi
-
-
 export PATH="$PATH:$HOME/.local/bin"
 
 # Load custom aliases and functions

@@ -28,6 +28,7 @@ assert_command_exists "unzip"
 assert_command_exists "gh"
 assert_command_exists "atuin"
 assert_command_exists "mise"
+assert_command_exists "opencode"
 
 zsh -ic 'command -v zimfw >/dev/null' 2>/dev/null
 
