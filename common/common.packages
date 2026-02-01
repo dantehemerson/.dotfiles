@@ -1,6 +1,5 @@
 # Common packages available on the next installers:
 # - brew
-# - apt
 # - pacman
 
 git

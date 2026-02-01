@@ -9,7 +9,6 @@ test/
 ├── post_install.test.sh          # Main test script
 ├── lib/
 │   ├── test_helpers.sh           # Helper functions and assertions
-│   └── platform_detection.sh     # Platform detection utilities
 ├── tests/
 │   ├── common_tests.sh           # Tests for all platforms
 │   ├── macos_tests.sh            # macOS-specific tests
