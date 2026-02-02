@@ -56,3 +56,44 @@ is_webapp_installed() {
   [[ -f "$desktop_file" ]]
   return $?
 }
+
+# Function to remove a package
+remove_package() {
+  local pkg="$1"
+  if ! is_package_installed "$pkg"; then
+    echo "Skipping $pkg (not installed)"
+    return 0
+  fi
+  echo "Removing package: $pkg"
+  sudo pacman -Rns --noconfirm "$pkg"
+}
+
+# Function to remove a webapp
+remove_webapp() {
+  local webapp="$1"
+  if ! is_webapp_installed "$webapp"; then
+    echo "Skipping webapp '$webapp' (not installed)"
+    return 0
+  fi
+  echo "Removing webapp: $webapp"
+  bash -c "omarchy-webapp-remove '$webapp'"
+}
+
+# Main execution
+main() {
+  echo "=== Removing Omarchy Apps ==="
+  for pkg in "${DEFAULT_APPS[@]}"; do
+    remove_package "$pkg"
+  done
+
+  echo ""
+  echo "=== Removing Omarchy Webapps ==="
+  for webapp in "${DEFAULT_WEBAPPS[@]}"; do
+    remove_webapp "$webapp"
+  done
+
+  echo ""
+  echo "✅ Done removing omarchy apps!"
+}
+
+main "$@"
