@@ -89,9 +89,7 @@ prompt_hook() {
   return $exit_status
 }
 
-if [ -d "$HOME/.local/bin" ]; then
-  export PATH=$PATH:$HOME/.local/bin
-fi
+export PATH=$PATH:$HOME/.local/bin
 
 # pnpm
 export PNPM_HOME="/Users/d/Library/pnpm"
