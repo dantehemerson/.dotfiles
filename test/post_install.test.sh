@@ -31,6 +31,11 @@ main() {
     esac
   done
 
+  echo "PATH:\n"
+
+  echo "$PATH" | tr ':' '\n' | column -t
+
+  echo "BASH VERSION : $BASH_VERSION"
   # Set environment variable to indicate we're running the test suite
   export DOTFILES_TEST_SUITE=1
 
