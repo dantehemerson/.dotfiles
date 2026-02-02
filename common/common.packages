@@ -39,3 +39,6 @@ fnm
 mise
 
 anomalyco/tap/opencode[os.macos]
+
+zed[~os.macos]
+--cask zed[os.macos]
