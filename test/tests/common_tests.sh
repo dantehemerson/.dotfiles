@@ -29,6 +29,7 @@ assert_command_exists "gh"
 assert_command_exists "atuin"
 assert_command_exists "mise"
 assert_command_exists "opencode"
+assert_command_exists "zed"
 
 zsh -ic 'command -v zimfw >/dev/null' 2>/dev/null
 
