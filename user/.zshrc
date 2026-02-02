@@ -273,3 +273,5 @@ export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
 
 # opencode
 export PATH=/Users/d/.opencode/bin:$PATH
+
+. "$HOME/.local/bin/env"

@@ -165,3 +165,5 @@ esac
 eval "$(starship init bash)"
 
 PROMPT_COMMAND="prompt_hook${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+
+. "$HOME/.local/bin/env"
