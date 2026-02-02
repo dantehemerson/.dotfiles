@@ -65,3 +65,26 @@ command_exists_as_user() {
     bash -lc "command -v $cmd" >/dev/null 2>&1
   fi
 }
+
+# Assert that a file has specific permissions (e.g., 600, 644)
+assert_file_permissions() {
+  local file_path="$1"
+  local expected_perms="$2"
+
+  local actual_perms
+  actual_perms=$(stat -c "%a" "$file_path" 2>/dev/null || stat -f "%Lp" "$file_path" 2>/dev/null)
+  [ "$actual_perms" = "$expected_perms" ]
+}
+
+# Assert that a macOS application is installed
+assert_macos_app_installed() {
+  local app_name="$1"
+
+  # Check common installation locations
+  if [ -d "/Applications/${app_name}.app" ] || [ -d "$HOME/Applications/${app_name}.app" ]; then
+    return 0
+  fi
+
+  # Fallback: use Spotlight to find app anywhere
+  mdfind "kMDItemKind == 'Application' && kMDItemDisplayName == '${app_name}'" 2>/dev/null | grep -q ".app$"
+}

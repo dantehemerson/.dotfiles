@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Load .env to customize the installation
 if [ -f .env.sh ]; then
@@ -25,8 +25,11 @@ echo "OS: $CURRENT_OS"
 echo "ARCH: $CURRENT_ARCH"
 echo "PM: $CURRENT_PM"
 echo "DISTRO: $CURRENT_DISTRO"
+echo "FLAVOR: $CURRENT_FLAVOR"
 
-if [[ "$CURRENT_DISTRO" == "arch" ]]; then
+if [[ "$CURRENT_DISTRO" == "arch" && "$CURRENT_FLAVOR" == "omarchy" ]]; then
+  ~/.dotfiles/install/arch_omarchy.sh
+elif [[ "$CURRENT_DISTRO" == "arch" ]]; then
   ~/.dotfiles/install/arch.sh
 elif [[ "$CURRENT_DISTRO" == "debian" ]]; then
   ~/.dotfiles/install/debian.sh
@@ -38,3 +41,6 @@ else
   echo "❌ Unsupported distro: '$CURRENT_DISTRO'" >&2
   exit 1
 fi
+
+# Run common post-install tasks
+~/.dotfiles/setup/scripts/post_install_tasks.sh

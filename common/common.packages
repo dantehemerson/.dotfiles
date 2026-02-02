@@ -1,6 +1,5 @@
 # Common packages available on the next installers:
 # - brew
-# - apt
 # - pacman
 
 git
@@ -20,15 +19,26 @@ superfile[~distro.debian]
 bat
 lazygit
 ripgrep
+tmux
 
 fd[~distro.debian,~distro.ubuntu]
 rust-fd-find[distro.debian,distro.ubuntu]
 
 bash
-bash-completion
+bash-completion[~os.macos]
+bash-completion@2[os.macos]
 zsh
+gh[~distro.arch]
+github-cli[distro.arch]
 
 ghostty[~os.macos]
 --cask ghostty[os.macos]
 
+openssh[distro.arch]
+fnm
+mise
 
+anomalyco/tap/opencode[os.macos]
+
+zed[~os.macos]
+--cask zed[os.macos]

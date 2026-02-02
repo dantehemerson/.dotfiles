@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -euo pipefail
 
 DOTFILES_DIR="$HOME/.dotfiles"
@@ -14,7 +14,7 @@ fi
 # Clone or update
 if [ ! -d "$DOTFILES_DIR" ]; then
   echo "→ Cloning dotfiles repository..."
-  git clone "$REPO_URL" "$DOTFILES_DIR"
+  git clone --depth 1 "$REPO_URL" "$DOTFILES_DIR"
 else
   echo "→ Dotfiles already exist, updating..."
   git -C "$DOTFILES_DIR" pull --ff-only

@@ -4,6 +4,7 @@ alias code="code"
 
 alias vi="vim"
 # alias vim="nvim"
+alias n="nvim"
 
 # ========= Fast switching directories ===========
 alias dotfiles="cd ~/.dotfiles"
@@ -12,8 +13,6 @@ alias coding="cd ~/coding"
 alias oss="cd ~/coding/oss"
 alias downloads="cd ~/Downloads"
 alias Downloads="cd ~/Downloads"
-
-alias numbers='open -a "Numbers" '
 
 # ===== Alias to download music with shira ====
 alias mdl='shiradl -c "./music.youtube.com_cookies.txt" -i 141'
@@ -167,3 +166,5 @@ alias "compose"="docker compose"
 ## ======= CLI APPS =======
 alias nvm="fnm"
 alias ncu2="npm-check -u"
+
+alias c="opencode"

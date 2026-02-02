@@ -33,10 +33,10 @@ link "$DOTFILES_DIR/user/.tmux.conf" "$HOME/.tmux.conf"
 link "$DOTFILES_DIR/user/zed/settings.json" "$HOME/.config/zed/settings.json"
 
 # Neovim
-link "$DOTFILES_DIR/user/nvim/init.lua" "$HOME/.config/nvim/init.lua"
-link "$DOTFILES_DIR/user/nvim/lua/plugins/ui.lua" "$HOME/.config/nvim/lua/plugins/ui.lua"
-link "$DOTFILES_DIR/user/nvim/lua/config/colorscheme.lua" "$HOME/.config/nvim/lua/config/colorscheme.lua"
-link "$DOTFILES_DIR/user/nvim/lua/config/options.lua" "$HOME/.config/nvim/lua/config/options.lua"
+link "$DOTFILES_DIR/user/.config/nvim" "$HOME/.config/nvim"
+
+# Mise
+link "$DOTFILES_DIR/user/.config/mise/config.toml" "$HOME/.config/mise/config.toml"
 
 ## ============ CUSTOM OPTIONS ============
 custom_options=(

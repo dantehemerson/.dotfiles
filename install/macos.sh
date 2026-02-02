@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 xcode-select --install
 
@@ -13,5 +13,10 @@ fi
 brew update
 
 ~/.dotfiles/setup/install/brew.sh
+~/.dotfiles/setup/installers/common.installers.sh
 ~/.dotfiles/common/link_files.sh
 ~/.dotfiles/setup/linkers/macos.link.sh
+~/.dotfiles/setup/installers/ssh-key-generator/ssh-key-generator.sh
+~/.dotfiles/setup/scripts/add-homebrew-bash-to-shells.sh
+~/.dotfiles/setup/scripts/zed-install-cli-macos.sh
+~/.dotfiles/setup/scripts/configure_macos.sh

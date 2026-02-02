@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Load .env to customize the installation
 if [ -f .env.sh ]; then
@@ -39,6 +39,7 @@ export CURRENT_OS=""
 export CURRENT_ARCH=""
 export CURRENT_PM=""
 export CURRENT_DISTRO=""
+export CURRENT_FLAVOR=""
 
 # Detect current operating system
 detect_os() {
@@ -115,11 +116,21 @@ detect_distro() {
   fi
 }
 
+# Detect current flavor/distribution variant
+detect_flavor() {
+  if [ -n "${OMARCHY_PATH:-}" ]; then
+    export CURRENT_FLAVOR="omarchy"
+  else
+    export CURRENT_FLAVOR="unknown"
+  fi
+}
+
 # Initialize system detection
 detect_os
 detect_arch
 detect_pm
 detect_distro
+detect_flavor
 
 # Parse package line to extract package name and conditions
 # Returns: package_name and conditions_string

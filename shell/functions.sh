@@ -342,3 +342,10 @@ nvim-fix() {
     echo "❌ Aborted."
   fi
 }
+
+# n -> nvim alias
+n() { if [ "$#" -eq 0 ]; then nvim .; else nvim "$@"; fi; }
+
+# Compression
+compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
+alias decompress="tar -xzf"
