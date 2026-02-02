@@ -10,4 +10,6 @@ assert_command_exists "pacman"
 assert_command_exists "yay"
 assert_command_exists "vicinae"
 
+assert_file_exists "$HOME/.local/bin/zed
+
 pacman -Q pacman >/dev/null 2>&1 || fail "pacman DB broken"
