@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.bashrc
+
 set -euxo pipefail
 
 # Dotfiles Post-Installation Test Suite

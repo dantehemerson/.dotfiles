@@ -24,9 +24,9 @@ runs:
         if [ -n "$RUN_AS" ]; then
           # Run as the specified user to match the installation environment
           # We pass GITHUB_WORKSPACE so the user can find the scripts in the repo
-          su - $RUN_AS -c "GITHUB_WORKSPACE=${GITHUB_WORKSPACE} bash ${GITHUB_WORKSPACE}/test/post_install.test.sh ${TEST_ARGS}"
+          su - $RUN_AS -c "GITHUB_WORKSPACE=${GITHUB_WORKSPACE} bash -lc ${GITHUB_WORKSPACE}/test/post_install.test.sh ${TEST_ARGS}"
         else
           # Default execution
-          ${GITHUB_WORKSPACE}/test/post_install.test.sh $TEST_ARGS
+          bash -lc ${GITHUB_WORKSPACE}/test/post_install.test.sh $TEST_ARGS
         fi
 
