@@ -19,4 +19,20 @@ else
   echo "==> ℹ️  Git remote URL is different: $CURRENT_URL"
 fi
 
+# Setup zed -> zeditor symlink if needed
+if ! command -v zed &> /dev/null; then
+  if command -v zeditor &> /dev/null; then
+    ZEDITOR_PATH=$(which zeditor)
+    mkdir -p "$HOME/.local/bin"
+    ln -sf "$ZEDITOR_PATH" "$HOME/.local/bin/zed"
+    echo "==> ✅ Created zed symlink to zeditor"
+    
+    # Warn if ~/.local/bin is not in PATH
+    if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+      echo "==> ⚠️  Warning: $HOME/.local/bin is not in your PATH"
+      echo "==>     Add 'export PATH=\"$HOME/.local/bin:$PATH\"' to your shell config"
+    fi
+  fi
+fi
+
 echo "==> ✅ Post-install configuration complete"

@@ -133,8 +133,6 @@ function cdl() {
 # Typos
 alias code.="code ."
 
-alias zed="zeditor"
-
 ## ============ GITHUB CLI ============
 alias gha="cat ~/.dotfiles/shell/aliases.sh | grep -E 'gh|promote|pr|repo' | bat $1 -l=sh --style=plain,grid --wrap=never"
 
