@@ -20,6 +20,7 @@ bat
 lazygit
 ripgrep
 tmux
+fzf
 
 fd[~distro.debian,~distro.ubuntu]
 rust-fd-find[distro.debian,distro.ubuntu]
