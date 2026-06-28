@@ -143,7 +143,7 @@ alias promote2prod="gh workflow run promote.yml --ref preprod  -f env='preprod t
 
 # PRs
 alias prview="gh pr view --web"
-alias prcreate="gh pr create --web"
+alias prcreate="gh pr create --web -t "
 
 alias prapprove="gh pr review --approve "
 

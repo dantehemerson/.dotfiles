@@ -75,6 +75,13 @@ remove_webapp() {
     echo "Skipping webapp '$webapp' (not installed)"
     return 0
   fi
+
+  # Check if omarchy-webapp-remove command exists (not available in plain Arch)
+  if ! command -v omarchy-webapp-remove &>/dev/null; then
+    echo "Skipping webapp '$webapp' (omarchy-webapp-remove not available)"
+    return 0
+  fi
+
   echo "Removing webapp: $webapp"
   bash -c "omarchy-webapp-remove '$webapp'"
 }

@@ -1,0 +1,49 @@
+name: Test dotfiles (Arch Omarchy)
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test-omarchy:
+    runs-on: ubuntu-latest
+
+    container:
+      image: archlinux:latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bootstrap Arch container
+        run: |
+          pacman -Sy --noconfirm \
+            base \
+            base-devel \
+            git \
+            curl \
+            sudo
+
+      - name: Create non-root user
+        run: |
+          useradd -m -G wheel -s /bin/bash ci
+          echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+      - name: Run Omarchy setup
+        run: |
+          su - ci -c "bash ${GITHUB_WORKSPACE}/install/arch_omarchy.sh"
+
+      - name: Smoke Tests (Omarchy-specific)
+        run: |
+          # Test Hyprland configs are linked
+          su - ci -c 'test -f ~/.config/hypr/input.conf && echo "input.conf linked OK"'
+          su - ci -c 'test -f ~/.config/hypr/bindings.conf && echo "bindings.conf linked OK"'
+          
+          # Test that yay is installed
+          su - ci -c 'command -v yay && echo "yay installed OK"'
+          
+          echo "All Omarchy smoke tests passed!"
+
