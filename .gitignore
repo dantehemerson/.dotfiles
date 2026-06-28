@@ -10,3 +10,7 @@ user/.config/nvim/README.md
 user/.config/nvim/lazy-lock.json
 user/.config/nvim/log.txt
 user/.config/nvim/lazyvim.json
+
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md

@@ -101,6 +101,8 @@ esac
 
 PROMPT_COMMAND="prompt_hook${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
 . "$HOME/.atuin/bin/env"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
