@@ -37,7 +37,8 @@ shell-integration = zsh
 
 # theme = django reborn again
 #  theme = 0x96f
-theme = iTerm2 Dark Background
+# theme = iTerm2 Dark Background
+theme = Material Darker
 bold-color = bright
 
 
