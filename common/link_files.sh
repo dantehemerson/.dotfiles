@@ -29,6 +29,9 @@ link "$DOTFILES_DIR/user/.vimrc" "$HOME/.vimrc"
 # Tmux
 link "$DOTFILES_DIR/user/.tmux.conf" "$HOME/.tmux.conf"
 
+# Tmux
+link "$DOTFILES_DIR/user/.config/herdr/config.toml" "$HOME/.config/herdr/config.toml"
+
 # Zed
 link "$DOTFILES_DIR/user/zed/settings.json" "$HOME/.config/zed/settings.json"
 
