@@ -6,3 +6,7 @@ source ~/.orbstack/shell/init.bash 2>/dev/null || :
 
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 [ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/d/.local/bin:$PATH"

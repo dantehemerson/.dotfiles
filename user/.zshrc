@@ -148,3 +148,11 @@ export PATH=/Users/d/.opencode/bin:$PATH
 
 
 eval "$(atuin init zsh)"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/d/.local/bin:$PATH"

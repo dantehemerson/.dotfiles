@@ -10,8 +10,8 @@
   "cli_default_open_behavior": "new_window",
   "edit_predictions": {
     "open_ai_compatible_api": {
-      "api_url": "https://opencode.ai/zen/v1/chat/completions",
-      "model": "kimi-k2.6"
+      "api_url": "",
+      "model": ""
     },
     "provider": "zed",
   },
@@ -35,11 +35,17 @@
     },
     "default_model": {
       "provider": "opencode",
-      "model": "go/kimi-k2.6",
+      "model": "free/big-pickle",
       "enable_thinking": false,
     },
     "dock": "right",
-    "favorite_models": [],
+    "favorite_models": [
+      {
+        "provider": "opencode",
+        "model": "free/big-pickle",
+        "enable_thinking": false
+      }
+    ],
     "model_parameters": [],
   },
   "tabs": {
@@ -56,7 +62,7 @@
   "terminal": {
     "font_size": 12.0,
     "font_weight": 300.0,
-    "font_family": "SF Mono",
+    "font_family": "Fira Code",
   },
   "colorize_brackets": true,
   "buffer_line_height": {
@@ -67,12 +73,13 @@
     "enabled": true,
   },
   "icon_theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "VSCode Icons for Zed (Dark)",
     "dark": "VSCode Icons for Zed (Dark)",
   },
   "vim_mode": true,
   "vim": {
+    "use_system_clipboard": "on_yank",
     "toggle_relative_line_numbers": true,
   },
   "relative_line_numbers": "enabled",

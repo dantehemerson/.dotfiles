@@ -107,3 +107,7 @@ PROMPT_COMMAND="prompt_hook${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/d/.local/bin:$PATH"
