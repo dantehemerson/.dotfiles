@@ -40,8 +40,10 @@ export HISTCONTROL=ignorespace:erasedups:autoshare
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
+[ -f "$HOME/.dotfiles/.env.sh" ] && . "$HOME/.dotfiles/.env.sh"
+
 # Load custom aliases and functions
-for file in env.sh init.sh aliases.sh functions.sh bash/aliases.sh bash/functions.sh; do
+for file in init.sh aliases.sh functions.sh bash/aliases.sh bash/functions.sh; do
   [ -r ~/.dotfiles/shell/$file ] && source ~/.dotfiles/shell/$file >/dev/null 2>&1
 done
 
@@ -107,7 +109,6 @@ PROMPT_COMMAND="prompt_hook${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
-
 
 # Added by Antigravity CLI installer
 export PATH="/Users/d/.local/bin:$PATH"

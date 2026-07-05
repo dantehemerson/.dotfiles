@@ -114,8 +114,10 @@ source ${ZIM_HOME}/init.zsh
 
 export PATH="$PATH:$HOME/.local/bin"
 
+[ -f "$HOME/.dotfiles/.env.sh" ] && . "$HOME/.dotfiles/.env.sh"
+
 # Load custom aliases and functions
-for file in envs.sh init.sh aliases.sh functions.sh zsh/functions.sh; do
+for file in init.sh aliases.sh functions.sh zsh/functions.sh; do
     [ -r ~/.dotfiles/shell/$file ] && source ~/.dotfiles/shell/$file >/dev/null 2>&1
 done
 
