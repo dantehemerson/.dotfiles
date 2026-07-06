@@ -31,8 +31,8 @@ macos-option-as-alt = left
 
 window-theme = ghostty
 window-decoration = auto
-background-opacity = 0.92
-background-blur = true
+#background-opacity = 0.92
+#background-blur = true
 title = Terminator
 
 shell-integration = zsh
