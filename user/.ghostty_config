@@ -29,9 +29,11 @@ keybind = global:super+enter=ignore
 
 macos-option-as-alt = left
 
-window-theme = system
+window-theme = ghostty
 window-decoration = auto
-macos-titlebar-style = native
+background-opacity = 0.92
+background-blur = true
+title = Terminator
 
 shell-integration = zsh
 

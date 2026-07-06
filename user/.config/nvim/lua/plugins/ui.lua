@@ -43,7 +43,9 @@ return {
 	{ "ellisonleao/gruvbox.nvim", lazy = true },
 	{ "catppuccin/nvim", name = "catppuccin", lazy = true },
 	{ "rebelot/kanagawa.nvim", lazy = true },
-	{ "Mofiqul/vscode.nvim", lazy = false, priority = 1000 },
+	{ "Mofiqul/vscode.nvim", lazy = false, priority = 1000, opts = {
+		transparent = false,
+	} },
 	{ "sainnhe/everforest", lazy = true },
 	{
 		"AlexvZyl/nordic.nvim",
