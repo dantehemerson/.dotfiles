@@ -4,12 +4,18 @@
 
 [core]
 	editor = vi
+	pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+	#	side-by-side = true
 
 [merge]
-    conflictstyle = diff3
-
-[diff]
-    colorMoved = default
+    conflictstyle = zdiff3
 
 [alias]
 	log1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
