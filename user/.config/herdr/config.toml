@@ -63,6 +63,12 @@ auto_switch = false
 # alt+..., cmd/super, and punctuation-with-modifiers may depend on your terminal/tmux setup.
 prefix = "`"
 
+[[keys.command]]
+key = "ctrl+shift+U" # I actually don't press this. I use ghostty to send thi shorcut when I press cmd + `
+type = "plugin_action"
+command = "dantehemerson.last-tab.toggle"
+description = "last tab"
+
 # Prefix-mode actions
 # help = "prefix+?"
 # settings = "prefix+s"

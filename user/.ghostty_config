@@ -27,6 +27,10 @@
 # macos-non-native-fullscreen = false
 keybind = global:super+enter=ignore
 
+# This performs: ctrl+shift+U which triggers last-tab.toggle (see: key commands on herdr config file)
+keybind = cmd+backquote=text:\x1b[117;6u
+
+
 macos-option-as-alt = left
 
 window-theme = ghostty
