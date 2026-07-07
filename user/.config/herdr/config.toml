@@ -1,3 +1,4 @@
+onboarding = false
 # herdr configuration
 # Place this file at ~/.config/herdr/config.toml
 
@@ -19,6 +20,8 @@
 
 # Override individual color tokens on top of the base theme.
 # Accepts: hex (#rrggbb), named colors, rgb(r,g,b), or panel_bg = "reset"
+name = "catppuccin"
+auto_switch = false
 [theme.custom]
 panel_bg = "reset"
 accent = "#f5c2e7"
@@ -63,11 +66,6 @@ auto_switch = false
 # alt+..., cmd/super, and punctuation-with-modifiers may depend on your terminal/tmux setup.
 prefix = "`"
 
-[[keys.command]]
-key = "ctrl+shift+U" # I actually don't press this. I use ghostty to send thi shorcut when I press cmd + `
-type = "plugin_action"
-command = "dantehemerson.last-tab.toggle"
-description = "last tab"
 
 # Prefix-mode actions
 # help = "prefix+?"
@@ -105,6 +103,7 @@ description = "last tab"
 # cycle_pane_next = "prefix+tab"
 # cycle_pane_previous = "prefix+shift+tab"
 # last_pane = ""          # optional, unset by default; bind e.g. "prefix+tab" for global back-and-forth
+# split_vertical = "prefix+shift+backslash"
 split_vertical = "prefix+|"
 # split_horizontal = "prefix+minus"
 # close_pane = "prefix+x"
@@ -128,6 +127,12 @@ split_vertical = "prefix+|"
 # key = "prefix+alt+g"
 # type = "pane"
 # command = "lazygit"
+
+[[keys.command]]
+key = "ctrl+shift+U" # I actually don't press this. I use ghostty to send thi shorcut when I press cmd + `
+type = "plugin_action"
+command = "dantehemerson.last-tab.toggle"
+description = "last tab"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
@@ -194,6 +199,7 @@ prompt_new_tab_name = false
 # accent = "cyan"
 
 # Background notification popup delivery
+show_agent_labels_on_pane_borders = false
 [ui.toast]
 # off = disable pop-up notifications
 # herdr = show in-app toasts
@@ -264,6 +270,8 @@ pane_history = false
 # Cursor shape rendered when reveal_hidden_cursor_for_cjk_ime is true.
 # Values: block, steady_block (default), underline, steady_underline, bar, steady_bar.
 # cjk_ime_cursor_shape = "steady_block"
+
+# switch_ascii_input_source_in_prefix = true
 
 [advanced]
 # Maximum scrollback buffer size in bytes retained per pane terminal.
