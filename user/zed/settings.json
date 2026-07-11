@@ -7,25 +7,59 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent_servers": {
+
+  },
+  "language_models": {
+    "opencode": {
+      "show_zen_models": false,
+      "show_go_models": true,
+      "show_free_models": true,
+    },
+  },
+  "hover_popover_enabled": true,
+  "use_on_type_format": true,
+  "tab_size": 2,
+  "toolbar": {
+    "code_actions": false,
+  },
+  "scrollbar": {
+    "selected_symbol": true,
+    "show": "always",
+  },
+  "gutter": {
+    "line_numbers": true,
+  },
+  "sticky_scroll": {
+    "enabled": true,
+  },
   "cli_default_open_behavior": "new_window",
   "edit_predictions": {
-    "open_ai_compatible_api": {
-      "api_url": "",
-      "model": ""
+    "allow_data_collection": "no",
+    "codestral": {
+      "api_url": "https://codestral.mistral.ai"
     },
-    "provider": "zed",
+    "open_ai_compatible_api": {
+      "api_url": "http://192.168.3.64:11434",
+      "model": "qwen2.5-coder:1.5b-base",
+    },
+    "provider": "open_ai_compatible_api",
   },
   "project_panel": {
     "dock": "left",
   },
   "outline_panel": {
+    "git_status": true,
+    "button": true,
     "dock": "left",
   },
   "collaboration_panel": {
     "dock": "left",
   },
   "agent": {
-    "default_profile": "write",
+    "notify_when_agent_waiting": "all_screens",
+    "play_sound_when_agent_done": "always",
+    "default_profile": "ask",
     "tool_permissions": {
       "tools": {
         "terminal": {
@@ -35,7 +69,7 @@
     },
     "default_model": {
       "provider": "opencode",
-      "model": "free/big-pickle",
+      "model": "go/minimax-m3",
       "enable_thinking": false,
     },
     "dock": "right",
@@ -43,8 +77,8 @@
       {
         "provider": "opencode",
         "model": "free/big-pickle",
-        "enable_thinking": false
-      }
+        "enable_thinking": false,
+      },
     ],
     "model_parameters": [],
   },
@@ -66,7 +100,7 @@
   },
   "colorize_brackets": true,
   "buffer_line_height": {
-    "custom": 1.2999999523162842,
+    "custom": 1.4,
   },
   "buffer_font_family": "Maple Mono",
   "which_key": {
@@ -75,10 +109,11 @@
   "icon_theme": {
     "mode": "dark",
     "light": "VSCode Icons for Zed (Dark)",
-    "dark": "VSCode Icons for Zed (Dark)",
+    "dark": "VSCode Icons for Zed (Dark Official Icons)",
   },
   "vim_mode": true,
   "vim": {
+    "highlight_on_yank_duration": 200,
     "use_system_clipboard": "on_yank",
     "toggle_relative_line_numbers": true,
   },
@@ -92,8 +127,8 @@
   "ui_font_size": 15.0,
   "buffer_font_size": 12.5,
   "theme": {
-    "mode": "dark",
-    "light": "Everforest Light Soft (blur)",
-    "dark": "Shades Of Purple",
+    "mode": "system",
+    "light": "Shades Of Purple",
+    "dark": "Zedokai Darker (Filter Machine)",
   },
 }

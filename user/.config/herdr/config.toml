@@ -20,7 +20,7 @@ onboarding = false
 
 # Override individual color tokens on top of the base theme.
 # Accepts: hex (#rrggbb), named colors, rgb(r,g,b), or panel_bg = "reset"
-name = "catppuccin"
+name = "one-dark"
 auto_switch = false
 [theme.custom]
 panel_bg = "reset"
