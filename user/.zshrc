@@ -82,6 +82,13 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 #typeset -A ZSH_HIGHLIGHT_STYLES
 #ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
 
+# Load hombrew bin
+if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+else
+  export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+fi
+
 # ------------------
 # Initialize modules
 # ------------------
@@ -146,10 +153,7 @@ export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
 export PATH=/Users/d/.opencode/bin:$PATH
 
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
-[ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
-
-
-eval "$(atuin init zsh)"
+[ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env" && eval "$(atuin init zsh)"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -158,3 +162,12 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Added by Antigravity CLI installer
 export PATH="/Users/d/.local/bin:$PATH"
+
+# ============ NODE VERSION MANAGER ===========
+if [[ -d "$HOME/.local/share/fnm" ]]; then
+  export PATH="$HOME/.local/share/fnm:$PATH"
+
+  # fnm: node version manager
+  eval "$(fnm env --use-on-cd)"
+fi
+
