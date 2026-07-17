@@ -61,7 +61,8 @@ else # Intel
 fi
 
 # ============ NODE VERSION MANAGER ===========
-if [[ -f ~/.local/share/fnm/fnm ]]; then
+if [[ -d "$HOME/.local/share/fnm" ]]; then
+	echo "Using FNM>>>>>>>>>>>>>>>"
   export PATH="$HOME/.local/share/fnm:$PATH"
 
   # fnm: node version manager
