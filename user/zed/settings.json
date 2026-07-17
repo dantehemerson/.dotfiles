@@ -7,6 +7,20 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "ssh_connections": [
+    {
+      "host": "thinkpad",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/sova/coding/argus"
+          ]
+        }
+      ]
+    }
+  ],
+  "diff_view_style": "split",
   "agent_servers": {
 
   },
@@ -43,7 +57,7 @@
       "api_url": "http://192.168.3.64:11434",
       "model": "qwen2.5-coder:1.5b-base",
     },
-    "provider": "open_ai_compatible_api",
+    "provider": "zed",
   },
   "project_panel": {
     "dock": "left",
@@ -59,9 +73,12 @@
   "agent": {
     "notify_when_agent_waiting": "all_screens",
     "play_sound_when_agent_done": "always",
-    "default_profile": "ask",
+    "default_profile": "write",
     "tool_permissions": {
       "tools": {
+        "create_directory": {
+          "default": "allow"
+        },
         "terminal": {
           "default": "allow",
         },
@@ -77,8 +94,13 @@
       {
         "provider": "opencode",
         "model": "free/big-pickle",
-        "enable_thinking": false,
+        "enable_thinking": false
       },
+      {
+        "provider": "opencode",
+        "model": "go/minimax-m3",
+        "enable_thinking": false
+      }
     ],
     "model_parameters": [],
   },
@@ -107,7 +129,7 @@
     "enabled": true,
   },
   "icon_theme": {
-    "mode": "dark",
+    "mode": "light",
     "light": "VSCode Icons for Zed (Dark)",
     "dark": "VSCode Icons for Zed (Dark Official Icons)",
   },
@@ -127,8 +149,8 @@
   "ui_font_size": 15.0,
   "buffer_font_size": 12.5,
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "Shades Of Purple",
-    "dark": "Zedokai Darker (Filter Machine)",
+    "dark": "Zedokai (Filter Machine)",
   },
 }
