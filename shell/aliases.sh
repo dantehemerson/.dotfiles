@@ -23,9 +23,16 @@ alias count_deep_files='find . -type f \( -iname "*.mp3" -o -iname "*.wav" -o -i
 
 # Bat
 
-# if linux set alias bat="batcat"
-if [[ "$IS_LINUX" == "true" ]]; then
+# On Ubuntu/Debian, the binary is installed as `batcat` (apt name clash).
+# Only alias when `bat` is missing and `batcat` is present, so distros
+# that ship `bat` directly (Arch, Fedora, etc.) aren't shadowed.
+if ! command -v bat >/dev/null 2>&1 && command -v batcat >/dev/null 2>&1; then
   alias bat="batcat"
+fi
+
+# fd: on Ubuntu/Debian the binary is installed as `fdfind` (apt name clash)
+if ! command -v fd >/dev/null 2>&1 && command -v fdfind >/dev/null 2>&1; then
+  alias fd="fdfind"
 fi
 
 # Config files aliases

@@ -32,7 +32,16 @@ assert_command_exists "rg" # ripgrep
 assert_command_exists "tmux"
 assert_command_exists "bash"
 assert_command_exists "zsh"
-assert_command_exists "fd"
+# On Ubuntu/Debian, the `fd-find` package installs the binary as `fdfind`
+# (name clash with another package). Arch/macOS use `fd`.
+if command -v fd >/dev/null 2>&1; then
+  :
+elif command -v fdfind >/dev/null 2>&1; then
+  :
+else
+  echo "❌ Neither 'fd' nor 'fdfind' is installed"
+  exit 1
+fi
 assert_command_exists "unzip"
 assert_command_exists "gh"
 assert_command_exists "atuin"
