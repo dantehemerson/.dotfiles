@@ -13,4 +13,7 @@ fi
 # Both Ubuntu and Arch use systemd with the same docker.service unit.
 if _command_exists docker; then
   sudo systemctl enable --now docker.service
+
+  # Creates the docker group and adds the current user to it, to avoid using sudo with docker
+  ./setup/scripts/create-user-docker.sh
 fi
