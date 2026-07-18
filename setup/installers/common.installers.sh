@@ -22,4 +22,7 @@ if [[ "$CURRENT_DISTRO" == "ubuntu" ]]; then
   sudo extrepo enable mise
   sudo apt update
   sudo apt install -y mise
+
+  # opencode
+  curl -fsSL https://opencode.ai/install | bash
 fi
