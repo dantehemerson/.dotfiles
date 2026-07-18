@@ -1,6 +1,52 @@
-# Common packages available on the next installers:
-# - brew
-# - pacman
+# =============================================================================
+# Conditional package syntax
+# =============================================================================
+#
+# Lines are:  <package>[<conditions>]
+#
+# Available condition keys (set automatically by utils.sh on shell startup):
+#
+#   os.<name>        linux | macos | windows
+#   arch.<name>      x86_64 | arm64
+#   pm.<name>        brew | apt | pacman | dnf | yum
+#   distro.<name>    arch | ubuntu | debian | fedora | rhel
+#
+# Negation: prefix any condition with `~` to mean "not this".
+#
+# Combinator: conditions inside the brackets are combined with AND.
+#   All listed conditions must be true for the package to install.
+#
+# To target several platforms, write one line per platform — DO NOT comma-list
+# platforms that are mutually exclusive (e.g. `os.macos,distro.arch`), because
+# AND makes that line impossible to satisfy. Examples at the bottom of this
+# comment.
+#
+# -----------------------------------------------------------------------------
+# Examples
+# -----------------------------------------------------------------------------
+#
+#   git                              # always install
+#   unzip[~os.macos]                 # install everywhere except macOS
+#   gh[~distro.arch]                 # install on every distro except arch
+#   superfile[os.macos]              # install only on macOS
+#   superfile[distro.arch]           # install only on arch
+#
+# For "install on macOS OR arch", use TWO lines (not a comma-list):
+#
+#   superfile[os.macos]
+#   superfile[distro.arch]
+#
+# A useful real combo is "linux AND uses apt":
+#
+#   docker[os.linux,pm.apt]
+#
+# Anything else (unknown keys, malformed lines) → package is skipped silently.
+#
+# Common installable package names per distro (for `fd` / `bat` renames):
+#   - macOS:  bat, fd
+#   - arch:   bat, fd
+#   - ubuntu/debian apt:  bat -> batcat, fd-find -> fdfind
+# =============================================================================
 
 git
 wget
