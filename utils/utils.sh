@@ -19,7 +19,7 @@ fi
 #   disp    SOLUTION -s  --solution
 # }
 
-# eval "$(./deps/getoptions parser_definition) exit 1" # argument parsing
+
 
 # echo "FLAG: $FLAG, PARAM: $PARAM, OPTION: $OPTION"
 # printf '%s\n' "$@" # output rest argument
