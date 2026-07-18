@@ -96,6 +96,6 @@ zed[distro.arch]
 
 
 # Docker
-docker[~os.macos]
-docker-compose[~os.macos]
-docker-buildx[~os.macos]
+docker[distro.arch]
+docker-compose[distro.arch]
+docker-buildx[distro.arch]
