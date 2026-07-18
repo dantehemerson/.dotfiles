@@ -14,7 +14,18 @@
 
 set -euo pipefail
 
-TARGET_USER="${1:-$(logname 2>/dev/null || echo "$USER")}"
+# Determine the target user. Fall back through a few signals because in CI /
+# sudo contexts, $USER and `logname` can both be empty or misleading.
+TARGET_USER="${1:-${SUDO_USER:-${USER:-$(logname 2>/dev/null)}}}"
+if [[ -z "$TARGET_USER" || "$TARGET_USER" == "root" ]]; then
+  # Last resort: use the user that owns this script's parent shell, or skip.
+  TARGET_USER="${SUDO_USER:-}"
+fi
+
+if [[ -z "$TARGET_USER" ]]; then
+  echo "ERROR: could not determine target user. Pass it as an argument: $0 <username>" >&2
+  exit 1
+fi
 
 echo "==> Target user: $TARGET_USER"
 

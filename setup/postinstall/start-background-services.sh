@@ -12,8 +12,12 @@ fi
 # is already enabled/active, so this is safe to re-run.
 # Both Ubuntu and Arch use systemd with the same docker.service unit.
 if _command_exists docker; then
-  sudo systemctl enable --now docker.service
+  # `enable --now` is a no-op if already enabled, but `--now` requires a
+  # running systemd (e.g. CI containers without systemd will fail it).
+  # Split the two so we can ignore the start failure in that case.
+  sudo systemctl enable docker.service || true
+  sudo systemctl start docker.service 2>/dev/null || true
 
   # Creates the docker group and adds the current user to it, to avoid using sudo with docker
-  ./setup/scripts/create-user-docker.sh
+  ~/.dotfiles/setup/scripts/create-user-docker.sh
 fi
