@@ -43,3 +43,9 @@ anomalyco/tap/opencode[os.macos]
 
 zed[~os.macos]
 --cask zed[os.macos]
+
+
+# Docker
+docker[~os.macos]
+docker-compose[~os.macos]
+docker-buildx[~os.macos]
