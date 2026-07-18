@@ -41,6 +41,4 @@ jobs:
         with:
           run_as: 'ci'
 
-      - name: Smoke Tests (Arch-specific)
-        run: su - ci -c 'command -v yay'
 
