@@ -1,5 +1,3 @@
 zimfw
 vicinae-bin
-# opencode-bin: prebuilt binary (no compilation, faster + more reliable in CI)
-# conflicts with the source `opencode` package, which needs bun + go to build.
-opencode-bin
+opencode

@@ -12,7 +12,10 @@ printf "\t- %s\n" "${packages[@]}"
 if [[ " ${packages[*]} " == *" opencode-bin "* ]]; then
   if pacman -Q opencode &>/dev/null; then
     echo "==> Removing conflicting 'opencode' package before installing opencode-bin..."
-    sudo pacman -Rns --noconfirm opencode || true
+    # -Rdd: remove the package, skip dependency checks, ignore "not installed" deps
+    # --nodeps: do not run dependency checks (in case the source build left
+    #           dangling deps in a broken state)
+    sudo pacman -Rdd --noconfirm opencode 2>&1 || true
   fi
 fi
 
