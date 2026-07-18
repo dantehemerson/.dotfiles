@@ -38,24 +38,24 @@ fi
 # 2. Create the docker group if it doesn't exist
 if ! getent group docker &>/dev/null; then
   echo "==> Creating 'docker' group..."
-  sudo groupadd docker
+  sudo groupadd docker || true
 else
   echo "==> 'docker' group already exists."
 fi
 
 # 3. Add the user to the docker group
-if id -nG "$TARGET_USER" | grep -qw docker; then
+if id -nG "$TARGET_USER" 2>/dev/null | grep -qw docker; then
   echo "==> User '$TARGET_USER' is already in the 'docker' group."
 else
   echo "==> Adding '$TARGET_USER' to the 'docker' group..."
-  sudo usermod -aG docker "$TARGET_USER"
+  sudo usermod -aG docker "$TARGET_USER" || true
 fi
 
 # 4. Fix socket permissions for the CURRENT session (temporary; real fix needs relogin)
 if [ -S /var/run/docker.sock ]; then
   echo "==> Ensuring docker.sock is owned by group 'docker'..."
-  sudo chown root:docker /var/run/docker.sock
-  sudo chmod 660 /var/run/docker.sock
+  sudo chown root:docker /var/run/docker.sock || true
+  sudo chmod 660 /var/run/docker.sock || true
 fi
 
 # 5. Make sure the Docker service is enabled/running (systemd systems)
