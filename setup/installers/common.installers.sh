@@ -26,6 +26,15 @@ if [[ "$CURRENT_DISTRO" == "ubuntu" ]]; then
   # opencode (--no-modify-path: shell PATH is managed by the dotfiles)
   curl -fsSL https://opencode.ai/install | bash -s -- --no-modify-path
 
+  # If opencode is also installed via the .deb package, it ships as
+  # /usr/bin/opencode-cli with no `opencode` symlink. Create one if missing so
+  # `command -v opencode` works regardless of how opencode was installed.
+  # https://github.com/anomalyco/opencode/issues — the .deb package has no
+  # postinst to create the symlink, so we do it here.
+  if [[ -x /usr/bin/opencode-cli ]] && [[ ! -e /usr/bin/opencode ]]; then
+    sudo ln -s /usr/bin/opencode-cli /usr/bin/opencode
+  fi
+
 
   # - - - - - Docker - - - - - -
   # Add Docker's official GPG key:
