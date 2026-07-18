@@ -64,7 +64,7 @@ Note: Individual test scripts will show their own summary when run directly.
 - **Directories**: /etc/pacman.d, /var/cache/pacman
 
 #### Ubuntu
-- **Commands**: apt, rust-fd-find, superfile
+- **Commands**: apt, fd (or fdfind), superfile (or spf)
 - **Package Manager**: apt functionality
 - **Directories**: /etc/apt, /var/cache/apt
 

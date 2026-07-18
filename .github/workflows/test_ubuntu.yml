@@ -45,8 +45,3 @@ jobs:
           DEBIAN_FRONTEND: noninteractive
         with:
           run_as: 'ci'
-
-      - name: Smoke Tests (Ubuntu-specific)
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: su - ci -c 'command -v apt-get && command -v rust-fd-find'
