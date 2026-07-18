@@ -85,7 +85,9 @@ ghostty[~os.macos]
 --cask ghostty[os.macos]
 
 openssh[distro.arch]
-mise
+
+mise[distro.arch]
+mise[os.macos]
 
 anomalyco/tap/opencode[os.macos]
 

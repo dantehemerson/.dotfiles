@@ -16,4 +16,10 @@ if [[ "$CURRENT_DISTRO" == "ubuntu" ]]; then
 
   # zed only for ubuntu. (macos and arch are intalled as common packages)
   curl -f https://zed.dev/install.sh | sh
+
+  # mise only for ubuntu. (macos and arch are intalled as common packages)
+  sudo apt install -y extrepo
+  sudo extrepo enable mise
+  sudo apt update
+  sudo apt install -y mise
 fi
