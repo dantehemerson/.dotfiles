@@ -35,7 +35,11 @@ main() {
 
   echo "PATH:\n"
 
-  echo "$PATH" | tr ':' '\n' | column -t
+  if command -v column >/dev/null 2>&1; then
+    echo "$PATH" | tr ':' '\n' | column -t
+  else
+    echo "$PATH" | tr ':' '\n'
+  fi
 
   echo "BASH VERSION : $BASH_VERSION"
   # Set environment variable to indicate we're running the test suite
