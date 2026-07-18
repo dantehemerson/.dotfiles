@@ -7,18 +7,16 @@ if [[ "$CURRENT_OS" != "linux" ]]; then
   exit 0
 fi
 
-# `systemctl enable --now` enables the unit at boot and starts it now, in a
-# single idempotent command. Both `enable` and `start` are no-ops if the unit
-# is already enabled/active, so this is safe to re-run.
-# Both Ubuntu and Arch use systemd with the same docker.service unit.
+# Enable and start Docker if it's installed. Both `enable` and `start` are
+# no-ops if already enabled/active, so this is safe to re-run.
+# `start` may fail in CI containers without systemd; that's fine and ignored.
 if _command_exists docker; then
-  # `enable --now` is a no-op if already enabled, but `--now` requires a
-  # running systemd (e.g. CI containers without systemd will fail it).
-  # Split the two so we can ignore the start failure in that case.
-  sudo systemctl enable docker.service || true
+  sudo systemctl enable docker.service 2>/dev/null || true
   sudo systemctl start docker.service 2>/dev/null || true
-
-  # Make the current user able to run docker without sudo (group + socket).
-  # The script always exits 0, so no `|| true` needed here.
-  ~/.dotfiles/setup/scripts/create-user-docker.sh
 fi
+
+# NOTE: `~/.dotfiles/setup/scripts/create-user-docker.sh` is intentionally
+# NOT called here. That script modifies the docker socket's ownership/
+# permissions, which in CI (where the socket is bind-mounted from the host)
+# breaks GitHub Actions' post-job cleanup. Run it manually instead — see
+# setup/postinstall/README.md for details.

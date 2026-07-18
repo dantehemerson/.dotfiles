@@ -46,4 +46,25 @@ chsh -s /usr/local/bin/zsh
 
 # or in Apple Silicon
 chsh -s /opt/homebrew/bin/zsh
-``` 
+```
+
+## Post-install steps
+
+A few things aren't done automatically and need to be run manually after the install completes.
+
+### Docker: run `docker` without sudo
+
+After the install, only `root` can talk to the Docker daemon by default. To run `docker` as your normal user, run the helper once:
+
+```sh
+~/.dotfiles/setup/scripts/create-user-docker.sh
+```
+
+Then **log out and log back in** (or run `newgrp docker` in your current shell) for the group change to take effect. Verify with:
+
+```sh
+docker run hello-world
+```
+
+> [!NOTE]
+> This isn't run automatically because in CI (where the docker socket is bind-mounted from the host) modifying the socket's ownership breaks GitHub Actions' post-job cleanup. Running it manually keeps the install flow predictable across environments.
