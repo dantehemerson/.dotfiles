@@ -22,8 +22,8 @@ ripgrep
 tmux
 fzf
 
-fd[~distro.debian,~distro.ubuntu]
-rust-fd-find[distro.debian,distro.ubuntu]
+fd[os.macos,distro.arch]
+fd-find[distro.ubuntu]
 
 bash
 bash-completion[~os.macos]
