@@ -326,7 +326,7 @@ function _command_exists() {
 	if type -t "$1" > /dev/null; then
 		return 0
 	else
-		_log_debug "$msg"
+		echo "$msg" >&2
 		return 1
 	fi
 }
