@@ -98,7 +98,7 @@ detect_distro() {
       debian)
         export CURRENT_DISTRO="debian"
         ;;
-      arch)
+      arch|cachyos|manjaro|endeavouros)
         export CURRENT_DISTRO="arch"
         ;;
       fedora)
@@ -108,7 +108,24 @@ detect_distro() {
         export CURRENT_DISTRO="rhel"
         ;;
       *)
-        export CURRENT_DISTRO="unknown"
+        # Fall back to ID_LIKE for arch-derivatives (e.g. cachyos, manjaro)
+        case "$ID_LIKE" in
+          *arch*)
+            export CURRENT_DISTRO="arch"
+            ;;
+          *debian*)
+            export CURRENT_DISTRO="debian"
+            ;;
+          *ubuntu*)
+            export CURRENT_DISTRO="ubuntu"
+            ;;
+          *rhel*|*centos*|*fedora*)
+            export CURRENT_DISTRO="rhel"
+            ;;
+          *)
+            export CURRENT_DISTRO="unknown"
+            ;;
+        esac
         ;;
     esac
   else
@@ -138,7 +155,7 @@ parse_package_line() {
   local line="$1"
   local package_name="$line"
   local conditions=""
-  
+
   # Check if line contains opening bracket
   case "$line" in
     *"["*)
@@ -148,7 +165,7 @@ parse_package_line() {
       conditions=$(echo "$line" | cut -d'[' -f2 | cut -d']' -f1)
       ;;
   esac
-  
+
   echo "$package_name|$conditions"
 }
 
@@ -157,10 +174,10 @@ parse_package_line() {
 evaluate_inclusive_conditions() {
   local conditions="$1"
   local first_condition
-  
+
   # Get first condition to check
   first_condition=$(echo "$conditions" | cut -d',' -f1 | xargs)
-  
+
   case "$first_condition" in
     os.*)
       local target_os=$(echo "$first_condition" | cut -d'.' -f2)
@@ -189,10 +206,10 @@ evaluate_inclusive_conditions() {
 evaluate_exclusive_conditions() {
   local conditions="$1"
   local first_condition
-  
+
   # Get first condition to check
   first_condition=$(echo "$conditions" | cut -d',' -f1 | xargs)
-  
+
   case "$first_condition" in
     ~os.*)
       local exclude_os=$(echo "$first_condition" | cut -d'.' -f2)
@@ -220,12 +237,12 @@ evaluate_exclusive_conditions() {
 # Returns 0 if package should be installed, 1 otherwise
 should_install_package() {
   local conditions="$1"
-  
+
   # No conditions means always install
   if [ -z "$conditions" ]; then
     return 0
   fi
-  
+
   # Check if conditions contain negation (exclusive logic)
   case "$conditions" in
     ~*)
@@ -332,16 +349,16 @@ load_packages() {
         # Skip empty lines and comments
         [ -z "$line" ] && continue
         case "$line" in \#*) continue ;; esac
-        
+
         # Process the line (no comma-separated alternatives for now)
         local alternative=$(echo "$line" | xargs) # trim whitespace
-        
+
         # Parse package name and conditions
         local parse_result
         parse_result=$(parse_package_line "$alternative")
         local package_name="${parse_result%|*}"
         local conditions="${parse_result#*|}"
-        
+
         # Check if this package alternative should be installed
         if should_install_package "$conditions"; then
             if [ "$first_package" = true ]; then
@@ -353,7 +370,7 @@ $package_name"
             fi
         fi
     done < "$file"
-    
+
     # Read each line into array element
     eval "
     $array_name=()
@@ -383,4 +400,3 @@ brew_safe_cask() {
   echo "$cask already installed, checking for upgrade..."
   brew upgrade --cask "$cask" &>/dev/null || true
 }
-
