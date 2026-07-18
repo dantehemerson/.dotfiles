@@ -25,6 +25,9 @@ curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/master/inst
 
 ### Arch Linux
 
+**Flavours Tested**:
+* CachyOS
+
 ```
 sudo pacman -Sy --noconfirm git curl sudo base-devel && curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/master/install.sh | bash
 ```
