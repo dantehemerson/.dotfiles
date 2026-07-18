@@ -7,7 +7,16 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/../lib/test_helpers.sh"
 
 assert_command_exists "apt-get"
-assert_command_exists "rust-fd-find"
+# On Ubuntu/Debian, the `fd-find` package installs the binary as `fdfind`
+# (name clash with another package). Some installs also expose it as `fd`.
+if command -v fd >/dev/null 2>&1; then
+  :
+elif command -v fdfind >/dev/null 2>&1; then
+  :
+else
+  echo "❌ Neither 'fd' nor 'fdfind' is installed"
+  exit 1
+fi
 assert_command_exists "superfile"
 
 # apt DB sanity check

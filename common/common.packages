@@ -72,7 +72,6 @@ fzf
 fd[os.macos]
 fd[distro.arch]
 fd-find[distro.ubuntu]
-fd-find[distro.debian]
 
 bash
 bash-completion[~os.macos]
