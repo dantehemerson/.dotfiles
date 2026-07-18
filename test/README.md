@@ -52,7 +52,7 @@ Note: Individual test scripts will show their own summary when run directly.
 ### Platform-Specific Tests
 
 #### macOS
-- **Commands**: starship, unzip, brew, mas, gh, ghostty, fnm
+- **Commands**: starship, unzip, brew, mas, gh, ghostty
 - **Symlinks**: .inputrc, ghostty config
 - **Homebrew**: Installation, health, update capability
 - **Shell**: Homebrew bash in /etc/shells

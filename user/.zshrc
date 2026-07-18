@@ -163,11 +163,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Added by Antigravity CLI installer
 export PATH="/Users/d/.local/bin:$PATH"
 
-# ============ NODE VERSION MANAGER ===========
-if [[ -d "$HOME/.local/share/fnm" ]]; then
-  export PATH="$HOME/.local/share/fnm:$PATH"
-
-  # fnm: node version manager
-  eval "$(fnm env --use-on-cd)"
-fi
 

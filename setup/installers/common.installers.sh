@@ -10,7 +10,10 @@ echo "==> Atuin Installed correctly!"
 # Tmux Plugin Manager
 ~/.dotfiles/setup/installers/tpm.sh
 
-# superfile only for ubuntu. (macos and arch are intalled as common packages)
 if [[ "$CURRENT_DISTRO" == "ubuntu" ]]; then
+  # superfile only for ubuntu. (macos and arch are intalled as common packages)
   bash -c "$(curl -sLo- https://superfile.dev/install.sh)"
+
+  # zed only for ubuntu. (macos and arch are intalled as common packages)
+  curl -f https://zed.dev/install.sh | sh
 fi

@@ -171,7 +171,6 @@ alias lzd="lazydocker"
 alias "compose"="docker compose"
 
 ## ======= CLI APPS =======
-alias nvm="fnm"
 alias ncu2="npm-check -u"
 
 alias c="opencode"

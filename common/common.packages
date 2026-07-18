@@ -85,12 +85,11 @@ ghostty[~os.macos]
 --cask ghostty[os.macos]
 
 openssh[distro.arch]
-fnm
 mise
 
 anomalyco/tap/opencode[os.macos]
 
-zed[~os.macos]
+zed[distro.arch]
 --cask zed[os.macos]
 
 

@@ -60,20 +60,6 @@ else # Intel
   [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
 
-# ============ NODE VERSION MANAGER ===========
-if [[ -d "$HOME/.local/share/fnm" ]]; then
-	echo "Using FNM>>>>>>>>>>>>>>>"
-  export PATH="$HOME/.local/share/fnm:$PATH"
-
-  # fnm: node version manager
-  eval "$(fnm env --use-on-cd)"
-fi
-
-# This fixes issue installing Postman Bridge interceptor since node not found
-if [ -z "$FNM_MULTISHELL_PATH" ]; then
-  export PATH="$FNM_MULTISHELL_PATH/bin:$PATH"
-fi
-
 #  ============= PROMPT ===========
 prompt_hook() {
   local exit_status=$?
