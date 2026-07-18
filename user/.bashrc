@@ -94,6 +94,9 @@ PROMPT_COMMAND="prompt_hook${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 
 . "$HOME/.atuin/bin/env"
 
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"
+
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
 

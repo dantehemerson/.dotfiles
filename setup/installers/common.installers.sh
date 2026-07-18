@@ -23,8 +23,8 @@ if [[ "$CURRENT_DISTRO" == "ubuntu" ]]; then
   sudo apt update
   sudo apt install -y mise
 
-  # opencode
-  curl -fsSL https://opencode.ai/install | bash
+  # opencode (--no-modify-path: shell PATH is managed by the dotfiles)
+  curl -fsSL https://opencode.ai/install | bash -s -- --no-modify-path
 
 
   # - - - - - Docker - - - - - -
