@@ -9,8 +9,10 @@
 # (group-membership changes alone don't apply until the user logs in again).
 #
 # In CI / container contexts, persistent group membership is pointless (the
-# user is created fresh per run, won't re-login). We just need the socket to
-# be usable right now, which is achieved by relaxing its group perms.
+# user is created fresh per run, won't re-login) AND modifying the docker
+# socket ownership breaks GitHub Actions' post-job cleanup (which uses the
+# host's docker socket to inspect the container). So in CI we skip the
+# socket chmod — group add is still done since it's harmless.
 #
 # Usage:
 #   ./setup-docker-nopasswd.sh            # applies to the user running the script
@@ -36,8 +38,9 @@ if ! command -v docker &>/dev/null; then
 fi
 
 # 2. If the current user can already talk to the daemon, there's nothing to do.
-#    This is the common case in CI (after the socket chmod below) and on local
-#    machines where the user is already in the docker group.
+#    This is the common case on local machines where the user is already in
+#    the docker group, and in CI where the user is in the docker group from
+#    the moment of `useradd -m -G docker ...`.
 if docker info >/dev/null 2>&1; then
   echo "==> User '$TARGET_USER' can already access the Docker daemon. Skipping."
   exit 0
@@ -51,8 +54,9 @@ else
   echo "==> 'docker' group already exists."
 fi
 
-# 4. Add the user to the docker group (only useful for persistent sessions —
-#    skipped in CI where the user won't log in again). Idempotent.
+# 4. Add the user to the docker group. Idempotent — if they're already in it,
+#    this is a no-op. Safe in CI (the container's /etc/group is its own file
+#    and doesn't affect the host).
 if id -nG "$TARGET_USER" 2>/dev/null | grep -qw docker; then
   echo "==> User '$TARGET_USER' is already in the 'docker' group."
 else
@@ -60,10 +64,10 @@ else
   sudo usermod -aG docker "$TARGET_USER" || true
 fi
 
-# 5. Fix the socket so the current session can use it. The `chown` makes the
-#    group match, and the `chmod` allows the group to read/write. The `chown`
-#    is idempotent and the `chmod` is a no-op if the bits are already set.
-if [ -S /var/run/docker.sock ]; then
+# 5. Fix the socket so the current session can use it. SKIPPED in CI because
+#    the host's docker socket is what GitHub Actions uses for post-job
+#    cleanup, and chowning it inside the container makes the host lose access.
+if [ -S /var/run/docker.sock ] && [[ -z "${CI:-}" ]]; then
   echo "==> Ensuring docker.sock is accessible..."
   sudo chown root:docker /var/run/docker.sock || true
   sudo chmod 660 /var/run/docker.sock || true
