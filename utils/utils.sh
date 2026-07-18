@@ -322,11 +322,9 @@ function _command_exists() {
 	#_param '2: (optional) log message to include when command not found'
 	#_example '$ _command_exists ls && echo exists'
 	#_group 'lib'
-	local msg="${2:-Command '$1' does not exist}"
 	if type -t "$1" > /dev/null; then
 		return 0
 	else
-		echo "$msg" >&2
 		return 1
 	fi
 }
