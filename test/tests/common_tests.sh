@@ -17,7 +17,16 @@ assert_command_exists "jq"
 assert_command_exists "yq"
 assert_command_exists "nvim"
 assert_command_exists "tree"
-assert_command_exists "bat"
+# On Ubuntu/Debian, the `bat` package installs the binary as `batcat`
+# (name clash with an older package). Arch and others use `bat`.
+if command -v bat >/dev/null 2>&1; then
+  :
+elif command -v batcat >/dev/null 2>&1; then
+  :
+else
+  echo "❌ Neither 'bat' nor 'batcat' is installed"
+  exit 1
+fi
 assert_command_exists "lazygit"
 assert_command_exists "rg" # ripgrep
 assert_command_exists "tmux"
