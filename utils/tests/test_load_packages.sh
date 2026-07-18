@@ -18,7 +18,7 @@ backup_distro="$CURRENT_DISTRO"
 CURRENT_OS="linux"
 CURRENT_ARCH="x86_64"
 CURRENT_PM="apt"
-CURRENT_DISTRO="debian"
+CURRENT_DISTRO="fedora"
 
 # Test 1: Basic packages without conditions
 echo "Test 1: Basic packages without conditions"
@@ -106,14 +106,14 @@ cleanup_test_file "$test_file5"
 echo "Test 6: Packages with distribution conditions"
 test_file6="/tmp/test_packages6.txt"
 create_test_file "$test_file6" "git
-debian-package[distro.debian]
+fedora-package[distro.fedora]
 arch-package[distro.arch]
 ubuntu-package[distro.ubuntu]
 "
 
 packages=()
 load_packages "$test_file6" packages
-expected_packages="git debian-package"
+expected_packages="git fedora-package"
 actual_packages="${packages[*]}"
 assert_equals "$expected_packages" "$actual_packages" "Load packages with distribution conditions"
 cleanup_test_file "$test_file6"

@@ -38,7 +38,7 @@ cd utils/tests
 - OS detection: `linux`, `macos`, `windows`
 - Architecture detection: `x86_64`, `arm64`
 - Package manager detection: `brew`, `apt`, `pacman`
-- Distribution detection: `arch`, `debian`, `ubuntu`
+- Distribution detection: `arch`, `fedora`, `ubuntu`
 
 ### Condition Parsing Tests (9 tests)
 - Package names without conditions
@@ -50,7 +50,7 @@ cd utils/tests
 
 ### Condition Evaluation Tests (19 tests)
 - Empty conditions (always install)
-- Inclusive conditions: `os.linux`, `arch.x86_64`, `pm.apt`, `distro.debian`
+- Inclusive conditions: `os.linux`, `arch.x86_64`, `pm.apt`, `distro.fedora`
 - Exclusive conditions: `~os.macos`, `~arch.arm64`, `~pm.brew`, `~distro.arch`
 - Unknown conditions and edge cases
 
@@ -84,7 +84,7 @@ Testing system detection functions...
 ✓ PASS: OS detection set to linux
 ✓ PASS: Architecture detection set to x86_64
 ✓ PASS: Package manager detection set to brew
-✓ PASS: Distribution detection set to debian
+✓ PASS: Distribution detection set to fedora
 
 === Test Summary ===
 Total:  11

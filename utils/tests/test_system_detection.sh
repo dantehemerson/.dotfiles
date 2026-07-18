@@ -60,8 +60,8 @@ current_distro_backup="$CURRENT_DISTRO"
 CURRENT_DISTRO="arch"
 assert_equals "arch" "$CURRENT_DISTRO" "Distribution detection set to arch"
 
-CURRENT_DISTRO="debian"
-assert_equals "debian" "$CURRENT_DISTRO" "Distribution detection set to debian"
+CURRENT_DISTRO="fedora"
+assert_equals "fedora" "$CURRENT_DISTRO" "Distribution detection set to fedora"
 
 CURRENT_DISTRO="ubuntu"
 assert_equals "ubuntu" "$CURRENT_DISTRO" "Distribution detection set to ubuntu"

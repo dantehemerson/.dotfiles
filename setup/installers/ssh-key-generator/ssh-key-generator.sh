@@ -18,7 +18,7 @@ main() {
 
   # Delegate to OS-specific script based on detection
   # Same pattern as main.sh: check CURRENT_DISTRO first, then CURRENT_OS
-  if [[ "$CURRENT_DISTRO" == "arch" ]] || [[ "$CURRENT_DISTRO" == "debian" ]] || [[ "$CURRENT_DISTRO" == "ubuntu" ]]; then
+  if [[ "$CURRENT_DISTRO" == "arch" ]] || [[ "$CURRENT_DISTRO" == "ubuntu" ]]; then
     # Linux distros
     bash "$SCRIPT_DIR/linux.sh"
   elif [[ "$CURRENT_OS" == "macos" ]]; then

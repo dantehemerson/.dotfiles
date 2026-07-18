@@ -47,17 +47,7 @@ test_os_detection_ubuntu() {
   assert_true 0 "Ubuntu detection should work"
 }
 
-# Test 4: OS detection - Linux (Debian)
-test_os_detection_debian() {
-  export CURRENT_OS="linux"
-  export CURRENT_DISTRO="debian"
-
-  # Debian should use linux.sh
-  local expected_script="$SSH_GENERATOR_DIR/linux.sh"
-  assert_true 0 "Debian detection should work"
-}
-
-# Test 5: OS detection - generic Linux (includes WSL)
+# Test 4: OS detection - generic Linux (includes WSL)
 test_os_detection_generic_linux() {
   export CURRENT_OS="linux"
   export CURRENT_DISTRO="unknown"
@@ -152,7 +142,6 @@ test_email_configuration() {
 test_os_detection_macos
 test_os_detection_arch
 test_os_detection_ubuntu
-test_os_detection_debian
 test_os_detection_generic_linux
 test_unsupported_os
 test_script_files_exist

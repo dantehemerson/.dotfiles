@@ -28,8 +28,6 @@ echo "DISTRO: $CURRENT_DISTRO"
 
 if [[ "$CURRENT_DISTRO" == "arch" ]]; then
   ~/.dotfiles/install/arch.sh
-elif [[ "$CURRENT_DISTRO" == "debian" ]]; then
-  ~/.dotfiles/install/debian.sh
 elif [[ "$CURRENT_DISTRO" == "ubuntu" ]]; then
   ~/.dotfiles/install/ubuntu.sh
 elif [[ "$CURRENT_OS" == "macos" ]]; then

@@ -18,7 +18,7 @@ backup_distro="$CURRENT_DISTRO"
 CURRENT_OS="linux"
 CURRENT_ARCH="x86_64"
 CURRENT_PM="apt"
-CURRENT_DISTRO="debian"
+CURRENT_DISTRO="fedora"
 
 # Test should_install_package function
 echo "Testing should_install_package function:"
@@ -56,7 +56,7 @@ result=$?
 assert_false "$result" "Inclusive package manager condition should not match"
 
 # Test inclusive distribution conditions
-should_install_package "distro.debian"
+should_install_package "distro.fedora"
 result=$?
 assert_true "$result" "Inclusive distribution condition should match"
 
@@ -96,9 +96,9 @@ should_install_package "~distro.arch"
 result=$?
 assert_true "$result" "Exclusive distribution condition should match (not arch)"
 
-should_install_package "~distro.debian"
+should_install_package "~distro.fedora"
 result=$?
-assert_false "$result" "Exclusive distribution condition should not match (is debian)"
+assert_false "$result" "Exclusive distribution condition should not match (is fedora)"
 
 # Test edge cases
 should_install_package "os.unknown"

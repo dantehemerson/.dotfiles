@@ -67,7 +67,7 @@ tests/
 - **Key path validation**: Verifies custom key name is used
 
 #### test_ssh_key_generator.sh
-- **OS detection**: macOS, Arch, Ubuntu, Debian, generic Linux
+- **OS detection**: macOS, Arch, Ubuntu, generic Linux
 - **Unsupported OS handling**: Verifies error on unsupported OS
 - **Script file existence**: Confirms all required files exist
 - **Executable permissions**: Verifies scripts are executable

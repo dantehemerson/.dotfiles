@@ -14,7 +14,6 @@ test/
 │   ├── macos_tests.sh            # macOS-specific tests
 │   ├── arch_tests.sh             # Arch Linux-specific tests
 │   ├── ubuntu_tests.sh           # Ubuntu-specific tests
-│   ├── debian_tests.sh           # Debian-specific tests
 └── README.md                     # This file
 ```
 
@@ -39,7 +38,6 @@ test/
 ./test/tests/macos_tests.sh
 ./test/tests/arch_tests.sh
 ./test/tests/ubuntu_tests.sh
-./test/tests/debian_tests.sh
 ```
 
 Note: Individual test scripts will show their own summary when run directly.
@@ -65,7 +63,7 @@ Note: Individual test scripts will show their own summary when run directly.
 - **Package Manager**: pacman and yay functionality
 - **Directories**: /etc/pacman.d, /var/cache/pacman
 
-#### Ubuntu/Debian
+#### Ubuntu
 - **Commands**: apt, rust-fd-find, superfile
 - **Package Manager**: apt functionality
 - **Directories**: /etc/apt, /var/cache/apt
