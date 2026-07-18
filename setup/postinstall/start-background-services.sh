@@ -18,8 +18,7 @@ if _command_exists docker; then
   sudo systemctl enable docker.service || true
   sudo systemctl start docker.service 2>/dev/null || true
 
-  # Creates the docker group and adds the current user to it, to avoid using sudo with docker.
-  # Wrap in `|| true` so any failure (missing systemd, weird sudoers, etc.)
-  # never propagates a non-zero exit code to the install flow.
-  ~/.dotfiles/setup/scripts/create-user-docker.sh || true
+  # Make the current user able to run docker without sudo (group + socket).
+  # The script always exits 0, so no `|| true` needed here.
+  ~/.dotfiles/setup/scripts/create-user-docker.sh
 fi
