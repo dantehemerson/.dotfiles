@@ -158,68 +158,86 @@ parse_package_line() {
   echo "$package_name|$conditions"
 }
 
-# Evaluate inclusive conditions (all must match)
-# Returns 0 if conditions are satisfied, 1 otherwise
+# Evaluate inclusive conditions (all must match — AND semantics)
+# Returns 0 only if every condition is satisfied, 1 otherwise
 evaluate_inclusive_conditions() {
   local conditions="$1"
-  local first_condition
 
-  # Get first condition to check
-  first_condition=$(echo "$conditions" | cut -d',' -f1 | xargs)
+  # Split comma-separated conditions and evaluate each one
+  local IFS=','
+  local condition
+  for condition in $conditions; do
+    # Trim whitespace
+    condition=$(echo "$condition" | xargs)
+    case "$condition" in
+      os.*)
+        local target_os=$(echo "$condition" | cut -d'.' -f2)
+        [ "$CURRENT_OS" = "$target_os" ] || return 1
+        ;;
+      arch.*)
+        local target_arch=$(echo "$condition" | cut -d'.' -f2)
+        [ "$CURRENT_ARCH" = "$target_arch" ] || return 1
+        ;;
+      pm.*)
+        local target_pm=$(echo "$condition" | cut -d'.' -f2)
+        [ "$CURRENT_PM" = "$target_pm" ] || return 1
+        ;;
+      distro.*)
+        local target_distro=$(echo "$condition" | cut -d'.' -f2)
+        [ "$CURRENT_DISTRO" = "$target_distro" ] || return 1
+        ;;
+      *)
+        return 1
+        ;;
+    esac
+  done
 
-  case "$first_condition" in
-    os.*)
-      local target_os=$(echo "$first_condition" | cut -d'.' -f2)
-      [ "$CURRENT_OS" = "$target_os" ]
-      ;;
-    arch.*)
-      local target_arch=$(echo "$first_condition" | cut -d'.' -f2)
-      [ "$CURRENT_ARCH" = "$target_arch" ]
-      ;;
-    pm.*)
-      local target_pm=$(echo "$first_condition" | cut -d'.' -f2)
-      [ "$CURRENT_PM" = "$target_pm" ]
-      ;;
-    distro.*)
-      local target_distro=$(echo "$first_condition" | cut -d'.' -f2)
-      [ "$CURRENT_DISTRO" = "$target_distro" ]
-      ;;
-    *)
-      return 1
-      ;;
-  esac
+  return 0
 }
 
 # Evaluate exclusive conditions (none must match)
 # Returns 0 if no conditions are matched, 1 if any condition matches
 evaluate_exclusive_conditions() {
   local conditions="$1"
-  local first_condition
 
-  # Get first condition to check
-  first_condition=$(echo "$conditions" | cut -d',' -f1 | xargs)
+  # Split comma-separated conditions and evaluate each one
+  local IFS=','
+  local condition
+  for condition in $conditions; do
+    # Trim whitespace
+    condition=$(echo "$condition" | xargs)
+    case "$condition" in
+      ~os.*)
+        local exclude_os=$(echo "$condition" | cut -d'.' -f2)
+        if [ "$CURRENT_OS" = "$exclude_os" ]; then
+          return 1
+        fi
+        ;;
+      ~arch.*)
+        local exclude_arch=$(echo "$condition" | cut -d'.' -f2)
+        if [ "$CURRENT_ARCH" = "$exclude_arch" ]; then
+          return 1
+        fi
+        ;;
+      ~pm.*)
+        local exclude_pm=$(echo "$condition" | cut -d'.' -f2)
+        if [ "$CURRENT_PM" = "$exclude_pm" ]; then
+          return 1
+        fi
+        ;;
+      ~distro.*)
+        local exclude_distro=$(echo "$condition" | cut -d'.' -f2)
+        if [ "$CURRENT_DISTRO" = "$exclude_distro" ]; then
+          return 1
+        fi
+        ;;
+      *)
+        return 1
+        ;;
+    esac
+  done
 
-  case "$first_condition" in
-    ~os.*)
-      local exclude_os=$(echo "$first_condition" | cut -d'.' -f2)
-      [ "$CURRENT_OS" != "$exclude_os" ]
-      ;;
-    ~arch.*)
-      local exclude_arch=$(echo "$first_condition" | cut -d'.' -f2)
-      [ "$CURRENT_ARCH" != "$exclude_arch" ]
-      ;;
-    ~pm.*)
-      local exclude_pm=$(echo "$first_condition" | cut -d'.' -f2)
-      [ "$CURRENT_PM" != "$exclude_pm" ]
-      ;;
-    ~distro.*)
-      local exclude_distro=$(echo "$first_condition" | cut -d'.' -f2)
-      [ "$CURRENT_DISTRO" != "$exclude_distro" ]
-      ;;
-    *)
-      return 1
-      ;;
-  esac
+  return 0
 }
 
 # Check if a package should be installed based on its conditions

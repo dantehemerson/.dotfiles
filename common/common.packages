@@ -15,15 +15,18 @@ jq
 yq
 neovim
 tree
-superfile[os.macos,distro.arch]
+superfile[os.macos]
+superfile[distro.arch]
 bat
 lazygit
 ripgrep
 tmux
 fzf
 
-fd[os.macos,distro.arch]
+fd[os.macos]
+fd[distro.arch]
 fd-find[distro.ubuntu]
+fd-find[distro.debian]
 
 bash
 bash-completion[~os.macos]

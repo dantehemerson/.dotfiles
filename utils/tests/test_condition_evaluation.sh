@@ -109,6 +109,20 @@ should_install_package "~os.unknown"
 result=$?
 assert_true "$result" "Unknown OS exclusion should match"
 
+# Test multi-condition (AND) semantics
+# Current values: linux, x86_64, apt, fedora
+should_install_package "os.linux,pm.apt"
+result=$?
+assert_true "$result" "Multi-condition AND: both true should match"
+
+should_install_package "os.linux,distro.ubuntu"
+result=$?
+assert_false "$result" "Multi-condition AND: one false should not match"
+
+should_install_package "os.linux,os.macos"
+result=$?
+assert_false "$result" "Multi-condition AND: mutually exclusive should not match"
+
 # Restore original system values
 CURRENT_OS="$backup_os"
 CURRENT_ARCH="$backup_arch"
