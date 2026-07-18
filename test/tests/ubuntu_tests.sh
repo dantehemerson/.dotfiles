@@ -17,7 +17,16 @@ else
   echo "❌ Neither 'fd' nor 'fdfind' is installed"
   exit 1
 fi
-assert_command_exists "superfile"
+# superfile ships its binary as `superfile` on most platforms, but the
+# Homebrew formula on macOS installs it as `spf` (the upstream Go binary name).
+if command -v superfile >/dev/null 2>&1; then
+  :
+elif command -v spf >/dev/null 2>&1; then
+  :
+else
+  echo "❌ Neither 'superfile' nor 'spf' is installed"
+  exit 1
+fi
 
 # apt DB sanity check
 dpkg -l apt >/dev/null 2>&1 || fail "apt package database unavailable"
