@@ -15,7 +15,7 @@ jq
 yq
 neovim
 tree
-superfile[~distro.ubuntu]
+superfile[os.macos,distro.arch]
 bat
 lazygit
 ripgrep

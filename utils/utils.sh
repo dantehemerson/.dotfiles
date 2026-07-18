@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Load .env to customize the installation
-if [ -f .env.sh ]; then
-  source .env.sh
+if [ -f ~/.dotfiles/.env.sh ]; then
+  source ~/.dotfiles/.env.sh
 fi
 
 # VERSION="0.1"
