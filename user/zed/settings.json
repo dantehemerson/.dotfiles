@@ -7,6 +7,10 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "proxy": "",
+  "debugger": {
+    "dock": "right"
+  },
   "ssh_connections": [
     {
       "host": "thinkpad",
@@ -26,7 +30,7 @@
   },
   "language_models": {
     "opencode": {
-      "show_zen_models": false,
+      "show_zen_models": true,
       "show_go_models": true,
       "show_free_models": true,
     },
@@ -71,11 +75,15 @@
     "dock": "left",
   },
   "agent": {
+    "sidebar_side": "right",
     "notify_when_agent_waiting": "all_screens",
     "play_sound_when_agent_done": "always",
     "default_profile": "write",
     "tool_permissions": {
       "tools": {
+        "delete_path": {
+          "default": "allow"
+        },
         "create_directory": {
           "default": "allow"
         },
@@ -100,6 +108,12 @@
         "provider": "opencode",
         "model": "go/minimax-m3",
         "enable_thinking": false
+      },
+      {
+        "provider": "opencode",
+        "model": "go/deepseek-v4-flash",
+        "enable_thinking": true,
+        "effort": "max"
       }
     ],
     "model_parameters": [],
@@ -116,6 +130,12 @@
   },
   "buffer_font_weight": 400.0,
   "terminal": {
+    "scrollbar": {
+      "show": "always"
+    },
+    "toolbar": {
+      "breadcrumbs": false
+    },
     "font_size": 12.0,
     "font_weight": 300.0,
     "font_family": "Maple Mono",
@@ -151,6 +171,6 @@
   "theme": {
     "mode": "dark",
     "light": "Shades Of Purple",
-    "dark": "Zedokai (Filter Machine)",
+    "dark": "Zedokai (Filter Spectrum)",
   },
 }
