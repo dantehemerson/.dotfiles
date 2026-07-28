@@ -71,7 +71,29 @@
       "space e": "project_panel::ToggleFocus",
 
       // Git diff
-      "space g g": "project_panel::ToggleFocus",
+      // "space g g": "git::Diff",
+    },
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      // Refactoring
+      "space c r ": "editor::Rename",
+      // Chat with AI
+      "space a a": "agent::ToggleFocus",
+      "ctrl-\\": "workspace::ToggleRightDock",
+      "cmd-k": "workspace::ToggleRightDock",
+      "space a e": "assistant::InlineAssist",
+      "cmd-l": "assistant::InlineAssist",
+      "space a t": "workspace::ToggleRightDock",
+      // Git
+      "space g g": [
+        "task::Spawn",
+        {
+          "task_name": "LazyGit",
+          "reveal_target": "center",
+        },
+      ],
     },
   },
   // File panel (netrw)

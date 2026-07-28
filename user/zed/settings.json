@@ -7,9 +7,10 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "word_diff_enabled": true,
   "proxy": "",
   "debugger": {
-    "dock": "right"
+    "dock": "right",
   },
   "ssh_connections": [
     {
@@ -17,17 +18,13 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/sova/coding/argus"
-          ]
-        }
-      ]
-    }
+          "paths": ["/home/sova/coding/argus"],
+        },
+      ],
+    },
   ],
   "diff_view_style": "split",
-  "agent_servers": {
-
-  },
+  "agent_servers": {},
   "language_models": {
     "opencode": {
       "show_zen_models": true,
@@ -55,7 +52,7 @@
   "edit_predictions": {
     "allow_data_collection": "no",
     "codestral": {
-      "api_url": "https://codestral.mistral.ai"
+      "api_url": "https://codestral.mistral.ai",
     },
     "open_ai_compatible_api": {
       "api_url": "http://192.168.3.64:11434",
@@ -82,10 +79,10 @@
     "tool_permissions": {
       "tools": {
         "delete_path": {
-          "default": "allow"
+          "default": "allow",
         },
         "create_directory": {
-          "default": "allow"
+          "default": "allow",
         },
         "terminal": {
           "default": "allow",
@@ -102,21 +99,27 @@
       {
         "provider": "opencode",
         "model": "free/big-pickle",
-        "enable_thinking": false
+        "enable_thinking": false,
       },
       {
         "provider": "opencode",
         "model": "go/minimax-m3",
-        "enable_thinking": false
+        "enable_thinking": false,
       },
       {
         "provider": "opencode",
         "model": "go/deepseek-v4-flash",
         "enable_thinking": true,
-        "effort": "max"
-      }
+        "effort": "max",
+      },
     ],
     "model_parameters": [],
+    "commit_message_model": {
+      "provider": "opencode",
+      "model": "go/minimax-m3",
+      "enable_thinking": false,
+    },
+     "commit_message_instructions": "Use the Conventional Commits format: <type>(<scope>): <description>."
   },
   "tabs": {
     "file_icons": true,
@@ -125,16 +128,22 @@
     "show_branch_status_icon": true,
   },
   "git_panel": {
+    "default_width": 380.0,
+    "button": true,
+    "status_style": "icon",
+    "show_count_badge": true,
+    "file_icons": true,
+    "collapse_untracked_diff": false,
     "dock": "left",
     "tree_view": true,
   },
   "buffer_font_weight": 400.0,
   "terminal": {
     "scrollbar": {
-      "show": "always"
+      "show": "always",
     },
     "toolbar": {
-      "breadcrumbs": false
+      "breadcrumbs": false,
     },
     "font_size": 12.0,
     "font_weight": 300.0,
