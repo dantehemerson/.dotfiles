@@ -1,0 +1,102 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "cmd-0": "project_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-0": "project_panel::ToggleFocus",
+    },
+  },
+
+  // ---------- Like Neovim Keybindings: -----------------
+  // Empty pane, set of keybindings that are available when there is no active editor
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      // Open file finder
+      "space space": "file_finder::Toggle",
+
+      // Toggles the file explorer (project panel).
+      "space e": "project_panel::ToggleFocus",
+
+      // New file
+      "space f n": "workspace::NewFile",
+      // Open recent project
+      "space f p": "projects::OpenRecent",
+
+      // Quit zed
+      "space q q": "zed::Quit",
+    },
+  },
+  // Terminal
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-/": "workspace::ToggleBottomDock",
+      "cmd-j": null, // Remove binding: Open Terminal. To force use ctrl+/
+    },
+  },
+  // Find Files
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      // Double-tap Space opens the file finder (LazyVim-style).
+      // A single Space still falls through to the default vim::WrappingRight.
+      "space space": "file_finder::Toggle",
+
+      // Toggles the file explorer (project panel).
+      "space e": "project_panel::ToggleFocus",
+
+      // Git diff
+      "space g g": "project_panel::ToggleFocus",
+    },
+  },
+  // File panel (netrw)
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+    },
+  },
+
+  // Window's navigation
+  {
+    "context": "Dock || Terminal || Editor",
+    "bindings": {
+      // Window's motions
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+]
