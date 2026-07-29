@@ -44,6 +44,7 @@
 
       // New file
       "space f n": "workspace::NewFile",
+
       // Open recent project
       "space f p": "projects::OpenRecent",
 
@@ -70,8 +71,8 @@
       // Toggles the file explorer (project panel).
       "space e": "project_panel::ToggleFocus",
 
-      // Git diff
-      // "space g g": "git::Diff",
+      // C++: Switch between source/header file
+      "space c h": "editor::SwitchSourceHeader",
     },
   },
   {
@@ -79,6 +80,14 @@
     "bindings": {
       // Refactoring
       "space c r ": "editor::Rename",
+
+      "space c f": "editor::Format",
+
+      // File explorer
+      "space e": "workspace::ToggleLeftDock",
+
+      "space w c": "pane::CloseOtherItems",
+
       // Chat with AI
       "space a a": "agent::ToggleFocus",
       "ctrl-\\": "workspace::ToggleRightDock",
@@ -94,6 +103,17 @@
           "reveal_target": "center",
         },
       ],
+
+      // Move between buffers
+      "L": "pane::ActivateNextItem",
+      "H": "pane::ActivatePreviousItem",
+
+      "space ,": "tab_switcher::Toggle",
+
+      // Search
+      "space /": "workspace::NewSearch",
+
+       "space s s": "outline::Toggle",
     },
   },
   // File panel (netrw)
