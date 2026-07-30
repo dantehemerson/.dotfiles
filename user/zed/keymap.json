@@ -75,6 +75,12 @@
       "space c h": "editor::SwitchSourceHeader",
     },
   },
+  { // Fixes error showing which-key popup
+      "context": "(VimControl && !menu)",
+      "bindings": {
+        "space": null, // Disable the default action vim::WrappingRight
+      },
+  },
   {
     "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
@@ -103,10 +109,11 @@
           "reveal_target": "center",
         },
       ],
+      "space g r": "git::GenerateCommitMessage",
 
       // Move between buffers
-      "L": "pane::ActivateNextItem",
       "H": "pane::ActivatePreviousItem",
+      "L": "pane::ActivateNextItem",
 
       "space ,": "tab_switcher::Toggle",
 

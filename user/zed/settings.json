@@ -40,7 +40,7 @@
   },
   "scrollbar": {
     "selected_symbol": true,
-    "show": "always",
+    "show": "system",
   },
   "gutter": {
     "line_numbers": true,
@@ -72,6 +72,14 @@
     "dock": "left",
   },
   "agent": {
+    "profiles": {
+      "plan": {
+        "name": "Plan",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
+    },
     "sidebar_side": "right",
     "notify_when_agent_waiting": "all_screens",
     "play_sound_when_agent_done": "always",
@@ -137,7 +145,6 @@
     "dock": "left",
     "tree_view": true,
   },
-  "buffer_font_weight": 400.0,
   "terminal": {
     "scrollbar": {
       "show": "always",
@@ -150,17 +157,24 @@
     "font_family": "Maple Mono",
   },
   "colorize_brackets": true,
+  "buffer_font_weight": 400.0,
   "buffer_line_height": {
     "custom": 1.4,
   },
   "buffer_font_family": "Maple Mono",
-  "which_key": {
-    "enabled": true,
+  "buffer_font_features": {
+    "cv01": true,
+    "cv03": true,
+    "ss03": true
   },
   "icon_theme": {
     "mode": "light",
     "light": "VSCode Icons for Zed (Dark)",
     "dark": "VSCode Icons for Zed (Dark Official Icons)",
+  },
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 500
   },
   "vim_mode": true,
   "vim": {
@@ -175,11 +189,29 @@
   },
   "soft_wrap": "editor_width",
   "base_keymap": "VSCode",
-  "ui_font_size": 15.0,
+  "ui_font_size": 14.0,
   "buffer_font_size": 12.5,
   "theme": {
     "mode": "dark",
     "light": "Shades Of Purple",
-    "dark": "Zedokai (Filter Spectrum)",
+    "dark": "VSCode Dark Polished",
+  },
+  "theme_overrides": {
+    "Shades Of Purple": {
+      "element.selected": "#ff0000",
+      "element.active": "#ff8c00",
+      "element.hover": "#3b3a5a",
+      "border.selected": "#ff0000",
+      "text.accent": "#ffffff",
+      "icon.accent": "#ffffff"
+    },
+    "Zedokai (Filter Spectrum)": {
+      "element.selected": "#ff0000",
+      "element.active": "#ff8c00",
+      "element.hover": "#3b414d",
+      "border.selected": "#ff0000",
+      "text.accent": "#ffffff",
+      "icon.accent": "#ffffff"
+    }
   },
 }
