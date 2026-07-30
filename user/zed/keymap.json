@@ -118,22 +118,18 @@
 
       // Search
       "space /": "workspace::NewSearch",
-      // "space i": "git_panel::ToggleFocus",
 
       "space s s": "outline::Toggle",
 
       "space g r": [
         "action::Sequence",
         [
-          // "git_panel::ToggleFocus",
           "git::StageAll",
           "git::Commit",
-          // "git::GenerateCommitMessage",
           [
             "workspace::SendKeystrokes",
             "alt-tab"
           ]
-          // "git::Push"
         ]
       ]
     },
