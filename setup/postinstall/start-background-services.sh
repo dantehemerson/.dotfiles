@@ -20,3 +20,4 @@ fi
 # permissions, which in CI (where the socket is bind-mounted from the host)
 # breaks GitHub Actions' post-job cleanup. Run it manually instead — see
 # setup/postinstall/README.md for details.
+# test1

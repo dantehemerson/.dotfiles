@@ -194,7 +194,7 @@
   "theme": {
     "mode": "dark",
     "light": "Shades Of Purple",
-    "dark": "VSCode Dark Polished",
+    "dark": "Dark Pop UI",
   },
   "theme_overrides": {
     "Shades Of Purple": {
@@ -214,4 +214,8 @@
       "icon.accent": "#ffffff"
     }
   },
+  "centered_layout": {
+    "left_padding": 0.2,
+    "right_padding": 0.2
+  }
 }

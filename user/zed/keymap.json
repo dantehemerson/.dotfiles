@@ -109,7 +109,6 @@
           "reveal_target": "center",
         },
       ],
-      "space g r": "git::GenerateCommitMessage",
 
       // Move between buffers
       "H": "pane::ActivatePreviousItem",
@@ -119,8 +118,19 @@
 
       // Search
       "space /": "workspace::NewSearch",
+      "space i": "git::GenerateCommitMessage",
 
-       "space s s": "outline::Toggle",
+      "space s s": "outline::Toggle",
+
+      "space g r": [
+        "action::Sequence",
+        [
+          "git::StageAll",
+          "git::GenerateCommitMessage",
+          "git::Commit",
+          "git::Push"
+        ]
+      ]
     },
   },
   // File panel (netrw)
@@ -134,6 +144,15 @@
       "x": "project_panel::Cut",
       "c": "project_panel::Copy",
       "p": "project_panel::Paste",
+      "q": "workspace::ToggleLeftDock",
+
+      "space e": "workspace::ToggleLeftDock",
+
+      // Open file (not permanent)
+      "tab": "project_panel::Open",
+
+      // Avoid opening file on space.
+      "space": null
     },
   },
 
