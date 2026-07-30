@@ -131,7 +131,7 @@
           // "git::GenerateCommitMessage",
           [
             "workspace::SendKeystrokes",
-            "alt-tab"
+            "alt-tab cmd-enter"
           ]
           // "git::Push"
         ]
