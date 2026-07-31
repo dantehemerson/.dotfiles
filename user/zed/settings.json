@@ -168,7 +168,7 @@
     "ss03": true
   },
   "icon_theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "VSCode Icons for Zed (Dark)",
     "dark": "VSCode Icons for Zed (Dark Official Icons)",
   },
@@ -194,7 +194,7 @@
   "theme": {
     "mode": "dark",
     "light": "Shades Of Purple",
-    "dark": "Dark Pop UI",
+    "dark": "VSCode Dark Modern",
   },
   "theme_overrides": {
     "Shades Of Purple": {
@@ -212,10 +212,18 @@
       "border.selected": "#ff0000",
       "text.accent": "#ffffff",
       "icon.accent": "#ffffff"
+    },
+    "VSCode Dark Modern": {
+      "vim.normal.background": "#ff0000",
+      "vim.insert.background": "#00ff00",
+      "vim.visual.background": "#0000ff",
+      "vim.visual_line.background": "#0000ff",
+      "vim.yank.background": "#ffff00aa"
     }
   },
   "centered_layout": {
     "left_padding": 0.2,
     "right_padding": 0.2
-  }
+  },
+
 }

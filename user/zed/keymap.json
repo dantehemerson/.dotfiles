@@ -75,11 +75,12 @@
       "space c h": "editor::SwitchSourceHeader",
     },
   },
-  { // Fixes error showing which-key popup
-      "context": "(VimControl && !menu)",
-      "bindings": {
-        "space": null, // Disable the default action vim::WrappingRight
-      },
+  {
+    // Fixes error showing which-key popup
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "space": null, // Disable the default action vim::WrappingRight
+    },
   },
   {
     "context": "Editor && VimControl && !VimWaiting && !menu",
@@ -116,6 +117,13 @@
 
       "space ,": "tab_switcher::Toggle",
 
+      // Files:
+      "space f f": [
+        // Or `ctrl-p`
+        "task::Spawn",
+        { "task_name": "Television File Finder", "reveal_target": "center" },
+      ],
+
       // Search
       "space /": "workspace::NewSearch",
 
@@ -128,10 +136,11 @@
           "git::Commit",
           [
             "workspace::SendKeystrokes",
-            "alt-tab"
-          ]
-        ]
-      ]
+            // Delete all content of commit before generating the new message
+            "g g V G d alt-tab",
+          ],
+        ],
+      ],
     },
   },
   // File panel (netrw)
@@ -153,7 +162,7 @@
       "tab": "project_panel::Open",
 
       // Avoid opening file on space.
-      "space": null
+      "space": null,
     },
   },
 
