@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "helix_mode": false,
   "ssh_connections": [
     {
       "host": "thinkpad",
@@ -129,9 +130,9 @@
     "enabled": true,
   },
   "icon_theme": {
-    "mode": "light",
+    "mode": "system",
     "light": "VSCode Icons for Zed (Dark)",
-    "dark": "VSCode Icons for Zed (Dark Official Icons)",
+    "dark": "VSCode Icons for Zed (Dark)"
   },
   "vim_mode": true,
   "vim": {
