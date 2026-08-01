@@ -170,7 +170,7 @@
   "icon_theme": {
     "mode": "dark",
     "light": "VSCode Icons for Zed (Dark)",
-    "dark": "VSCode Icons for Zed (Dark Official Icons)",
+    "dark": "VSCode Icons for Zed (Dark)"
   },
   "which_key": {
     "enabled": true,

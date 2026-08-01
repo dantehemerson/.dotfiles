@@ -3,3 +3,4 @@
 -- Add any additional options here
 vim.g.snacks_animate = false
 vim.opt.wrap = true -- Enable line wrap
+vim.opt.termguicolors = true
