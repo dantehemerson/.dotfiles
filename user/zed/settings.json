@@ -194,7 +194,7 @@
   "theme": {
     "mode": "dark",
     "light": "Shades Of Purple",
-    "dark": "VSCode Dark Modern",
+    "dark": "VSCode Dark Polished",
   },
   "theme_overrides": {
     "Shades Of Purple": {
