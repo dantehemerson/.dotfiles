@@ -164,3 +164,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/Users/d/.local/bin:$PATH"
 
 
+export PATH="/opt/homebrew/bin:$PATH"

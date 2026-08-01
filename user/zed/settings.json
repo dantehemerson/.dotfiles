@@ -7,27 +7,27 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "helix_mode": false,
+  "word_diff_enabled": true,
+  "proxy": "",
+  "debugger": {
+    "dock": "right",
+  },
   "ssh_connections": [
     {
       "host": "thinkpad",
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/sova/coding/argus"
-          ]
-        }
-      ]
-    }
+          "paths": ["/home/sova/coding/argus"],
+        },
+      ],
+    },
   ],
   "diff_view_style": "split",
-  "agent_servers": {
-
-  },
+  "agent_servers": {},
   "language_models": {
     "opencode": {
-      "show_zen_models": false,
+      "show_zen_models": true,
       "show_go_models": true,
       "show_free_models": true,
     },
@@ -40,7 +40,7 @@
   },
   "scrollbar": {
     "selected_symbol": true,
-    "show": "always",
+    "show": "system",
   },
   "gutter": {
     "line_numbers": true,
@@ -52,7 +52,7 @@
   "edit_predictions": {
     "allow_data_collection": "no",
     "codestral": {
-      "api_url": "https://codestral.mistral.ai"
+      "api_url": "https://codestral.mistral.ai",
     },
     "open_ai_compatible_api": {
       "api_url": "http://192.168.3.64:11434",
@@ -72,13 +72,25 @@
     "dock": "left",
   },
   "agent": {
+    "profiles": {
+      "plan": {
+        "name": "Plan",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
+    },
+    "sidebar_side": "right",
     "notify_when_agent_waiting": "all_screens",
     "play_sound_when_agent_done": "always",
     "default_profile": "write",
     "tool_permissions": {
       "tools": {
+        "delete_path": {
+          "default": "allow",
+        },
         "create_directory": {
-          "default": "allow"
+          "default": "allow",
         },
         "terminal": {
           "default": "allow",
@@ -95,15 +107,27 @@
       {
         "provider": "opencode",
         "model": "free/big-pickle",
-        "enable_thinking": false
+        "enable_thinking": false,
       },
       {
         "provider": "opencode",
         "model": "go/minimax-m3",
-        "enable_thinking": false
-      }
+        "enable_thinking": false,
+      },
+      {
+        "provider": "opencode",
+        "model": "go/deepseek-v4-flash",
+        "enable_thinking": true,
+        "effort": "max",
+      },
     ],
     "model_parameters": [],
+    "commit_message_model": {
+      "provider": "opencode",
+      "model": "go/minimax-m3",
+      "enable_thinking": false,
+    },
+     "commit_message_instructions": "Use the Conventional Commits format: <type>(<scope>): <description>."
   },
   "tabs": {
     "file_icons": true,
@@ -112,27 +136,45 @@
     "show_branch_status_icon": true,
   },
   "git_panel": {
+    "default_width": 380.0,
+    "button": true,
+    "status_style": "icon",
+    "show_count_badge": true,
+    "file_icons": true,
+    "collapse_untracked_diff": false,
     "dock": "left",
     "tree_view": true,
   },
-  "buffer_font_weight": 400.0,
   "terminal": {
+    "scrollbar": {
+      "show": "always",
+    },
+    "toolbar": {
+      "breadcrumbs": false,
+    },
     "font_size": 12.0,
     "font_weight": 300.0,
     "font_family": "Maple Mono",
   },
   "colorize_brackets": true,
+  "buffer_font_weight": 400.0,
   "buffer_line_height": {
     "custom": 1.4,
   },
   "buffer_font_family": "Maple Mono",
-  "which_key": {
-    "enabled": true,
+  "buffer_font_features": {
+    "cv01": true,
+    "cv03": true,
+    "ss03": true
   },
   "icon_theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "VSCode Icons for Zed (Dark)",
     "dark": "VSCode Icons for Zed (Dark)"
+  },
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 500
   },
   "vim_mode": true,
   "vim": {
@@ -147,11 +189,41 @@
   },
   "soft_wrap": "editor_width",
   "base_keymap": "VSCode",
-  "ui_font_size": 15.0,
+  "ui_font_size": 14.0,
   "buffer_font_size": 12.5,
   "theme": {
     "mode": "dark",
     "light": "Shades Of Purple",
-    "dark": "Zedokai (Filter Machine)",
+    "dark": "VSCode Dark Polished",
   },
+  "theme_overrides": {
+    "Shades Of Purple": {
+      "element.selected": "#ff0000",
+      "element.active": "#ff8c00",
+      "element.hover": "#3b3a5a",
+      "border.selected": "#ff0000",
+      "text.accent": "#ffffff",
+      "icon.accent": "#ffffff"
+    },
+    "Zedokai (Filter Spectrum)": {
+      "element.selected": "#ff0000",
+      "element.active": "#ff8c00",
+      "element.hover": "#3b414d",
+      "border.selected": "#ff0000",
+      "text.accent": "#ffffff",
+      "icon.accent": "#ffffff"
+    },
+    "VSCode Dark Modern": {
+      "vim.normal.background": "#ff0000",
+      "vim.insert.background": "#00ff00",
+      "vim.visual.background": "#0000ff",
+      "vim.visual_line.background": "#0000ff",
+      "vim.yank.background": "#ffff00aa"
+    }
+  },
+  "centered_layout": {
+    "left_padding": 0.2,
+    "right_padding": 0.2
+  },
+
 }
