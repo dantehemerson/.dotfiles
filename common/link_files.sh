@@ -34,6 +34,8 @@ link "$DOTFILES_DIR/user/.config/herdr/config.toml" "$HOME/.config/herdr/config.
 
 # Zed
 link "$DOTFILES_DIR/user/zed/settings.json" "$HOME/.config/zed/settings.json"
+link "$DOTFILES_DIR/user/zed/keymap.json" "$HOME/.config/zed/keymap.json"
+link "$DOTFILES_DIR/user/zed/tasks.json" "$HOME/.config/zed/tasks.json"
 
 # Neovim
 link "$DOTFILES_DIR/user/.config/nvim" "$HOME/.config/nvim"
