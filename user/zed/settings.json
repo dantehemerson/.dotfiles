@@ -24,7 +24,7 @@
     },
   ],
   "diff_view_style": "split",
-  "agent_servers": {},
+  // "agent_servers": {},
   "language_models": {
     "opencode": {
       "show_zen_models": true,
@@ -62,6 +62,7 @@
   },
   "project_panel": {
     "dock": "left",
+    "default_width": 300
   },
   "outline_panel": {
     "git_status": true,
@@ -73,7 +74,8 @@
   },
   "agent": {
     "limit_content_width": false,
-    "default_width": 100,
+    "flexible": false,
+    "default_width": 660,
     "profiles": {
       "plan": {
         "name": "Plan",
@@ -85,7 +87,7 @@
     "sidebar_side": "right",
     "notify_when_agent_waiting": "all_screens",
     "play_sound_when_agent_done": "always",
-    "default_profile": "write",
+    "default_profile": "ask",
     "tool_permissions": {
       "tools": {
         "delete_path": {
@@ -138,7 +140,7 @@
     "show_branch_status_icon": true,
   },
   "git_panel": {
-    "default_width": 380.0,
+    "default_width": 300,
     "button": true,
     "status_style": "icon",
     "show_count_badge": true,
@@ -170,7 +172,7 @@
     "ss03": true,
   },
   "icon_theme": {
-    "mode": "dark",
+    "mode": "light",
     "light": "VSCode Icons for Zed (Dark)",
     "dark": "VSCode Icons for Zed (Dark)",
   },
@@ -195,7 +197,7 @@
   "buffer_font_size": 12.5,
   "theme": {
     "mode": "dark",
-    "light": "Shades Of Purple",
+    "light": "Gruvbox Light",
     "dark": "VSCode Dark Polished",
   },
   "theme_overrides": {
