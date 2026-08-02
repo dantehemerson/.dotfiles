@@ -174,4 +174,13 @@
       ],
     },
   },
+  {
+    "context": "EmptyPane",
+    "use_key_equivalents": true,
+    "bindings": {
+      // Move between buffers
+      "H": "pane::ActivatePreviousItem",
+      "L": "pane::ActivateNextItem",
+    }
+  }
 ]
