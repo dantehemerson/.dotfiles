@@ -124,6 +124,9 @@
           ],
         ],
       ],
+
+      // Reset open docks size
+      "space u r": "workspace::ResetOpenDocksSize"
     },
   },
   // File panel (netrw)
