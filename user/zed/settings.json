@@ -40,7 +40,7 @@
   },
   "scrollbar": {
     "selected_symbol": true,
-    "show": "system",
+    "show": "always",
   },
   "gutter": {
     "line_numbers": true,
@@ -171,10 +171,6 @@
     "mode": "dark",
     "light": "VSCode Icons for Zed (Dark)",
     "dark": "VSCode Icons for Zed (Dark)"
-  },
-  "which_key": {
-    "enabled": true,
-    "delay_ms": 500
   },
   "which_key": {
     "enabled": true,

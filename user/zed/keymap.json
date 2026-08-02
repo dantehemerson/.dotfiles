@@ -102,8 +102,16 @@
       "space a e": "assistant::InlineAssist",
       "cmd-l": "assistant::InlineAssist",
       "space a t": "workspace::ToggleRightDock",
-      // Git
+      // Open git and focus git panel to have a file view
       "space g g": [
+        "action::Sequence",
+        [
+          "git_panel::ToggleFocus",
+          "git::Diff",
+        ],
+      ],
+      // Lazygit. But enjoying zed's git diff more.
+      "space g l": [
         "task::Spawn",
         {
           "task_name": "LazyGit",
@@ -175,6 +183,19 @@
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  // On closing Zed's git diff, close the git left panel. (Opened on "space g g")
+  {
+    "context": "GitDiff > Editor",
+    "bindings": {
+      "cmd-w": [
+        "action::Sequence",
+        [
+          "workspace::ToggleLeftDock",
+          "pane::CloseActiveItem",
+        ],
+      ],
     },
   },
 ]
