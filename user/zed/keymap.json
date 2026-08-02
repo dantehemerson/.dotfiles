@@ -162,7 +162,7 @@
   },
   // On closing Zed's git diff, close the git left panel. (Opened on "space g g")
   {
-    "context": "GitDiff > Editor",
+    "context": "GitDiff",
     "bindings": {
       "cmd-w": [
         "action::Sequence",
