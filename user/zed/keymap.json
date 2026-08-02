@@ -163,6 +163,7 @@
   // On closing Zed's git diff, close the git left panel. (Opened on "space g g")
   {
     "context": "GitDiff",
+    "use_key_equivalents": true,
     "bindings": {
       "cmd-w": [
         "action::Sequence",
