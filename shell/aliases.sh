@@ -44,9 +44,10 @@ alias tmuxconf="vi ~/.tmux.conf"
 alias inputrc="vi ~/.inputrc"
 alias aliases="vi ~/.dotfiles/shell/aliases.sh"
 alias functions="vi ~/.dotfiles/shell/functions.sh"
-alias ghostty_config="vi ~/.config/ghostty/config"
+alias ghosttyconfig="vi ~/.config/ghostty/config"
 alias zimrc="vi ~/.zimrc"
-alias nvimvonfig="vim ~/.config/nvim/init.lua"
+alias nvimconfig="vim ~/.config/nvim/init.lua"
+alias herdrconfig="vim ~/.config/herdr/config.toml"
 
 alias readme="bat README.md"
 
