@@ -165,7 +165,21 @@
   },
   // On closing Zed's git diff, close the git left panel. (Opened on "space g g")
   {
-    "context": "GitDiff || EmptyPane",
+    "context": "GitDiff",
+    "use_key_equivalents": true,
+    "bindings": {
+      "cmd-w": [
+        "action::Sequence",
+        [
+          "workspace::ToggleLeftDock",
+          "pane::CloseActiveItem",
+          "git::Push"
+        ],
+      ],
+    },
+  },
+  {
+    "context": "EmptyPane",
     "use_key_equivalents": true,
     "bindings": {
       "cmd-w": [
@@ -175,12 +189,6 @@
           "pane::CloseActiveItem",
         ],
       ],
-    },
-  },
-  {
-    "context": "EmptyPane",
-    "use_key_equivalents": true,
-    "bindings": {
       // Move between buffers
       "H": "pane::ActivatePreviousItem",
       "L": "pane::ActivateNextItem",

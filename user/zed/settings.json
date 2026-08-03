@@ -198,7 +198,7 @@
   "theme": {
     "mode": "dark",
     "light": "Gruvbox Light",
-    "dark": "VSCode Dark Polished",
+    "dark": "VSCode Dark Modern",
   },
   "theme_overrides": {
     "Shades Of Purple": {
