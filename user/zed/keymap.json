@@ -173,7 +173,6 @@
         [
           "workspace::ToggleLeftDock",
           "pane::CloseActiveItem",
-          "git::Push"
         ],
       ],
     },
@@ -187,6 +186,7 @@
         [
           "workspace::ToggleLeftDock",
           "pane::CloseActiveItem",
+          "git::Push"
         ],
       ],
       // Move between buffers
