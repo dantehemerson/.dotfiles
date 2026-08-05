@@ -87,7 +87,7 @@
     "sidebar_side": "right",
     "notify_when_agent_waiting": "all_screens",
     "play_sound_when_agent_done": "always",
-    "default_profile": "ask",
+    "default_profile": "write",
     "tool_permissions": {
       "tools": {
         "delete_path": {
@@ -161,7 +161,7 @@
     "font_family": "Maple Mono",
   },
   "colorize_brackets": true,
-  "buffer_font_weight": 400.0,
+  "buffer_font_weight": 400,
   "buffer_line_height": {
     "custom": 1.4,
   },
