@@ -163,6 +163,12 @@
       "ctrl-j": "workspace::ActivatePaneDown",
     },
   },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-shift-l": "terminal::Clear",
+    },
+  },
   // On closing Zed's git diff, close the git left panel. (Opened on "space g g")
   {
     "context": "GitDiff",
