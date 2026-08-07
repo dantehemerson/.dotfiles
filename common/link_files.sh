@@ -39,6 +39,7 @@ link "$DOTFILES_DIR/user/zed/tasks.json" "$HOME/.config/zed/tasks.json"
 
 # Neovim
 link "$DOTFILES_DIR/user/.config/nvim" "$HOME/.config/nvim"
+link "$DOTFILES_DIR/user/.config/nvim2" "$HOME/.config/nvim2"
 
 # Mise
 link "$DOTFILES_DIR/user/.config/mise/config.toml" "$HOME/.config/mise/config.toml"
