@@ -6,6 +6,8 @@ alias vi="vim"
 # alias vim="nvim"
 alias n="nvim"
 
+alias mn="NVIM_APPNAME=nvim_native nvim"
+
 # ========= Fast switching directories ===========
 alias dotfiles="cd ~/.dotfiles"
 alias repos="cd ~/coding/repos"

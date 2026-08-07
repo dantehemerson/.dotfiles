@@ -14,7 +14,6 @@ detach = "prefix+d"
 previous_agent = "prefix+ctrl+k"
 next_agent = "prefix+ctrl+j"
 focus_agent = "prefix+ctrl+1..9"
-last_pane = "prefix+space"
 split_vertical = "prefix+|"
 navigate_workspace_up = "k"
 navigate_workspace_down = "j"
@@ -25,6 +24,12 @@ type = "popup"
 command = "lazygit"
 width = "90%"
 height = "90%"
+
+[[keys.command]]
+key = "prefix+space"
+type = "plugin_action"
+command = "dantehemerson.last-tab.toggle"
+description = "last tab"
 
 [ui]
 # Immediately with generated names.
