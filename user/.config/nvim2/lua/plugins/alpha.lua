@@ -27,7 +27,7 @@ return {
 			dashboard.section.header.val = vim.split(logo, "\n")
 
 			dashboard.section.buttons.val = {
-				dashboard.button("f", " " .. " Find file", "<cmd> lua LazyVim.pick()() <cr>"),
+				dashboard.button("f", " " .. " Find file", "<cmd>Telescope find_files<cr>"),
 				dashboard.button("n", " " .. " New file", [[<cmd> ene <BAR> startinsert <cr>]]),
 				dashboard.button("r", " " .. " Recent files", [[<cmd> lua LazyVim.pick("oldfiles")() <cr>]]),
 				dashboard.button("g", " " .. " Find text", [[<cmd> lua LazyVim.pick("live_grep")() <cr>]]),
@@ -44,14 +44,13 @@ return {
 				pattern = "LazyVimStarted",
 				callback = function()
 					local stats = require("lazy").stats()
-					local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-					dashboard.section.footer.val = "⚡ Neovim loaded "
+					local ms = math.floor(stats.startuptime) .. " ms"
+					dashboard.section.footer.val = "  Loaded "
 						.. stats.loaded
 						.. "/"
 						.. stats.count
 						.. " plugins in "
 						.. ms
-						.. "ms"
 					pcall(vim.cmd.AlphaRedraw)
 				end,
 			})
