@@ -7,24 +7,21 @@ return {
 		config = function()
 			local dashboard = require("alpha.themes.dashboard")
 			local logo = [[
-
-
-
-
-
-
-
-
-
-
-
-
-   _  __       _   ___     
-  / |/ /__ ___| | / (_)_ _ 
- /    / -_) _ \ |/ / /  ' \
-/_/|_/\__/\___/___/_/_/_/_/
-
-    Powered By  eovim
+        ⠀⠀⠀⢀⣀⣤⣤⣤⣤⣄⡀⠀⠀⠀⠀
+        ⠀⢀⣤⣾⣿⣾⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀
+        ⢠⣾⣿⢛⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀
+        ⣾⣯⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧
+        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+        ⣿⡿⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠻⢿⡵
+        ⢸⡇⠀⠀⠉⠛⠛⣿⣿⠛⠛⠉⠀⠀⣿⡇
+        ⢸⣿⣀⠀⢀⣠⣴⡇⠹⣦⣄⡀⠀⣠⣿⡇
+        ⠈⠻⠿⠿⣟⣿⣿⣦⣤⣼⣿⣿⠿⠿⠟⠀
+        ⠀⠀⠀⠀⠸⡿⣿⣿⢿⡿⢿⠇⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠈⠁⠈⠁⠀⠀⠀⠀⠀⠀
+     _  __       _   ___     
+    / |/ /__ ___| | / (_)_ _ 
+   /    / -_) _ \ |/ / /  ' \
+  /_/|_/\__/\___/___/_/_/_/_/
     ]]
 			dashboard.section.header.val = vim.split(logo, "\n")
 
@@ -39,7 +36,6 @@ return {
 				dashboard.button("l", "󰒲 " .. " Lazy", "<cmd> Lazy <cr>"),
 				dashboard.button("q", " " .. " Quit", "<cmd> qa <cr>"),
 			}
-
 			require("alpha").setup(dashboard.config)
 
 			vim.api.nvim_create_autocmd("User", {
@@ -50,12 +46,13 @@ return {
 					local ms = math.floor(stats.startuptime) .. " ms"
 					local text = "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
 
+					-- compute width from the widest line already in the dashboard (the logo)
 					local width = 0
 					for _, l in ipairs(dashboard.section.header.val) do
 						width = math.max(width, vim.fn.strdisplaywidth(l))
 					end
 
-					local line = string.rep("─", width + 5)
+					local line = string.rep("─", width + 2)
 
 					dashboard.section.footer.val = { line, text, line }
 					pcall(vim.cmd.AlphaRedraw)
