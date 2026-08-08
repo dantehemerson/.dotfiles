@@ -10,6 +10,11 @@ return {
 
 		keys = {
 			{
+				"<leader>,",
+				"<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
+				desc = "Switch Buffer",
+			},
+			{
 				"<leader><leader>",
 				"<cmd>Telescope find_files<cr>",
 				desc = "Find files (Root Dir)",
