@@ -16,33 +16,6 @@ return {
 		}
 
 		-- DASHBOARD HEADER
-
-		local function getGreeting(name)
-			local tableTime = os.date("*t")
-			local datetime = os.date(" %Y-%m-%d-%A   %H:%M:%S ")
-			local hour = tableTime.hour
-			local greetingsTable = {
-				[1] = "  Sleep well",
-				[2] = "  Good morning",
-				[3] = "  Good afternoon",
-				[4] = "  Good evening",
-				[5] = "󰖔  Good night",
-			}
-			local greetingIndex = 0
-			if hour == 23 or hour < 7 then
-				greetingIndex = 1
-			elseif hour < 12 then
-				greetingIndex = 2
-			elseif hour >= 12 and hour < 18 then
-				greetingIndex = 3
-			elseif hour >= 18 and hour < 21 then
-				greetingIndex = 4
-			elseif hour >= 21 then
-				greetingIndex = 5
-			end
-			return datetime .. "  " .. greetingsTable[greetingIndex] .. ", " .. name
-		end
-
 		local fill = vim.fn.winheight(0) - 43
 		local logo = (fill >= 0 and [[
 
@@ -67,10 +40,6 @@ return {
  ██████   ██  ███████████████   ██ █████████████████
 
       ]]
-
-		local userName = "Lazy"
-		local greeting = getGreeting(userName)
-		local marginBottom = 0
 
 		-- Highlight groups configuration for each segment
 		local header_hl = {}
@@ -180,20 +149,6 @@ return {
 			table.insert(logoLines, line)
 		end
 
-		-- Calculate padding for centering the greeting
-		local logoWidth = logo:find("\n") - 1 -- Assuming the logo width is the width of the first line
-		local greetingWidth = #greeting
-		local padding = math.floor((logoWidth - greetingWidth) / 2)
-
-		-- Generate spaces for padding
-		local paddedGreeting = string.rep(" ", padding) .. greeting
-
-		-- Add margin lines below the padded greeting
-		local margin = string.rep("\n", marginBottom)
-
-		-- Concatenate logo, padded greeting, and margin
-		local adjustedLogo = logo .. "\n" .. paddedGreeting .. margin
-
 		local init_path = vim.fn.stdpath("config")
 		dashboard.section.buttons.val = {
 			dashboard.button("n", "  New file", ":ene <BAR> startinsert<CR>"),
@@ -230,7 +185,7 @@ return {
 				end
 				table.insert(
 					dashboard.section.footer.val,
-					" Loaded " .. stats.count .. " plugins  in " .. ms .. " ms "
+					" Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins  in " .. ms .. " ms "
 				)
 				for _ = 1, fill do
 					table.insert(dashboard.section.footer.val, "")
