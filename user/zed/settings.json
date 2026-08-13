@@ -161,7 +161,7 @@
     "font_family": "Maple Mono",
   },
   "colorize_brackets": true,
-  "buffer_font_weight": 400,
+  "buffer_font_weight": 300,
   "buffer_line_height": {
     "custom": 1.4,
   },
