@@ -94,6 +94,9 @@
         },
       ],
 
+      // Debug
+      "space d b": "editor::ToggleBreakpoint",
+
       // Move between buffers
       "H": "pane::ActivatePreviousItem",
       "L": "pane::ActivateNextItem",
