@@ -172,7 +172,7 @@
     "ss03": true,
   },
   "icon_theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "VSCode Icons for Zed (Dark)",
     "dark": "VSCode Icons for Zed (Dark)",
   },
@@ -198,7 +198,7 @@
   "theme": {
     "mode": "dark",
     "light": "Gruvbox Light",
-    "dark": "Cobalt2",
+    "dark": "VSCode Dark Modern",
   },
   "theme_overrides": {
     "Shades Of Purple": {
