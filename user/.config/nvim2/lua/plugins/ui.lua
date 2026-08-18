@@ -14,4 +14,9 @@ return {
 			vim.cmd.colorscheme("vscode")
 		end,
 	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		event = "VeryLazy",
+		opts = {},
+	},
 }
