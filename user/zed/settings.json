@@ -161,7 +161,7 @@
     "font_family": "Maple Mono",
   },
   "colorize_brackets": true,
-  "buffer_font_weight": 300,
+  "buffer_font_weight": 400,
   "buffer_line_height": {
     "custom": 1.4,
   },
@@ -194,11 +194,11 @@
   "soft_wrap": "editor_width",
   "base_keymap": "VSCode",
   "ui_font_size": 14.0,
-  "buffer_font_size": 12.5,
+  "buffer_font_size": 12,
   "theme": {
     "mode": "dark",
     "light": "Gruvbox Light",
-    "dark": "VSCode Dark Modern",
+    "dark": "Cobalt2",
   },
   "theme_overrides": {
     "Shades Of Purple": {
