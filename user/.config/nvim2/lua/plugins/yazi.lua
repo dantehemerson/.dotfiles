@@ -22,9 +22,25 @@ return {
 	},
 	opts = {
 		-- if you want to open yazi instead of netrw, see below for more info
-		open_for_directories = false,
+		open_for_directories = true,
 		keymaps = {
 			show_help = "<f1>",
 		},
 	},
+	config = function(_, opts)
+		require("yazi").setup(opts)
+
+		vim.api.nvim_create_autocmd({ "BufEnter", "VimEnter" }, {
+			callback = function(args)
+				local bufname = vim.api.nvim_buf_get_name(args.buf)
+				if bufname ~= "" and vim.fn.isdirectory(bufname) == 1 then
+					vim.schedule(function()
+						if vim.api.nvim_buf_is_valid(args.buf) then
+							vim.api.nvim_buf_delete(args.buf, { force = true })
+						end
+					end)
+				end
+			end,
+		})
+	end,
 }
