@@ -1,47 +1,46 @@
-return {}
--- return {
--- 	"mikavilpas/yazi.nvim",
--- 	event = "VeryLazy",
--- 	keys = {
--- 		{
--- 			"<leader>cw",
--- 			"<cmd>Yazi<cr>",
--- 			desc = "Open yazi at the current file",
--- 		},
--- 		{
--- 			"<leader>e",
--- 			"<cmd>Yazi cwd<cr>",
--- 			desc = "Open the file manager working directory",
--- 		},
--- 		{
--- 			-- NOTE: this requires a version of yazi that includes
--- 			-- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
--- 			"<c-up>",
--- 			"<cmd>Yazi toggle<cr>",
--- 			desc = "Resume the last yazi session",
--- 		},
--- 	},
--- 	opts = {
--- 		-- if you want to open yazi instead of netrw, see below for more info
--- 		open_for_directories = true,
--- 		keymaps = {
--- 			show_help = "<f1>",
--- 		},
--- 	},
--- 	config = function(_, opts)
--- 		require("yazi").setup(opts)
---
--- 		vim.api.nvim_create_autocmd({ "BufEnter", "VimEnter" }, {
--- 			callback = function(args)
--- 				local bufname = vim.api.nvim_buf_get_name(args.buf)
--- 				if bufname ~= "" and vim.fn.isdirectory(bufname) == 1 then
--- 					vim.schedule(function()
--- 						if vim.api.nvim_buf_is_valid(args.buf) then
--- 							vim.api.nvim_buf_delete(args.buf, { force = true })
--- 						end
--- 					end)
--- 				end
--- 			end,
--- 		})
--- 	end,
--- }
+return {
+	"mikavilpas/yazi.nvim",
+	event = "VeryLazy",
+	keys = {
+		{
+			"<leader>cw",
+			"<cmd>Yazi<cr>",
+			desc = "Open yazi at the current file",
+		},
+		{
+			"<leader>e",
+			"<cmd>Yazi cwd<cr>",
+			desc = "Open the file manager working directory",
+		},
+		{
+			-- NOTE: this requires a version of yazi that includes
+			-- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
+			"<c-up>",
+			"<cmd>Yazi toggle<cr>",
+			desc = "Resume the last yazi session",
+		},
+	},
+	opts = {
+		-- if you want to open yazi instead of netrw, see below for more info
+		open_for_directories = true,
+		keymaps = {
+			show_help = "<f1>",
+		},
+	},
+	config = function(_, opts)
+		require("yazi").setup(opts)
+
+		vim.api.nvim_create_autocmd({ "BufEnter", "VimEnter" }, {
+			callback = function(args)
+				local bufname = vim.api.nvim_buf_get_name(args.buf)
+				if bufname ~= "" and vim.fn.isdirectory(bufname) == 1 then
+					vim.schedule(function()
+						if vim.api.nvim_buf_is_valid(args.buf) then
+							vim.api.nvim_buf_delete(args.buf, { force = true })
+						end
+					end)
+				end
+			end,
+		})
+	end,
+}
