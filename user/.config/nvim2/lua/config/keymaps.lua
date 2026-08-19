@@ -40,3 +40,27 @@ vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
 vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 vim.keymap.set("v", "<A-j>", [[:<C-u>execute "'<,'>move '>+" . v:count1<cr>gv=gv]], { desc = "Move Down" })
 vim.keymap.set("v", "<A-k>", [[:<C-u>execute "'<,'>move '<-" . (v:count1 + 1)<cr>gv=gv]], { desc = "Move Up" })
+
+-- buffers
+vim.keymap.set("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+vim.keymap.set("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<cr>", { desc = "Delete Buffer" })
+vim.keymap.set("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "Delete Other Buffers" })
+vim.keymap.set("n", "<leader>bD", "<cmd>bd<cr>", { desc = "Delete Buffer and Window" })
+
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
+-- better indenting
+vim.keymap.set("x", "<", "<gv")
+vim.keymap.set("x", ">", ">gv")
+
+-- formatting
+vim.keymap.set({ "n", "x" }, "<leader>cf", function()
+	vim.lsp.buf.format({ async = true })
+end, { desc = "Format" })
+
+-- lazygit
+if vim.fn.executable("lazygit") == 1 then
+	vim.keymap.set("n", "<leader>gg", "<cmd>terminal lazygit<cr>", { desc = "Lazygit" })
+end
