@@ -16,8 +16,8 @@ return {
 			},
 
 			sections = {
-				lualine_a = { "mode" },
-				lualine_b = { "branch" },
+				lualine_a = { { "mode", icon = "" } },
+				lualine_b = { { "branch", icon = "" } },
 				lualine_c = { "filename" },
 				lualine_y = { "progress" },
 				lualine_z = {
