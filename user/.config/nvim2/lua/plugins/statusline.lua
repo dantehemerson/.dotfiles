@@ -19,7 +19,14 @@ return {
 			sections = {
 				lualine_a = { { "mode", icon = "" } },
 				lualine_b = {
-					{ "filetype", icon_only = true, padding = { left = 1, right = 0 } },
+					{
+						"filetype",
+						icon_only = true,
+						padding = { left = 1, right = 0 },
+						fmt = function(str)
+							return str ~= "" and str or " "
+						end,
+					},
 					{ "filename", file_status = true, path = 1, padding = { left = 0, right = 1 } },
 				},
 				lualine_c = { { "branch", icon = "" } },
@@ -31,16 +38,23 @@ return {
 					{ "location", color = { fg = "gray", bg = "NONE" } },
 					{
 						function()
-							local icon = " "
 							local name = vim.uv.cwd()
 							name = name:match("([^/\\]+)[/\\]*$") or name
-							return icon .. "" .. name
+							return name
 						end,
+						separator = {
+							left = "",
+						},
+						icon = "󰉖",
+						padding = {
+							left = 0,
+							right = 1,
+						},
 						cond = function()
 							return vim.o.columns > 85
 						end,
 						color = function()
-							return { fg = hi("Normal", "bg"), bg = hi("Error"), gui = "bold" }
+							return { fg = hi("Normal", "bg"), bg = "darkgray", gui = "bold" }
 						end,
 					},
 				},
