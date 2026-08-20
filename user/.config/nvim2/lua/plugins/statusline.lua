@@ -1,5 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local function hi(group, attr)
 			attr = attr or "fg"
@@ -17,8 +18,13 @@ return {
 
 			sections = {
 				lualine_a = { { "mode", icon = "" } },
-				lualine_b = { "filename" },
+				lualine_b = {
+					{ "filetype", icon_only = true, padding = { left = 1, right = 0 } },
+					{ "filename", file_status = true, path = 1, padding = { left = 0, right = 1 } },
+				},
 				lualine_c = { { "branch", icon = "" } },
+
+				lualine_x = {},
 				lualine_y = { "progress" },
 				lualine_z = {
 					"location",
