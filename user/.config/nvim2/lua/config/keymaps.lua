@@ -59,8 +59,3 @@ vim.keymap.set("x", ">", ">gv")
 vim.keymap.set({ "n", "x" }, "<leader>cf", function()
 	vim.lsp.buf.format({ async = true })
 end, { desc = "Format" })
-
--- lazygit
-if vim.fn.executable("lazygit") == 1 then
-	vim.keymap.set("n", "<leader>gg", "<cmd>terminal lazygit<cr>", { desc = "Lazygit" })
-end
