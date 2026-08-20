@@ -17,7 +17,7 @@ return {
 			},
 
 			sections = {
-				lualine_a = { { "mode", icon = "" } },
+				lualine_a = { { "mode", icon = "", color = { gui = "bold" } } },
 				lualine_b = {
 					{
 						"filetype",
@@ -27,7 +27,7 @@ return {
 							return str ~= "" and str or " "
 						end,
 					},
-					{ "filename", file_status = true, path = 1, padding = { left = 0, right = 1 } },
+					{ "filename", file_status = true, gui = "bold", path = 1, padding = { left = 0, right = 1 } },
 				},
 				lualine_c = { { "branch", icon = "" } },
 

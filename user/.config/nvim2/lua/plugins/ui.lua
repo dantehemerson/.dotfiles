@@ -6,5 +6,21 @@ return {
 	{
 		"nvim-tree/nvim-web-devicons",
 		event = "VeryLazy",
+
+		opts = {
+			override = {
+				zsh = {
+					icon = "",
+					color = "#428850",
+					cterm_color = "65",
+					name = "Zsh",
+				},
+				default_icon = { color = "#6c7689", icon = "󰈚", name = "Default" },
+				js = { color = "#f7df1e", icon = "󰌞", name = "js" },
+				ts = { color = "#3178c6", icon = "󰛦", name = "ts" },
+				lock = { color = "#f7c97c", icon = "󰌾", name = "lock" },
+				["robots.txt"] = { color = "#9ca3af", icons = "󰚩", name = "robots" },
+			},
+		},
 	},
 }
