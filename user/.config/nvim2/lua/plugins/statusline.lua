@@ -14,7 +14,20 @@ return {
 				lualine_b = { "branch" },
 				lualine_c = { "filename" },
 				lualine_y = { "progress" },
-				lualine_z = { "location" },
+				lualine_z = {
+					"location",
+					{
+						function()
+							local icon = "󰉋 "
+							local name = vim.uv.cwd()
+							name = name:match("([^/\\]+)[/\\]*$") or name
+							return icon .. " " .. name
+						end,
+						cond = function()
+							return vim.o.columns > 85
+						end,
+					},
+				},
 			},
 		})
 	end,

@@ -39,3 +39,6 @@ show_agent_labels_on_pane_borders = true
 [ui.sound]
 # Play sounds when agents change state in background workspaces
 enabled = true
+
+[experimental]
+kitty_graphics = true

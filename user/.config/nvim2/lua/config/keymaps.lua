@@ -4,22 +4,27 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true, noremap = true, desc = "
 vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true, noremap = true, desc = "Move to above split" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true, noremap = true, desc = "Move to right split" })
 
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join Lines" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll Down and Center" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll Up and Center" })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next Search Result" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous Search Result" })
 
 -- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste Over Selection" })
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to System Clipboard" })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank Line to System Clipboard" })
 
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete Without Yanking" })
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set(
+	"n",
+	"<leader>s",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Replace Word Under Cursor" }
+)
 
 -- better up/down
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
