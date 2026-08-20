@@ -25,9 +25,10 @@ return {
 				lualine_c = { { "branch", icon = "" } },
 
 				lualine_x = {},
-				lualine_y = { "progress" },
+				lualine_y = {},
 				lualine_z = {
-					"location",
+					{ "progress", color = { fg = "gray", bg = "NONE" } },
+					{ "location", color = { fg = "gray", bg = "NONE" } },
 					{
 						function()
 							local icon = " "
