@@ -9,9 +9,13 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.smartindent = true
 vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 8
+vim.opt.updatetime = 50
 
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.termguicolors = true
 
 -- Enable undo/redo changes even after closing and reopening a file
 vim.opt.undofile = true

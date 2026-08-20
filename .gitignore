@@ -14,3 +14,4 @@ user/.config/nvim/lazyvim.json
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
+**/lua/current-theme.lua
