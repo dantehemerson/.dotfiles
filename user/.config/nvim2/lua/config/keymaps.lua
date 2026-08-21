@@ -65,3 +65,7 @@ vim.keymap.set("x", ">", ">gv")
 vim.keymap.set({ "n", "x" }, "<leader>cf", function()
 	vim.lsp.buf.format({ async = true })
 end, { desc = "Format" })
+
+-- diagnostic
+vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+
