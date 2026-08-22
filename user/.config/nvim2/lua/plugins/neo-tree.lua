@@ -9,7 +9,9 @@ return {
 		},
 		lazy = false,
 		opts = {
+			close_if_last_window = false,
 			window = {
+				position = "float",
 				mappings = {
 					["l"] = "open",
 					["h"] = "close_node",
@@ -34,7 +36,7 @@ return {
 		},
 
 		keys = {
-			{ "<leader>e", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
+			{ "<leader>e", "<cmd>Neotree float toggle<cr>", desc = "Explorer NeoTree (Root Dir)" },
 		},
 	},
 }
