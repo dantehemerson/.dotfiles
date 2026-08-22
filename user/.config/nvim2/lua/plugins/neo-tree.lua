@@ -41,9 +41,19 @@ return {
 				file_size = {
 					enabled = false,
 				},
+				type = {
+					enabled = false,
+				},
+				last_modified = {
+					enabled = false,
+				},
 			},
 			window = {
 				position = "float",
+				popup = {
+					title = " File Explorer ",
+					position = "50%",
+				},
 				mappings = {
 					["l"] = "open",
 					["h"] = "close_node",
