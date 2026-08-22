@@ -2,7 +2,35 @@ local theme_file = vim.fn.stdpath("config") .. "/lua/current-theme.lua"
 
 local M = {}
 
-M.common_exclude = {}
+M.common_exclude = {
+   "default",
+  "vim",
+  "retrobox",
+  "sorbet",
+  "wildcharm",
+  "zaibatsu",
+  "desert",
+  "evening",
+  "industry",
+  "koehler",
+  "morning",
+  "murphy",
+  "pablo",
+  "peachpuff",
+  "ron",
+  "shine",
+  "slate",
+  "torte",
+  "zellner",
+  "blue",
+  "darkblue",
+  "delek",
+  "quiet",
+  "elflord",
+  "habamax",
+  "lunaperche",
+  "unokai",
+}
 
 M.exclude_from_dark = {
 	"vimbones",
