@@ -107,7 +107,9 @@ local write_config = function()
 	end
 	local file = assert(io.open(theme_file, "w"))
 
-	file:write('vim.cmd("colorscheme ' .. entry[1] .. '")')
+	local current_background = vim.o.background or "dark" 
+	file:write('vim.opt.background = "' .. current_background .. '"\n')
+	file:write('vim.cmd("colorscheme ' .. entry[1] .. '")\n')
 	file:close()
 end
 
