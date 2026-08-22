@@ -91,16 +91,23 @@ M.exclude_terms_from_light = {
 
 local set_theme = function()
 	local action_state = require("telescope.actions.state")
-	vim.cmd("colorscheme " .. action_state.get_selected_entry()[1])
+	local entry = action_state.get_selected_entry()
+	if not entry or not entry[1] then
+		return
+	end
+	pcall(vim.cmd.colorscheme, entry[1])
 end
 
 -- Write config to `current-theme.lua` to persist theme
 local write_config = function()
 	local action_state = require("telescope.actions.state")
-	local selected = action_state.get_selected_entry()[1]
+	local entry = action_state.get_selected_entry()
+	if not entry or not entry[1] then
+		return
+	end
 	local file = assert(io.open(theme_file, "w"))
 
-	file:write('vim.cmd("colorscheme ' .. selected .. '")')
+	file:write('vim.cmd("colorscheme ' .. entry[1] .. '")')
 	file:close()
 end
 
@@ -152,6 +159,11 @@ local function pick(title, excluded, excluded_terms, background)
 
 	local old_theme = vim.g.colors_name or "default"
 
+	local function apply_current()
+		vim.opt.background = background
+		set_theme()
+	end
+
 	require("telescope.pickers")
 		.new({}, {
 			prompt_title = title,
@@ -166,18 +178,15 @@ local function pick(title, excluded, excluded_terms, background)
 
 			attach_mappings = function(prompt_bufnr, map)
 				map("i", "<Down>", function()
-					vim.opt.background = background
 					actions.move_selection_next(prompt_bufnr)
-					set_theme()
+					apply_current()
 				end)
 				map("i", "<Up>", function()
-					vim.opt.background = background
 					actions.move_selection_previous(prompt_bufnr)
-					set_theme()
+					apply_current()
 				end)
 				map("i", "<CR>", function()
-					vim.opt.background = background
-					set_theme()
+					apply_current()
 					write_config()
 					actions.close(prompt_bufnr)
 				end)
@@ -185,6 +194,12 @@ local function pick(title, excluded, excluded_terms, background)
 					vim.cmd("colorscheme " .. old_theme)
 					actions.close(prompt_bufnr)
 				end)
+
+				vim.api.nvim_create_autocmd("TextChangedI", {
+					buffer = prompt_bufnr,
+					callback = apply_current,
+				})
+
 				return true
 			end,
 		})
