@@ -9,7 +9,29 @@ return {
 		},
 		lazy = false,
 		opts = {
+			sources = { "filesystem", "buffers", "git_status" },
+			open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
+			filesystem = {
+				bind_to_cwd = false,
+				follow_current_file = { enabled = true },
+				use_libuv_file_watcher = true,
+			},
 			close_if_last_window = false,
+			popup_border_style = "rounded",
+			default_component_configs = {
+				indent = {
+					with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+					expander_collapsed = "",
+					expander_expanded = "",
+					expander_highlight = "NeoTreeExpander",
+				},
+				git_status = {
+					symbols = {
+						unstaged = "󰄱",
+						staged = "󰱒",
+					},
+				},
+			},
 			window = {
 				position = "float",
 				mappings = {
