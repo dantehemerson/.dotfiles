@@ -156,8 +156,19 @@ end
 local function pick(title, excluded, excluded_terms, background)
 	local themes = get_themes(excluded, excluded_terms)
 	local actions = require("telescope.actions")
+	local action_state = require("telescope.actions.state")
 
 	local old_theme = vim.g.colors_name or "default"
+
+	-- Find the currently applied theme in this filtered list so we can
+	-- preselect it; fall back to the first item if it isn't present.
+	local default_selection_index = 1
+	for i, theme in ipairs(themes) do
+		if theme == old_theme then
+			default_selection_index = i
+			break
+		end
+	end
 
 	local function apply_current()
 		vim.opt.background = background
@@ -167,6 +178,7 @@ local function pick(title, excluded, excluded_terms, background)
 	require("telescope.pickers")
 		.new({}, {
 			prompt_title = title,
+			default_selection_index = default_selection_index,
 
 			finder = require("telescope.finders").new_table({
 				results = themes,
@@ -177,6 +189,16 @@ local function pick(title, excluded, excluded_terms, background)
 			previewer = get_previewer(),
 
 			attach_mappings = function(prompt_bufnr, map)
+				local picker = action_state.get_current_picker(prompt_bufnr)
+
+				-- Fires every time Telescope finishes (re)filtering results —
+				-- including when the prompt goes back to 0 characters — and
+				-- also once right after the picker opens with its initial
+				-- selection. This keeps the applied theme and the picker's
+				-- selected row in sync at all times, instead of racing with
+				-- Telescope's async result processing like TextChangedI did.
+				picker:register_completion_callback(apply_current)
+
 				map("i", "<Down>", function()
 					actions.move_selection_next(prompt_bufnr)
 					apply_current()
@@ -194,11 +216,6 @@ local function pick(title, excluded, excluded_terms, background)
 					vim.cmd("colorscheme " .. old_theme)
 					actions.close(prompt_bufnr)
 				end)
-
-				vim.api.nvim_create_autocmd("TextChangedI", {
-					buffer = prompt_bufnr,
-					callback = apply_current,
-				})
 
 				return true
 			end,
