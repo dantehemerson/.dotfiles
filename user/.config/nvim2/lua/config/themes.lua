@@ -159,6 +159,7 @@ local function pick(title, excluded, excluded_terms, background)
 	local action_state = require("telescope.actions.state")
 
 	local old_theme = vim.g.colors_name or "default"
+	local old_background = vim.opt.background or "dark"
 
 	-- Find the currently applied theme in this filtered list so we can
 	-- preselect it; fall back to the first item if it isn't present.
@@ -214,6 +215,7 @@ local function pick(title, excluded, excluded_terms, background)
 				end)
 				map("i", "<ESC>", function()
 					vim.cmd("colorscheme " .. old_theme)
+					vim.opt.background = old_background
 					actions.close(prompt_bufnr)
 				end)
 
