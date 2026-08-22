@@ -25,11 +25,12 @@ return {
 				filtered_items = {
 					visible = false,
 					hide_dotfiles = false,
-					hide_gitignored = true,
+					hide_gitignored = false,
 					hide_by_name = {
 						".git",
 						".DS_Store",
 						"Thumbs.db",
+						"node_modules",
 					},
 					never_show = {
 						".git",
