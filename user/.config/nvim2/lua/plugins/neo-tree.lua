@@ -20,16 +20,31 @@ return {
 			open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
 			filesystem = {
 				bind_to_cwd = false,
-				follow_current_file = { enabled = true },
+				follow_current_file = { enabled = false },
 				use_libuv_file_watcher = true,
+				filtered_items = {
+					visible = false,
+					hide_dotfiles = false,
+					hide_gitignored = true,
+					hide_by_name = {
+						".git",
+						".DS_Store",
+						"Thumbs.db",
+					},
+					never_show = {
+						".git",
+						".DS_Store",
+						"Thumbs.db",
+					},
+				},
 			},
 			close_if_last_window = false,
 			popup_border_style = "rounded",
 			default_component_configs = {
 				indent = {
 					with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
-					expander_collapsed = "",
-					expander_expanded = "",
+					expander_collapsed = "",
+					expander_expanded = "",
 					expander_highlight = "NeoTreeExpander",
 				},
 				git_status = {
@@ -76,7 +91,6 @@ return {
 				},
 			},
 		},
-
 		keys = {
 			{ "<leader>e", "<cmd>Neotree float toggle<cr>", desc = "Explorer NeoTree (Root Dir)" },
 		},
