@@ -2,14 +2,63 @@ local theme_file = vim.fn.stdpath("config") .. "/lua/current-theme.lua"
 
 local M = {}
 
+M.common_exclude = {}
+
 M.exclude_from_dark = {
-	"catppuccin-latte",
-	"everforest-light",
+	"vimbones",
+	"kanagawa-lotus",
+	"morning",
+	"peachpuff",
+	"shine",
+	"zellner",
+	"dawnfox",
+	"delek",
 }
 
 M.exclude_from_light = {
-	"tokyonight",
-	"gruvbox",
+	"blue",
+	"darkblue",
+	"carbonfox",
+	"desert",
+	"duckbones",
+	"duskfox",
+	"elflord",
+	"evening",
+	"habamax",
+	"industry",
+	"kanagawa-dragon",
+	"kanagawa-wave",
+	"kanagawabones",
+	"koehler",
+	"miasma",
+	"murphy",
+	"nordbones",
+	"nordfox",
+	"pablo",
+	"rasmus",
+	"ron",
+	"slate",
+	"sorbet",
+	"terafox",
+	"tokyonight-moon",
+	"tokyonight-storm",
+	"tokyonight-night",
+	"zaibatsu",
+	"vim",
+	"unokai",
+	"torte",
+	"zenburned",
+	"nightfox",
+	"randombones",
+}
+
+M.exclude_terms_from_dark = {
+	"light",
+	"day",
+}
+
+M.exclude_terms_from_light = {
+	"dark",
 }
 
 local set_theme = function()
@@ -27,16 +76,26 @@ local write_config = function()
 	file:close()
 end
 
-local function get_themes(excluded)
+local function get_themes(excluded, excluded_terms)
 	local themes = vim.fn.getcompletion("", "color", true)
 
 	local excluded_set = {}
-	for _, theme in ipairs(excluded) do
+	for _, theme in ipairs(excluded or {}) do
 		excluded_set[theme] = true
 	end
 
+	local excluded_terms_list = excluded_terms or {}
+
 	return vim.tbl_filter(function(theme)
-		return not excluded_set[theme]
+		if excluded_set[theme] then
+			return false
+		end
+		for _, term in ipairs(excluded_terms_list) do
+			if theme:lower():find(term:lower(), 1, true) then
+				return false
+			end
+		end
+		return true
 	end, themes)
 end
 
@@ -59,8 +118,8 @@ local get_previewer = function()
 	})
 end
 
-local function pick(title, excluded)
-	local themes = get_themes(excluded)
+local function pick(title, excluded, excluded_terms, background)
+	local themes = get_themes(excluded, excluded_terms)
 	local actions = require("telescope.actions")
 
 	local old_theme = vim.g.colors_name or "default"
@@ -79,14 +138,17 @@ local function pick(title, excluded)
 
 			attach_mappings = function(prompt_bufnr, map)
 				map("i", "<Down>", function()
+					vim.opt.background = background
 					actions.move_selection_next(prompt_bufnr)
 					set_theme()
 				end)
 				map("i", "<Up>", function()
+					vim.opt.background = background
 					actions.move_selection_previous(prompt_bufnr)
 					set_theme()
 				end)
 				map("i", "<CR>", function()
+					vim.opt.background = background
 					set_theme()
 					write_config()
 					actions.close(prompt_bufnr)
@@ -102,13 +164,21 @@ local function pick(title, excluded)
 end
 
 function M.pick_dark()
-	vim.opt.background = "dark"
-	pick("Dark Themes", M.exclude_from_dark)
+	pick(
+		"Dark Themes",
+		vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_from_dark),
+		vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_terms_from_dark),
+		"dark"
+	)
 end
 
 function M.pick_light()
-	vim.opt.background = "light"
-	pick("Light Themes", M.exclude_from_light)
+	pick(
+		"Light Themes",
+		vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_from_light),
+		vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_terms_from_light),
+		"light"
+	)
 end
 
 return M

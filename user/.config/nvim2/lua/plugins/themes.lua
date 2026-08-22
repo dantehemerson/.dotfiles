@@ -7,10 +7,6 @@ return {
 	{ "sainnhe/gruvbox-material" },
 	{ "projekt0n/github-nvim-theme", name = "github-theme" },
 	{
-		"rockyzhang24/arctic.nvim",
-		dependencies = { "rktjmp/lush.nvim" },
-	},
-	{
 		"xero/miasma.nvim",
 	},
 	{ "kvrohit/rasmus.nvim" },
