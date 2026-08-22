@@ -8,6 +8,13 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 		lazy = false,
+		init = function()
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				callback = function()
+					vim.api.nvim_set_hl(0, "NeoTreeFloatBorder", { link = "NeoTreeNormal" })
+				end,
+			})
+		end,
 		opts = {
 			sources = { "filesystem", "buffers", "git_status" },
 			open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
@@ -30,6 +37,9 @@ return {
 						unstaged = "󰄱",
 						staged = "󰱒",
 					},
+				},
+				file_size = {
+					enabled = false,
 				},
 			},
 			window = {
