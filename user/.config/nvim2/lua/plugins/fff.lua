@@ -72,23 +72,6 @@ return {
 				end,
 				desc = "Switch Buffer",
 			},
-			{
-				"<leader>thd",
-				function()
-					vim.o.background = "dark"
-					require("fff_plus").colors()
-				end,
-				desc = "Colorscheme (Dark)",
-			},
-
-			{
-				"<leader>thl",
-				function()
-					vim.o.background = "light"
-					require("fff_plus").colors()
-				end,
-				desc = "Colorscheme (Light)",
-			},
 		},
 	},
 }
