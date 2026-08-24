@@ -3,4 +3,4 @@ require("config.lazy")
 
 -- It allows to persist colroscheme selected using:
 -- : Telescope colorscheme enable_preview=true
-require("user.config.nvim2.lua.config.themes")
+require("config.colorscheme")

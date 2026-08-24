@@ -6,8 +6,9 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			"nvim-telescope/telescope-ui-select.nvim",
 		},
-
+		lazy = false,
 		keys = {
 			-- 	{
 			-- 		"<leader>,",
@@ -51,9 +52,9 @@ return {
 		},
 
 		config = function()
-			require("telescope").setup({
+			local telescope = require("telescope")
+			telescope.setup({
 				defaults = {
-
 					prompt_prefix = "   ",
 					selection_caret = " ",
 					entry_prefix = "  ",
@@ -70,9 +71,14 @@ return {
 						n = { ["q"] = require("telescope.actions").close },
 					},
 				},
-				extensions_list = { "themes", "terms" },
-				extensions = {},
+				extensions = {
+					["ui-select"] = {
+						-- require("telescope.themes").get_dropdown({})
+					}
+				},
 			})
+
+			telescope.load_extension("ui-select")
 		end,
 	},
 }

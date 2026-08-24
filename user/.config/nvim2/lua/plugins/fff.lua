@@ -6,9 +6,11 @@ return {
 			require("fff.download").download_or_build_binary()
 		end,
 		opts = {
-			prompt = "  ",
+			prompt = "   ",
+			title = "Files",
 			layout = {
 				prompt_position = "top",
+				border = "rounded",
 			},
 		},
 		lazy = false, -- the plugin lazy-initialises itself
@@ -22,13 +24,6 @@ return {
 			},
 			{
 				"<leader>/",
-				function()
-					require("fff").live_grep()
-				end,
-				desc = "Live grep",
-			},
-			{
-				"<leader>fg",
 				function()
 					require("fff").live_grep()
 				end,

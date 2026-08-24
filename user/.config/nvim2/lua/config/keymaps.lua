@@ -14,7 +14,32 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous Search Result" })
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste Over Selection" })
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to System Clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>yy", [["+y]], { desc = "Yank to System Clipboard" })
+-- Copy reference to the selection
+local function yank_file_reference()
+	local start_line = vim.fn.line("v")
+	local end_line = vim.fn.line(".")
+	if start_line > end_line then
+		start_line, end_line = end_line, start_line
+	end
+
+	local filepath = vim.fn.expand("%:.") -- path relative to cwd
+	local ref
+	if start_line == end_line then
+		ref = string.format("@%s#L%d ", filepath, start_line)
+	else
+		ref = string.format("@%s#L%d-%d ", filepath, start_line, end_line)
+	end
+
+	vim.fn.setreg("+", ref)
+	vim.notify("Copied reference: " .. ref)
+
+	-- Leave visual mode (no-op if not in visual)
+	local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
+	vim.api.nvim_feedkeys(esc, "nx", false)
+end
+
+vim.keymap.set("v", "<leader>yr", yank_file_reference, { desc = "Yank file reference (@path#Lx-y)" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank Line to System Clipboard" })
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete Without Yanking" })

@@ -16,7 +16,7 @@ return {
 			})
 		end,
 		opts = {
-			sources = { "buffers", "git_status" },
+			sources = { "filesystem", "buffers", "git_status" },
 			open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
 			filesystem = {
 				bind_to_cwd = false,
@@ -93,7 +93,11 @@ return {
 			},
 		},
 		keys = {
-			{ "<leader>e", "<cmd>Neotree float toggle<cr>", desc = "Explorer NeoTree (Root Dir)" },
+			{
+				"<leader>e",
+				"<Cmd>Neotree<CR>",
+				desc = "Explorer NeoTree (Root Dir)",
+			},
 		},
 	},
 }
