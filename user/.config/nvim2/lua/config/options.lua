@@ -12,6 +12,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
 vim.opt.showmode = false
+vim.opt.guicursor = "n-v-c:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver25-blinkwait700-blinkoff400-blinkon250"
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true

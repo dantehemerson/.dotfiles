@@ -5,7 +5,11 @@ macos-option-as-alt = left
 
 title = Terminator
 window-theme = ghostty
-window-decoration = auto
+window-decoration = none
+macos-titlebar-style = hidden
+window-padding-x = 3
+window-padding-y = 0
+window-padding-balance = true
 shell-integration = zsh
 
 # theme = django reborn again
@@ -17,3 +21,5 @@ bold-color = bright
 font-family = Maple Mono
 font-size = 12
 cursor-style-blink = true
+adjust-cursor-thickness = 2
+
