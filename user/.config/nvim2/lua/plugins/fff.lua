@@ -23,6 +23,13 @@ return {
 				desc = "Find files",
 			},
 			{
+				"<leader>fd",
+				function()
+					require("fff").find_files()
+				end,
+				desc = "Find files",
+			},
+			{
 				"<leader>/",
 				function()
 					require("fff").live_grep()
