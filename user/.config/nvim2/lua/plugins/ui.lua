@@ -31,12 +31,13 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	"folke/snacks.nvim",
-	-- 	priority = 1000,
-	-- 	lazy = false,
-	-- 	opts = {
-	-- 		statuscolumn = { enabled = true },
-	-- 	},
-	-- },
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = {
+			statuscolumn = { enabled = true },
+			image = { enabled = true },
+		},
+	},
 }
