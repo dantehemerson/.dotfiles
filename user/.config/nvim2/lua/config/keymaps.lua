@@ -42,8 +42,6 @@ end
 vim.keymap.set("v", "<leader>yr", yank_file_reference, { desc = "Yank file reference (@path#Lx-y)" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank Line to System Clipboard" })
 
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete Without Yanking" })
-
 vim.keymap.set(
 	"n",
 	"<leader>s",
@@ -93,4 +91,3 @@ end, { desc = "Format" })
 
 -- diagnostic
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
-

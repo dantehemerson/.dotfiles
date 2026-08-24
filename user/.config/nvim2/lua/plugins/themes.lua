@@ -10,10 +10,6 @@ return {
 		"xero/miasma.nvim",
 	},
 	{ "kvrohit/rasmus.nvim" },
-	{ "Tsuzat/NeoSolarized.nvim", opts = {
-		style = "dark",
-		transparent = false,
-	} },
 	{ "EdenEast/nightfox.nvim" },
 	{
 		"zenbones-theme/zenbones.nvim",
