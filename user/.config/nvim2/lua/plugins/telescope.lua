@@ -10,31 +10,15 @@ return {
 		},
 		lazy = false,
 		keys = {
-			-- 	{
-			-- 		"<leader>,",
-			-- 		"<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
-			-- 		desc = "Switch Buffer",
-			-- 	},
-			-- 	{
-			-- 		"<leader>ff",
-			-- 		"<cmd>Telescope find_files<cr>",
-			-- 		desc = "Find files (Root Dir)",
-			-- 	},
-			-- 	{
-			-- 		"<leader>/",
-			-- 		"<cmd>Telescope live_grep<cr>",
-			-- 		desc = "Live grep",
-			-- 	},
-			-- 	{
-			-- 		"<leader>fb",
-			-- 		"<cmd>Telescope buffers<cr>",
-			-- 		desc = "Buffers",
-			-- 	},
-			-- 	{
-			-- 		"<leader>fh",
-			-- 		"<cmd>Telescope help_tags<cr>",
-			-- 		desc = "Help tags",
-			-- 	},
+			{
+				"<leader>,",
+				"<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
+				desc = "Switch Buffer",
+			},
+			{ "<leader>:",  "<cmd>Telescope command_history<cr>",           desc = "Command History" },
+			{ "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer Lines" },
+			{ "<leader>sd", "<cmd>Telescope diagnostics<cr>",               desc = "Diagnostics" },
+			{ "<leader>sD", "<cmd>Telescope diagnostics bufnr=0<cr>",       desc = "Buffer Diagnostics" },
 			{
 				"<leader>thd",
 				function()
@@ -66,6 +50,9 @@ return {
 						},
 						width = 0.87,
 						height = 0.80,
+					},
+					path_display = {
+						"filename_first",
 					},
 					mappings = {
 						n = { ["q"] = require("telescope.actions").close },

@@ -53,27 +53,4 @@ return {
 			},
 		},
 	},
-	{
-		"vinitkumar/fff-plus.nvim",
-		dependencies = { "dmtrKovalenko/fff" },
-		opts = {
-			legacy_commands = false,
-		},
-		keys = {
-			{
-				"<leader>,",
-				function()
-					require("fff_plus").buffers()
-					vim.schedule(function()
-						local state = require("fff_plus.pickers.buffers").state
-						-- Move down to select the previous buffer
-						if state and state.active then
-							state:move("down")
-						end
-					end)
-				end,
-				desc = "Switch Buffer",
-			},
-		},
-	},
 }

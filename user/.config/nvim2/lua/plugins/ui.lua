@@ -54,6 +54,14 @@ return {
 				end,
 				desc = "LSP Workspace Symbols",
 			},
+			{
+				"<leader>gg",
+				function()
+					Snacks.lazygit()
+				end,
+				desc = "Lazygit (Root Dir)"
+			}
 		},
+
 	},
 }

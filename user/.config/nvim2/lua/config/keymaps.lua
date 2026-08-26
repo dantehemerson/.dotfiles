@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank Line to System Clipboar
 
 vim.keymap.set(
 	"n",
-	"<leader>s",
+	"<leader>sw",
 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 	{ desc = "Replace Word Under Cursor" }
 )
