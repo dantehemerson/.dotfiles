@@ -13,8 +13,6 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous Search Result" })
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste Over Selection" })
 
--- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>yy", [["+y]], { desc = "Yank to System Clipboard" })
 -- Copy reference to the selection
 local function yank_file_reference()
 	local start_line = vim.fn.line("v")
@@ -40,7 +38,6 @@ local function yank_file_reference()
 end
 
 vim.keymap.set("v", "<leader>yr", yank_file_reference, { desc = "Yank file reference (@path#Lx-y)" })
-vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank Line to System Clipboard" })
 
 vim.keymap.set(
 	"n",

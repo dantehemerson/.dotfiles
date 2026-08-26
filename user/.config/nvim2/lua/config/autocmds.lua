@@ -1,6 +1,10 @@
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.hl.on_yank()
+
+		if vim.v.event.operator == "y" then
+			vim.fn.setreg("+", vim.fn.getreg('"'))
+		end
 	end,
 })
 
