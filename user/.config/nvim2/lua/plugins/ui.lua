@@ -59,9 +59,8 @@ return {
 				function()
 					Snacks.lazygit()
 				end,
-				desc = "Lazygit (Root Dir)"
-			}
+				desc = "Lazygit (Root Dir)",
+			},
 		},
-
 	},
 }
