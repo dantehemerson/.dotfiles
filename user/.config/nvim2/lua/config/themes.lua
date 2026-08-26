@@ -78,6 +78,13 @@ M.exclude_from_light = {
 	"zenburned",
 	"nightfox",
 	"randombones",
+	"blackout",
+	"moss",
+	"dusk",
+	"frost",
+	"blossom",
+	"ember",
+	"velvet"
 }
 
 M.exclude_terms_from_dark = {

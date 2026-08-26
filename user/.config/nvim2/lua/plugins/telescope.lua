@@ -12,7 +12,7 @@ return {
 		keys = {
 			{
 				"<leader>,",
-				"<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
+				"<cmd>Telescope buffers sort_mru=true sort_lastused=true selection_strategy=reset<cr>",
 				desc = "Switch Buffer",
 			},
 			{ "<leader>:",  "<cmd>Telescope command_history<cr>",           desc = "Command History" },
