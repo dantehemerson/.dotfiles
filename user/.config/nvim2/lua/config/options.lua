@@ -14,6 +14,11 @@ vim.opt.updatetime = 50
 vim.opt.showmode = false
 vim.opt.guicursor = "n-v-c:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver25-blinkwait700-blinkoff400-blinkon250"
 
+vim.opt.tabstop = 2 -- Number of spaces tabs count for
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
