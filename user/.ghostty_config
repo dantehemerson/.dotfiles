@@ -1,6 +1,9 @@
 # Ignore going fullscreen by mistake
 keybind = global:super+enter=ignore
 
+# Cmd+s -> Ctrl+s: to save on nvim
+keybind = super+s=text:\x13
+
 macos-option-as-alt = left
 
 title = Terminator
