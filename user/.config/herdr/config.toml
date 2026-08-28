@@ -20,7 +20,7 @@ navigate_workspace_down = "j"
 goto = "prefix+/"
 
 [[keys.command]]
-key = "prefix+ctrl+g"
+key = "prefix+g"
 type = "popup"
 command = "lazygit"
 width = "90%"
