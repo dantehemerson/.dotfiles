@@ -63,10 +63,6 @@ return {
               return vim.o.columns > 85
             end,
             color = "lualine_b_normal"
-            -- color = { gui = "normal" }
-            -- color = function()
-            --   return { fg = hi("Normal", "bg"), bg = "darkgray", gui = "bold" }
-            -- end,
           },
         },
       },

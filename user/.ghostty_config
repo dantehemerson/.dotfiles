@@ -4,6 +4,9 @@ keybind = global:super+enter=ignore
 # Cmd+s -> Ctrl+s: to save on nvim
 keybind = super+s=text:\x13
 
+# Cmd+d -> Alt+d: to delete buffers on Telescope
+keybind = global:cmd+d=text:\x1bd
+
 quick-terminal-position = center
 quick-terminal-size = 50%,60%
 keybind = global:cmd+§=toggle_quick_terminal
