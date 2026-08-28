@@ -4,6 +4,10 @@ keybind = global:super+enter=ignore
 # Cmd+s -> Ctrl+s: to save on nvim
 keybind = super+s=text:\x13
 
+quick-terminal-position = center
+quick-terminal-size = 50%,60%
+keybind = global:cmd+§=toggle_quick_terminal
+
 macos-option-as-alt = left
 
 title = Terminator
