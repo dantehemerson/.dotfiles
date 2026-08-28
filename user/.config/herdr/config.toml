@@ -27,14 +27,6 @@ width = "90%"
 height = "90%"
 
 [[keys.command]]
-key = "prefix+t"
-type = "popup"
-command = "exec \"${SHELL:-sh}\""
-description = "open scratch terminal"
-width = "67%"
-height = "90%"
-
-[[keys.command]]
 key = "prefix+space"
 type = "plugin_action"
 command = "dantehemerson.last-tab.toggle"
