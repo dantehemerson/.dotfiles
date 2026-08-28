@@ -41,6 +41,7 @@ M.exclude_from_dark = {
   "zellner",
   "dawnfox",
   "delek",
+  "catppuccin-latte"
 }
 
 M.exclude_from_light = {
@@ -84,7 +85,7 @@ M.exclude_from_light = {
   "frost",
   "blossom",
   "ember",
-  "velvet"
+  "velvet",
 }
 
 M.exclude_terms_from_dark = {
