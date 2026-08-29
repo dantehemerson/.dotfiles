@@ -1,1 +1,1 @@
-return { "dracula", "vscode" }
+return { "dracula", "vscode", "catppuccin", "catppuccin-frappe", "catppuccin-macchiato", "catppuccin-mocha", "catppuccin-nvim", "decay", "decay-dark", "dusk", "everforest", "forestbones", "frost", "github_dark", "github_dark_default", "github_dark_dimmed", "gruvbox-material", "kanagawa", "kanagawa-wave", "moss", "nightfox", "retrobox", "rasmus", "tokyonight-moon", "velvet", "base46-aylin" }

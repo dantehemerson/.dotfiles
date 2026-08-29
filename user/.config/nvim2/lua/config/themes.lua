@@ -242,6 +242,7 @@ local function pick(title, excluded, excluded_terms, background)
       .new({}, {
         prompt_title = title,
         default_selection_index = default_selection_index,
+        selection_strategy = "row",
 
         finder = require("telescope.finders").new_table({
           results = results,
@@ -265,13 +266,20 @@ local function pick(title, excluded, excluded_terms, background)
             actions.move_selection_previous(prompt_bufnr)
             apply_current()
           end)
-          map("i", "<C-f>", function()
+          map("i", "<C-a>", function()
             local entry = action_state.get_selected_entry()
             if not entry or not entry.value then
               return
             end
             local now_fav = toggle_favorite(entry.value)
             favorites_set[entry.value] = now_fav
+            if now_fav then
+              entry.display = "fav: " .. entry.value
+              entry.ordinal = "fav " .. entry.value
+            else
+              entry.display = entry.value
+              entry.ordinal = entry.value
+            end
             picker:refresh()
             vim.notify(now_fav and ("★ " .. entry.value) or ("☆ " .. entry.value))
           end)
