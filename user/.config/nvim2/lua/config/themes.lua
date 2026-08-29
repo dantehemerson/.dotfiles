@@ -1,6 +1,44 @@
 local theme_file = vim.fn.stdpath("config") .. "/lua/current-theme.lua"
+local favorites_file = vim.fn.stdpath("config") .. "/lua/favorite-themes.lua"
 
 local M = {}
+
+local function read_favorites()
+  if vim.fn.filereadable(favorites_file) ~= 1 then
+    return {}
+  end
+  local ok, result = pcall(dofile, favorites_file)
+  if ok and type(result) == "table" then
+    return result
+  end
+  return {}
+end
+
+local function write_favorites(list)
+  local entries = {}
+  for _, t in ipairs(list) do
+    table.insert(entries, string.format("%q", t))
+  end
+  vim.fn.writefile({ "return { " .. table.concat(entries, ", ") .. " }" }, favorites_file)
+end
+
+local function toggle_favorite(theme)
+  local favs = read_favorites()
+  local new_favs = {}
+  local is_fav = false
+  for _, t in ipairs(favs) do
+    if t == theme then
+      is_fav = true
+    else
+      table.insert(new_favs, t)
+    end
+  end
+  if not is_fav then
+    table.insert(new_favs, theme)
+  end
+  write_favorites(new_favs)
+  return not is_fav
+end
 
 M.common_exclude = {
   -- "default",
@@ -100,24 +138,24 @@ M.exclude_terms_from_light = {
 local set_theme = function()
   local action_state = require("telescope.actions.state")
   local entry = action_state.get_selected_entry()
-  if not entry or not entry[1] then
+  if not entry or not entry.value then
     return
   end
-  pcall(vim.cmd.colorscheme, entry[1])
+  pcall(vim.cmd.colorscheme, entry.value)
 end
 
 -- Write config to `current-theme.lua` to persist theme
 local write_config = function()
   local action_state = require("telescope.actions.state")
   local entry = action_state.get_selected_entry()
-  if not entry or not entry[1] then
+  if not entry or not entry.value then
     return
   end
   local file = assert(io.open(theme_file, "w"))
 
   local current_background = vim.o.background or "dark"
   file:write('vim.opt.background = "' .. current_background .. '"\n')
-  file:write('vim.cmd("colorscheme ' .. entry[1] .. '")\n')
+  file:write('vim.cmd("colorscheme ' .. entry.value .. '")\n')
   file:close()
 end
 
@@ -168,11 +206,24 @@ local function pick(title, excluded, excluded_terms, background)
   local actions = require("telescope.actions")
   local action_state = require("telescope.actions.state")
 
+  local favorites = read_favorites()
+  local favorites_set = {}
+  for _, f in ipairs(favorites) do
+    favorites_set[f] = true
+  end
+
+  local results = themes
+  local entry_maker = function(theme)
+    return {
+      value = theme,
+      display = favorites_set[theme] and ("fav: " .. theme) or theme,
+      ordinal = theme,
+    }
+  end
+
   local old_theme = vim.g.colors_name or "default"
   local old_background = vim.opt.background or "dark"
 
-  -- Find the currently applied theme in this filtered list so we can
-  -- preselect it; fall back to the first item if it isn't present.
   local default_selection_index = 1
   for i, theme in ipairs(themes) do
     if theme == old_theme then
@@ -192,7 +243,8 @@ local function pick(title, excluded, excluded_terms, background)
         default_selection_index = default_selection_index,
 
         finder = require("telescope.finders").new_table({
-          results = themes,
+          results = results,
+          entry_maker = entry_maker,
         }),
 
         sorter = require("telescope.config").values.generic_sorter({}),
@@ -202,12 +254,6 @@ local function pick(title, excluded, excluded_terms, background)
         attach_mappings = function(prompt_bufnr, map)
           local picker = action_state.get_current_picker(prompt_bufnr)
 
-          -- Fires every time Telescope finishes (re)filtering results —
-          -- including when the prompt goes back to 0 characters — and
-          -- also once right after the picker opens with its initial
-          -- selection. This keeps the applied theme and the picker's
-          -- selected row in sync at all times, instead of racing with
-          -- Telescope's async result processing like TextChangedI did.
           picker:register_completion_callback(apply_current)
 
           map("i", "<Down>", function()
@@ -217,6 +263,16 @@ local function pick(title, excluded, excluded_terms, background)
           map("i", "<Up>", function()
             actions.move_selection_previous(prompt_bufnr)
             apply_current()
+          end)
+          map("i", "<C-f>", function()
+            local entry = action_state.get_selected_entry()
+            if not entry or not entry.value then
+              return
+            end
+            local now_fav = toggle_favorite(entry.value)
+            favorites_set[entry.value] = now_fav
+            picker:refresh()
+            vim.notify(now_fav and ("★ " .. entry.value) or ("☆ " .. entry.value))
           end)
           map("i", "<CR>", function()
             apply_current()
