@@ -214,10 +214,11 @@ local function pick(title, excluded, excluded_terms, background)
 
   local results = themes
   local entry_maker = function(theme)
+    local is_fav = favorites_set[theme]
     return {
       value = theme,
-      display = favorites_set[theme] and ("fav: " .. theme) or theme,
-      ordinal = theme,
+      display = is_fav and ("fav: " .. theme) or theme,
+      ordinal = is_fav and ("fav " .. theme) or theme,
     }
   end
 
