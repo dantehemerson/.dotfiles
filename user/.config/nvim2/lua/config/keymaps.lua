@@ -15,35 +15,35 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste Over Selection" })
 
 -- Copy reference to the selection
 local function yank_file_reference()
-	local start_line = vim.fn.line("v")
-	local end_line = vim.fn.line(".")
-	if start_line > end_line then
-		start_line, end_line = end_line, start_line
-	end
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
 
-	local filepath = vim.fn.expand("%:.") -- path relative to cwd
-	local ref
-	if start_line == end_line then
-		ref = string.format("@%s#L%d ", filepath, start_line)
-	else
-		ref = string.format("@%s#L%d-%d ", filepath, start_line, end_line)
-	end
+  local filepath = vim.fn.expand("%:.") -- path relative to cwd
+  local ref
+  if start_line == end_line then
+    ref = string.format("@%s#L%d ", filepath, start_line)
+  else
+    ref = string.format("@%s#L%d-%d ", filepath, start_line, end_line)
+  end
 
-	vim.fn.setreg("+", ref)
-	vim.notify("Copied reference: " .. ref)
+  vim.fn.setreg("+", ref)
+  vim.notify("Copied reference: " .. ref)
 
-	-- Leave visual mode (no-op if not in visual)
-	local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
-	vim.api.nvim_feedkeys(esc, "nx", false)
+  -- Leave visual mode (no-op if not in visual)
+  local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
+  vim.api.nvim_feedkeys(esc, "nx", false)
 end
 
 vim.keymap.set("v", "<leader>yr", yank_file_reference, { desc = "Yank file reference (@path#Lx-y)" })
 
 vim.keymap.set(
-	"n",
-	"<leader>sw",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Replace Word Under Cursor" }
+  "n",
+  "<leader>sw",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Replace Word Under Cursor" }
 )
 
 -- better up/down
@@ -83,8 +83,17 @@ vim.keymap.set("x", ">", ">gv")
 
 -- formatting
 vim.keymap.set({ "n", "x" }, "<leader>cf", function()
-	vim.lsp.buf.format({ async = true })
+  vim.lsp.buf.format({ async = true })
 end, { desc = "Format" })
 
 -- diagnostic
-vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+vim.keymap.set("n", "<leader>cd",
+  function()
+    local _, winid = vim.diagnostic.open_float(nil, { focus = true })
+    if winid then
+      vim.api.nvim_set_current_win(winid)
+    end
+  end
+  , { desc = "Line Diagnostics" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })

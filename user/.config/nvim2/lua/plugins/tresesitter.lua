@@ -20,6 +20,7 @@ return {
       "python",
       "typescript",
       "tsx",
+      "astro",
       "rust",
       "bash",
     })
