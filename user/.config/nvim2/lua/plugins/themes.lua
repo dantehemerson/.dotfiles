@@ -3,7 +3,7 @@ return {
   { "Mofiqul/vscode.nvim" },
   { "folke/tokyonight.nvim" },
   { "rebelot/kanagawa.nvim" },
-  { "morhetz/gruvbox" },
+
   { "sainnhe/gruvbox-material" },
   { "projekt0n/github-nvim-theme", name = "github-theme" },
   {
@@ -20,12 +20,8 @@ return {
     name = "catppuccin"
   },
   {
-    "decaycs/decay.nvim",
-    name = "decay",
+    "AvengeMedia/base46",
   },
-  {
-  "AvengeMedia/base46",
-},
   {
     "sainnhe/everforest"
   },

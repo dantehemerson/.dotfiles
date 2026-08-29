@@ -41,33 +41,40 @@ local function toggle_favorite(theme)
 end
 
 M.common_exclude = {
-  -- "default",
-  -- "vim",
-  -- "retrobox",
-  -- "sorbet",
-  -- "wildcharm",
-  -- "zaibatsu",
-  -- "desert",
-  -- "evening",
-  -- "industry",
-  -- "koehler",
-  -- "morning",
-  -- "murphy",
-  -- "pablo",
-  -- "peachpuff",
-  -- "ron",
-  -- "shine",
-  -- "slate",
-  -- "torte",
-  -- "zellner",
-  -- "blue",
-  -- "darkblue",
-  -- "delek",
-  -- "quiet",
-  -- "elflord",
-  -- "habamax",
-  -- "lunaperche",
-  -- "unokai",
+  "default",
+  "vim",
+  "retrobox",
+  "sorbet",
+  "wildcharm",
+  "zaibatsu",
+  "desert",
+  "evening",
+  "industry",
+  "koehler",
+  "morning",
+  "murphy",
+  "pablo",
+  "peachpuff",
+  "ron",
+  "shine",
+  "slate",
+  "torte",
+  "zellner",
+  "blue",
+  "darkblue",
+  "delek",
+  "quiet",
+  "elflord",
+  "habamax",
+  "lunaperche",
+  "unokai",
+
+  -- zenbones-theme/zenbones.nvim
+  "kanagawabones",
+  "randombones",
+  "tokyobones",
+  "seoulbones",
+  "duckbones",
 }
 
 M.exclude_from_dark = {
@@ -271,6 +278,8 @@ local function pick(title, excluded, excluded_terms, background)
             if not entry or not entry.value then
               return
             end
+            local saved_row = picker:get_selection_row()
+
             local now_fav = toggle_favorite(entry.value)
             favorites_set[entry.value] = now_fav
             if now_fav then
@@ -280,6 +289,15 @@ local function pick(title, excluded, excluded_terms, background)
               entry.display = entry.value
               entry.ordinal = entry.value
             end
+
+            local previous_callbacks = vim.list_extend({}, picker._completion_callbacks or {})
+            picker:register_completion_callback(function(p)
+              p._completion_callbacks = previous_callbacks
+              if p.manager then
+                p:set_selection(saved_row)
+              end
+            end)
+
             picker:refresh()
             vim.notify(now_fav and ("★ " .. entry.value) or ("☆ " .. entry.value))
           end)
