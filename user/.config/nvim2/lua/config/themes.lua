@@ -75,6 +75,92 @@ M.common_exclude = {
   "tokyobones",
   "seoulbones",
   "duckbones",
+  "neobones",
+  "zenbones",
+  "rosebones",
+  "randombones_dark",
+  "zenwritten",
+  "zenburned",
+
+  -- AvengeMedia/base46
+  "base46-yoru",
+  "base46-ashes",
+  "base46-rxyhn",
+  "base46-embark",
+  "base46-falcon",
+  "base46-radium",
+  "base46-vesper",
+  "base46-flexoki",
+  "base46-zenburn",
+  "base46-eldritch",
+  "base46-hiberbee",
+  "base46-mountain",
+  "base46-rosepine",
+  "base46-carbonfox",
+  "base46-gorgoroth",
+  "base46-nightlamp",
+  "base46-oxocarbon",
+  "base46-palenight",
+  "base46-slatewave",
+  "base46-tokyodark",
+  "base46-gatekeeper",
+  "base46-mito-laser",
+  "base46-monochrome",
+  "base46-poimandres",
+  "base46-tokyonight",
+  "base46-sweetpastel",
+  "base46-vscode_dark",
+  "base46-chadracula-evondev",
+  "base46-dark_horizon",
+  "base46-darcula-dark",
+  "base46-flouromachine",
+  "base46-penumbra_dark",
+  "base46-seoul256_dark",
+  "base46-obsidian-ember",
+  "base46-solarized_dark",
+  "base46-midnight_breeze",
+  "base46-solarized_osaka",
+  "base46-ayu_dark",
+  "base46-chadtain",
+  "base46-default-dark",
+  "base46-tomorrow_night",
+  "base46-kanagawa-dragon",
+  "base46-kanagawa",
+  "base46-aquarium",
+  "base46-chadracula",
+  "base46-onenord",
+  "base46-pastelDark",
+  "base46-pastelbeans",
+  "base46-starlight",
+  "base46-oceanic-light",
+
+  "base46-",
+  "base46-",
+  "base46-",
+
+  -- catppuccin/nvim
+  "catppuccin",
+  "catppuccin-nvim",
+  "catppuccin-latte", -- latte is better on base46
+
+  -- Mofiqul/dracula.nvim
+  "dracula-soft",
+
+  -- harshrajsachan/omni.nvim
+  "ember",
+  "blossom",
+
+  -- projekt0n/github-nvim-theme
+  "github_dark_colorblind",
+  "github_dark_tritanopia",
+  "github_dark_dimmed",
+  "github_dark_default",
+  "github_dark_high_contrast",
+
+  -- rebelot/kanagawa.nvim
+  "kanagawa-dragon",
+  "kanagawa-lotus",
+  "kanagawa-wave",
 }
 
 M.exclude_from_dark = {
@@ -86,7 +172,12 @@ M.exclude_from_dark = {
   "zellner",
   "dawnfox",
   "delek",
-  "catppuccin-latte"
+
+  -- AvengeMedia/base46
+  "base46-catppuccin-latte",
+  "base46-rosepine-dawn",
+  "base46-catppuccin", -- official catppuccin theme is better in dark
+  "base46-sunrise_breeze",
 }
 
 M.exclude_from_light = {
@@ -128,9 +219,10 @@ M.exclude_from_light = {
   "moss",
   "dusk",
   "frost",
-  "blossom",
-  "ember",
   "velvet",
+
+  -- AvengeMedia/base46
+  "base46-rosepine-moon",
 }
 
 M.exclude_terms_from_dark = {
@@ -322,7 +414,7 @@ function M.pick_dark()
   pick(
     "Dark Themes",
     vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_from_dark),
-    vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_terms_from_dark),
+    M.exclude_terms_from_dark,
     "dark"
   )
 end
@@ -331,7 +423,7 @@ function M.pick_light()
   pick(
     "Light Themes",
     vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_from_light),
-    vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_terms_from_light),
+    M.exclude_terms_from_light,
     "light"
   )
 end

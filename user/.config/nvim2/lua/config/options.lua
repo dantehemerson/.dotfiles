@@ -14,7 +14,7 @@ vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.showmode = false
-vim.opt.guicursor = "n-v-c:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver25-blinkwait700-blinkoff400-blinkon250"
+-- vim.opt.guicursor = "n-v-c:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver25-blinkwait700-blinkoff400-blinkon250"
 vim.opt.ignorecase = true -- Ignore case
 vim.opt.smartcase = true  -- Don't ignore case with capitals
 vim.opt.tabstop = 2       -- Number of spaces tabs count for
@@ -29,7 +29,6 @@ vim.opt.showmode = false
 -- Enable undo/redo changes even after closing and reopening a file
 vim.opt.undofile = true
 
--- vim.diagnostic.config({ virtual_text = true }) -- inline diagnostics
 vim.diagnostic.config({
   virtual_text = false,
 
