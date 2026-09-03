@@ -15,6 +15,12 @@ return {
         "<cmd>Telescope buffers sort_mru=true sort_lastused=true selection_strategy=reset<cr>",
         desc = "Switch Buffer",
       },
+      {
+        "<leader>ff",
+        "<cmd>Telescope find_files<cr>",
+        desc = "Find Files",
+      },
+      { "<leader>fo", "<cmd>Telescope oldfiles<cr>",                  desc = "Recent/Old Files" },
       { "<leader>:",  "<cmd>Telescope command_history<cr>",           desc = "Command History" },
       { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer Lines" },
       { "<leader>sd", "<cmd>Telescope diagnostics<cr>",               desc = "Diagnostics" },

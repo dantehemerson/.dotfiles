@@ -1,6 +1,44 @@
 local theme_file = vim.fn.stdpath("config") .. "/lua/current-theme.lua"
+local favorites_file = vim.fn.stdpath("config") .. "/lua/favorite-themes.lua"
 
 local M = {}
+
+local function read_favorites()
+  if vim.fn.filereadable(favorites_file) ~= 1 then
+    return {}
+  end
+  local ok, result = pcall(dofile, favorites_file)
+  if ok and type(result) == "table" then
+    return result
+  end
+  return {}
+end
+
+local function write_favorites(list)
+  local entries = {}
+  for _, t in ipairs(list) do
+    table.insert(entries, string.format("%q", t))
+  end
+  vim.fn.writefile({ "return { " .. table.concat(entries, ", ") .. " }" }, favorites_file)
+end
+
+local function toggle_favorite(theme)
+  local favs = read_favorites()
+  local new_favs = {}
+  local is_fav = false
+  for _, t in ipairs(favs) do
+    if t == theme then
+      is_fav = true
+    else
+      table.insert(new_favs, t)
+    end
+  end
+  if not is_fav then
+    table.insert(new_favs, theme)
+  end
+  write_favorites(new_favs)
+  return not is_fav
+end
 
 M.common_exclude = {
   "default",
@@ -30,6 +68,106 @@ M.common_exclude = {
   "habamax",
   "lunaperche",
   "unokai",
+
+  -- zenbones-theme/zenbones.nvim
+  "kanagawabones",
+  "randombones",
+  "tokyobones",
+  "seoulbones",
+  "duckbones",
+  "neobones",
+  "zenbones",
+  "rosebones",
+  "randombones_dark",
+  "zenwritten",
+  "zenburned",
+
+  -- AvengeMedia/base46
+  "base46-yoru",
+  "base46-ashes",
+  "base46-rxyhn",
+  "base46-embark",
+  "base46-falcon",
+  "base46-radium",
+  "base46-vesper",
+  "base46-flexoki",
+  "base46-zenburn",
+  "base46-eldritch",
+  "base46-hiberbee",
+  "base46-mountain",
+  "base46-rosepine",
+  "base46-carbonfox",
+  "base46-gorgoroth",
+  "base46-nightlamp",
+  "base46-oxocarbon",
+  "base46-palenight",
+  "base46-slatewave",
+  "base46-tokyodark",
+  "base46-gatekeeper",
+  "base46-mito-laser",
+  "base46-monochrome",
+  "base46-poimandres",
+  "base46-tokyonight",
+  "base46-sweetpastel",
+  "base46-vscode_dark",
+  "base46-chadracula-evondev",
+  "base46-dark_horizon",
+  "base46-darcula-dark",
+  "base46-flouromachine",
+  "base46-penumbra_dark",
+  "base46-seoul256_dark",
+  "base46-obsidian-ember",
+  "base46-solarized_dark",
+  "base46-midnight_breeze",
+  "base46-solarized_osaka",
+  "base46-ayu_dark",
+  "base46-chadtain",
+  "base46-default-dark",
+  "base46-tomorrow_night",
+  "base46-kanagawa-dragon",
+  "base46-kanagawa",
+  "base46-aquarium",
+  "base46-chadracula",
+  "base46-onenord",
+  "base46-pastelDark",
+  "base46-pastelbeans",
+  "base46-starlight",
+  "base46-oceanic-light",
+
+  "base46-",
+  "base46-",
+  "base46-",
+
+  -- catppuccin/nvim
+  "catppuccin",
+  "catppuccin-nvim",
+  "catppuccin-latte", -- latte is better on base46
+
+  -- Mofiqul/dracula.nvim
+  "dracula-soft",
+
+  -- harshrajsachan/omni.nvim
+  "ember",
+  "blossom",
+  "blackout",
+
+  -- EdenEast/nightfox.nvim
+  "duskfox",
+  "nordfox",
+  "terafox",
+  "carbonfox",
+
+  -- projekt0n/github-nvim-theme
+  "github_dark_colorblind",
+  "github_dark_tritanopia",
+  "github_dark_dimmed",
+  "github_dark_default",
+  "github_dark_high_contrast",
+
+  -- rebelot/kanagawa.nvim
+  "kanagawa-dragon",
+  "kanagawa-lotus",
+  "kanagawa-wave",
 }
 
 M.exclude_from_dark = {
@@ -41,7 +179,12 @@ M.exclude_from_dark = {
   "zellner",
   "dawnfox",
   "delek",
-  "catppuccin-latte"
+
+  -- AvengeMedia/base46
+  "base46-catppuccin-latte",
+  "base46-rosepine-dawn",
+  "base46-catppuccin", -- official catppuccin theme is better in dark
+  "base46-sunrise_breeze",
 }
 
 M.exclude_from_light = {
@@ -83,9 +226,10 @@ M.exclude_from_light = {
   "moss",
   "dusk",
   "frost",
-  "blossom",
-  "ember",
   "velvet",
+
+  -- AvengeMedia/base46
+  "base46-rosepine-moon",
 }
 
 M.exclude_terms_from_dark = {
@@ -100,24 +244,24 @@ M.exclude_terms_from_light = {
 local set_theme = function()
   local action_state = require("telescope.actions.state")
   local entry = action_state.get_selected_entry()
-  if not entry or not entry[1] then
+  if not entry or not entry.value then
     return
   end
-  pcall(vim.cmd.colorscheme, entry[1])
+  pcall(vim.cmd.colorscheme, entry.value)
 end
 
 -- Write config to `current-theme.lua` to persist theme
 local write_config = function()
   local action_state = require("telescope.actions.state")
   local entry = action_state.get_selected_entry()
-  if not entry or not entry[1] then
+  if not entry or not entry.value then
     return
   end
   local file = assert(io.open(theme_file, "w"))
 
   local current_background = vim.o.background or "dark"
   file:write('vim.opt.background = "' .. current_background .. '"\n')
-  file:write('vim.cmd("colorscheme ' .. entry[1] .. '")\n')
+  file:write('vim.cmd("colorscheme ' .. entry.value .. '")\n')
   file:close()
 end
 
@@ -168,11 +312,25 @@ local function pick(title, excluded, excluded_terms, background)
   local actions = require("telescope.actions")
   local action_state = require("telescope.actions.state")
 
+  local favorites = read_favorites()
+  local favorites_set = {}
+  for _, f in ipairs(favorites) do
+    favorites_set[f] = true
+  end
+
+  local results = themes
+  local entry_maker = function(theme)
+    local is_fav = favorites_set[theme]
+    return {
+      value = theme,
+      display = is_fav and ("fav: " .. theme) or theme,
+      ordinal = is_fav and ("fav " .. theme) or theme,
+    }
+  end
+
   local old_theme = vim.g.colors_name or "default"
   local old_background = vim.opt.background or "dark"
 
-  -- Find the currently applied theme in this filtered list so we can
-  -- preselect it; fall back to the first item if it isn't present.
   local default_selection_index = 1
   for i, theme in ipairs(themes) do
     if theme == old_theme then
@@ -190,9 +348,11 @@ local function pick(title, excluded, excluded_terms, background)
       .new({}, {
         prompt_title = title,
         default_selection_index = default_selection_index,
+        selection_strategy = "row",
 
         finder = require("telescope.finders").new_table({
-          results = themes,
+          results = results,
+          entry_maker = entry_maker,
         }),
 
         sorter = require("telescope.config").values.generic_sorter({}),
@@ -202,12 +362,6 @@ local function pick(title, excluded, excluded_terms, background)
         attach_mappings = function(prompt_bufnr, map)
           local picker = action_state.get_current_picker(prompt_bufnr)
 
-          -- Fires every time Telescope finishes (re)filtering results —
-          -- including when the prompt goes back to 0 characters — and
-          -- also once right after the picker opens with its initial
-          -- selection. This keeps the applied theme and the picker's
-          -- selected row in sync at all times, instead of racing with
-          -- Telescope's async result processing like TextChangedI did.
           picker:register_completion_callback(apply_current)
 
           map("i", "<Down>", function()
@@ -217,6 +371,34 @@ local function pick(title, excluded, excluded_terms, background)
           map("i", "<Up>", function()
             actions.move_selection_previous(prompt_bufnr)
             apply_current()
+          end)
+          map("i", "<C-a>", function()
+            local entry = action_state.get_selected_entry()
+            if not entry or not entry.value then
+              return
+            end
+            local saved_row = picker:get_selection_row()
+
+            local now_fav = toggle_favorite(entry.value)
+            favorites_set[entry.value] = now_fav
+            if now_fav then
+              entry.display = "fav: " .. entry.value
+              entry.ordinal = "fav " .. entry.value
+            else
+              entry.display = entry.value
+              entry.ordinal = entry.value
+            end
+
+            local previous_callbacks = vim.list_extend({}, picker._completion_callbacks or {})
+            picker:register_completion_callback(function(p)
+              p._completion_callbacks = previous_callbacks
+              if p.manager then
+                p:set_selection(saved_row)
+              end
+            end)
+
+            picker:refresh()
+            vim.notify(now_fav and ("★ " .. entry.value) or ("☆ " .. entry.value))
           end)
           map("i", "<CR>", function()
             apply_current()
@@ -239,7 +421,7 @@ function M.pick_dark()
   pick(
     "Dark Themes",
     vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_from_dark),
-    vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_terms_from_dark),
+    M.exclude_terms_from_dark,
     "dark"
   )
 end
@@ -248,7 +430,7 @@ function M.pick_light()
   pick(
     "Light Themes",
     vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_from_light),
-    vim.list_extend(vim.deepcopy(M.common_exclude), M.exclude_terms_from_light),
+    M.exclude_terms_from_light,
     "light"
   )
 end

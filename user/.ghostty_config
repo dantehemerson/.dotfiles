@@ -24,13 +24,17 @@ shell-integration = zsh
 
 # theme = django reborn again
 # theme = 0x96f
-# theme = iTerm2 Dark Background
+#theme = iTerm2 Dark Background
 theme = Material Darker
 bold-color = bright
 
 font-family = Maple Mono
 font-feature = cv01, cv35
 font-size = 12
-cursor-style-blink = true
-adjust-cursor-thickness = 2
+# cursor-style-blink = true
+# adjust-cursor-thickness = 2
+
+custom-shader-animation = always
+custom-shader = shaders/cursor_warp.glsl
+custom-shader = shaders/ripple_cursor.glsl
 
