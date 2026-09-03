@@ -4,8 +4,6 @@ return {
   config = function()
     require("lualine").setup({
       options = {
-        icons_enabled = true,
-        theme = "auto",
         component_separators = "",
         section_separators = "",
       },
@@ -62,7 +60,7 @@ return {
             cond = function()
               return vim.o.columns > 85
             end,
-            color = "lualine_b_normal"
+            color = "lualine_c_normal"
           },
         },
       },

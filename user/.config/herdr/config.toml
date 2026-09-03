@@ -1,7 +1,7 @@
 onboarding = false
 
 [theme]
-name = "catppuccin"
+name = "dracula"
 auto_switch = false
 
 [theme.custom]
@@ -26,6 +26,13 @@ key = "prefix+g"
 type = "popup"
 command = "lazygit"
 width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+y"
+type = "popup"
+command = "yazi"
+width = "70%"
 height = "90%"
 
 [[keys.command]]

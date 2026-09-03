@@ -12,14 +12,12 @@ return {
     dependencies = "rktjmp/lush.nvim",
   },
   {
-    "catppuccin/nvim",
-    name = "catppuccin"
-  },
-  {
     "AvengeMedia/base46",
     opts = {
       nvchad = {
-        telescope_style = "borderless"
+        cmp_style = "atom_colored",
+        telescope_style = "borderless",
+        statusline_theme = nil
       }
     }
   },

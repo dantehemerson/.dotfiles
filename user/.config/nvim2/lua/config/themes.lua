@@ -149,6 +149,13 @@ M.common_exclude = {
   -- harshrajsachan/omni.nvim
   "ember",
   "blossom",
+  "blackout",
+
+  -- EdenEast/nightfox.nvim
+  "duskfox",
+  "nordfox",
+  "terafox",
+  "carbonfox",
 
   -- projekt0n/github-nvim-theme
   "github_dark_colorblind",
