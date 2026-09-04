@@ -69,7 +69,7 @@ return {
       },
       marks = {
         Cursor = {
-          text = "━"
+          text = "▃"
         }
         ,
         GitAdd = {

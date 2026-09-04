@@ -30,18 +30,19 @@ vim.opt.showmode = false
 vim.opt.undofile = true
 
 vim.diagnostic.config({
-  virtual_text = false,
-
-  virtual_lines = {
+  -- Show diagnostic text to the right, only on the current line
+  virtual_text = {
     current_line = true,
   },
 
+  -- Don't show diagnostics below the line
+  virtual_lines = false,
+
+  -- Don't underline the problematic code
+  underline = false,
+
   signs = true,
-
-  underline = true,
-
   update_in_insert = false,
-
   severity_sort = true,
 
   float = {
