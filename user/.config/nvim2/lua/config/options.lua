@@ -14,7 +14,7 @@ vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.showmode = false
--- vim.opt.guicursor = "n-v-c:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver25-blinkwait700-blinkoff400-blinkon250"
+vim.opt.guicursor = "n-v-c:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver25-blinkwait700-blinkoff400-blinkon250"
 vim.opt.ignorecase = true -- Ignore case
 vim.opt.smartcase = true  -- Don't ignore case with capitals
 vim.opt.tabstop = 2       -- Number of spaces tabs count for
@@ -56,6 +56,8 @@ vim.opt.cmdheight = 0
 -- Show recording line while using it
 vim.cmd [[ autocmd RecordingEnter * set cmdheight=1 ]]
 vim.cmd [[ autocmd RecordingLeave * set cmdheight=0 ]]
+
+vim.opt.shortmess:append("W")
 
 vim.opt.winborder = "rounded"
 vim.opt.pumborder = "rounded"

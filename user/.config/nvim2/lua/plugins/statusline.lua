@@ -37,7 +37,7 @@ return {
         },
 
         lualine_x = {
-          { "progress" },
+          -- { "progress" }, -- Replaced by petertriho/nvim-scrollbar
           { "location" }
         },
         lualine_y = {

@@ -1,3 +1,7 @@
+local scrollbar_color = vim.o.background == "dark"
+    and "#ffffff"
+    or "#000000";
+
 return {
   {
     "nvim-tree/nvim-web-devicons",
@@ -52,4 +56,43 @@ return {
       },
     },
   },
+  {
+    "petertriho/nvim-scrollbar",
+    opts = {
+      hide_if_all_visible = true,
+      handle = {
+        text = " ",
+        blend = 70,
+        color = scrollbar_color,
+        color_nr = "red",
+        highlight = "blue",
+      },
+      marks = {
+        Cursor = {
+          text = "━"
+        }
+        ,
+        GitAdd = {
+          text = "▎",
+          priority = 10,
+        },
+        GitChange = {
+          text = "▎",
+          priority = 9,
+        },
+        GitDelete = {
+          text = "▎",
+          priority = 10,
+        },
+      },
+      handlers = {
+        handle = true,
+        cursor = true,
+        diagnostic = false,
+        gitsigns = true, -- Requires gitsigns
+        search = false,  -- Requires hlslens
+        ale = false,     -- Requires ALE
+      }
+    }
+  }
 }
