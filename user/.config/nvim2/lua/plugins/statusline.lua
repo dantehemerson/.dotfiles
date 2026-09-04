@@ -28,20 +28,18 @@ return {
             path = 4,
             padding = { left = 0, right = 1 },
             symbols = {
-              modified = '',
-              readonly = '',
-              unnamed = '[No Name]',
-              newfile = '[New]',
-            }
+              modified = "●",
+              readonly = "",
+              unnamed = "[No Name]",
+              newfile = "[New]",
+            },
           },
         },
-
         lualine_x = {
           -- { "progress" }, -- Replaced by petertriho/nvim-scrollbar
-          { "location" }
+          { "location" },
         },
-        lualine_y = {
-        },
+        lualine_y = {},
         lualine_z = {
           {
             function()
@@ -60,7 +58,7 @@ return {
             cond = function()
               return vim.o.columns > 85
             end,
-            color = "lualine_c_normal"
+            color = "lualine_c_normal",
           },
         },
       },
