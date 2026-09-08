@@ -41,7 +41,7 @@
     "bindings": {
       // Double-tap Space opens the file finder (LazyVim-style).
       // A single Space still falls through to the default vim::WrappingRight.
-      "space space": "file_finder::Toggle",
+      "space f d": "file_finder::Toggle",
 
       // Toggles the file explorer (project panel).
       "space e": "project_panel::ToggleFocus",
@@ -103,12 +103,8 @@
 
       "space ,": "tab_switcher::Toggle",
 
-      // Files:
-      "space f f": [
-        // Or `ctrl-p`
-        "task::Spawn",
-        { "task_name": "Television File Finder", "reveal_target": "center" },
-      ],
+      "ctrl-.": "pane::AlternateFile",
+
 
       // Search
       "space /": "workspace::NewSearch",
