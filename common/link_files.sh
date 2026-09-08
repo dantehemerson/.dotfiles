@@ -23,6 +23,13 @@ link "$DOTFILES_DIR/user/.ghostty_config" "$HOME/.config/ghostty/config"
 # Git
 link "$DOTFILES_DIR/user/.gitconfig" "$HOME/.gitconfig" $__DOT_GIT__LINKING_MODE
 
+# Lazygit
+if [[ "$CURRENT_OS" == "macos" ]]; then
+  link "$DOTFILES_DIR/user/.config/lazygit/config.yml" "$HOME/Library/Application Support/lazygit/config.yml"
+else
+  link "$DOTFILES_DIR/user/.config/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
+fi
+
 # Vim
 link "$DOTFILES_DIR/user/.vimrc" "$HOME/.vimrc"
 
