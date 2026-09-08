@@ -19,6 +19,7 @@ link "$DOTFILES_DIR/user/.config/starship.toml" "$HOME/.config/starship.toml"
 
 # Ghostty
 link "$DOTFILES_DIR/user/.ghostty_config" "$HOME/.config/ghostty/config"
+link "$DOTFILES_DIR/user/.config/ghostty/shaders" "$HOME/.config/ghostty/shaders"
 
 # Git
 link "$DOTFILES_DIR/user/.gitconfig" "$HOME/.gitconfig" $__DOT_GIT__LINKING_MODE
