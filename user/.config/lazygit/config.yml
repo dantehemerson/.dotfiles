@@ -1,0 +1,16 @@
+gui:
+  nerdFontsVersion: '3'
+  sidePanelWidth: 0.2
+
+git:
+  diffRenderers:
+    - name: diffview
+      type: stdinFilter
+      colorArg: never
+      command: /Users/d/coding/diff_for_lazygit/target/debug/difftonic --theme system
+
+    - command: delta --dark --paging=never --line-numbers --syntax-theme="Visual Studio Dark+"
+    - type: rawGit # git's default diff
+      name: default
+    - command: diff-so-fancy
+
