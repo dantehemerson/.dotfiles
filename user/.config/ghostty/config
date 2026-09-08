@@ -40,3 +40,10 @@ cursor-style-blink = true
 custom-shader = shaders/cursor_warp.glsl
 custom-shader = shaders/ripple_cursor.glsl
 
+# crt style:
+#custom-shader = shaders/crt.glsl
+#custom-shader = shaders/bettercrt.glsl
+
+#custom-shader = shaders/dither.glsl
+
+
