@@ -18,7 +18,7 @@ link "$DOTFILES_DIR/user/.bash_profile" "$HOME/.bash_profile"
 link "$DOTFILES_DIR/user/.config/starship.toml" "$HOME/.config/starship.toml"
 
 # Ghostty
-link "$DOTFILES_DIR/user/.ghostty_config" "$HOME/.config/ghostty/config"
+link "$DOTFILES_DIR/user/.config/ghostty/config" "$HOME/.config/ghostty/config"
 link "$DOTFILES_DIR/user/.config/ghostty/shaders" "$HOME/.config/ghostty/shaders"
 
 # Git
