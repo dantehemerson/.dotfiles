@@ -33,14 +33,14 @@ return {
               unnamed = "[No Name]",
               newfile = "[New]",
             },
-            fmt = function(str)
-              local ignored = {
-                ["[No Name]"] = true,
-                ["[New]"] = true,
-                ["fffile search"] = true,
-              }
-              return ignored[str] and str or "./" .. str
-            end,
+            -- fmt = function(str)
+            --   local ignored = {
+            --     ["[No Name]"] = true,
+            --     ["[New]"] = true,
+            --     ["fffile search"] = true,
+            --   }
+            --   return ignored[str] and str or "./" .. str
+            -- end,
           },
         },
         lualine_x = {

@@ -31,6 +31,13 @@ else
   link "$DOTFILES_DIR/user/.config/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
 fi
 
+# Mouseless
+if [[ "$CURRENT_OS" == "macos" ]]; then
+  link "$DOTFILES_DIR/user/.config/mouseless/.config.yml" "$HOME/Library/Application Support/Mouseless/configs/config.yaml"
+else
+  link "$DOTFILES_DIR/user/.config/mouseless/.config.yml" "~/.var/app/net.sonuscape.mouseless/data/mouseless/configs/config.yaml"
+fi
+
 # Vim
 link "$DOTFILES_DIR/user/.vimrc" "$HOME/.vimrc"
 
