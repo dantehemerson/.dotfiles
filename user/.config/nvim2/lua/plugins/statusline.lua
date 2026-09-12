@@ -25,7 +25,7 @@ return {
             "filename",
             file_status = true,
             gui = "bold",
-            path = 4,
+            path = 3,
             padding = { left = 0, right = 1 },
             symbols = {
               modified = "●",

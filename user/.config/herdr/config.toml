@@ -47,10 +47,8 @@ prompt_new_tab_name = false
 show_agent_labels_on_pane_borders = true
 right_click_passthrough_modifier = "alt"
 pane_scrollbars = false
+pane_borders = "always"
 
 [ui.sound]
 # Play sounds when agents change state in background workspaces
 enabled = true
-
-[experimental]
-kitty_graphics = true

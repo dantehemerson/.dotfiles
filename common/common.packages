@@ -65,6 +65,7 @@ superfile[os.macos]
 superfile[distro.arch]
 bat
 lazygit
+dantehemerson/tap/difftonic[os.macos]
 ripgrep
 tmux
 fzf
