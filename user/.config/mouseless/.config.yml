@@ -35,7 +35,7 @@ excluded_input_devices: []
 general_settings:
   automatically_check_for_updates: true
   check_for_preview_releases: false
-  hide_welcome_screen: false
+  hide_welcome_screen: true
   ignore_update_to_version: null
 grid_configs:
 - always_show_subgrid: false
