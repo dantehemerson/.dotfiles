@@ -25,7 +25,7 @@ return {
             "filename",
             file_status = true,
             gui = "bold",
-            path = 4,
+            path = 1,
             padding = { left = 0, right = 1 },
             symbols = {
               modified = "●",
@@ -33,10 +33,17 @@ return {
               unnamed = "[No Name]",
               newfile = "[New]",
             },
+            -- fmt = function(str)
+            --   local ignored = {
+            --     ["[No Name]"] = true,
+            --     ["[New]"] = true,
+            --     ["fffile search"] = true,
+            --   }
+            --   return ignored[str] and str or "./" .. str
+            -- end,
           },
         },
         lualine_x = {
-          -- { "progress" }, -- Replaced by petertriho/nvim-scrollbar
           { "location" },
         },
         lualine_y = {},

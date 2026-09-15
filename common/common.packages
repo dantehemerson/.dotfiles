@@ -65,6 +65,7 @@ superfile[os.macos]
 superfile[distro.arch]
 bat
 lazygit
+dantehemerson/tap/difftonic[os.macos]
 ripgrep
 tmux
 fzf
@@ -98,3 +99,5 @@ zed[distro.arch]
 docker[distro.arch]
 docker-compose[distro.arch]
 docker-buildx[distro.arch]
+
+uv[os.macos]
