@@ -48,3 +48,7 @@ custom-shader = shaders/ripple_cursor.glsl
 #custom-shader = shaders/dither.glsl
 
 
+
+# Herdr Icon Agent UI: agent logos in the herdr sidebar
+font-family = "Herdr Agent Icons Max"
+font-codepoint-map = U+E1A0-U+E1B0=Herdr Agent Icons Max

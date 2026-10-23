@@ -1,20 +1,17 @@
 onboarding = false
 
 [theme]
-name = "tokyo-night"
+name = "vesper"
 auto_switch = false
 
 [theme.custom]
 panel_bg = "reset"
 accent = "#00ffff"
-active_row_bg = "darkgrey"
+active_row_bg = "#2e2e2e"
 selection_bg = "darkgray"
 green = "#a6e3a1"
-blue = "reset"
-red = "reset"
-yellow = "reset"
-surface0 = "yellow"
-text = "white"
+text = "#00ff00"
+mauve = "#c792eb"
 
 
 [keys]
@@ -51,7 +48,8 @@ command = "dantehemerson.last-tab.toggle"
 description = "last tab"
 
 [ui]
-sidebar_width=30
+agent_panel_sort = "spaces"
+sidebar_width=36
 prompt_new_tab_name = false
 show_agent_labels_on_pane_borders = true
 right_click_passthrough_modifier = "alt"
@@ -66,25 +64,79 @@ pane_gaps = true
 tab_bar_position = "top"
 
 
-[ui.sidebar.agents]
-row_gap = 0
-rows = [
-  ["state_icon", "workspace"],
-  ["state_text", "agent"],
-]
-
-[ui.sidebar.spaces]
-row_gap = 0
-rows = [
-  ["state_icon", "workspace"],
-  ["branch", "git_status"],
-]
-
-
 [ui.sound]
 # Play sounds when agents change state in background workspaces
 enabled = true
 
 [ui.toast]
 delivery = "terminal"
+
+# Workspace -> tab -> agent layout; merge these sections into Herdr config.toml.
+[ui.sidebar.agents]
+row_gap = 0
+rows = [
+  [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_terminals", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
+  [
+    { token = "$hs_logo", fg = "#A8ADB9", dim = false },
+    # { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_working", fg = "#A8ADB9", dim = false },
+    { token = "$hs_working_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_blocked", fg = "#F08080", dim = false },
+    { token = "$hs_blocked_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_done", fg = "#91C788", dim = false },
+    { token = "$hs_done_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_idle", fg = "#A8ADB9", dim = false },
+    { token = "$hs_idle_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_unknown", fg = "#A8ADB9", dim = false },
+    { token = "$hs_unknown_dim", fg = "#A8ADB9", dim = true },
+  ],
+  [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
+  [{ token = "$hs_gap" }],
+]
+
+[ui.sidebar.agents.rows_by_agent]
+claude = [
+  [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_terminals", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
+  [
+    { token = "$hs_logo", fg = "#E68A67", dim = false },
+    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_working", fg = "#E68A67", dim = false },
+    { token = "$hs_working_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_blocked", fg = "#F08080", dim = false },
+    { token = "$hs_blocked_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_done", fg = "#91C788", dim = false },
+    { token = "$hs_done_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_idle", fg = "#A8ADB9", dim = false },
+    { token = "$hs_idle_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_unknown", fg = "#A8ADB9", dim = false },
+    { token = "$hs_unknown_dim", fg = "#A8ADB9", dim = true },
+  ],
+  [{ token = "$hs_title", fg = "#E68A67", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
+  [{ token = "$hs_gap" }],
+]
+codex = [
+  [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_terminals", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
+  [
+    { token = "$hs_logo", fg = "#A78BFA", dim = false },
+    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_working", fg = "#A78BFA", dim = false },
+    { token = "$hs_working_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_blocked", fg = "#F08080", dim = false },
+    { token = "$hs_blocked_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_done", fg = "#91C788", dim = false },
+    { token = "$hs_done_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_idle", fg = "#A8ADB9", dim = false },
+    { token = "$hs_idle_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_unknown", fg = "#A8ADB9", dim = false },
+    { token = "$hs_unknown_dim", fg = "#A8ADB9", dim = true },
+  ],
+  [{ token = "$hs_title", fg = "#A78BFA", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
+  [{ token = "$hs_gap" }],
+]
 
