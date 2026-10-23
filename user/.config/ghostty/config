@@ -17,7 +17,7 @@ title = Terminator
 window-theme = ghostty
 window-decoration = none
 macos-titlebar-style = hidden
-window-padding-x = 3
+window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 shell-integration = zsh
@@ -29,6 +29,7 @@ theme = Material Darker
 bold-color = bright
 
 font-family = Maple Mono
+# font-family = JetBrainsMono Nerd Font
 font-feature = cv01, cv35
 font-size = 12
 cursor-style-blink = true

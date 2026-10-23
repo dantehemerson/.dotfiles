@@ -1,18 +1,20 @@
 onboarding = false
 
 [theme]
-name = "gruvbox"
+name = "tokyo-night"
 auto_switch = false
 
 [theme.custom]
 panel_bg = "reset"
 accent = "#00ffff"
-active_row_bg = "#ff0000"
-selection_bg = "#00ff00"
+active_row_bg = "darkgrey"
+selection_bg = "darkgray"
 green = "#a6e3a1"
-blue = "#0000ff"
-red = "#0000ff"
-yellow = "#f9e2af"
+blue = "reset"
+red = "reset"
+yellow = "reset"
+surface0 = "yellow"
+text = "white"
 
 
 [keys]
@@ -54,23 +56,19 @@ prompt_new_tab_name = false
 show_agent_labels_on_pane_borders = true
 right_click_passthrough_modifier = "alt"
 pane_scrollbars = false
-pane_borders = "always"
+pane_borders = false
 
-tab_bar_right = [
-  { type = "zoom" },
-  { type = "hostname" },
-  { type = "datetime", format = "%H:%M" },
-  { type = "text", text = "prod" },
-]
+tab_bar_right = [{ type = "text", text = "Good Moorning Dante!" }]
 tab_bar_right_separator = " · "
 
-status_indicators = "symbols"
+status_indicators = "dots"
+tab_bar_position = "top"
 
 
 [ui.sidebar.agents]
 row_gap = 0
 rows = [
-  ["state_icon", "machine", "workspace", "tab"],
+  ["state_icon", "workspace"],
   ["state_text", "agent"],
 ]
 
@@ -88,3 +86,4 @@ enabled = true
 
 [ui.toast]
 delivery = "terminal"
+
