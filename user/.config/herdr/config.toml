@@ -1,12 +1,18 @@
 onboarding = false
 
 [theme]
-name = "dracula"
+name = "tokyo-night-day"
 auto_switch = false
 
 [theme.custom]
 panel_bg = "reset"
 accent = "#00ffff"
+active_row_bg = "#2e2e2e"
+selection_bg = "darkgray"
+green = "#a6e3a1"
+text = "#00ff00"
+mauve = "#c792eb"
+
 
 [keys]
 prefix = "`"
@@ -42,13 +48,80 @@ command = "dantehemerson.last-tab.toggle"
 description = "last tab"
 
 [ui]
-# Immediately with generated names.
+agent_panel_sort = "spaces"
+sidebar_width=36
 prompt_new_tab_name = false
 show_agent_labels_on_pane_borders = true
 right_click_passthrough_modifier = "alt"
 pane_scrollbars = false
-pane_borders = "always"
+pane_borders = true
+
+tab_bar_right = [{ type = "text", text = "Good Moorning Dante!" }]
+tab_bar_right_separator = " · "
+
+status_indicators = "dots"
+pane_gaps = true
+tab_bar_position = "top"
+
 
 [ui.sound]
 # Play sounds when agents change state in background workspaces
 enabled = true
+
+[ui.toast]
+delivery = "terminal"
+
+# Workspace -> tab -> agent layout; merge these sections into Herdr config.toml.
+[ui.sidebar.agents]
+row_gap = 0
+rows = [
+  [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_terminals", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
+  [
+    { token = "$hs_logo", fg = "#A8ADB9", dim = false },
+    # { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
+    { token = "state_text", fg = "#A8ADB9", dim = false, rules = [
+      { equals = "working", fg = "#A8ADB9" },
+      { equals = "blocked", fg = "#F08080" },
+      { equals = "done", fg = "#91C788" },
+    ] },
+  ],
+  [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
+  [{ token = "$hs_gap" }],
+]
+
+[ui.sidebar.agents.rows_by_agent]
+claude = [
+  [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_terminals", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
+  [
+    { token = "$hs_logo", fg = "#E68A67", dim = false },
+    { token = "$hs_logo_dim", fg = "#E68A67", dim = false },
+    { token = "state_text", fg = "#A8ADB9", dim = false, rules = [
+      { equals = "working", fg = "#E68A67" },
+      { equals = "blocked", fg = "#F08080" },
+      { equals = "done", fg = "#91C788" },
+    ] },
+  ],
+  [{ token = "$hs_title", fg = "#E68A67", dim = false }, { token = "$hs_title_dim", fg = "#E68A67", dim = false }],
+  [{ token = "$hs_gap" }],
+]
+codex = [
+  [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_terminals", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
+  [
+    { token = "$hs_logo", fg = "#A78BFA", dim = false },
+    { token = "$hs_logo_dim", fg = "#A78BFA", dim = false },
+    { token = "state_text", fg = "#A8ADB9", dim = false, rules = [
+      { equals = "working", fg = "#A78BFA" },
+      { equals = "blocked", fg = "#F08080" },
+      { equals = "done", fg = "#91C788" },
+    ] },
+  ],
+  [{ token = "$hs_title", fg = "#A78BFA", dim = false }, { token = "$hs_title_dim", fg = "#A78BFA", dim = false }],
+  [{ token = "$hs_gap" }],
+]
+

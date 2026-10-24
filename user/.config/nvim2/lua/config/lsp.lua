@@ -10,7 +10,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Go to references"))
+		vim.keymap.set("n", "gr", function()
+			require("telescope.builtin").lsp_references({ show_line = false })
+		end, opts("Go to references (Telescope)"))
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts("Go to implementation"))
 
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("Show hover"))
