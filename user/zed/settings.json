@@ -7,6 +7,8 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "ui_font_family": "Maple Mono",
+  "agent_ui_font_family": "Maple Mono",
   "completions": {
     "lsp_fetch_timeout_ms": 100
   },
@@ -201,7 +203,7 @@
   "theme": {
     "mode": "dark",
     "light": "Gruvbox Light",
-    "dark": "VSCode Dark Modern",
+    "dark": "Gruvbox Material",
   },
   "theme_overrides": {
     "Shades Of Purple": {

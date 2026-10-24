@@ -13,6 +13,11 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous Search Result" })
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste Over Selection" })
 
+
+-- Copy with Command + C
+vim.keymap.set("v", "<D-c>", '"+y', { noremap = true, silent = true })
+
+
 -- Copy reference to the selection
 local function yank_file_reference()
   local start_line = vim.fn.line("v")
