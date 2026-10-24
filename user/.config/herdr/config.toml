@@ -1,7 +1,7 @@
 onboarding = false
 
 [theme]
-name = "vesper"
+name = "tokyo-night-day"
 auto_switch = false
 
 [theme.custom]
@@ -81,16 +81,11 @@ rows = [
   [
     { token = "$hs_logo", fg = "#A8ADB9", dim = false },
     # { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_working", fg = "#A8ADB9", dim = false },
-    { token = "$hs_working_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_blocked", fg = "#F08080", dim = false },
-    { token = "$hs_blocked_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_done", fg = "#91C788", dim = false },
-    { token = "$hs_done_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_idle", fg = "#A8ADB9", dim = false },
-    { token = "$hs_idle_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_unknown", fg = "#A8ADB9", dim = false },
-    { token = "$hs_unknown_dim", fg = "#A8ADB9", dim = true },
+    { token = "state_text", fg = "#A8ADB9", dim = false, rules = [
+      { equals = "working", fg = "#A8ADB9" },
+      { equals = "blocked", fg = "#F08080" },
+      { equals = "done", fg = "#91C788" },
+    ] },
   ],
   [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
   [{ token = "$hs_gap" }],
@@ -103,19 +98,14 @@ claude = [
   [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
   [
     { token = "$hs_logo", fg = "#E68A67", dim = false },
-    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_working", fg = "#E68A67", dim = false },
-    { token = "$hs_working_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_blocked", fg = "#F08080", dim = false },
-    { token = "$hs_blocked_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_done", fg = "#91C788", dim = false },
-    { token = "$hs_done_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_idle", fg = "#A8ADB9", dim = false },
-    { token = "$hs_idle_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_unknown", fg = "#A8ADB9", dim = false },
-    { token = "$hs_unknown_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_logo_dim", fg = "#E68A67", dim = false },
+    { token = "state_text", fg = "#A8ADB9", dim = false, rules = [
+      { equals = "working", fg = "#E68A67" },
+      { equals = "blocked", fg = "#F08080" },
+      { equals = "done", fg = "#91C788" },
+    ] },
   ],
-  [{ token = "$hs_title", fg = "#E68A67", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
+  [{ token = "$hs_title", fg = "#E68A67", dim = false }, { token = "$hs_title_dim", fg = "#E68A67", dim = false }],
   [{ token = "$hs_gap" }],
 ]
 codex = [
@@ -124,19 +114,14 @@ codex = [
   [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
   [
     { token = "$hs_logo", fg = "#A78BFA", dim = false },
-    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_working", fg = "#A78BFA", dim = false },
-    { token = "$hs_working_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_blocked", fg = "#F08080", dim = false },
-    { token = "$hs_blocked_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_done", fg = "#91C788", dim = false },
-    { token = "$hs_done_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_idle", fg = "#A8ADB9", dim = false },
-    { token = "$hs_idle_dim", fg = "#A8ADB9", dim = true },
-    { token = "$hs_unknown", fg = "#A8ADB9", dim = false },
-    { token = "$hs_unknown_dim", fg = "#A8ADB9", dim = true },
+    { token = "$hs_logo_dim", fg = "#A78BFA", dim = false },
+    { token = "state_text", fg = "#A8ADB9", dim = false, rules = [
+      { equals = "working", fg = "#A78BFA" },
+      { equals = "blocked", fg = "#F08080" },
+      { equals = "done", fg = "#91C788" },
+    ] },
   ],
-  [{ token = "$hs_title", fg = "#A78BFA", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
+  [{ token = "$hs_title", fg = "#A78BFA", dim = false }, { token = "$hs_title_dim", fg = "#A78BFA", dim = false }],
   [{ token = "$hs_gap" }],
 ]
 
