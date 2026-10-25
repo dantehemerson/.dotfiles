@@ -76,7 +76,7 @@ pane_borders = "always"
 tab_bar_right = [{ type = "text", text = "Good Moorning Dante!" }]
 tab_bar_right_separator = " · "
 
-status_indicators = "symbols"
+status_indicators = "dots"
 pane_gaps = true
 tab_bar_position = "top"
 
@@ -92,42 +92,39 @@ delivery = "terminal"
 [ui.sidebar.agents]
 row_gap = 0
 rows = [
-  [{ token = "workspace", bold = true }],
-  [{ token = "terminal_title_stripped" }],
+  [{ token = "workspace", bold = false }],
+  [{ token = "terminal_title_stripped", bold = true }],
   [
     { token = "state_icon" },
-    { token = "agent" },
     { token = "state_text" },
+    { token = "agent" },
   ],
 ]
 
 [ui.sidebar.agents.rows_by_agent]
 claude = [
-  [{ token = "workspace", bold = true }],
-  [{ token = "terminal_title_stripped" }],
+  ["state_icon", { token = "workspace", bold = false }],
+  [{ token = "terminal_title_stripped", bold = true }],
   [
-    { token = "state_icon" },
-    { token = "agent" },
     { token = "state_text" },
+    { token = "agent" },
   ],
 ]
 codex = [
-  [{ token = "workspace", bold = true }],
-  [{ token = "terminal_title_stripped" }],
+  ["state_icon", { token = "workspace", bold = false }],
+  [{ token = "terminal_title_stripped", bold = true }],
   [
-    { token = "state_icon" },
-    { token = "agent" },
     { token = "state_text" },
+    { token = "agent" },
   ],
 ]
 
 opencode = [
-  [{ token = "workspace", bold = true }],
-  [{ token = "terminal_title_stripped" }],
+  ["state_icon", { token = "workspace", bold = false }],
+  [{ token = "terminal_title_stripped", fg = "#888" }],
   [
-    { token = "state_icon" },
-    { token = "agent" },
     { token = "state_text" },
+    { token = "agent" },
   ],
 ]
 
