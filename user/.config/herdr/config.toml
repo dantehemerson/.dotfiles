@@ -78,12 +78,8 @@ rows = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
   [
     { token = "$hs_logo", fg = "#A8ADB9", dim = false },
-    # { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
-    { token = "state_text", fg = "#A8ADB9", dim = false, rules = [
-      { equals = "working", fg = "#A8ADB9" },
-      { equals = "blocked", fg = "#F08080" },
-      { equals = "done", fg = "#91C788" },
-    ] },
+    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
+    { token = "state_text", dim = false },
   ],
   [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
   [{ token = "$hs_gap" }],
@@ -94,26 +90,18 @@ claude = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
   [
     { token = "$hs_logo", fg = "#E68A67", dim = false },
-    { token = "$hs_logo_dim", fg = "#E68A67", dim = false },
-    { token = "state_text", fg = "#A8ADB9", dim = false, rules = [
-      { equals = "working", fg = "#E68A67" },
-      { equals = "blocked", fg = "#F08080" },
-      { equals = "done", fg = "#91C788" },
-    ] },
+    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
+    { token = "state_text", dim = false },
   ],
-  [{ token = "$hs_title", fg = "#E68A67", dim = false }, { token = "$hs_title_dim", fg = "#E68A67", dim = false }],
+  [{ token = "$hs_title", fg = "#E68A67", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
   [{ token = "$hs_gap" }],
 ]
 codex = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
   [
     { token = "$hs_logo", fg = "#A78BFA", dim = false },
-    { token = "$hs_logo_dim", fg = "#A78BFA", dim = false },
-    { token = "state_text", fg = "#A8ADB9", dim = false, rules = [
-      { equals = "working", fg = "#A78BFA" },
-      { equals = "blocked", fg = "#F08080" },
-      { equals = "done", fg = "#91C788" },
-    ] },
+    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
+    { token = "state_text", dim = false },
   ],
   [{ token = "$hs_title", fg = "#A78BFA", dim = false }, { token = "$hs_title_dim", fg = "#A78BFA", dim = false }],
   [{ token = "$hs_gap" }],
@@ -124,11 +112,7 @@ opencode = [
   [
     { token = "$hs_logo", fg = "#A8ADB9", dim = false },
     { token = "$hs_logo_dim", fg = "#A8ADB9", dim = false },
-    { token = "state_text", fg = "#A8ADB9", dim = false, rules = [
-      { equals = "working", fg = "#A8ADB9" },
-      { equals = "blocked", fg = "#F08080" },
-      { equals = "done", fg = "#91C788" },
-    ] },
+    { token = "state_text", dim = false },
   ],
   [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = false }],
   [{ token = "$hs_gap" }],
