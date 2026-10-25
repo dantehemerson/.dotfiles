@@ -58,6 +58,12 @@ type = "plugin_action"
 command = "dantehemerson.last-tab.toggle"
 description = "last tab"
 
+[[keys.command]]
+key = "prefix+o"
+type = "plugin_action"
+command = "persiyanov.reviewr.toggle"
+description = "Toggle reviewr"
+
 [ui]
 agent_panel_sort = "spaces"
 sidebar_width=36
