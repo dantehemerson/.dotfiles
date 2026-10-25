@@ -102,6 +102,7 @@ claude = [
   [
     { token = "$hs_logo", fg = "#E68A67", dim = false },
     { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
+    { token = "agent", dim = false },
     { token = "state_text", dim = false },
   ],
   [{ token = "$hs_title", fg = "#E68A67", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
@@ -115,15 +116,15 @@ codex = [
     { token = "state_text", dim = false },
   ],
   [{ token = "$hs_title", fg = "#A78BFA", dim = false }, { token = "$hs_title_dim", fg = "#A78BFA", dim = false }],
-  # [{ token = "$hs_gap" }],
 ]
 
 opencode = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
   [
-    { token = "$hs_logo", fg = "yellow", dim = false },
+    { token = "$hs_logo", fg = "#FFFFFF", dim = false },
     { token = "$hs_logo_dim", fg = "#A8ADB9", dim = false },
     { token = "agent", dim = false },
+    { token = "state_icon", dim = false },
     { token = "state_text", dim = false },
   ],
   [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = false }],
