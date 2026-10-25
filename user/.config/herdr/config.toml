@@ -7,10 +7,10 @@ auto_switch = false
 [theme.custom]
 panel_bg = "reset"
 accent = "#00ffff"
-active_row_bg = "#333"
+active_row_bg = "#31364d"
 selection_bg = "darkgray"
 green = "#a6e3a1"
-text = "#e1e8fd"
+text = "#eaeefd"
 mauve = "#c792eb"
 
 
