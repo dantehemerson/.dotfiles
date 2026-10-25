@@ -53,7 +53,7 @@ link "$DOTFILES_DIR/user/zed/keymap.json" "$HOME/.config/zed/keymap.json"
 link "$DOTFILES_DIR/user/zed/tasks.json" "$HOME/.config/zed/tasks.json"
 
 # Neovim
-link "$DOTFILES_DIR/user/.config/nvim" "$HOME/.config/nvim"
+link "$DOTFILES_DIR/user/.config/nvim2" "$HOME/.config/nvim"
 link "$DOTFILES_DIR/user/.config/nvim2" "$HOME/.config/nvim2"
 
 # Mise

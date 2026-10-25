@@ -5,11 +5,6 @@
 *.uuid
 .DS_Store
 .env.sh
-user/.config/nvim/LICENSE
-user/.config/nvim/README.md
-user/.config/nvim/lazy-lock.json
-user/.config/nvim/log.txt
-user/.config/nvim/lazyvim.json
 
 
 #Ignore vscode AI rules
@@ -19,4 +14,3 @@ user/.config/nvim/lazyvim.json
 # Ghostty shaders
 user/.config/ghostty/shaders/*
 !user/.config/ghostty/shaders/*.glsl
-
