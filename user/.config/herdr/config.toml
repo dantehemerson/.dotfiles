@@ -7,10 +7,10 @@ auto_switch = false
 [theme.custom]
 panel_bg = "reset"
 accent = "#00ffff"
-active_row_bg = "#2e2e2e"
+active_row_bg = "#333"
 selection_bg = "darkgray"
 green = "#a6e3a1"
-text = "#00ff00"
+text = "#e1e8fd"
 mauve = "#c792eb"
 
 
@@ -122,6 +122,23 @@ codex = [
     ] },
   ],
   [{ token = "$hs_title", fg = "#A78BFA", dim = false }, { token = "$hs_title_dim", fg = "#A78BFA", dim = false }],
+  [{ token = "$hs_gap" }],
+]
+
+opencode = [
+  [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_terminals", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
+  [
+    { token = "$hs_logo", fg = "#A8ADB9", dim = false },
+    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = false },
+    { token = "state_text", fg = "#A8ADB9", dim = false, rules = [
+      { equals = "working", fg = "#A8ADB9" },
+      { equals = "blocked", fg = "#F08080" },
+      { equals = "done", fg = "#91C788" },
+    ] },
+  ],
+  [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = false }],
   [{ token = "$hs_gap" }],
 ]
 
