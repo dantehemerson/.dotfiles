@@ -59,7 +59,7 @@ pane_borders = "always"
 tab_bar_right = [{ type = "text", text = "Good Moorning Dante!" }]
 tab_bar_right_separator = " · "
 
-status_indicators = "dots"
+status_indicators = "symbols"
 pane_gaps = true
 tab_bar_position = "top"
 
@@ -76,8 +76,6 @@ delivery = "terminal"
 row_gap = 0
 rows = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_terminals", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
   [
     { token = "$hs_logo", fg = "#A8ADB9", dim = false },
     # { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
@@ -94,8 +92,6 @@ rows = [
 [ui.sidebar.agents.rows_by_agent]
 claude = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_terminals", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
   [
     { token = "$hs_logo", fg = "#E68A67", dim = false },
     { token = "$hs_logo_dim", fg = "#E68A67", dim = false },
@@ -110,8 +106,6 @@ claude = [
 ]
 codex = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_terminals", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
   [
     { token = "$hs_logo", fg = "#A78BFA", dim = false },
     { token = "$hs_logo_dim", fg = "#A78BFA", dim = false },
@@ -127,8 +121,6 @@ codex = [
 
 opencode = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_terminals", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_tab", fg = "#A8ADB9", dim = false }, { token = "$hs_tab_dim", fg = "#A8ADB9", dim = true }],
   [
     { token = "$hs_logo", fg = "#A8ADB9", dim = false },
     { token = "$hs_logo_dim", fg = "#A8ADB9", dim = false },
@@ -142,3 +134,8 @@ opencode = [
   [{ token = "$hs_gap" }],
 ]
 
+[ui.sidebar.spaces]
+rows = [
+  ["state_icon", { token = "$ws_icon" }, { token = "workspace" }],
+  ["branch"]
+]
