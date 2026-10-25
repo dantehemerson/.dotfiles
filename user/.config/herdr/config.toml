@@ -93,39 +93,40 @@ delivery = "terminal"
 row_gap = 0
 rows = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#00ffff" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
   [
     { token = "$hs_logo", fg = "#A8ADB9", dim = false },
     { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
     { token = "agent", dim = false },
     { token = "state_text", dim = false },
   ],
-  [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
 ]
 
 [ui.sidebar.agents.rows_by_agent]
 claude = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_title", fg = "#E68A67", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
   [
     { token = "$hs_logo", fg = "#E68A67", dim = false },
     { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
     { token = "agent", dim = false },
     { token = "state_text", dim = false },
   ],
-  [{ token = "$hs_title", fg = "#E68A67", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
   # [{ token = "$hs_gap" }],
 ]
 codex = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_title", fg = "#A78BFA", dim = false }, { token = "$hs_title_dim", fg = "#A78BFA", dim = false }],
   [
     { token = "$hs_logo", fg = "#A78BFA", dim = false },
     { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
     { token = "state_text", dim = false },
   ],
-  [{ token = "$hs_title", fg = "#A78BFA", dim = false }, { token = "$hs_title_dim", fg = "#A78BFA", dim = false }],
 ]
 
 opencode = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = false }],
   [
     { token = "$hs_logo", fg = "#FFFFFF", dim = false },
     { token = "$hs_logo_dim", fg = "#A8ADB9", dim = false },
@@ -133,7 +134,6 @@ opencode = [
     { token = "state_icon", dim = false },
     { token = "state_text", dim = false },
   ],
-  [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = false }],
   # [{ token = "$hs_gap" }],
 ]
 
