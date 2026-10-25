@@ -88,60 +88,53 @@ enabled = true
 [ui.toast]
 delivery = "terminal"
 
-# Workspace -> tab -> agent layout; merge these sections into Herdr config.toml.
+# Workspace -> title -> agent/status layout.
 [ui.sidebar.agents]
 row_gap = 0
 rows = [
-  [{ token = "$hs_group", bold = true, dim = false, fg = "#00ffff" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
+  [{ token = "workspace", bold = true }],
+  [{ token = "terminal_title_stripped" }],
   [
-    { token = "$hs_logo", fg = "#A8ADB9", dim = false },
-    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
-    { token = "agent", dim = false },
-    { token = "state_text", dim = false },
+    { token = "state_icon" },
+    { token = "agent" },
+    { token = "state_text" },
   ],
 ]
 
 [ui.sidebar.agents.rows_by_agent]
 claude = [
-  [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_title", fg = "#E68A67", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
+  [{ token = "workspace", bold = true }],
+  [{ token = "terminal_title_stripped" }],
   [
-    { token = "$hs_logo", fg = "#E68A67", dim = false },
-    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
-    { token = "agent", dim = false },
-    { token = "state_text", dim = false },
+    { token = "state_icon" },
+    { token = "agent" },
+    { token = "state_text" },
   ],
-  # [{ token = "$hs_gap" }],
 ]
 codex = [
-  [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_title", fg = "#A78BFA", dim = false }, { token = "$hs_title_dim", fg = "#A78BFA", dim = false }],
+  [{ token = "workspace", bold = true }],
+  [{ token = "terminal_title_stripped" }],
   [
-    { token = "$hs_logo", fg = "#A78BFA", dim = false },
-    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
-    { token = "state_text", dim = false },
+    { token = "state_icon" },
+    { token = "agent" },
+    { token = "state_text" },
   ],
 ]
 
 opencode = [
-  [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
-  [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = false }],
+  [{ token = "workspace", bold = true }],
+  [{ token = "terminal_title_stripped" }],
   [
-    { token = "$hs_logo", fg = "#FFFFFF", dim = false },
-    { token = "$hs_logo_dim", fg = "#A8ADB9", dim = false },
-    { token = "agent", dim = false },
-    { token = "state_icon", dim = false },
-    { token = "state_text", dim = false },
+    { token = "state_icon" },
+    { token = "agent" },
+    { token = "state_text" },
   ],
-  # [{ token = "$hs_gap" }],
 ]
 
 [ui.sidebar.spaces]
 rows = [
   [
   "state_icon", 
-  { token = "$ws_icon" }, 
   { token = "workspace" }],
   ["branch"]
 ]
