@@ -1,7 +1,7 @@
 onboarding = false
 
 [theme]
-name = "tokyo-night-day"
+name = "tokyo-night"
 auto_switch = false
 
 [theme.custom]
