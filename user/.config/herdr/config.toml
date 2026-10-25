@@ -9,9 +9,20 @@ panel_bg = "reset"
 accent = "#00ffff"
 active_row_bg = "#31364d"
 selection_bg = "darkgray"
-green = "#a6e3a1"
-text = "#eaeefd"
-mauve = "#c792eb"
+
+# Sidebar
+surface_dim = "#555" # Sidebar Borders
+text = "#eaeefd" # Selected Space title
+mauve = "#00ffff" # Selected branch name
+overlay0 = "#636c95" # Unselected branch and Sidebar titles/buttons
+# subtext0 = "yellow" # Unselected Space title:
+# overlay1 = "white" # Title Left(Project Icon)
+
+
+# 
+# surface0 = "red" # Unselected tab Background
+
+surface1 = "red"
 
 
 [keys]
@@ -75,14 +86,14 @@ delivery = "terminal"
 [ui.sidebar.agents]
 row_gap = 0
 rows = [
-  [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
+  [{ token = "$hs_group", bold = true, dim = false, fg = "#00ffff" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
   [
     { token = "$hs_logo", fg = "#A8ADB9", dim = false },
     { token = "$hs_logo_dim", fg = "#A8ADB9", dim = true },
+    { token = "agent", dim = false },
     { token = "state_text", dim = false },
   ],
   [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
-  [{ token = "$hs_gap" }],
 ]
 
 [ui.sidebar.agents.rows_by_agent]
@@ -94,7 +105,7 @@ claude = [
     { token = "state_text", dim = false },
   ],
   [{ token = "$hs_title", fg = "#E68A67", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = true }],
-  [{ token = "$hs_gap" }],
+  # [{ token = "$hs_gap" }],
 ]
 codex = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
@@ -104,22 +115,26 @@ codex = [
     { token = "state_text", dim = false },
   ],
   [{ token = "$hs_title", fg = "#A78BFA", dim = false }, { token = "$hs_title_dim", fg = "#A78BFA", dim = false }],
-  [{ token = "$hs_gap" }],
+  # [{ token = "$hs_gap" }],
 ]
 
 opencode = [
   [{ token = "$hs_group", bold = true, dim = false, fg = "#A8ADB9" }, { token = "$hs_group_dim", dim = true, fg = "#A8ADB9" }],
   [
-    { token = "$hs_logo", fg = "#A8ADB9", dim = false },
+    { token = "$hs_logo", fg = "yellow", dim = false },
     { token = "$hs_logo_dim", fg = "#A8ADB9", dim = false },
+    { token = "agent", dim = false },
     { token = "state_text", dim = false },
   ],
   [{ token = "$hs_title", fg = "#A8ADB9", dim = false }, { token = "$hs_title_dim", fg = "#A8ADB9", dim = false }],
-  [{ token = "$hs_gap" }],
+  # [{ token = "$hs_gap" }],
 ]
 
 [ui.sidebar.spaces]
 rows = [
-  ["state_icon", { token = "$ws_icon" }, { token = "workspace" }],
+  [
+  "state_icon", 
+  { token = "$ws_icon" }, 
+  { token = "workspace" }],
   ["branch"]
 ]
