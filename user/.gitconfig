@@ -3,7 +3,7 @@
 	email = "18385321+dantehemerson@users.noreply.github.com"
 
 [core]
-	editor = vi
+	editor = nvim
 
 [merge]
     conflictstyle = zdiff3
