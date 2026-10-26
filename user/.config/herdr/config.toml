@@ -70,6 +70,18 @@ type = "plugin_action"
 command = "dartyuhov.blink.open"
 description = "switch agent"
 
+[[keys.command]]
+key = "prefix+s"
+type = "plugin_action"
+command = "herdr-floax.toggle"
+description = "Toggle floating pane"
+
+[[keys.command]]
+key = "prefix+i"
+type = "plugin_action"
+command = "herdr-floax.instances"
+description = "List and navigate Floax sessions"
+
 [ui]
 agent_panel_sort = "spaces"
 sidebar_width=36
