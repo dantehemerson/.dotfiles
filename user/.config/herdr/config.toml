@@ -64,6 +64,12 @@ type = "plugin_action"
 command = "persiyanov.reviewr.toggle"
 description = "Toggle reviewr"
 
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "dartyuhov.blink.open"
+description = "switch agent"
+
 [ui]
 agent_panel_sort = "spaces"
 sidebar_width=36
