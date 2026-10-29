@@ -175,3 +175,6 @@ alias "compose"="docker compose"
 alias ncu2="npm-check -u"
 
 alias c="opencode"
+
+# Isolated Claude Code profile (own sessions, plugins, skills) for pstack
+alias claude-pstack='CLAUDE_CONFIG_DIR="$HOME/.claude-pstack" claude'
