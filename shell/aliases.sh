@@ -2,7 +2,7 @@ source ~/.dotfiles/utils/utils.sh
 
 alias code="code"
 
-alias vi="vim"
+alias vi="nvim"
 # alias vim="nvim"
 alias n="nvim"
 
