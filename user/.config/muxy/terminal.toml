@@ -1,6 +1,6 @@
 font_families = [
     "Maple Mono",
-    "Liga SFMono Nerd Font",
+    "Hack Nerd Font",
 ]
 font_size = 12.0
 cell_height = "0"
@@ -29,6 +29,7 @@ thicken_strength = 255
 
 [options]
 cursor_opacity = 1.0
+cursor_blink = false
 cursor_thickness = "0"
 selection_clear_on_typing = false
 selection_clear_on_copy = false
