@@ -37,7 +37,7 @@ navigate_workspace_down = "j"
 goto = "prefix+/"
 rename_tab = "prefix+,"
 rename_pane = "prefix+."
-close_pane = "prefix+backspace"
+close_pane = "prefix+v"
 
 [[keys.command]]
 key = "prefix+g"
