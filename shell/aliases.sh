@@ -2,7 +2,7 @@ source ~/.dotfiles/utils/utils.sh
 
 alias code="code"
 
-alias vi="vim"
+alias vi="nvim"
 # alias vim="nvim"
 alias n="nvim"
 
@@ -177,3 +177,6 @@ alias ncu2="npm-check -u"
 alias c="opencode"
 # Isolated opencode instance with pstack.
 alias ocp='XDG_CONFIG_HOME="$HOME/.opencode-isolated/pstack/config" XDG_DATA_HOME="$HOME/.opencode-isolated/pstack/data" XDG_STATE_HOME="$HOME/.opencode-isolated/pstack/state" XDG_CACHE_HOME="$HOME/.opencode-isolated/pstack/cache" OPENCODE_DISABLE_CLAUDE_CODE=1 OPENCODE_DISABLE_CLAUDE_CODE_SKILLS=1 opencode'
+
+# Isolated Claude Code profile (own sessions, plugins, skills) for pstack
+alias claude-pstack='CLAUDE_CONFIG_DIR="$HOME/.claude-pstack" claude'
