@@ -1,0 +1,141 @@
+commands = []
+
+[ai.commit]
+include_unstaged = true
+push = true
+
+[ai.project_pr_prompts]
+
+[ai.prompts]
+
+[ai.providers]
+
+[appearance]
+agent_sessions_pinned = true
+agent_sessions_position = "right"
+agent_sessions_providers = [
+    "Claude",
+    "Codex",
+    "Copilot",
+    "Droid",
+    "Pi",
+    "OhMyPi",
+    "Xal",
+]
+agent_sessions_visible = false
+agents_panel_detached = false
+agents_panel_dock = "left"
+agents_panel_docked_height = 708.203125
+agents_panel_grouping = "agents"
+agents_panel_icon = "agent"
+agents_panel_idle_time = false
+agents_panel_project_colors = true
+agents_panel_visible = true
+auto_expand_worktrees = false
+dark_theme = "Material Darker"
+extension_sidebar = ""
+hidden_worktrees = ["dd2d20f3633b47b794379108c4992867"]
+language = ""
+layout = "project_focused"
+light_theme = "3024 Day"
+project_recent = [
+    "dd2d20f3633b47b794379108c4992867",
+    "27432b9021414361b57dd29d9fcb24c7",
+]
+projects_without_tabs_shown = false
+remember_projects_without_tabs = false
+sidebar_collapsed_style = "icons"
+sidebar_expanded = true
+sidebar_expanded_width = 365.3828125
+sidebar_vibrancy = true
+sidebar_vibrancy_level = 50
+status_bar_visible = true
+tab_focused_focus = false
+tab_focused_project_order = "manual"
+tips_visible = false
+worktree_recent = [
+    "dd2d20f3633b47b794379108c4992867",
+    "27432b9021414361b57dd29d9fcb24c7",
+]
+worktree_recent_order = true
+worktree_show_unread = true
+
+[appearance.tab_focused_expanded]
+27432b9021414361b57dd29d9fcb24c7 = true
+
+[browser]
+default_profile = ""
+enabled = true
+home_page = ""
+open_terminal_links = false
+search_engine = "google"
+
+[clipboard]
+copy_on_select = false
+
+[composer]
+broadcast = false
+clear_after_sending = false
+clear_on_close = false
+expanded = false
+floating_height = 236.0
+floating_width = 570.0
+font_family = "SF Mono"
+font_size = 13.0
+height = 220.0
+image_strategy = "clipboard"
+language = ""
+line_height = 1.2
+pinned = false
+position = "right"
+presentation = "panel"
+voice_auto_send = false
+voice_model = ""
+width = 380.0
+
+[keymap]
+focus_pane_down = "cmd-ctrl-j"
+focus_pane_left = "cmd-ctrl-h"
+focus_pane_right = "cmd-ctrl-l"
+focus_pane_up = "cmd-ctrl-k"
+split_down = "cmd-shift-s"
+split_right = "cmd-shift-d"
+
+[openers]
+file = "system.editor"
+project_target = "dev.zed.Zed"
+url = "system.browser"
+
+[panel_pins]
+
+[panes]
+new_pane_directory = "current"
+
+[projects]
+
+[quick_terminal]
+blur = 70
+dark_theme = ""
+enabled = true
+height = 430
+light_theme = ""
+pinned = false
+transparency = 18
+width = 720
+
+[quick_terminal.shortcut]
+type = "unassigned"
+
+[window]
+close_behavior = "close_session"
+confirm_running_process = true
+default_size = [
+    1200.0,
+    800.0,
+]
+
+[worktrees.default_location]
+parent_path = ""
+path_template = ""
+
+[worktrees.projects]

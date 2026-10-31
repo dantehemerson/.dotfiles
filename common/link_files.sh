@@ -31,6 +31,13 @@ else
   link "$DOTFILES_DIR/user/.config/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
 fi
 
+# Muxy
+if [[ "$CURRENT_OS" == "macos" ]]; then
+  link "$DOTFILES_DIR/user/.config/muxy/settings.toml" "$HOME/Library/Application Support/Muxy 2/settings.toml"
+  link "$DOTFILES_DIR/user/.config/muxy/terminal.toml" "$HOME/Library/Application Support/Muxy 2/terminal.toml"
+  link "$DOTFILES_DIR/user/.config/muxy/server.toml" "$HOME/Library/Application Support/Muxy 2/server.toml"
+fi
+
 # Mouseless
 if [[ "$CURRENT_OS" == "macos" ]]; then
   link "$DOTFILES_DIR/user/.config/mouseless/.config.yml" "$HOME/Library/Application Support/Mouseless/configs/config.yaml"
