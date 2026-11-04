@@ -57,6 +57,25 @@ else # Intel
 fi
 
 #  ============= PROMPT ===========
+prompt_git_info() {
+  local branch state code marker
+  branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null) || \
+    branch=$(git rev-parse --short HEAD 2>/dev/null) || return
+  state=$(git status --porcelain --untracked-files=normal 2>/dev/null)
+  marker=''
+  if [[ -n "$state" ]]; then
+    code=${state:0:2}
+    if [[ "$code" == '??' ]]; then
+      marker=' ?'
+    elif [[ "$code" != '  ' ]]; then
+      marker=' '
+    fi
+  fi
+  # Use readline's non-printing markers here (rather than PS1's \[ / \]),
+  # since this text is emitted from a command substitution inside PS1.
+  printf '\001\e[3;36m\002%s\001\e[0m\002%s' "$branch" "$marker"
+}
+
 prompt_hook() {
   local exit_status=$?
 
@@ -71,8 +90,17 @@ prompt_hook() {
   history -c
   history -r
 
+  # Omarchy-like native Bash prompt: shortened path, branch/status, and arrow.
+  if [[ $exit_status -ne 0 ]]; then
+    PS1='\[\e[36m\]\w\[\e[0m\] $(prompt_git_info) \[\e[36m\]✗ ❯\[\e[0m\] '
+  else
+    PS1='\[\e[36m\]\w\[\e[0m\] $(prompt_git_info) \[\e[36m\]❯\[\e[0m\] '
+  fi
+
   return $exit_status
 }
+
+PROMPT_DIRTRIM=2
 
 export PATH=$PATH:$HOME/.local/bin
 
