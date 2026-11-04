@@ -166,7 +166,7 @@
     "font_family": "Maple Mono",
   },
   "colorize_brackets": true,
-  "buffer_font_weight": 400,
+  "buffer_font_weight": 350,
   "buffer_line_height": {
     "custom": 1.4,
   },
@@ -203,7 +203,7 @@
   "theme": {
     "mode": "dark",
     "light": "Gruvbox Light",
-    "dark": "Gruvbox Material",
+    "dark": "Spiceflow Dark",
   },
   "theme_overrides": {
     "Shades Of Purple": {
