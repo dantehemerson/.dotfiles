@@ -93,6 +93,8 @@ description = "List and navigate Floax sessions"
 [ui]
 agent_panel_sort = "spaces"
 sidebar_width=36
+sidebar_min_width=36
+sidebar_max_width=136
 prompt_new_tab_name = false
 show_agent_labels_on_pane_borders = true
 right_click_passthrough_modifier = "alt"
