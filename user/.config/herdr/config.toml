@@ -39,6 +39,13 @@ rename_tab = "prefix+,"
 rename_pane = "prefix+."
 close_pane = "prefix+v"
 
+# Consume Ctrl+D instead of sending EOF to the pane's shell or agent.
+[[keys.command]]
+key = "ctrl+d"
+type = "shell"
+command = "true"
+description = "Ignore Ctrl+D"
+
 [[keys.command]]
 key = "prefix+g"
 type = "popup"
