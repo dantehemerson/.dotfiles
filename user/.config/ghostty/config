@@ -1,9 +1,6 @@
 # Ignore going fullscreen by mistake
 keybind = global:super+enter=ignore
 
-# Prevent Ctrl+D from exiting shells/agents and closing their panes.
-keybind = ctrl+d=ignore
-
 # Cmd+s -> Ctrl+s: to save on nvim
 keybind = super+s=text:\x13
 

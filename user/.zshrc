@@ -128,6 +128,10 @@ for file in init.sh aliases.sh functions.sh zsh/functions.sh; do
     [ -r ~/.dotfiles/shell/$file ] && source ~/.dotfiles/shell/$file >/dev/null 2>&1
 done
 
+# Ignore Ctrl+D (EOF) at the shell prompt: prevents accidental shell/pane exit.
+# Ctrl+D still works inside programs like nvim (half-page-down scroll).
+setopt ignore_eof
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
