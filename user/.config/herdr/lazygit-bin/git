@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# Only Herdr's LazyGit popup gets this directory on PATH. All non-push
+# commands exec the original Git without starting a Python interpreter.
+set -eu
+
+is_push() {
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      -c|-C|--git-dir|--work-tree|--namespace|--config-env)
+        [ "$#" -ge 2 ] || return 1
+        shift 2
+        ;;
+      -c?*|-C?*|--*=*|--no-pager|--paginate|--bare|--no-replace-objects|--literal-pathspecs|--glob-pathspecs|--noglob-pathspecs|--icase-pathspecs|--no-optional-locks|--no-lazy-fetch|--no-advice)
+        shift
+        ;;
+      push) return 0 ;;
+      *) return 1 ;;
+    esac
+  done
+  return 1
+}
+
+if is_push "$@"; then
+  script_dir=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+  exec "$HERDR_LAZYGIT_PYTHON" "$script_dir/lazygit-push.py" "$@"
+fi
+
+exec "$HERDR_LAZYGIT_REAL_GIT" "$@"

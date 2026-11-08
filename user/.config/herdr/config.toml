@@ -43,7 +43,7 @@ close_pane = "prefix+v"
 key = "prefix+g"
 type = "popup"
 command = 'sh "$HOME/.dotfiles/user/.config/herdr/lazygit-popup.sh"'
-description = "Persistent LazyGit (Ctrl+g to hide)"
+description = "LazyGit (push survives closing)"
 width = "90%"
 height = "90%"
 

@@ -45,9 +45,13 @@ Note: Individual test scripts will show their own summary when run directly.
 ### Test persistent Herdr LazyGit popups
 ```bash
 mise exec -- python3 test/herdr_lazygit_test.py
+mise exec -- python3 test/herdr_lazygit_push_test.py
 ```
 Uses an isolated tmux server and a fake LazyGit to test detach/reopen,
-worktree isolation, and work continuing after dismissal. No remote push is made.
+worktree isolation, and work continuing after dismissal. The push tests use
+temporary local bare repositories to verify real pushes survive cancellation
+of their caller, and preserve output, exit status, and failure reporting.
+No hosted remote is contacted.
 
 ## What Gets Tested
 
