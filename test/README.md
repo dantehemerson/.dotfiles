@@ -50,7 +50,8 @@ mise exec -- python3 test/herdr_lazygit_push_test.py
 Uses an isolated tmux server and a fake LazyGit to test detach/reopen,
 worktree isolation, and work continuing after dismissal. The push tests use
 temporary local bare repositories to verify real pushes survive cancellation
-of their caller, and preserve output, exit status, and failure reporting.
+of their caller and pressing `q` in real LazyGit through the full tmux popup
+launcher, and preserve output, exit status, and failure reporting.
 No hosted remote is contacted.
 
 ## What Gets Tested

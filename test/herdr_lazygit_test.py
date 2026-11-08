@@ -116,10 +116,11 @@ class PersistentLazygitTest(unittest.TestCase):
                 first_pid = (repo / ".lazygit-starts").read_text()
                 session = tmux("list-sessions", "-F", "#{session_name}")
                 self.assertEqual(tmux("show-options", "-gv", "prefix"), "None")
+                self.assertNotIn("C-g", tmux("list-keys", "-T", "root"))
 
                 tmux("send-keys", "-t", session, "push", "Enter")
                 wait_for(lambda: (repo / ".push-started").exists())
-                os.write(fd, b"\x07")  # Ctrl+g: detach the actual popup client.
+                tmux("detach-client", "-s", session)
                 reap(pid)
                 self.assertEqual(tmux("display-message", "-pt", session, "#{session_attached}"), "0")
                 wait_for(lambda: (repo / ".push-completed").exists())
@@ -135,8 +136,10 @@ class PersistentLazygitTest(unittest.TestCase):
                 pid, fd = launch(worktree)
                 fds.append(fd)
                 wait_for(lambda: (worktree / ".lazygit-starts").exists())
-                self.assertEqual(len(tmux("list-sessions", "-F", "#{session_name}").splitlines()), 2)
-                os.write(fd, b"\x07")
+                sessions = tmux("list-sessions", "-F", "#{session_name}").splitlines()
+                self.assertEqual(len(sessions), 2)
+                other_session = next(name for name in sessions if name != session)
+                tmux("detach-client", "-s", other_session)
                 reap(pid)
             finally:
                 # Close PTYs before waiting: macOS can block child exit while

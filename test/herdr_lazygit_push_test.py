@@ -129,6 +129,13 @@ class PersistentPushTest(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which("lazygit"), "lazygit is required")
     def test_actual_lazygit_q_exits_without_canceling_push(self):
+        self.run_actual_lazygit(through_launcher=False)
+
+    @unittest.skipUnless(shutil.which("lazygit") and shutil.which("tmux"), "lazygit and tmux are required")
+    def test_full_popup_launcher_q_exits_without_canceling_push(self):
+        self.run_actual_lazygit(through_launcher=True)
+
+    def run_actual_lazygit(self, through_launcher):
         self.git("-C", str(self.repo), "remote", "add", "origin", str(self.remote))
         for key, value in [
             ("branch.main.remote", "origin"),
@@ -146,10 +153,37 @@ class PersistentPushTest(unittest.TestCase):
             self.env, TERM="xterm-256color",
             PATH=f"{SHIM.parent}{os.pathsep}{os.environ['PATH']}",
         )
+        command = [shutil.which("lazygit"), "--use-config-dir", str(config)]
+        if through_launcher:
+            bin_dir = self.root / "bin"
+            bin_dir.mkdir()
+            (bin_dir / "tmux").write_text(
+                '#!/bin/sh\nshift 2\nexec "$REAL_TMUX" -L "$TEST_SERVER" "$@"\n'
+            )
+            (bin_dir / "lazygit").write_text(
+                '#!/bin/sh\ncommand -v git > "$TEST_CONFIG/git-path"\n'
+                'exec "$REAL_LAZYGIT" --use-config-dir "$TEST_CONFIG"\n'
+            )
+            for script in bin_dir.iterdir():
+                script.chmod(0o755)
+            env.update(
+                PATH=f"{bin_dir}{os.pathsep}{os.environ['PATH']}",
+                REAL_TMUX=shutil.which("tmux"),
+                REAL_LAZYGIT=shutil.which("lazygit"),
+                TEST_SERVER=f"herdr-full-push-test-{os.getpid()}",
+                TEST_CONFIG=str(config),
+                HERDR_ACTIVE_PANE_CWD=str(self.repo),
+            )
+            command = ["/bin/sh", str(CONFIG / "lazygit-popup.sh")]
+            self.addCleanup(
+                subprocess.run,
+                [env["REAL_TMUX"], "-L", env["TEST_SERVER"], "kill-server"],
+                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            )
         pid, fd = pty.fork()
         if pid == 0:
             os.chdir(self.repo)
-            os.execvpe("lazygit", ["lazygit", "--use-config-dir", str(config)], env)
+            os.execve(command[0], command, env)
         self.terminal_fd = fd
         termios.tcsetwinsize(fd, (40, 120))
         exited = False
@@ -161,8 +195,11 @@ class PersistentPushTest(unittest.TestCase):
 
         try:
             self.wait_for(lambda: b"Fixture" in self.screen)
+            if through_launcher:
+                self.assertEqual((config / "git-path").read_text().strip(), str(SHIM))
             os.write(fd, b"P")
             self.wait_for(lambda: (self.repo / ".push-started").exists())
+            self.job()  # The real launcher must actually enable the push worker.
             os.write(fd, b"q")
             self.wait_for(has_exited)
         finally:

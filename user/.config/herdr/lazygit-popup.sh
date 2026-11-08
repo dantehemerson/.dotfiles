@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Keep LazyGit alive when its Herdr popup is detached or closed.
+# Keep pushes alive independently when the Herdr LazyGit popup closes.
 set -eu
 
 script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
@@ -32,10 +32,13 @@ repo=$(CDPATH= cd -- "$repo" && pwd -P)
 session="lazygit-$(printf '%s' "$repo" | git hash-object --stdin)"
 
 # Use an isolated server/config, leaving normal tmux sessions untouched.
+# Apply PATH at exec time: tmux's pane setup can replace session-level PATH.
+# Multiple command arguments also avoid an intervening shell startup.
 unset TMUX TMUX_PANE
 exec tmux -L herdr-lazygit -f "$script_dir/lazygit-tmux.conf" \
   new-session -A -s "$session" -c "$repo" \
-  -e "PATH=$script_dir/lazygit-bin:$PATH" \
-  -e "HERDR_LAZYGIT_REAL_GIT=$real_git" \
-  -e "HERDR_LAZYGIT_PYTHON=$python" \
+  /usr/bin/env \
+  "PATH=$script_dir/lazygit-bin:$PATH" \
+  "HERDR_LAZYGIT_REAL_GIT=$real_git" \
+  "HERDR_LAZYGIT_PYTHON=$python" \
   lazygit
