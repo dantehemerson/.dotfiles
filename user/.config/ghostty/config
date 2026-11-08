@@ -4,6 +4,9 @@ keybind = global:super+enter=ignore
 # Cmd+s -> Ctrl+s: to save on nvim
 keybind = super+s=text:\x13
 
+# Cmd+a -> F12: select all in nvim, including through Herdr
+keybind = super+a=text:\x1b[24~
+
 # Cmd+d -> Alt+d: to delete buffers on Telescope
 keybind = global:cmd+d=text:\x1bd
 

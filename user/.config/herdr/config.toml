@@ -42,7 +42,8 @@ close_pane = "prefix+v"
 [[keys.command]]
 key = "prefix+g"
 type = "popup"
-command = "lazygit"
+command = 'sh "$HOME/.dotfiles/user/.config/herdr/lazygit-popup.sh"'
+description = "Persistent LazyGit (Ctrl+g to hide)"
 width = "90%"
 height = "90%"
 

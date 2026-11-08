@@ -14,6 +14,11 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous Search Result" })
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste Over Selection" })
 
 
+-- Select all with Command + A
+vim.keymap.set({ "n", "i", "x", "s" }, "<D-a>", "<Esc>ggVG", { noremap = true, silent = true, desc = "Select All" })
+-- Ghostty sends F12 for Command+A so Herdr need not preserve Command modifiers.
+vim.keymap.set({ "n", "i", "x", "s" }, "<F12>", "<Esc>ggVG", { noremap = true, silent = true, desc = "Select All" })
+
 -- Copy with Command + C
 vim.keymap.set("v", "<D-c>", '"+y', { noremap = true, silent = true })
 
