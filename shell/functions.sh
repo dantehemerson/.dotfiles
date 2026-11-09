@@ -343,9 +343,184 @@ nvim-fix() {
   fi
 }
 
-# n -> nvim alias
-n() { if [ "$#" -eq 0 ]; then nvim .; else nvim "$@"; fi; }
-
 # Compression
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
 alias decompress="tar -xzf"
+
+# === add-repo ===
+# Add a Git worktree to a Herdr workspace in ~/workspaces, with env-file copy.
+# Usage: add-repo [workspace] [repo] [branch]
+#   All args optional — anything omitted is prompted via fzf/read.
+add-repo() {
+  local CODING_DIR="$HOME/coding"
+  local WORKSPACES_DIR="$HOME/workspaces"
+
+  if ! command -v fzf >/dev/null 2>&1; then
+    echo "❌ fzf is required (https://github.com/junegunn/fzf)" >&2
+    return 1
+  fi
+
+  # ---------- Workspace ----------
+  # No prompt: the workspace is derived from the current directory so the
+  # worktree lands in the workspace you're already in.
+  # e.g. cwd ~/workspaces/sort-student-error/... -> workspace "sort-student-error"
+  local workspace="$1"
+  if [[ -z "$workspace" ]]; then
+    local cur="$PWD"
+    if [[ "$cur" == "$WORKSPACES_DIR"/* ]]; then
+      # Relative path under ~/workspaces: first segment is the workspace name.
+      local rel="${cur#"$WORKSPACES_DIR"/}"
+      workspace="${rel%%/*}"
+    else
+      # Fallback: find which workspace dir contains the cwd (symlinked setups etc.)
+      local d
+      while IFS= read -r d; do
+        if [[ "$cur" == "$d"/* || "$cur" == "$d" ]]; then
+          workspace="$(basename "$d")"
+          break
+        fi
+      done < <(command find "$WORKSPACES_DIR" -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
+    fi
+  fi
+  [[ -z "$workspace" ]] && { echo "❌ Not inside a workspace. cd into ~/workspaces/<name> first (or pass it as arg 1)." >&2; return 1; }
+  mkdir -p "$WORKSPACES_DIR/$workspace"
+
+  # ---------- Repo ----------
+  local repo="$2"
+  if [[ -z "$repo" ]]; then
+    local repos=()
+    while IFS= read -r d; do
+      [[ -d "$d/.git" ]] && repos+=("$(basename "$d")")
+    done < <(command find "$CODING_DIR" -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
+    if [[ ${#repos[@]} -eq 0 ]]; then
+      echo "❌ No git repositories found in $CODING_DIR" >&2
+      return 1
+    fi
+    repo=$(printf '%s\n' "${repos[@]}" | fzf --prompt="Repository › " --height=20 --reverse) || return 1
+  fi
+  if [[ ! -d "$CODING_DIR/$repo/.git" ]]; then
+    echo "❌ $CODING_DIR/$repo is not a git repository." >&2
+    return 1
+  fi
+  local main_repo="$CODING_DIR/$repo"
+
+  # ---------- Fetch ----------
+  echo "⟳ Fetching origin for $repo…"
+  if ! git -C "$main_repo" fetch origin --prune --quiet 2>/dev/null; then
+    echo "⚠️  Fetch failed (offline?). Continuing with local branches." >&2
+  fi
+
+  # ---------- Branch ----------
+  local branch="$3"
+  if [[ -z "$branch" ]]; then
+    # Local + remote branches, deduped, origin/HEAD marker removed
+    local branches
+    branches=$( {
+      git -C "$main_repo" for-each-ref --format='%(refname:short)' refs/heads/
+      git -C "$main_repo" for-each-ref --format='%(refname:short)' refs/remotes/origin/ | grep -v 'origin/HEAD'
+    } | sort -u )
+
+    local picked
+    # --print-query: typed text that matches nothing becomes the new-branch name
+    picked=$(printf '%s\n' "$branches" | fzf --print-query --prompt="Branch (type to create new) › " --height=20 --reverse --query="${branch:-}") || return 1
+    branch="${picked//$'\n'/}"
+  fi
+  [[ -z "$branch" ]] && { echo "❌ No branch given." >&2; return 1; }
+
+  # ---------- Branch resolution ----------
+  local base_ref=""
+  local create=0
+
+  if git -C "$main_repo" show-ref --verify --quiet "refs/heads/$branch"; then
+    echo "ℹ️  Branch '$branch' exists locally — reusing."
+  elif git -C "$main_repo" show-ref --verify --quiet "refs/remotes/origin/$branch"; then
+    echo "ℹ️  Branch '$branch' exists on origin — reusing."
+  else
+    create=1
+    # Pick a base ref for the new branch
+    local origin_head
+    origin_head=$(git -C "$main_repo" symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|^refs/remotes/||')
+    local bases=()
+    [[ -n "$origin_head" ]] && bases+=("$origin_head (origin/HEAD)")
+    git -C "$main_repo" show-ref --verify --quiet refs/heads/main && bases+=("main")
+    git -C "$main_repo" show-ref --verify --quiet refs/heads/master && bases+=("master")
+
+    echo "✨ Branch '$branch' doesn't exist — will create it."
+    local base_pick
+    base_pick=$(printf '%s\n' "${bases[@]}" | fzf --print-query --prompt="Base branch › " --height=10 --reverse --header="Enter=accept, Esc=cancel") || return 1
+    base_ref="${base_pick%%$'\n'*}"
+    # Strip the "(origin/HEAD)" annotation if chosen
+    base_ref="${base_ref%% *}"
+    if [[ -z "$base_ref" ]]; then
+      # User typed nothing / accepted empty → default
+      base_ref="${origin_head:-main}"
+    fi
+    if ! git -C "$main_repo" rev-parse --verify --quiet "$base_ref" >/dev/null; then
+      echo "❌ Base ref '$base_ref' not found in $repo." >&2
+      return 1
+    fi
+  fi
+
+  # ---------- Worktree path ----------
+  local wt_path="$WORKSPACES_DIR/$workspace/$repo"
+
+  if [[ -e "$wt_path" ]]; then
+    if [[ -d "$wt_path/.git" || -f "$wt_path/.git" ]]; then
+      local existing_branch
+      existing_branch=$(git -C "$wt_path" symbolic-ref --short HEAD 2>/dev/null)
+      if [[ -n "$existing_branch" && "$existing_branch" != "$branch" ]]; then
+        echo "❌ $wt_path already holds branch '$existing_branch', not '$branch'." >&2
+        echo "   A workspace holds one worktree per repo. Remove it or use another branch." >&2
+        return 1
+      fi
+      echo "ℹ️  Worktree already exists at $wt_path — skipping git setup."
+      [[ -n "$existing_branch" ]] && branch="$existing_branch"
+    else
+      echo "❌ $wt_path exists but is not a git worktree. Remove it manually first." >&2
+      return 1
+    fi
+  else
+    # Check if branch is already checked out elsewhere
+    local taken_path
+    taken_path=$(git -C "$main_repo" worktree list --porcelain | awk -v b="refs/heads/$branch" '
+      /^worktree /{p=$2} /^branch /{if ($2==b) print p}')
+    if [[ -n "$taken_path" ]]; then
+      echo "⚠️  Branch '$branch' is checked out at: $taken_path"
+      local open_existing
+      open_existing=$( { echo "Yes — attach that path"; echo "No — abort"; } | fzf --prompt="Open existing worktree instead? › " --height=6 --reverse) || return 1
+      if [[ "$open_existing" == Yes* ]]; then
+        wt_path="$taken_path"
+      else
+        return 1
+      fi
+    elif [[ $create -eq 1 ]]; then
+      echo "🌿 Creating worktree: $wt_path (branch '$branch' from '$base_ref')"
+      git -C "$main_repo" worktree add -b "$branch" "$wt_path" "$base_ref" || return 1
+    else
+      echo "🌿 Creating worktree: $wt_path (branch '$branch')"
+      git -C "$main_repo" worktree add "$wt_path" "$branch" || return 1
+    fi
+  fi
+
+  # ---------- Env/config file copy (never overwrite) ----------
+  echo "📋 Copying env files (no overwrites)…"
+  rsync -av --ignore-existing \
+    --include='.env' \
+    --include='.env.*' \
+    --include='.envrc' \
+    --exclude='*' \
+    "$main_repo/" "$wt_path/"
+
+  # ---------- Summary ----------
+  # Note: nothing is created in Herdr — no pane, no tab, no workspace.
+  # The worktree directory is simply available at ~/workspaces/<ws>/<repo>;
+  # open it in Herdr yourself when you want an agent on it.
+  echo
+  echo "✅ Done"
+  echo "   Workspace : $workspace"
+  echo "   Repo      : $repo"
+  echo "   Path      : $wt_path"
+  echo "   Branch    : $branch"
+  [[ $create -eq 1 && "$wt_path" == "$WORKSPACES_DIR/$workspace/$repo" ]] && echo "   Base      : $base_ref"
+  echo "   Env files : copied (existing files untouched)"
+}
