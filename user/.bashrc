@@ -116,13 +116,15 @@ PROMPT_COMMAND="prompt_hook${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
-. "$HOME/.atuin/bin/env"
+[ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
 
 # opencode
 export PATH="$HOME/.opencode/bin:$PATH"
 
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-eval "$(atuin init bash)"
+if command -v atuin >/dev/null 2>&1; then
+  [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+  eval "$(atuin init bash)"
+fi
 
 # Added by Antigravity CLI installer
 export PATH="/Users/d/.local/bin:$PATH"

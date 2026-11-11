@@ -54,6 +54,14 @@ link "$DOTFILES_DIR/user/.tmux.conf" "$HOME/.tmux.conf"
 # Herdr
 link "$DOTFILES_DIR/user/.config/herdr/config.toml" "$HOME/.config/herdr/config.toml"
 
+# Herdr app: keep bundled files and machine-local state outside dotfiles.
+link "$DOTFILES_DIR/user/.config/herdr-app/settings.json" "$HOME/.config/herdr-app/settings.json"
+link "$DOTFILES_DIR/user/.config/herdr-app/keys.json" "$HOME/.config/herdr-app/keys.json"
+link "$DOTFILES_DIR/user/.config/herdr-app/layouts/square-panes.json" "$HOME/.config/herdr-app/layouts/square-panes.json"
+link "$DOTFILES_DIR/user/.config/herdr-app/themes/material-darker.json" "$HOME/.config/herdr-app/themes/material-darker.json"
+link "$DOTFILES_DIR/user/.config/herdr-app/mods/lazygit" "$HOME/.config/herdr-app/mods/lazygit"
+link "$DOTFILES_DIR/user/.config/herdr-app/mods/tmux-prefix" "$HOME/.config/herdr-app/mods/tmux-prefix"
+
 # Zed
 link "$DOTFILES_DIR/user/zed/settings.json" "$HOME/.config/zed/settings.json"
 link "$DOTFILES_DIR/user/zed/keymap.json" "$HOME/.config/zed/keymap.json"
@@ -64,6 +72,9 @@ link "$DOTFILES_DIR/user/.config/nvim" "$HOME/.config/nvim"
 
 # Mise
 link "$DOTFILES_DIR/user/.config/mise/config.toml" "$HOME/.config/mise/config.toml"
+
+# OpenCode CLI settings
+link "$DOTFILES_DIR/user/.config/opencode/cli.json" "$HOME/.config/opencode/cli.json"
 
 ## ============ CUSTOM OPTIONS ============
 custom_options=(

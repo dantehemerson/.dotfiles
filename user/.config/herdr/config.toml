@@ -27,6 +27,8 @@ surface1 = "red"
 
 [keys]
 prefix = "`"
+previous_workspace = "prefix+up"
+next_workspace = "prefix+down"
 detach = "prefix+d"
 previous_agent = "prefix+ctrl+k"
 next_agent = "prefix+ctrl+j"

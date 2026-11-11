@@ -64,6 +64,7 @@ assert_file_is_symlink "$HOME/.config/zed/settings.json"
 assert_file_is_symlink "$HOME/.config/ghostty/config"
 assert_file_is_symlink "$HOME/.config/nvim"
 assert_file_is_symlink "$HOME/.config/mise/config.toml"
+assert_file_is_symlink "$HOME/.config/opencode/cli.json"
 
 assert_directory_exists "$HOME/.config/zed"
 

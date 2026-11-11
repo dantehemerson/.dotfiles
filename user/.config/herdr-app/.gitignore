@@ -1,0 +1,7 @@
+# Herdr generates editor support files inside custom mod folders.
+mods/**/gpui-kit.d.ts
+mods/**/herdr.d.ts
+mods/**/jsconfig.json
+mods/**/node_modules/
+*.error
+mods/**/*.error
