@@ -10,6 +10,7 @@ on:
 jobs:
   test-arch:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
 
     container:
       image: archlinux:latest

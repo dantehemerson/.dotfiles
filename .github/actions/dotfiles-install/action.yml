@@ -14,12 +14,24 @@ runs:
         RUN_AS: ${{ inputs.run_as }}
       shell: bash
       run: |
+        set -euo pipefail
+
+        # Download first instead of piping straight into bash: if the download
+        # fails, `curl ... | bash` runs an empty script and the step "succeeds"
+        # without installing anything.
+        installer="$(mktemp)"
+        trap 'rm -f "$installer"' EXIT
+
+        curl -fsSL --proto '=https' --tlsv1.2 \
+          --connect-timeout 30 --max-time 120 \
+          --retry 5 --retry-delay 3 --retry-all-errors \
+          -o "$installer" \
+          https://raw.githubusercontent.com/dantehemerson/.dotfiles/refs/heads/master/install.sh
+
         if [ -n "$RUN_AS" ]; then
-          su - $RUN_AS -c "
-            curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/refs/heads/master/install.sh \
-              | bash -s -- --ci
-          "
+          # The installer runs as another user, so make it readable for them.
+          chmod 644 "$installer"
+          su - "$RUN_AS" -c "bash '$installer' --ci"
         else
-          curl -fsSL https://raw.githubusercontent.com/dantehemerson/.dotfiles/refs/heads/master/install.sh \
-            | bash -s -- --ci
+          bash "$installer" --ci
         fi

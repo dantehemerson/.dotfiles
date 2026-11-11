@@ -11,6 +11,7 @@ on:
 jobs:
   test-ubuntu:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
 
     container:
       image: ubuntu:latest
