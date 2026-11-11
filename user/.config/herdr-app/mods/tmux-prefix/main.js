@@ -9,9 +9,9 @@ const BINDINGS = [
   ["c", "New tab", "tab.new"],
   ["%", "Split right", "pane.split", { direction: "right" }],
   ["|", "Split right", "pane.split", { direction: "right" }],
+  ["-", "Split down", "pane.split", { direction: "down" }],
   ['"', "Split down", "pane.split", { direction: "down" }],
-  ["x", "Close pane", "pane.close"],
-  ["v", "Close pane", "pane.close"],
+  ["delete", "Close pane", "pane.close"],
   ["n", "Next tab", "tab.next"],
   ["p", "Previous tab", "tab.prev"],
   ["h", "Focus left", "pane.go", { direction: "left" }],
@@ -72,10 +72,13 @@ export default class TmuxPrefix extends View {
     const m = e.modifiers;
     if (e.key === "escape") return this.dismiss();
     const plain = !m.control && !m.alt && !m.platform;
-    const key = e.key_char ?? (m.shift && e.key.length === 1 ? e.key.toUpperCase() : e.key);
+    // Delete/backspace report a control character as key_char, so only trust it when printable.
+    const typed = e.key_char && e.key_char.length === 1 && !/[\u0000-\u001f\u007f]/.test(e.key_char) ? e.key_char : null;
+    const key = typed ?? (m.shift && e.key.length === 1 ? e.key.toUpperCase() : e.key);
     if (plain && key === PREFIX) return this.sendPrefix(cx);
     const chord = plain ? key : m.control && !m.alt && !m.platform ? `ctrl+${String(key).toLowerCase()}` : null;
-    const binding = chord && BINDINGS.find((b) => b[0] === chord);
+    // e.keystroke is the canonical name ("delete", "backspace") for keys that type nothing.
+    const binding = chord && (BINDINGS.find((b) => b[0] === chord) ?? (plain ? BINDINGS.find((b) => b[0] === e.keystroke) : undefined));
     if (!binding) return this.dismiss();
     const [, , command, args = {}] = binding;
     this.dismiss();

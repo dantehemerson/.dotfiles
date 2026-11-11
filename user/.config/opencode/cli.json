@@ -23,5 +23,5 @@
   "plugins": [
     "./herdr-opencode"
   ],
-  "mouse": false
+  "mouse": true
 }

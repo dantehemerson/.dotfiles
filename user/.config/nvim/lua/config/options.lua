@@ -11,6 +11,8 @@ vim.opt.backup = false
 vim.opt.smartindent = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
+-- Precise wheel/trackpad scrolling (default is ver:3,hor:6).
+vim.opt.mousescroll = "ver:1,hor:1"
 vim.opt.updatetime = 50
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.showmode = false
