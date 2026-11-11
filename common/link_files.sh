@@ -73,6 +73,9 @@ link "$DOTFILES_DIR/user/.config/nvim" "$HOME/.config/nvim"
 # Mise
 link "$DOTFILES_DIR/user/.config/mise/config.toml" "$HOME/.config/mise/config.toml"
 
+# OpenCode CLI settings
+link "$DOTFILES_DIR/user/.config/opencode/cli.json" "$HOME/.config/opencode/cli.json"
+
 ## ============ CUSTOM OPTIONS ============
 custom_options=(
   "V_$__DOT_GIT__USER__EMAIL"
