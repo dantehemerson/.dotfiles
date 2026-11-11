@@ -421,8 +421,14 @@ add-repo() {
     } | sort -u )
 
     local picked
-    # --print-query: typed text that matches nothing becomes the new-branch name
-    picked=$(printf '%s\n' "$branches" | fzf --print-query --prompt="Branch (type to create new) › " --height=20 --reverse --query="${branch:-}") || return 1
+    local fzf_rc
+    # --print-query + Enter on a non-matching query: fzf prints the query but exits 1
+    # (same code as ESC). So: accept rc=0 or rc=1-with-query; only bail if nothing typed.
+    picked=$(printf '%s\n' "$branches" | fzf --print-query --prompt="Branch (type to create new) › " --height=20 --reverse) && fzf_rc=0 || fzf_rc=$?
+    picked="${picked%%$'\n'*}"   # first line = query
+    if [[ $fzf_rc -ne 0 && -z "${picked//[[:space:]]/}" ]]; then
+      return 1   # genuine cancel (ESC / empty query)
+    fi
     branch="${picked//$'\n'/}"
   fi
   [[ -z "$branch" ]] && { echo "❌ No branch given." >&2; return 1; }
