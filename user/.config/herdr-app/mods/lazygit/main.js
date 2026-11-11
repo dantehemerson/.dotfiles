@@ -1,10 +1,10 @@
 // cmd+g: lazygit in a popup over the window, in the focused terminal's
 // folder. Bound in keys.json to `mod.open:lazygit`. This mod opens for an
 // instant, starts lazygit in herdr-core (or reuses the one already running),
-// then asks Herdr to peek it; quitting lazygit (q) closes the popup.
+// then attaches it directly; quitting lazygit (q) closes the popup.
 
 import { View, div } from "gpui-kit";
-import { hc, focused, home, terminals, run, notify, props, closeOverlay } from "herdr";
+import { hc, focused, home, appHome, terminals, openOverlay, notify, props, closeOverlay } from "herdr";
 
 export default class Lazygit extends View {
   init(_p, cx) {
@@ -15,11 +15,20 @@ export default class Lazygit extends View {
         await cx.sleep(16);
         overlay = props()?.overlay;
       }
-      const address = await this.terminal(cx);
+      const address = await this.terminal();
       const now = focused();
       const alreadyPeeked = Boolean(address) && now?.terminal === address && !now?.pane;
       if (overlay) closeOverlay(overlay);
-      if (address && !alreadyPeeked) run("terminal.peek", { terminal: address });
+      if (address && !alreadyPeeked) openOverlay({
+        kind: "dialog", width: 0.8, height: 0.8,
+        layout: {
+          id: "lazygit-popup", type: "column",
+          children: [
+            { id: "lazygit-bar", type: "block", size: { px: 28 }, content: { mod: "peek", props: { terminal: address } } },
+            { id: "lazygit-terminal", type: "block", content: { terminal: address } },
+          ],
+        },
+      });
     });
   }
 
@@ -40,13 +49,13 @@ export default class Lazygit extends View {
     }
   }
 
-  async terminal(cx) {
+  async terminal() {
     const found = this.live();
     if (found && await this.coreLive(found.address)) return found.address;
     const cwd = focused()?.cwd || home();
     const r = await hc([
       "run", "--bg", "--json", "--no-parent", "--rm",
-      "--name", "lazygit", "--cwd", cwd, "--", "lazygit",
+      "--name", "lazygit", "--cwd", cwd, "--", "sh", `${appHome()}/mods/lazygit/start.sh`,
     ]).catch(() => null);
     let address = null;
     try {
@@ -66,12 +75,8 @@ export default class Lazygit extends View {
       notify({ title: "Lazygit", body: "Could not start it. Is lazygit installed and on PATH?" });
       return null;
     }
-    // Wait until the app sees this exact terminal; terminal.peek would say
-    // "no running terminal" otherwise.
-    for (let i = 0; i < 40; i++) {
-      if (terminals().some((t) => t.address === address && t.state === "live")) break;
-      await cx.sleep(25);
-    }
+    // A layout terminal can attach directly; terminal.peek first requires the
+    // app's periodically refreshed terminal list to contain this address.
     return address;
   }
 
