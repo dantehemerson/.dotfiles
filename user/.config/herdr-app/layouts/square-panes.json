@@ -157,6 +157,16 @@
           "gap": 8
         },
         {
+          "id": "last-tab",
+          "type": "block",
+          "size": {
+            "px": 0
+          },
+          "content": {
+            "mod": "last-tab"
+          }
+        },
+        {
           "id": "status",
           "type": "block",
           "content": {

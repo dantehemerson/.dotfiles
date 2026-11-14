@@ -8,6 +8,10 @@ the Herdr TUI). `common/link_files.sh` links these files individually:
 - `layouts/square-panes.json`: custom layout with square pane borders.
 - `themes/material-darker.json`: Material Darker terminal colors.
 - `mods/lazygit/`: Command+G LazyGit popup (requires `lazygit` and herdr-core).
+- `mods/last-tab/`: remembers the previously focused tab, so pressing the
+  backtick prefix then space jumps back to it, like the TUI's herdr-last-tab
+  plugin. It draws nothing; its zero-height block in `layouts/square-panes.json`
+  only watches tab focus.
 - `mods/tmux-prefix/`: backtick-prefixed navigation and commands (`y` requires Yazi).
 
 The LazyGit popup attaches directly, without waiting for the app's terminal-list

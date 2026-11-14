@@ -14,6 +14,7 @@ const BINDINGS = [
   ["delete", "Close pane", "pane.close"],
   ["n", "Next tab", "tab.next"],
   ["p", "Previous tab", "tab.prev"],
+  ["space", "Last tab", "last-tab.toggle"],
   ["h", "Focus left", "pane.go", { direction: "left" }],
   ["j", "Focus down", "pane.go", { direction: "down" }],
   ["k", "Focus up", "pane.go", { direction: "up" }],
