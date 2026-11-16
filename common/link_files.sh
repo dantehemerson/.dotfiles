@@ -60,6 +60,8 @@ link "$DOTFILES_DIR/user/.config/herdr-app/keys.json" "$HOME/.config/herdr-app/k
 link "$DOTFILES_DIR/user/.config/herdr-app/layouts/square-panes.json" "$HOME/.config/herdr-app/layouts/square-panes.json"
 link "$DOTFILES_DIR/user/.config/herdr-app/themes/material-darker.json" "$HOME/.config/herdr-app/themes/material-darker.json"
 link "$DOTFILES_DIR/user/.config/herdr-app/mods/lazygit" "$HOME/.config/herdr-app/mods/lazygit"
+link "$DOTFILES_DIR/user/.config/herdr-app/mods/last-tab" "$HOME/.config/herdr-app/mods/last-tab"
+link "$DOTFILES_DIR/user/.config/herdr-app/mods/resize-mode" "$HOME/.config/herdr-app/mods/resize-mode"
 link "$DOTFILES_DIR/user/.config/herdr-app/mods/tmux-prefix" "$HOME/.config/herdr-app/mods/tmux-prefix"
 
 # Zed
