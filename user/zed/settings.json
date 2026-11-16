@@ -7,8 +7,8 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "ui_font_family": "Maple Mono",
-  "agent_ui_font_family": "Maple Mono",
+  // "ui_font_family": "Maple Mono",
+  // "agent_ui_font_family": "Maple Mono",
   "completions": {
     "lsp_fetch_timeout_ms": 100
   },
