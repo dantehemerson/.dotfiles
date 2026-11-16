@@ -13,6 +13,11 @@ the Herdr TUI). `common/link_files.sh` links these files individually:
   plugin. It draws nothing; its zero-height block in `layouts/square-panes.json`
   only watches tab focus.
 - `mods/tmux-prefix/`: backtick-prefixed navigation and commands (`y` requires Yazi).
+- `mods/resize-mode/`: backtick then `r` for the TUI's resize mode: `h/j/k/l`
+  (or arrows) move the focused pane's nearest divider and `esc` or `enter`
+  leaves. It reads the core's tab layout, so it follows nested splits; each
+  press moves 2.5% of the split (shift: 10%). Herdr has no pane resize command
+  yet, so it edits the two neighbouring split weights with `layout.resize`.
 
 The LazyGit popup attaches directly, without waiting for the app's terminal-list
 refresh. Its `start.sh` briefly waits for the popup's PTY resize before starting

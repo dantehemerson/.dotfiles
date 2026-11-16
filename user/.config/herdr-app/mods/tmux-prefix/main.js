@@ -1,5 +1,5 @@
 import { View, div } from "gpui-kit";
-import { agents, closeOverlay, focused, hc, nextCommand, props, run } from "herdr";
+import { agents, closeOverlay, focused, hc, nextCommand, props, run, setShared } from "herdr";
 
 // Adapted from herdrdev/herdr-layout-examples/tmux-prefix: backtick prefix.
 const PREFIX = "`";
@@ -29,6 +29,7 @@ const BINDINGS = [
   ["ctrl+k", "Previous agent", "agent.prev"],
   ...Array.from({ length: 9 }, (_, i) => [`ctrl+${i + 1}`, `Focus agent ${i + 1}`, "agent.focus.index", { index: i }]),
   ["z", "Zoom pane", "pane.zoom"],
+  ["r", "Resize mode", "resize.open"],
   ["d", "Detach (close window)", "window.close"],
   ["/", "Go to", "app.palette"],
   [",", "Rename tab", "tab.rename"],
@@ -82,6 +83,16 @@ export default class TmuxPrefix extends View {
     const binding = chord && (BINDINGS.find((b) => b[0] === chord) ?? (plain ? BINDINGS.find((b) => b[0] === e.keystroke) : undefined));
     if (!binding) return this.dismiss();
     const [, , command, args = {}] = binding;
+    if (command === "resize.open") {
+      const pane = focused()?.pane;
+      this.dismiss();
+      if (pane) {
+        // mod.open cannot pass props; the resize mod reads this at init.
+        setShared("resize-mode.pane", pane);
+        run("mod.open", { name: "resize-mode" });
+      }
+      return;
+    }
     this.dismiss();
     if (command === "agent.focus.index") {
       const agent = agents()[args.index];

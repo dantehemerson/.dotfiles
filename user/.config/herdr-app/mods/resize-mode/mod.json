@@ -1,0 +1,12 @@
+{
+  "place": "none",
+  "title": "Resize mode",
+  "overlay": {
+    "kind": "popup",
+    "at": "bottom",
+    "offset": 10,
+    "width": 360,
+    "height": 34,
+    "frame": "none"
+  }
+}
