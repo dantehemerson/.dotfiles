@@ -66,6 +66,21 @@ assert_file_is_symlink "$HOME/.config/nvim"
 assert_file_is_symlink "$HOME/.config/mise/config.toml"
 assert_file_is_symlink "$HOME/.config/opencode/cli.json"
 
+# Herdr (TUI)
+assert_file_is_symlink "$HOME/.config/herdr/config.toml"
+assert_file_exists "$HOME/.config/herdr/config.toml"
+
+# Herdr app: the custom layout depends on every linked mod being present;
+# a missing link makes the layout fall back to Herdr's bundled default.
+assert_file_is_symlink "$HOME/.config/herdr-app/settings.json"
+assert_file_is_symlink "$HOME/.config/herdr-app/keys.json"
+assert_file_is_symlink "$HOME/.config/herdr-app/layouts/square-panes.json"
+assert_file_is_symlink "$HOME/.config/herdr-app/themes/material-darker.json"
+for mod in lazygit last-tab resize-mode tmux-prefix; do
+  assert_file_is_symlink "$HOME/.config/herdr-app/mods/$mod"
+  assert_file_exists "$HOME/.config/herdr-app/mods/$mod/main.js"
+done
+
 assert_directory_exists "$HOME/.config/zed"
 
 # SSH Key tests (directory existence implied by file checks)

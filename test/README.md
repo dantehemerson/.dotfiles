@@ -58,7 +58,7 @@ No hosted remote is contacted.
 
 ### Common Tests (All Platforms)
 - **Commands**: git, wget, curl, bash, zsh, btop, htop, tree, jq, yq, neovim, ripgrep, bat, lazygit
-- **Symlinks**: .zshrc, .zimrc, .bashrc, .bash_profile, starship.toml, .gitconfig, .vimrc, .tmux.conf, zed settings, neovim config
+- **Symlinks**: .zshrc, .zimrc, .bashrc, .bash_profile, starship.toml, .gitconfig, .vimrc, .tmux.conf, zed settings, neovim config, herdr config, herdr-app settings/keys/layout/theme and mods
 - **Directories**: .config, .config/nvim, .config/zed
 
 ### Platform-Specific Tests
