@@ -12,3 +12,5 @@ git:
       name: default
     - command: diff-so-fancy
 
+promptToReturnFromSubprocess: false
+

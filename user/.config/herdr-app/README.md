@@ -31,14 +31,17 @@ telemetry, caches, window/session state and mod data. Leave those local;
 do not link the entire config directory. Layout click overrides in
 `layouts/.state/` are also local.
 
-On a fresh machine, install Maple Mono (the terminal font) and select the
-custom layout and theme after starting Herdr:
+On a fresh machine, install Maple Mono (the terminal font). The layout and
+theme are applied by `setup/scripts/herdr_app_setup.sh`, which runs at the
+end of post-install tasks (Herdr saves the selected layout/theme locally,
+so the linked files alone do not restore them):
 
 ```sh
-herdr-app do layout.switch --name square-panes
-herdr-app do app.theme --name material-darker
+~/.dotfiles/setup/scripts/herdr_app_setup.sh
 ```
 
-The selected layout/theme are saved by Herdr, not synced as session state.
+It runs `herdr-app do layout.switch --name square-panes` and
+`herdr-app do app.theme --name material-darker`; run it again after an app
+update resets the layout. It skips itself when herdr-app is not installed.
 The UI font is Helvetica Neue on macOS; choose an installed alternative on
 other platforms.

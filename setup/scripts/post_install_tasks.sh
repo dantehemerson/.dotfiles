@@ -36,3 +36,6 @@ if ! command -v zed &> /dev/null; then
 fi
 
 echo "==> ✅ Post-install configuration complete"
+
+# Apply Herdr app layout/theme from dotfiles (layout choice is app-local state)
+~/.dotfiles/setup/scripts/herdr_app_setup.sh
