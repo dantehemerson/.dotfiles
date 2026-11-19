@@ -46,3 +46,32 @@ assert_shell_definition "lzd" "alias"         # dotfiles: lazydocker
 assert_shell_definition "lg" "alias"          # dotfiles: lazygit
 assert_shell_definition "kp" "function"       # dotfiles: kill port
 assert_shell_definition "add-repo" "function" # dotfiles: herdr worktree helper
+
+# User-owned configs are symlinked into the dotfiles repo.
+for linked in \
+  "$HOME/.gitconfig" \
+  "$HOME/.vimrc" \
+  "$HOME/.inputrc" \
+  "$HOME/.config/nvim" \
+  "$HOME/.config/starship.toml" \
+  "$HOME/.config/lazygit/config.yml" \
+  "$HOME/.config/mise/config.toml" \
+  "$HOME/.config/opencode/cli.json" \
+  "$HOME/.config/herdr/config.toml" \
+  "$HOME/.config/herdr-app/settings.json"; do
+  assert_file_is_symlink "$linked"
+done
+
+# Omarchy keeps ownership of these, so they must NOT be symlinked.
+for omarchy_owned in \
+  "$HOME/.config/ghostty/config" \
+  "$HOME/.tmux.conf" \
+  "$HOME/.config/zed/settings.json"; do
+  [ ! -L "$omarchy_owned" ]
+done
+
+# Git identity comes from the dotfiles .gitconfig.
+[ "$(git config user.email)" = "18385321+dantehemerson@users.noreply.github.com" ]
+
+# The linked nvim config starts cleanly (the runtime theme file is optional).
+timeout 60 nvim --headless +q >/dev/null 2>&1

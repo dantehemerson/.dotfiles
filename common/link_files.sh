@@ -20,9 +20,12 @@ link "$DOTFILES_DIR/user/.bash_profile" "$HOME/.bash_profile"
 # Starship: Shell Prompt
 link "$DOTFILES_DIR/user/.config/starship.toml" "$HOME/.config/starship.toml"
 
-# Ghostty
-link "$DOTFILES_DIR/user/.config/ghostty/config" "$HOME/.config/ghostty/config"
-link "$DOTFILES_DIR/user/.config/ghostty/shaders" "$HOME/.config/ghostty/shaders"
+# Ghostty: Omarchy owns the terminal config (dynamic theme include), so leave
+# both config and shaders alone there.
+if [[ "$IS_OMARCHY" != true ]]; then
+  link "$DOTFILES_DIR/user/.config/ghostty/config" "$HOME/.config/ghostty/config"
+  link "$DOTFILES_DIR/user/.config/ghostty/shaders" "$HOME/.config/ghostty/shaders"
+fi
 
 # Git
 link "$DOTFILES_DIR/user/.gitconfig" "$HOME/.gitconfig" $__DOT_GIT__LINKING_MODE
@@ -42,7 +45,10 @@ if [[ "$CURRENT_OS" == "macos" ]]; then
 fi
 
 # Mouseless
-if [[ "$CURRENT_OS" == "macos" ]]; then
+if [[ "$IS_OMARCHY" == true ]]; then
+  # Not installed on Omarchy; skip the dead Flatpak config path.
+  :
+elif [[ "$CURRENT_OS" == "macos" ]]; then
   link "$DOTFILES_DIR/user/.config/mouseless/.config.yml" "$HOME/Library/Application Support/Mouseless/configs/config.yaml"
 else
   link "$DOTFILES_DIR/user/.config/mouseless/.config.yml" "$HOME/.var/app/net.sonuscape.mouseless/data/mouseless/configs/config.yaml"
@@ -51,8 +57,16 @@ fi
 # Vim
 link "$DOTFILES_DIR/user/.vimrc" "$HOME/.vimrc"
 
-# Tmux
-link "$DOTFILES_DIR/user/.tmux.conf" "$HOME/.tmux.conf"
+# Readline
+if [[ "$CURRENT_OS" == "linux" ]]; then
+  link "$DOTFILES_DIR/user/.inputrc" "$HOME/.inputrc"
+fi
+
+# Tmux: Omarchy's ~/.config/tmux/tmux.conf loads after ~/.tmux.conf and would
+# override the dotfiles prefix, so leave tmux alone there.
+if [[ "$IS_OMARCHY" != true ]]; then
+  link "$DOTFILES_DIR/user/.tmux.conf" "$HOME/.tmux.conf"
+fi
 
 # Herdr
 link "$DOTFILES_DIR/user/.config/herdr/config.toml" "$HOME/.config/herdr/config.toml"
@@ -67,10 +81,13 @@ link "$DOTFILES_DIR/user/.config/herdr-app/mods/last-tab" "$HOME/.config/herdr-a
 link "$DOTFILES_DIR/user/.config/herdr-app/mods/resize-mode" "$HOME/.config/herdr-app/mods/resize-mode"
 link "$DOTFILES_DIR/user/.config/herdr-app/mods/tmux-prefix" "$HOME/.config/herdr-app/mods/tmux-prefix"
 
-# Zed
-link "$DOTFILES_DIR/user/zed/settings.json" "$HOME/.config/zed/settings.json"
-link "$DOTFILES_DIR/user/zed/keymap.json" "$HOME/.config/zed/keymap.json"
-link "$DOTFILES_DIR/user/zed/tasks.json" "$HOME/.config/zed/tasks.json"
+# Zed: not installed on Omarchy. If it gets installed later via
+# `omarchy install editor zed`, Omarchy writes its own themed settings there.
+if [[ "$IS_OMARCHY" != true ]]; then
+  link "$DOTFILES_DIR/user/zed/settings.json" "$HOME/.config/zed/settings.json"
+  link "$DOTFILES_DIR/user/zed/keymap.json" "$HOME/.config/zed/keymap.json"
+  link "$DOTFILES_DIR/user/zed/tasks.json" "$HOME/.config/zed/tasks.json"
+fi
 
 # Neovim
 link "$DOTFILES_DIR/user/.config/nvim" "$HOME/.config/nvim"

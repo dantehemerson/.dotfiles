@@ -1,5 +1,9 @@
 onboarding = false
 
+[terminal]
+# Matches Omarchy's default: new panes/tabs start in the current directory.
+new_cwd = "follow"
+
 [theme]
 name = "tokyo-night"
 auto_switch = false
