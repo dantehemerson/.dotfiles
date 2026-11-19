@@ -28,22 +28,28 @@ fi
 
 # List processes listening on PORT $1
 function port() {
+  if ! command -v lsof >/dev/null 2>&1; then
+    echo "port: lsof is not installed" >&2
+    return 1
+  fi
   lsof "-i:$1"
 }
 
-# Print plist in json format
-function printPlist() {
-  plutil -convert json -o - $1 | jq
-}
+# Print plist in json format (macOS only)
+if [[ "$IS_OSX" == true ]]; then
+  function printPlist() {
+    plutil -convert json -o - $1 | jq
+  }
 
-# Exit keybase
-function ekb() {
-  keybase ctl app-exit
-}
+  # Exit keybase
+  function ekb() {
+    keybase ctl app-exit
+  }
 
-function display_size() {
-  echo "Virtual Size: $(system_profiler SPDisplaysDataType | awk '/Resolution/{print $2, $3, $4}')"
-}
+  function display_size() {
+    echo "Virtual Size: $(system_profiler SPDisplaysDataType | awk '/Resolution/{print $2, $3, $4}')"
+  }
+fi
 
 # Determine size of a file or total size of a directory
 function fs() {
@@ -59,14 +65,22 @@ function fs() {
   fi
 }
 
-# Copy to clipboard, use: clip file.txt. TODO:Add mac support
+# Copy to clipboard, use: clip file.txt
+# Uses wl-copy on Wayland (Omarchy) and xclip on X11.
 function clip() {
-  xclip -selection clipboard <$1
+  if command -v wl-copy >/dev/null 2>&1; then
+    wl-copy <"$1"
+  elif command -v xclip >/dev/null 2>&1; then
+    xclip -selection clipboard <"$1"
+  else
+    echo "clip: install wl-clipboard (Wayland) or xclip (X11)" >&2
+    return 1
+  fi
 }
 
 # Copy file to clipboard, use: cf <path/to/file.text>
 function cf() {
-  xclip -sel clip <$1
+  clip "$1"
 }
 
 # Tells you a joke
@@ -106,7 +120,7 @@ function colors() {
 # Runs and delete the compiled file
 function exec_cpp() {
   file_name=$(date +%s)
-  g++ -std=c++17 -lstdc++ -o "$filename" "$1" && "$filename" && rm "$filename"
+  g++ -std=c++17 -lstdc++ -o "$file_name" "$1" && "./$file_name" && rm -f "$file_name"
 }
 
 # Generate nest module and service
@@ -222,36 +236,38 @@ function git_stats {
   fi
 }
 
-# Update karabiner config
-function karabinerUpdate() {
-  SOURCE="$HOME/.dotfiles/user/karabiner/karabiner-partial.json"
-  DESTINATION="$HOME/.config/karabiner/karabiner.json"
+# Update karabiner config (macOS only)
+if [[ "$IS_OSX" == true ]]; then
+  function karabinerUpdate() {
+    SOURCE="$HOME/.dotfiles/user/karabiner/karabiner-partial.json"
+    DESTINATION="$HOME/.config/karabiner/karabiner.json"
 
-  # Create temp file, to avoid issue in Karabiner while writting directly to destination
-  TEMP_FILE="$HOME/.config/karabiner/karabiner_temp.json"
-  touch "$TEMP_FILE"
+    # Create temp file, to avoid issue in Karabiner while writting directly to destination
+    TEMP_FILE="$HOME/.config/karabiner/karabiner_temp.json"
+    touch "$TEMP_FILE"
 
-  jq --slurpfile source "$SOURCE" '
+    jq --slurpfile source "$SOURCE" '
 	.profiles[0].complex_modifications.rules = $source[0].rules |
 	.profiles[0].fn_function_keys = $source[0].fn_function_keys |
 	.global = $source[0].global
 
 	' "$DESTINATION" >$TEMP_FILE
 
-  move_to_trash "$DESTINATION"
-  mv "$TEMP_FILE" "$DESTINATION"
-}
+    move_to_trash "$DESTINATION"
+    mv "$TEMP_FILE" "$DESTINATION"
+  }
 
-function karabinerBackup() {
-  SOURCE="$HOME/.config/karabiner/karabiner.json"
-  DESTINATION="$HOME/.dotfiles/user/karabiner/karabiner-partial.json"
+  function karabinerBackup() {
+    SOURCE="$HOME/.config/karabiner/karabiner.json"
+    DESTINATION="$HOME/.dotfiles/user/karabiner/karabiner-partial.json"
 
-  jq --slurpfile source "$SOURCE" '
+    jq --slurpfile source "$SOURCE" '
 		.rules = $source[0].profiles[0].complex_modifications.rules |
 		.fn_function_keys = $source[0].profiles[0].fn_function_keys |
 		.global = $source[0].global
 	' "$DESTINATION" >$DESTINATION
-}
+  }
+fi
 
 localip() {
   if command -v ip >/dev/null 2>&1; then

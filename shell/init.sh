@@ -1,25 +1,45 @@
-if command -v mise &>/dev/null; then
-  if [ -n "$ZSH_VERSION" ]; then
-    eval "$(mise activate zsh)"
-  elif [ -n "$BASH_VERSION" ]; then
-    eval "$(mise activate bash)"
+# Omarchy initializes mise, starship, zoxide and fzf from its own bash rc.
+# Skip them when Omarchy owns the setup so nothing gets initialized twice.
+if [[ -n "${OMARCHY_PATH:-}" ]]; then
+  _omarchy_owns_shell_init=true
+else
+  _omarchy_owns_shell_init=false
+fi
+
+if [[ "$_omarchy_owns_shell_init" != true ]]; then
+  if command -v mise &>/dev/null; then
+    if [ -n "$ZSH_VERSION" ]; then
+      eval "$(mise activate zsh)"
+    elif [ -n "$BASH_VERSION" ]; then
+      eval "$(mise activate bash)"
+    fi
+  fi
+
+  if command -v starship &>/dev/null; then
+    if [ -n "$ZSH_VERSION" ]; then
+      eval "$(starship init zsh)"
+    fi
+  fi
+
+  if command -v zoxide &>/dev/null; then
+    if [ -n "$ZSH_VERSION" ]; then
+      eval "$(zoxide init zsh)"
+    elif [ -n "$BASH_VERSION" ]; then
+      eval "$(zoxide init bash)"
+    fi
+  fi
+
+  if command -v fzf &>/dev/null; then
+    if [[ -f /usr/share/fzf/completion.bash ]]; then
+      source /usr/share/fzf/completion.bash
+    fi
+    if [[ -f /usr/share/fzf/key-bindings.bash ]]; then
+      source /usr/share/fzf/key-bindings.bash
+    fi
   fi
 fi
 
-if command -v starship &>/dev/null; then
-  if [ -n "$ZSH_VERSION" ]; then
-    eval "$(starship init zsh)"
-  fi
-fi
-
-if command -v zoxide &>/dev/null; then
-  if [ -n "$ZSH_VERSION" ]; then
-    eval "$(zoxide init zsh)"
-  elif [ -n "$BASH_VERSION" ]; then
-    eval "$(zoxide init bash)"
-  fi
-fi
-
+# Omarchy doesn't initialize direnv, so always hook it when available.
 if command -v direnv >/dev/null 2>&1; then
   if [ -n "$ZSH_VERSION" ]; then
     eval "$(direnv hook zsh)"
@@ -28,11 +48,4 @@ if command -v direnv >/dev/null 2>&1; then
   fi
 fi
 
-if command -v fzf &>/dev/null; then
-  if [[ -f /usr/share/fzf/completion.bash ]]; then
-    source /usr/share/fzf/completion.bash
-  fi
-  if [[ -f /usr/share/fzf/key-bindings.bash ]]; then
-    source /usr/share/fzf/key-bindings.bash
-  fi
-fi
+unset _omarchy_owns_shell_init

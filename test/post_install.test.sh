@@ -49,7 +49,9 @@ main() {
   "$SCRIPT_DIR/tests/common_tests.sh"
 
   # Run platform-specific tests using the same format as installation scripts
-  if [[ "$CURRENT_DISTRO" == "arch" ]]; then
+  if [[ "${IS_OMARCHY:-false}" == true && "$CURRENT_DISTRO" == "arch" ]]; then
+    "$SCRIPT_DIR/tests/omarchy_tests.sh"
+  elif [[ "$CURRENT_DISTRO" == "arch" ]]; then
     "$SCRIPT_DIR/tests/arch_tests.sh"
   elif [[ "$CURRENT_DISTRO" == "ubuntu" ]]; then
     "$SCRIPT_DIR/tests/ubuntu_tests.sh"

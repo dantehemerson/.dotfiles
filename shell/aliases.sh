@@ -1,10 +1,12 @@
 source ~/.dotfiles/utils/utils.sh
 
-alias code="code"
-
 alias vi="nvim"
 # alias vim="nvim"
-alias n="nvim"
+# Omarchy already defines `n` as a function that opens nvim in the current
+# directory when called with no arguments. Keep that behavior there.
+if [[ -z "${OMARCHY_PATH:-}" ]]; then
+  alias n="nvim"
+fi
 
 # ========= Fast switching directories ===========
 alias dotfiles="cd ~/.dotfiles"
@@ -109,12 +111,17 @@ alias ts="ts-node"
 if [[ $(uname) == "Darwin" ]]; then # OS X only aliases
   alias files="open ."
 elif [[ $(uname) == "Linux" ]]; then # Linux only aliases
-  alias files="nautilus &>/dev/null &"
-  alias chrome='google-chrome'
+  alias files="xdg-open . >/dev/null 2>&1 &"
+  if command -v google-chrome >/dev/null 2>&1; then
+    alias chrome='google-chrome'
+  fi
 fi
 
-# List files an folders in tree format
-alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
+# List files an folders in tree format.
+# Guarded so Omarchy's own `t` (tmux) survives until `tree` is installed.
+if command -v tree >/dev/null 2>&1; then
+  alias t="tree -I 'node_modules|.database|.db|.cache|cache'"
+fi
 
 # =========== NETWORK ======================
 # alias ip="dig +short myip.opendns.com @resolver1.opendns.com"

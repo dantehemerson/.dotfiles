@@ -5,10 +5,13 @@ echo "=> Linking common files"
 ## =========== LINK CROSS-PLATFORM FILES ===========
 
 # ZSH
-link "$DOTFILES_DIR/user/.zshrc" "$HOME/.zshrc"
+# Omarchy is bash-native and doesn't ship zsh, so skip the zsh/zim links there.
+if [[ "$IS_OMARCHY" != true ]]; then
+  link "$DOTFILES_DIR/user/.zshrc" "$HOME/.zshrc"
 
-# Zim
-link "$DOTFILES_DIR/user/.zimrc" "$HOME/.zimrc"
+  # Zim
+  link "$DOTFILES_DIR/user/.zimrc" "$HOME/.zimrc"
+fi
 
 # Bash
 link "$DOTFILES_DIR/user/.bashrc" "$HOME/.bashrc"
@@ -42,7 +45,7 @@ fi
 if [[ "$CURRENT_OS" == "macos" ]]; then
   link "$DOTFILES_DIR/user/.config/mouseless/.config.yml" "$HOME/Library/Application Support/Mouseless/configs/config.yaml"
 else
-  link "$DOTFILES_DIR/user/.config/mouseless/.config.yml" "~/.var/app/net.sonuscape.mouseless/data/mouseless/configs/config.yaml"
+  link "$DOTFILES_DIR/user/.config/mouseless/.config.yml" "$HOME/.var/app/net.sonuscape.mouseless/data/mouseless/configs/config.yaml"
 fi
 
 # Vim

@@ -28,6 +28,20 @@ assert_symlink_points_to() {
   [ -L "$symlink_path" ] && [ "$(readlink "$symlink_path")" = "$expected_target" ]
 }
 
+# Assert that a name resolves to an alias/function/builtin/file in an
+# interactive login shell (aliases only exist in interactive shells).
+assert_shell_definition() {
+  local name="$1"
+  local expected_type="$2"
+  local actual_type
+
+  actual_type=$(bash -lic "type -t $name" 2>/dev/null | tail -n1)
+  if [ "$actual_type" != "$expected_type" ]; then
+    echo "❌ '$name' should resolve to '$expected_type', got '$actual_type'" >&2
+    return 1
+  fi
+}
+
 # Assert that a file exists (not necessarily a symlink)
 assert_file_exists() {
   local file_path="$1"

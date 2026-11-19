@@ -16,7 +16,10 @@ assert_command_exists "fastfetch"
 assert_command_exists "jq"
 assert_command_exists "yq"
 assert_command_exists "nvim"
-assert_command_exists "tree"
+# Omarchy doesn't ship `tree`; the Omarchy extras add it because `alias t=tree`.
+if [[ "${IS_OMARCHY:-false}" != true ]]; then
+  assert_command_exists "tree"
+fi
 # On Ubuntu/Debian, the `bat` package installs the binary as `batcat`
 # (name clash with an older package). Arch and others use `bat`.
 if command -v bat >/dev/null 2>&1; then
@@ -31,7 +34,10 @@ assert_command_exists "lazygit"
 assert_command_exists "rg" # ripgrep
 assert_command_exists "tmux"
 assert_command_exists "bash"
-assert_command_exists "zsh"
+# Omarchy is bash-native: no zsh, zimfw, atuin or gh in the base install.
+if [[ "${IS_OMARCHY:-false}" != true ]]; then
+  assert_command_exists "zsh"
+fi
 # On Ubuntu/Debian, the `fd-find` package installs the binary as `fdfind`
 # (name clash with another package). Arch/macOS use `fd`.
 if command -v fd >/dev/null 2>&1; then
@@ -43,17 +49,20 @@ else
   exit 1
 fi
 assert_command_exists "unzip"
-assert_command_exists "gh"
-assert_command_exists "atuin"
+if [[ "${IS_OMARCHY:-false}" != true ]]; then
+  assert_command_exists "gh"
+  assert_command_exists "atuin"
+fi
 assert_command_exists "mise"
 assert_command_exists "opencode"
 
-zsh -ic 'command -v zimfw >/dev/null' 2>/dev/null
+if [[ "${IS_OMARCHY:-false}" != true ]]; then
+  zsh -ic 'command -v zimfw >/dev/null' 2>/dev/null
+  assert_directory_exists "$HOME/.tmux/plugins/tpm"
+  assert_file_is_symlink "$HOME/.zshrc"
+  assert_file_is_symlink "$HOME/.zimrc"
+fi
 
-assert_directory_exists "$HOME/.tmux/plugins/tpm"
-
-assert_file_is_symlink "$HOME/.zshrc"
-assert_file_is_symlink "$HOME/.zimrc"
 assert_file_is_symlink "$HOME/.bashrc"
 assert_file_is_symlink "$HOME/.bash_profile"
 assert_file_is_symlink "$HOME/.config/starship.toml"

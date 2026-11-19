@@ -1,12 +1,23 @@
-# If not running interactively, don't do anything (leave this at the top of this file) [[ $- != *i* ]] && return
+# Omarchy environment (OMARCHY_PATH + PATH), needed even for non-interactive shells
+[[ -r /usr/share/omarchy/default/bash/env-bootstrap ]] && source /usr/share/omarchy/default/bash/env-bootstrap
 
-# Load hombrew bin
-if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
-  export PATH="/opt/homebrew/bin:$PATH"
-  export PATH="/opt/homebrew/sbin:$PATH"
-else
-  export PATH="/usr/local/bin:$PATH"
-  export PATH="/usr/local/sbin:$PATH"
+# If not running interactively, don't do anything else (leave this above the rc source)
+[[ $- != *i* ]] && return
+
+# All the default Omarchy aliases, functions and shell init (mise, starship,
+# zoxide, fzf, completions). Loaded before the dotfiles modules below so that
+# anything defined here can be intentionally overridden there.
+[[ -n "${OMARCHY_PATH:-}" && -r "$OMARCHY_PATH/default/bash/rc" ]] && source "$OMARCHY_PATH/default/bash/rc"
+
+# Load homebrew bin (macOS only)
+if [[ "$(uname)" == "Darwin" ]]; then
+  if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
+    export PATH="/opt/homebrew/bin:$PATH"
+    export PATH="/opt/homebrew/sbin:$PATH"
+  else
+    export PATH="/usr/local/bin:$PATH"
+    export PATH="/usr/local/sbin:$PATH"
+  fi
 fi
 
 # Load .shellrc_custom if exists
@@ -40,7 +51,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Load custom aliases and functions
 for file in init.sh aliases.sh functions.sh bash/aliases.sh bash/functions.sh; do
-  [ -r ~/.dotfiles/shell/$file ] && source ~/.dotfiles/shell/$file >/dev/null 2>&1
+  [ -r ~/.dotfiles/shell/$file ] && source ~/.dotfiles/shell/$file
 done
 
 # Execute commands only available if line editing is on. https://superuser.com/a/1361068/983887
@@ -49,70 +60,75 @@ if [[ "$(set -o | grep 'emacs\|\bvi\b' | cut -f2 | tr '\n' ':')" != 'off:off:' ]
   [ -f ~/.inputrc ] && bind -f ~/.inputrc
 fi
 
-# Bash completion
-if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
-  [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
-else # Intel
-  [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+# Bash completion (macOS only)
+if [[ "$(uname)" == "Darwin" ]]; then
+  if [[ $(uname -m) == "arm64" ]]; then # Apple Silicon
+    [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+  else # Intel
+    [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+  fi
 fi
 
 #  ============= PROMPT ===========
-prompt_git_info() {
-  local branch state code marker
-  branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null) || \
-    branch=$(git rev-parse --short HEAD 2>/dev/null) || return
-  state=$(git status --porcelain --untracked-files=normal 2>/dev/null)
-  marker=''
-  if [[ -n "$state" ]]; then
-    code=${state:0:2}
-    if [[ "$code" == '??' ]]; then
-      marker=' ?'
-    elif [[ "$code" != '  ' ]]; then
-      marker=' '
+# Omarchy ships starship and initializes it from its own rc; don't override it.
+if [[ -z "${OMARCHY_PATH:-}" ]]; then
+  prompt_git_info() {
+    local branch state code marker
+    branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null) || \
+      branch=$(git rev-parse --short HEAD 2>/dev/null) || return
+    state=$(git status --porcelain --untracked-files=normal 2>/dev/null)
+    marker=''
+    if [[ -n "$state" ]]; then
+      code=${state:0:2}
+      if [[ "$code" == '??' ]]; then
+        marker=' ?'
+      elif [[ "$code" != '  ' ]]; then
+        marker=' '
+      fi
     fi
-  fi
-  # Use readline's non-printing markers here (rather than PS1's \[ / \]),
-  # since this text is emitted from a command substitution inside PS1.
-  printf '\001\e[3;36m\002%s\001\e[0m\002%s' "$branch" "$marker"
-}
+    # Use readline's non-printing markers here (rather than PS1's \[ / \]),
+    # since this text is emitted from a command substitution inside PS1.
+    printf '\001\e[3;36m\002%s\001\e[0m\002%s' "$branch" "$marker"
+  }
 
-prompt_hook() {
-  local exit_status=$?
+  prompt_hook() {
+    local exit_status=$?
 
-  # tmux window title
-  if [[ -n "$TMUX" ]]; then
-    tmux set-option -w set-titles-string \
-      "#{s|$HOME|~|:pane_current_path} - [ #{window_index} #{window_name} ] - Terminator"
-  fi
+    # tmux window title
+    if [[ -n "$TMUX" ]]; then
+      tmux set-option -w set-titles-string \
+        "#{s|$HOME|~|:pane_current_path} - [ #{window_index} #{window_name} ] - Terminator"
+    fi
 
-  # history sync
-  history -a
-  history -c
-  history -r
+    # history sync
+    history -a
+    history -c
+    history -r
 
-  # Omarchy-like native Bash prompt: shortened path, branch/status, and arrow.
-  if [[ $exit_status -ne 0 ]]; then
-    PS1='\[\e[36m\]\w\[\e[0m\] $(prompt_git_info) \[\e[36m\]✗ ❯\[\e[0m\] '
-  else
-    PS1='\[\e[36m\]\w\[\e[0m\] $(prompt_git_info) \[\e[36m\]❯\[\e[0m\] '
-  fi
+    # Omarchy-like native Bash prompt: shortened path, branch/status, and arrow.
+    if [[ $exit_status -ne 0 ]]; then
+      PS1='\[\e[36m\]\w\[\e[0m\] $(prompt_git_info) \[\e[36m\]✗ ❯\[\e[0m\] '
+    else
+      PS1='\[\e[36m\]\w\[\e[0m\] $(prompt_git_info) \[\e[36m\]❯\[\e[0m\] '
+    fi
 
-  return $exit_status
-}
+    return $exit_status
+  }
 
-PROMPT_DIRTRIM=2
+  PROMPT_DIRTRIM=2
+  PROMPT_COMMAND="prompt_hook"
+fi
 
 export PATH=$PATH:$HOME/.local/bin
 
-# pnpm
-export PNPM_HOME="/Users/d/Library/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-PROMPT_COMMAND="prompt_hook${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+# pnpm (macOS only)
+if [[ "$(uname)" == "Darwin" ]]; then
+  export PNPM_HOME="$HOME/Library/pnpm"
+  case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+fi
 
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
@@ -126,5 +142,7 @@ if command -v atuin >/dev/null 2>&1; then
   eval "$(atuin init bash)"
 fi
 
-# Added by Antigravity CLI installer
-export PATH="/Users/d/.local/bin:$PATH"
+# Antigravity CLI (macOS only)
+if [[ "$(uname)" == "Darwin" && -d "$HOME/.antigravity/antigravity/bin" ]]; then
+  export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+fi

@@ -132,6 +132,13 @@ detect_distro() {
   fi
 }
 
+# Detect Omarchy (Arch-based distribution with its own shell setup).
+# Checked separately from CURRENT_DISTRO because Omarchy reports as "arch".
+export IS_OMARCHY=false
+if [ -d /usr/share/omarchy ] || command -v omarchy >/dev/null 2>&1; then
+  export IS_OMARCHY=true
+fi
+
 # Initialize system detection
 detect_os
 detect_arch
@@ -261,6 +268,28 @@ should_install_package() {
   esac
 }
 
+# Root folder for backups taken before dotfiles replace existing files.
+# Override with DOTFILES_BACKUP_ROOT if you want them somewhere else.
+export DOTFILES_BACKUP_ROOT="${DOTFILES_BACKUP_ROOT:-$HOME/.local/state/dotfiles-backups}"
+
+# Back up a file, directory or symlink before it gets replaced.
+# The absolute source path is kept under a timestamped folder, so restoring is
+# just copying (or moving) it back into place.
+# Usage: backup_target <path>
+function backup_target() {
+  local target="$1"
+
+  [ -e "$target" ] || [ -L "$target" ] || return 0
+
+  local timestamp
+  timestamp="$(date +%Y-%m-%d_%H%M%S)"
+  local destination="$DOTFILES_BACKUP_ROOT/$timestamp/${target#/}"
+
+  mkdir -p "$(dirname "$destination")"
+  cp -a "$target" "$destination"
+  echo "💾 Backed up $target → $destination"
+}
+
 # Move a file or folder to trash.
 # Used to moved files that already exists before create the symlink,
 # just in case you need to restore them.
@@ -283,6 +312,15 @@ function move_to_trash() {
  fi
 }
 
+# Remove a path that is about to be replaced by a link/copy.
+function remove_replaced_target() {
+  local target="$1"
+
+  if [ -e "$target" ] || [ -L "$target" ]; then
+    rm -rf "$target"
+  fi
+}
+
 # Link/Copy a file to another location.
 # It has 3 modes:
 # - symbolic link(default): create a symbolic link to the file. It's usefult to keep file synced with git.
@@ -290,7 +328,8 @@ function move_to_trash() {
 # - skip: skip the file (do nothing)
 function link() {
   if [ "$3" = "copy" ]; then # COPY
-    move_to_trash "$2"
+    backup_target "$2"
+    remove_replaced_target "$2"
     cp -r "$1" "$2"
     echo "🔗 File $2 copied from $1"
     return
@@ -306,7 +345,8 @@ function link() {
       if [ ! -d "$dir_path" ]; then
         mkdir -p "$dir_path"
       fi
-      move_to_trash "$2"
+      backup_target "$2"
+      remove_replaced_target "$2"
       ln -sf "$1" "$2"
       echo "🔗 File $2 linked to $1"
     else
